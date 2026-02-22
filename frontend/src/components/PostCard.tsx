@@ -2,6 +2,8 @@ import { useState, useRef, useEffect } from 'react'
 import { Link } from 'react-router-dom'
 import { formatDistanceToNow } from 'date-fns'
 import { useToast } from '../hooks/useToast'
+import { extractYouTubeVideoId } from '../lib/youtube'
+import YouTubeEmbed from './YouTubeEmbed'
 
 interface PostCardProps {
   post: {
@@ -46,6 +48,7 @@ export default function PostCard({ post, onLike, onRepost, onReply, onEdit, onDe
 
   const timeAgo = formatDistanceToNow(new Date(post.createdAt), { addSuffix: true })
   const isDeleted = post.deleted || post.content == null
+  const youtubeVideoId = !isDeleted && post.content ? extractYouTubeVideoId(post.content) : null
 
   useEffect(() => {
     if (!menuOpen) return
@@ -231,6 +234,11 @@ export default function PostCard({ post, onLike, onRepost, onReply, onEdit, onDe
                   )}
                 </p>
               </Link>
+              {youtubeVideoId && (
+                <div className="mt-3">
+                  <YouTubeEmbed videoId={youtubeVideoId} />
+                </div>
+              )}
             </>
           )}
           {!editing && !readOnly && (

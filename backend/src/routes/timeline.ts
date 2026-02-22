@@ -3,9 +3,20 @@ import { getDb } from '../db/store.js';
 import { postsRepo } from '../db/repos/posts.js';
 import { followsRepo } from '../db/repos/follows.js';
 import { gamesRepo } from '../db/repos/games.js';
+import { likesRepo } from '../db/repos/likes.js';
+import { repostsRepo } from '../db/repos/reposts.js';
+import { repliesRepo } from '../db/repos/replies.js';
 import { shapePost } from '../helpers.js';
 
 const router = Router();
+
+function engagementByPostId(postId: string): number {
+  return (
+    likesRepo.countByPost(postId) +
+    repostsRepo.countByPost(postId) +
+    repliesRepo.countByPost(postId)
+  );
+}
 
 router.get('/trending-tags', (_req, res) => {
   const posts = getDb().posts.filter((p) => !p.deletedAt && p.gameTag);
@@ -20,6 +31,26 @@ router.get('/trending-tags', (_req, res) => {
     .sort((a, b) => b.count - a.count)
     .slice(0, 10);
   res.json({ tags });
+});
+
+router.get('/trending', (req, res) => {
+  const cursor = req.query.cursor as string | undefined;
+  const game = (req.query.game as string) || undefined;
+  const posts = postsRepo.getTrending(engagementByPostId, { game, cursor, limit: 20 });
+  const shaped = posts.map((p) => shapePost(p, req.userId));
+  const nextCursor = posts.length === 20 ? posts[posts.length - 1].id : null;
+  const totalLikes = shaped.reduce((sum, p) => sum + (p.likeCount ?? 0), 0);
+  const lastUpdated =
+    shaped.length > 0
+      ? shaped.reduce((latest, p) => (p.createdAt > latest ? p.createdAt : latest), shaped[0].createdAt)
+      : new Date().toISOString();
+  res.json({
+    posts: shaped,
+    nextCursor,
+    hotClipsCount: shaped.length,
+    totalLikes,
+    lastUpdated,
+  });
 });
 
 router.get('/home', (req, res) => {

@@ -48,6 +48,28 @@ export const postsRepo = {
       .sort((a, b) => b.createdAt.localeCompare(a.createdAt));
   },
 
+  /** Returns posts ranked by engagement (likes + reposts + replies), optional game filter, cursor pagination. */
+  getTrending(
+    engagementByPostId: (postId: string) => number,
+    options: { game?: string; cursor?: string; limit?: number } = {}
+  ): Post[] {
+    const { game, cursor, limit = 20 } = options;
+    let posts = getDb()
+      .posts.filter((p) => !p.deletedAt && (game ? p.gameTag === game : true))
+      .slice();
+    posts.sort((a, b) => {
+      const engA = engagementByPostId(a.id);
+      const engB = engagementByPostId(b.id);
+      if (engB !== engA) return engB - engA;
+      return b.createdAt.localeCompare(a.createdAt);
+    });
+    if (cursor) {
+      const idx = posts.findIndex((p) => p.id === cursor);
+      if (idx !== -1) posts = posts.slice(idx + 1);
+    }
+    return posts.slice(0, limit);
+  },
+
   create(data: { authorId: string; content: string; gameTag?: string | null }): Post {
     const post: Post = {
       id: uuid(),

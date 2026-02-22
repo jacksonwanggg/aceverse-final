@@ -116,6 +116,19 @@ export const api = {
       apiRequest<{ posts: any[]; nextCursor: string | null }>(`/timeline/home${cursor ? `?cursor=${cursor}` : ''}`),
     explore: (cursor?: string) =>
       apiRequest<{ posts: any[]; nextCursor: string | null }>(`/timeline/explore${cursor ? `?cursor=${cursor}` : ''}`),
+    trending: (cursor?: string, game?: string) => {
+      const params = new URLSearchParams();
+      if (cursor) params.set('cursor', cursor);
+      if (game) params.set('game', game);
+      const qs = params.toString();
+      return apiRequest<{
+        posts: any[];
+        nextCursor: string | null;
+        hotClipsCount: number;
+        totalLikes: number;
+        lastUpdated: string;
+      }>(`/timeline/trending${qs ? `?${qs}` : ''}`);
+    },
     trendingTags: () =>
       apiRequest<{ tags: { slug: string; name: string; count: number }[] }>('/timeline/trending-tags'),
   },
