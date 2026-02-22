@@ -1,6 +1,6 @@
 import { useInfiniteQuery, useMutation, useQueryClient } from '@tanstack/react-query'
 import { Link } from 'react-router-dom'
-import { formatDistanceToNow } from 'date-fns'
+import { formatConciseTime } from '../lib/formatDate'
 import { api } from '../lib/api'
 import { Heart, MessageCircle, Repeat2, UserPlus } from 'lucide-react'
 
@@ -73,7 +73,7 @@ function NotificationRow({ n }: { n: NotificationItem }) {
           <span className="text-secondary">{actionText(n)}</span>
         </p>
         <p className="text-xs text-tertiary mt-0.5">
-          {formatDistanceToNow(new Date(n.createdAt), { addSuffix: true })}
+          {formatConciseTime(new Date(n.createdAt))}
         </p>
       </div>
     </Link>

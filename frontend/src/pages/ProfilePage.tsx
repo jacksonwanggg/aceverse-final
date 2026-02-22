@@ -20,6 +20,8 @@ export default function ProfilePage() {
   const [editBio, setEditBio] = useState('')
   const [editAvatarUrl, setEditAvatarUrl] = useState('')
   const [activeTab, setActiveTab] = useState<'posts' | 'clips' | 'likes'>('posts')
+  const [bioExpanded, setBioExpanded] = useState(false)
+  const BIO_TRUNCATE_LENGTH = 160
 
   const { data: profileData } = useQuery({
     queryKey: ['users', username],

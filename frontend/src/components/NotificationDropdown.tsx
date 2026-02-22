@@ -1,7 +1,7 @@
 import { useRef, useEffect } from 'react'
 import { Link } from 'react-router-dom'
 import { useQuery } from '@tanstack/react-query'
-import { formatDistanceToNow } from 'date-fns'
+import { formatConciseTime } from '../lib/formatDate'
 import { api } from '../lib/api'
 import { Heart, MessageCircle, Repeat2, UserPlus } from 'lucide-react'
 
@@ -127,7 +127,7 @@ export default function NotificationDropdown({ isOpen, onClose, anchorRef }: Not
                     <span className="text-secondary">{actionText(n)}</span>
                   </p>
                   <p className="text-[10px] text-tertiary mt-0.5">
-                    {formatDistanceToNow(new Date(n.createdAt), { addSuffix: true })}
+                    {formatConciseTime(new Date(n.createdAt))}
                   </p>
                 </div>
               </Link>

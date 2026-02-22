@@ -3,7 +3,7 @@ import { useParams } from 'react-router-dom'
 import { useQuery, useQueryClient, useMutation } from '@tanstack/react-query'
 import { api } from '../lib/api'
 import PostCard from '../components/PostCard'
-import { formatDistanceToNow } from 'date-fns'
+import { formatConciseTime } from '../lib/formatDate'
 import { Link } from 'react-router-dom'
 import { useAuth } from '../hooks/useAuth'
 
@@ -300,7 +300,7 @@ function ReplyRow({ reply, depth, maxDepth, readOnly, postId, onReplyCreated, on
   const { user } = useAuth()
 
   const isDeleted = reply.deleted || reply.content == null
-  const timeAgo = formatDistanceToNow(new Date(reply.createdAt), { addSuffix: true })
+  const timeAgo = formatConciseTime(new Date(reply.createdAt))
   const indent = Math.min(depth, maxDepth) * 20
 
   const replyToReplyMutation = useMutation({

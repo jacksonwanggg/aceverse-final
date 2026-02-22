@@ -7,6 +7,13 @@ export default {
   ],
   theme: {
     extend: {
+      fontSize: {
+        'page-title': ['1.25rem', { lineHeight: '1.25' }],   /* 20px bold */
+        'section': ['1rem', { lineHeight: '1.25' }],         /* 16px semibold */
+        'body': ['0.9375rem', { lineHeight: '1.5' }],        /* 15px */
+        'secondary': ['0.875rem', { lineHeight: '1.25' }],   /* 14px */
+        'small': ['0.75rem', { lineHeight: '1.25' }],       /* 12px */
+      },
       colors: {
         // Theme-aware background colors
         primary: 'var(--color-bg-primary)',
