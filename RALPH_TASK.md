@@ -232,26 +232,26 @@ The core MVP is fully functional (auth, posts, feeds, likes, reposts, replies, f
 
 ### Phase 8: Right Sidebar — Match Mockup Exactly
 
-- [ ] **"Your Ranks" section**: Gamepad2 icon + "Your Ranks" header
+- [x] **"Your Ranks" section**: Gamepad2 icon + "Your Ranks" header
   - Each row: game icon (colored) + game name (text-primary) + rank name in accent color (e.g., "Immortal 3" in orange) + small rank badge icon on far right
   - Show user's top 3 game ranks
   - "View all games →" link at bottom (accent text)
-- [ ] **"Friends Online" section**: Users icon + "Friends Online" header
+- [x] **"Friends Online" section**: Users icon + "Friends Online" header
   - Each row: avatar (32px) + @username + "Online" text in green with green dot indicator
   - Show up to 4 friends (pick random seeded users as "online")
-- [ ] **"Who to Follow" section**: UserPlus icon + "Who to Follow" header
+- [x] **"Who to Follow" section**: UserPlus icon + "Who to Follow" header
   - Each row: avatar (32px) + @username (text-primary) + "XX,000 followers" (text-secondary) + orange "Follow" button (rounded-full, small, bg-accent text-white or outline with accent border)
   - Show 5 suggested users (users the current user doesn't follow)
   - Follow button actually works (calls API, updates state)
-- [ ] **"Trending" section**: TrendingUp icon + "Trending" header (with flame accent)
+- [x] **"Trending" section**: TrendingUp icon + "Trending" header (with flame accent)
   - Each row: hashtag/tag name (bold, text-primary, like "#ValorantClips") + "XXX+ posts" (text-secondary) below
   - Show top 5 trending tags
   - Each tag is clickable (links to search or trending filter)
-- [ ] Each section is in a rounded card with bg-secondary background and subtle padding
-- [ ] Sidebar has subtle left border (border-default)
-- [ ] Sticky positioning, scrolls independently
-- [ ] Looks correct in both light and dark mode
-- [ ] Run `npm run typecheck && npm run build && npm run lint` — all pass
+- [x] Each section is in a rounded card with bg-secondary background and subtle padding
+- [x] Sidebar has subtle left border (border-default)
+- [x] Sticky positioning, scrolls independently
+- [x] Looks correct in both light and dark mode
+- [x] Run `npm run typecheck && npm run build && npm run lint` — all pass
 
 ### Phase 9: Profile Page — Match Mockup Exactly
 

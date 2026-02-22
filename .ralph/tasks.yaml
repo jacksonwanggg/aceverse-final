@@ -3,8 +3,8 @@
 # DO NOT EDIT - regenerated on task file change
 
 source_file: RALPH_TASK.md
-source_mtime: 1771753423
-generated_at: 2026-02-22T09:43:47Z
+source_mtime: 1771753439
+generated_at: 2026-02-22T09:43:59Z
 
 tasks:
   - id: "line_129"
@@ -436,63 +436,63 @@ tasks:
     raw_marker: -
   - id: "line_235"
     line_number: 235
-    status: pending
+    status: completed
     parallel_group: 999999
     description: **\"Your Ranks\" section**: Gamepad2 icon + \"Your Ranks\" header
     indent_level: 0
     raw_marker: -
   - id: "line_239"
     line_number: 239
-    status: pending
+    status: completed
     parallel_group: 999999
     description: **\"Friends Online\" section**: Users icon + \"Friends Online\" header
     indent_level: 0
     raw_marker: -
   - id: "line_242"
     line_number: 242
-    status: pending
+    status: completed
     parallel_group: 999999
     description: **\"Who to Follow\" section**: UserPlus icon + \"Who to Follow\" header
     indent_level: 0
     raw_marker: -
   - id: "line_246"
     line_number: 246
-    status: pending
+    status: completed
     parallel_group: 999999
     description: **\"Trending\" section**: TrendingUp icon + \"Trending\" header (with flame accent)
     indent_level: 0
     raw_marker: -
   - id: "line_250"
     line_number: 250
-    status: pending
+    status: completed
     parallel_group: 999999
     description: Each section is in a rounded card with bg-secondary background and subtle padding
     indent_level: 0
     raw_marker: -
   - id: "line_251"
     line_number: 251
-    status: pending
+    status: completed
     parallel_group: 999999
     description: Sidebar has subtle left border (border-default)
     indent_level: 0
     raw_marker: -
   - id: "line_252"
     line_number: 252
-    status: pending
+    status: completed
     parallel_group: 999999
     description: Sticky positioning, scrolls independently
     indent_level: 0
     raw_marker: -
   - id: "line_253"
     line_number: 253
-    status: pending
+    status: completed
     parallel_group: 999999
     description: Looks correct in both light and dark mode
     indent_level: 0
     raw_marker: -
   - id: "line_254"
     line_number: 254
-    status: pending
+    status: completed
     parallel_group: 999999
     description: Run `npm run typecheck && npm run build && npm run lint` — all pass
     indent_level: 0
