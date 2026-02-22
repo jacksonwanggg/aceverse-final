@@ -213,13 +213,13 @@ npm run dev          # starts backend (3001) + frontend (5173) concurrently
 
 ### Phase 14: Trending Page
 
-- [ ] Trending page (`/trending`) shows "Trending Clips" header with stats (Hot Clips count, Total Likes, last updated)
-- [ ] Posts ranked by engagement (likes + reposts + replies) with rank numbers (#1, #2, #3, etc.)
-- [ ] Game filter in left sidebar: click a game to filter trending posts by that game tag, "Clear" button to reset, selected games highlighted with `#EF8C60`
-- [ ] YouTube link detection: if a post contains a YouTube URL, render an embedded player in the PostCard
-- [ ] Trending section in right sidebar shows top 5 hashtags/game tags with post counts
-- [ ] Backend: `GET /api/timeline/trending?cursor=&game=` — posts ranked by engagement, optional game filter
-- [ ] Run `npm run typecheck && npm run build && npm run lint` — all pass
+- [x] Trending page (`/trending`) shows "Trending Clips" header with stats (Hot Clips count, Total Likes, last updated)
+- [x] Posts ranked by engagement (likes + reposts + replies) with rank numbers (#1, #2, #3, etc.)
+- [x] Game filter in left sidebar: click a game to filter trending posts by that game tag, "Clear" button to reset, selected games highlighted with `#EF8C60`
+- [x] YouTube link detection: if a post contains a YouTube URL, render an embedded player in the PostCard
+- [x] Trending section in right sidebar shows top 5 hashtags/game tags with post counts
+- [x] Backend: `GET /api/timeline/trending?cursor=&game=` — posts ranked by engagement, optional game filter
+- [x] Run `npm run typecheck && npm run build && npm run lint` — all pass
 
 ### Phase 15: Animations & Polish
 

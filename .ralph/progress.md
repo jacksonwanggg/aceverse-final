@@ -335,8 +335,27 @@ Next: Phase 14 — Trending Page.
 ### 2026-02-22 19:49:39
 **Session 14 started** (model: auto)
 
+### 2026-02-22 (Ralph Iteration 14 — Phase 14)
+**Phase 14: Trending Page completed.**
+
+Completed:
+- Backend: Added `postsRepo.getTrending(engagementByPostId, { game, cursor, limit })` for posts ranked by likes + reposts + replies; added `GET /api/timeline/trending?cursor=&game=` returning posts, nextCursor, hotClipsCount, totalLikes, lastUpdated.
+- Frontend API: Added `api.timeline.trending(cursor, game)`.
+- TrendingPage: "Trending Clips" header with stats (hot clips count, total likes, last updated); posts with rank badges (#1, #2, #3); game filter in left sidebar (desktop) and horizontal pills (mobile) with Clear button and #EF8C60 highlight for selected game; infinite scroll; like/repost/reply/edit/delete with cache updates.
+- YouTube: Created `frontend/src/lib/youtube.ts` (extractYouTubeVideoId) and `YouTubeEmbed.tsx`; PostCard renders embedded YouTube player when post content contains a YouTube URL.
+- Right sidebar already shows top 5 trending tags (slice(0, 5)).
+- npm run typecheck && npm run build && npm run lint — all pass. Phase 14 criteria marked [x] in RALPH_TASK.md.
+
+Next: Phase 15 — Animations & Polish.
+
 ### 2026-02-22 19:52:38
 **Session 14 ended** - 🔄 Context rotation (token limit reached)
 
 ### 2026-02-22 19:52:40
 **Session 15 started** (model: auto)
+
+### 2026-02-22 19:54:09
+**Session 15 ended** - 🔄 Context rotation (token limit reached)
+
+### 2026-02-22 19:54:11
+**Session 16 started** (model: auto)

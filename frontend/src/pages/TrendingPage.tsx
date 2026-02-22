@@ -1,5 +1,5 @@
 import { useCallback, useEffect } from 'react'
-import { useSearchParams } from 'react-router-dom'
+import { useSearchParams, useNavigate } from 'react-router-dom'
 import { useInfiniteQuery, useQuery, useMutation, useQueryClient } from '@tanstack/react-query'
 import { formatDistanceToNow } from 'date-fns'
 import PostCard from '../components/PostCard'
@@ -46,6 +46,7 @@ function updateTrendingPost(
 
 export default function TrendingPage() {
   const [searchParams, setSearchParams] = useSearchParams()
+  const navigate = useNavigate()
   const game = searchParams.get('game') || undefined
   const queryClient = useQueryClient()
 
@@ -79,7 +80,7 @@ export default function TrendingPage() {
         likeCount: p.likeCount + 1,
       }))
     },
-    onError: (_err, postId) => {
+    onError: () => {
       queryClient.invalidateQueries({ queryKey: ['timeline', 'trending'] })
     },
     onSettled: () => {
@@ -189,8 +190,33 @@ export default function TrendingPage() {
       : null
 
   return (
-    <div className="min-h-screen flex">
-      {/* Game filter sidebar */}
+    <div className="min-h-screen flex flex-col md:flex-row">
+      {/* Mobile game filter */}
+      <div className="md:hidden overflow-x-auto border-b border-gray-800 px-4 py-2 flex gap-2 shrink-0">
+        {games.map((g: { id: string; name: string; slug: string }) => (
+          <button
+            key={g.id}
+            type="button"
+            onClick={() => setSearchParams(g.slug === game ? {} : { game: g.slug })}
+            className={`shrink-0 px-3 py-1.5 rounded-full text-sm font-medium transition-colors ${
+              game === g.slug ? 'text-[#0D0D0D]' : 'text-gray-400 hover:text-white bg-gray-800/50'
+            }`}
+            style={game === g.slug ? { backgroundColor: '#EF8C60' } : undefined}
+          >
+            {g.name}
+          </button>
+        ))}
+        {game && (
+          <button
+            type="button"
+            onClick={() => setSearchParams({})}
+            className="shrink-0 px-3 py-1.5 rounded-full text-sm text-gray-400 hover:text-white bg-gray-800/50 border border-gray-700"
+          >
+            Clear
+          </button>
+        )}
+      </div>
+      {/* Game filter sidebar (desktop) */}
       <aside className="w-48 shrink-0 border-r border-gray-800 p-4 hidden md:block">
         <h3 className="text-sm font-semibold text-gray-400 uppercase tracking-wider mb-2">Filter by game</h3>
         <ul className="space-y-1">
@@ -272,7 +298,7 @@ export default function TrendingPage() {
                     onRepost={() =>
                       post.repostedByMe ? unrepostMutation.mutate(post.id) : repostMutation.mutate(post.id)
                     }
-                    onReply={undefined}
+                    onReply={() => navigate(`/p/${post.id}`)}
                     onEdit={handleEditPost}
                     onDelete={handleDeletePost}
                   />
