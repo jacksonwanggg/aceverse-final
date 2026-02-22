@@ -237,6 +237,7 @@ export default function PostCard({ post, onLike, onRepost, onReply, onEdit, onDe
                 className={`flex items-center gap-2 hover:text-primary transition-colors ${
                   post.repostedByMe ? 'text-primary' : ''
                 }`}
+                aria-label={post.repostedByMe ? 'Unrepost' : 'Repost'}
               >
                 <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4 4v5h.582m15.356 2A8.001 8.001 0 004.582 9m0 0H9m11 11v-5h-.581m0 0a8.003 8.003 0 01-15.357-2m15.357 2H15" />
@@ -248,10 +249,11 @@ export default function PostCard({ post, onLike, onRepost, onReply, onEdit, onDe
                 className={`flex items-center gap-2 hover:text-primary transition-colors ${
                   post.likedByMe ? 'text-primary' : ''
                 }`}
+                aria-label={post.likedByMe ? 'Unlike' : 'Like'}
               >
                 <svg
-                  className={`w-5 h-5 ${post.likedByMe ? 'fill-current' : ''}`}
-                  fill="none"
+                  className="w-5 h-5"
+                  fill={post.likedByMe ? 'var(--primary)' : 'none'}
                   stroke="currentColor"
                   viewBox="0 0 24 24"
                 >

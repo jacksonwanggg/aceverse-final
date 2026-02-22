@@ -224,3 +224,15 @@ Next: Phase 8 — Likes & Reposts (optimistic UI, notifications, api client).
 
 ### 2026-02-22 19:25:23
 **Session 8 started** (model: auto)
+
+### 2026-02-22 (Ralph Iteration 8 — Phase 8)
+**Phase 8: Likes & Reposts completed.**
+
+Completed:
+- Feed.tsx: Added optimistic like/unlike and repost/unrepost mutations; update both timeline caches (home + explore) on mutate; rollback on error; pass onLike, onRepost, onReply to PostCard.
+- PostThreadPage: When not readOnly, added like/unlike/repost/unrepost mutations that optimistically update ['post', postId] and invalidate timeline; pass onLike/onRepost to PostCard.
+- PostCard: Heart fill uses `var(--primary)` (#EF8C60) when liked; repost button highlights with text-primary when reposted; added aria-labels for Like/Unlike and Repost/Unrepost.
+- Backend already had: no double like/repost (likesRepo/repostsRepo create throws), LIKE/REPOST notifications only when post.authorId !== req.userId. Frontend api.posts.like/unlike/repost/unrepost already present.
+- npm run typecheck && npm run build && npm run lint — all pass (warnings only).
+
+Next: Phase 9 — Replies & Threads.

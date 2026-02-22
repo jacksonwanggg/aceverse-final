@@ -154,13 +154,13 @@ npm run dev          # starts backend (3001) + frontend (5173) concurrently
 
 ### Phase 8: Likes & Reposts
 
-- [ ] Like/unlike a post with optimistic UI — heart fills `#EF8C60`, count updates instantly
-- [ ] Repost/unrepost with optimistic UI — repost icon highlights, count updates instantly
-- [ ] No double likes or double reposts (repo constraint enforced)
-- [ ] Like creates a LIKE notification for the post author (not self)
-- [ ] Repost creates a REPOST notification for the post author (not self)
-- [ ] Add `api.posts.like`, `api.posts.unlike`, `api.posts.repost`, `api.posts.unrepost` to frontend API client if missing
-- [ ] Run `npm run typecheck && npm run build && npm run lint` — all pass
+- [x] Like/unlike a post with optimistic UI — heart fills `#EF8C60`, count updates instantly
+- [x] Repost/unrepost with optimistic UI — repost icon highlights, count updates instantly
+- [x] No double likes or double reposts (repo constraint enforced)
+- [x] Like creates a LIKE notification for the post author (not self)
+- [x] Repost creates a REPOST notification for the post author (not self)
+- [x] Add `api.posts.like`, `api.posts.unlike`, `api.posts.repost`, `api.posts.unrepost` to frontend API client if missing
+- [x] Run `npm run typecheck && npm run build && npm run lint` — all pass
 
 ### Phase 9: Replies & Threads
 

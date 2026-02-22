@@ -1,5 +1,5 @@
 import { useParams } from 'react-router-dom'
-import { useQuery } from '@tanstack/react-query'
+import { useQuery, useQueryClient, useMutation } from '@tanstack/react-query'
 import { api } from '../lib/api'
 import PostCard from '../components/PostCard'
 import { formatDistanceToNow } from 'date-fns'
@@ -23,10 +23,63 @@ interface PostThreadPageProps {
 
 export default function PostThreadPage({ readOnly }: PostThreadPageProps) {
   const { postId } = useParams<{ postId: string }>()
+  const queryClient = useQueryClient()
   const { data, isLoading, error } = useQuery({
     queryKey: ['post', postId],
     queryFn: () => api.posts.getById(postId!),
     enabled: !!postId,
+  })
+
+  const updatePostInCache = (updater: (p: NonNullable<typeof data>['post']) => NonNullable<typeof data>['post']) => {
+    if (!postId) return
+    const current = queryClient.getQueryData<NonNullable<typeof data>>(['post', postId])
+    if (!current) return
+    queryClient.setQueryData(['post', postId], { ...current, post: updater(current.post) })
+  }
+
+  const likeMutation = useMutation({
+    mutationFn: (id: string) => api.posts.like(id),
+    onMutate: (id) => {
+      if (id !== postId || !data) return
+      updatePostInCache((p) => ({ ...p, likedByMe: true, likeCount: (p.likeCount ?? 0) + 1 }))
+    },
+    onSettled: () => {
+      if (postId) queryClient.invalidateQueries({ queryKey: ['post', postId] })
+      queryClient.invalidateQueries({ queryKey: ['timeline'] })
+    },
+  })
+  const unlikeMutation = useMutation({
+    mutationFn: (id: string) => api.posts.unlike(id),
+    onMutate: (id) => {
+      if (id !== postId || !data) return
+      updatePostInCache((p) => ({ ...p, likedByMe: false, likeCount: Math.max(0, (p.likeCount ?? 0) - 1) }))
+    },
+    onSettled: () => {
+      if (postId) queryClient.invalidateQueries({ queryKey: ['post', postId] })
+      queryClient.invalidateQueries({ queryKey: ['timeline'] })
+    },
+  })
+  const repostMutation = useMutation({
+    mutationFn: (id: string) => api.posts.repost(id),
+    onMutate: (id) => {
+      if (id !== postId || !data) return
+      updatePostInCache((p) => ({ ...p, repostedByMe: true, repostCount: (p.repostCount ?? 0) + 1 }))
+    },
+    onSettled: () => {
+      if (postId) queryClient.invalidateQueries({ queryKey: ['post', postId] })
+      queryClient.invalidateQueries({ queryKey: ['timeline'] })
+    },
+  })
+  const unrepostMutation = useMutation({
+    mutationFn: (id: string) => api.posts.unrepost(id),
+    onMutate: (id) => {
+      if (id !== postId || !data) return
+      updatePostInCache((p) => ({ ...p, repostedByMe: false, repostCount: Math.max(0, (p.repostCount ?? 0) - 1) }))
+    },
+    onSettled: () => {
+      if (postId) queryClient.invalidateQueries({ queryKey: ['post', postId] })
+      queryClient.invalidateQueries({ queryKey: ['timeline'] })
+    },
   })
 
   if (!postId) {
@@ -61,9 +114,22 @@ export default function PostThreadPage({ readOnly }: PostThreadPageProps) {
     replyCount: post.replyCount ?? (replies?.length ?? 0),
   }
 
+  const likeHandlers = readOnly
+    ? {}
+    : {
+        onLike: () =>
+          postForCard.likedByMe
+            ? unlikeMutation.mutate(post.id)
+            : likeMutation.mutate(post.id),
+        onRepost: () =>
+          postForCard.repostedByMe
+            ? unrepostMutation.mutate(post.id)
+            : repostMutation.mutate(post.id),
+      }
+
   return (
     <div className="border-b border-gray-800">
-      <PostCard post={postForCard} readOnly={readOnly} />
+      <PostCard post={postForCard} readOnly={readOnly} {...likeHandlers} />
       <div className="border-t border-gray-800">
         {sortedReplies.map((reply: ReplyShape) => (
           <ReplyRow key={reply.id} reply={reply} />

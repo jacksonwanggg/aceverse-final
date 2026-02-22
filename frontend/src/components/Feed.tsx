@@ -1,6 +1,6 @@
 import { useInfiniteQuery, useQueryClient, useQuery, useMutation } from '@tanstack/react-query'
 import { useEffect, useCallback } from 'react'
-import { Link } from 'react-router-dom'
+import { Link, useNavigate } from 'react-router-dom'
 import PostCard from './PostCard'
 import PostCardSkeleton from './PostCardSkeleton'
 import { api } from '../lib/api'
@@ -26,9 +26,32 @@ interface FeedProps {
   type: 'home' | 'explore'
 }
 
+function updatePostInTimelineCache(
+  queryClient: ReturnType<typeof useQueryClient>,
+  postId: string,
+  updater: (p: TimelinePost) => TimelinePost
+) {
+  ;(['home', 'explore'] as const).forEach((timelineType) => {
+    queryClient.setQueryData(
+      ['timeline', timelineType],
+      (old: { pages: { posts: TimelinePost[]; nextCursor: string | null }[] } | undefined) => {
+        if (!old) return old
+        return {
+          ...old,
+          pages: old.pages.map((page) => ({
+            ...page,
+            posts: page.posts.map((p) => (p.id === postId ? updater(p) : p)),
+          })),
+        }
+      }
+    )
+  })
+}
+
 export default function Feed({ type }: FeedProps) {
   const { user } = useAuth()
   const queryClient = useQueryClient()
+  const navigate = useNavigate()
 
   const { data: suggestionsData } = useQuery({
     queryKey: ['users', 'suggestions'],
@@ -40,6 +63,110 @@ export default function Feed({ type }: FeedProps) {
     onSuccess: () => {
       queryClient.invalidateQueries({ queryKey: ['users'] })
       queryClient.invalidateQueries({ queryKey: ['timeline', 'home'] })
+    },
+  })
+
+  const likeMutation = useMutation({
+    mutationFn: (postId: string) => api.posts.like(postId),
+    onMutate: async (postId) => {
+      await queryClient.cancelQueries({ queryKey: ['timeline'] })
+      const previous = {
+        home: queryClient.getQueryData(['timeline', 'home']),
+        explore: queryClient.getQueryData(['timeline', 'explore']),
+      }
+      updatePostInTimelineCache(queryClient, postId, (p) => ({
+        ...p,
+        likedByMe: true,
+        likeCount: p.likeCount + 1,
+      }))
+      return { previous }
+    },
+    onError: (_err, _postId, context) => {
+      if (context?.previous) {
+        queryClient.setQueryData(['timeline', 'home'], context.previous.home)
+        queryClient.setQueryData(['timeline', 'explore'], context.previous.explore)
+      }
+    },
+    onSettled: () => {
+      queryClient.invalidateQueries({ queryKey: ['timeline'] })
+    },
+  })
+
+  const unlikeMutation = useMutation({
+    mutationFn: (postId: string) => api.posts.unlike(postId),
+    onMutate: async (postId) => {
+      await queryClient.cancelQueries({ queryKey: ['timeline'] })
+      const previous = {
+        home: queryClient.getQueryData(['timeline', 'home']),
+        explore: queryClient.getQueryData(['timeline', 'explore']),
+      }
+      updatePostInTimelineCache(queryClient, postId, (p) => ({
+        ...p,
+        likedByMe: false,
+        likeCount: Math.max(0, p.likeCount - 1),
+      }))
+      return { previous }
+    },
+    onError: (_err, _postId, context) => {
+      if (context?.previous) {
+        queryClient.setQueryData(['timeline', 'home'], context.previous.home)
+        queryClient.setQueryData(['timeline', 'explore'], context.previous.explore)
+      }
+    },
+    onSettled: () => {
+      queryClient.invalidateQueries({ queryKey: ['timeline'] })
+    },
+  })
+
+  const repostMutation = useMutation({
+    mutationFn: (postId: string) => api.posts.repost(postId),
+    onMutate: async (postId) => {
+      await queryClient.cancelQueries({ queryKey: ['timeline'] })
+      const previous = {
+        home: queryClient.getQueryData(['timeline', 'home']),
+        explore: queryClient.getQueryData(['timeline', 'explore']),
+      }
+      updatePostInTimelineCache(queryClient, postId, (p) => ({
+        ...p,
+        repostedByMe: true,
+        repostCount: p.repostCount + 1,
+      }))
+      return { previous }
+    },
+    onError: (_err, _postId, context) => {
+      if (context?.previous) {
+        queryClient.setQueryData(['timeline', 'home'], context.previous.home)
+        queryClient.setQueryData(['timeline', 'explore'], context.previous.explore)
+      }
+    },
+    onSettled: () => {
+      queryClient.invalidateQueries({ queryKey: ['timeline'] })
+    },
+  })
+
+  const unrepostMutation = useMutation({
+    mutationFn: (postId: string) => api.posts.unrepost(postId),
+    onMutate: async (postId) => {
+      await queryClient.cancelQueries({ queryKey: ['timeline'] })
+      const previous = {
+        home: queryClient.getQueryData(['timeline', 'home']),
+        explore: queryClient.getQueryData(['timeline', 'explore']),
+      }
+      updatePostInTimelineCache(queryClient, postId, (p) => ({
+        ...p,
+        repostedByMe: false,
+        repostCount: Math.max(0, p.repostCount - 1),
+      }))
+      return { previous }
+    },
+    onError: (_err, _postId, context) => {
+      if (context?.previous) {
+        queryClient.setQueryData(['timeline', 'home'], context.previous.home)
+        queryClient.setQueryData(['timeline', 'explore'], context.previous.explore)
+      }
+    },
+    onSettled: () => {
+      queryClient.invalidateQueries({ queryKey: ['timeline'] })
     },
   })
 
@@ -192,6 +319,17 @@ export default function Feed({ type }: FeedProps) {
           <PostCard
             key={post.id}
             post={post}
+            onLike={() =>
+              post.likedByMe
+                ? unlikeMutation.mutate(post.id)
+                : likeMutation.mutate(post.id)
+            }
+            onRepost={() =>
+              post.repostedByMe
+                ? unrepostMutation.mutate(post.id)
+                : repostMutation.mutate(post.id)
+            }
+            onReply={() => navigate(`/p/${post.id}`)}
             onEdit={handleEditPost}
             onDelete={handleDeletePost}
           />
