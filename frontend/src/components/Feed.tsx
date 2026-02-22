@@ -1,5 +1,7 @@
 import { useInfiniteQuery } from '@tanstack/react-query'
+import { useEffect, useCallback } from 'react'
 import PostCard from './PostCard'
+import PostCardSkeleton from './PostCardSkeleton'
 import { api } from '../lib/api'
 import { useAuth } from '../hooks/useAuth'
 
@@ -25,29 +27,30 @@ export default function Feed({ type }: FeedProps) {
       }
       return api.timeline.explore(pageParam)
     },
-    getNextPageParam: (lastPage) => lastPage.nextCursor,
+    getNextPageParam: (lastPage) => lastPage.nextCursor ?? undefined,
     enabled: type === 'explore' || !!user,
   })
 
+  const handleScroll = useCallback(() => {
+    if (
+      window.innerHeight + window.scrollY >= document.documentElement.scrollHeight - 1000 &&
+      hasNextPage &&
+      !isFetchingNextPage
+    ) {
+      fetchNextPage()
+    }
+  }, [hasNextPage, isFetchingNextPage, fetchNextPage])
+
+  useEffect(() => {
+    window.addEventListener('scroll', handleScroll)
+    return () => window.removeEventListener('scroll', handleScroll)
+  }, [handleScroll])
+
   if (isLoading) {
     return (
-      <div className="space-y-4">
+      <div>
         {[...Array(5)].map((_, i) => (
-          <div key={i} className="border-b border-gray-200 dark:border-gray-700 p-4 animate-pulse">
-            <div className="flex gap-3">
-              <div className="w-12 h-12 rounded-full bg-gray-200 dark:bg-gray-700" />
-              <div className="flex-1 space-y-2">
-                <div className="h-4 w-1/3 bg-gray-200 dark:bg-gray-700 rounded" />
-                <div className="h-4 w-full bg-gray-200 dark:bg-gray-700 rounded" />
-                <div className="h-4 w-2/3 bg-gray-200 dark:bg-gray-700 rounded" />
-                <div className="flex gap-6 mt-3">
-                  <div className="h-4 w-16 bg-gray-200 dark:bg-gray-700 rounded" />
-                  <div className="h-4 w-16 bg-gray-200 dark:bg-gray-700 rounded" />
-                  <div className="h-4 w-16 bg-gray-200 dark:bg-gray-700 rounded" />
-                </div>
-              </div>
-            </div>
-          </div>
+          <PostCardSkeleton key={i} />
         ))}
       </div>
     )

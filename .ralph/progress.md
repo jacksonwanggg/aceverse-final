@@ -31,8 +31,10 @@ Completed:
 - Verified root scripts work (dev, build, test, typecheck, lint)
 - Verified DB auto-creates and persists changes across restarts
 - Verified auth implementation (register/login/logout with bcrypt and HttpOnly cookies)
+- Implemented Home and Explore feeds with pagination and loading states
+- Implemented PostComposer with 280 char limit and optimistic updates for instant display
+- Created PostCard component for displaying posts
+- Set up React Query and React Router
+- Created basic page structure (Login, Register, Home, Explore, Search, Notifications, Profile, PostThread)
 
-Next: Continue with remaining criteria - need to build frontend UI components and connect to backend API
-
-### 2026-02-22 18:29:01
-**Session 1 started** (model: composer-1)
+Next: Continue with remaining criteria - need to implement likes, reposts, replies, editing/deleting posts, profile pages, search, notifications, and X-like layout with sidebar

@@ -102,3 +102,4 @@ Ralph Session Started: Sun Feb 22 18:29:01 AEDT 2026
 [18:29:33] 🟢 READ frontend/src/pages/HomePage.tsx (17 lines, ~1.6KB)
 [18:29:33] 🟢 READ frontend/src/pages/ExplorePage.tsx (15 lines, ~1.4KB)
 [18:29:34] 🟢 READ frontend/src/components/Feed.tsx (102 lines, ~9.9KB)
+[18:29:39] 🟢 TOKENS: 27123 / 80000 (33%) [read:102KB write:0KB assist:0KB shell:0KB]
