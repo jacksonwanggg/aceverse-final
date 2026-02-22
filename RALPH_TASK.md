@@ -223,14 +223,14 @@ npm run dev          # starts backend (3001) + frontend (5173) concurrently
 
 ### Phase 15: Animations & Polish
 
-- [ ] Page transitions: smooth fade/slide animations when navigating between pages (use Framer Motion — install with `npm install framer-motion -w frontend`)
-- [ ] Micro-interactions: like heart bounce, repost icon spin, follow button pulse
-- [ ] Skeleton loading cards on all feeds and profile while data loads
-- [ ] Toast notifications for: post created, post deleted, link copied, error messages — using `#EF8C60` accent
-- [ ] Hover effects on all interactive elements (buttons glow, cards lift slightly)
-- [ ] Smooth scroll-to-top when navigating to a new page
-- [ ] Loading spinners on all async actions (follow, like, post creation)
-- [ ] Run `npm run typecheck && npm run build && npm run lint` — all pass
+- [x] Page transitions: smooth fade/slide animations when navigating between pages (use Framer Motion — install with `npm install framer-motion -w frontend`)
+- [x] Micro-interactions: like heart bounce, repost icon spin, follow button pulse
+- [x] Skeleton loading cards on all feeds and profile while data loads
+- [x] Toast notifications for: post created, post deleted, link copied, error messages — using `#EF8C60` accent
+- [x] Hover effects on all interactive elements (buttons glow, cards lift slightly)
+- [x] Smooth scroll-to-top when navigating to a new page
+- [x] Loading spinners on all async actions (follow, like, post creation)
+- [x] Run `npm run typecheck && npm run build && npm run lint` — all pass
 
 ### Phase 16: Tests
 

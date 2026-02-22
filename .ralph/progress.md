@@ -354,6 +354,22 @@ Next: Phase 15 — Animations & Polish.
 ### 2026-02-22 19:52:40
 **Session 15 started** (model: auto)
 
+### 2026-02-22 (Ralph Iteration 15 — Phase 15)
+**Phase 15: Animations & Polish completed.**
+
+Completed:
+- Phase 14 was already complete (Trending page with stats, ranked posts, game filter, YouTube embeds, right sidebar top 5 tags, backend GET /api/timeline/trending).
+- Installed framer-motion; AppLayout already had page transitions (AnimatePresence + motion.div) and ScrollToTop (smooth scroll on pathname change).
+- PostCard: motion.article with whileHover (lift + orange glow shadow), like button bounce (whileTap + animate scale when liked), repost icon spin (animate rotate when reposted).
+- Profile Follow/Unfollow: motion.button with whileTap/whileHover pulse, loading spinner when isPending, hover glow.
+- PostComposer: showToast('Post created', 'success') on success; submit button shows spinner + "Posting..." when isSubmitting; hover glow on Post button.
+- Feed and Profile handleDeletePost: showToast('Post deleted', 'success'). Toasts already use #EF8C60 for success.
+- Profile loading: skeleton (cover, avatar, name lines, 3 PostCardSkeletons) instead of "Loading...". Feed and Notifications and Search already had skeleton loading.
+- Hover: cards lift (PostCard), buttons glow (primary shadow on Post, Follow, share focus ring).
+- npm run typecheck && npm run build && npm run lint — all pass (warnings only).
+
+Next: Phase 16 — Tests (auth, posts, timeline, users test files; npm test).
+
 ### 2026-02-22 19:54:09
 **Session 15 ended** - 🔄 Context rotation (token limit reached)
 

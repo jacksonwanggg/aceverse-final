@@ -3,6 +3,7 @@ import { useSearchParams, Link } from 'react-router-dom'
 import { useQuery, useMutation, useQueryClient } from '@tanstack/react-query'
 import { api } from '../lib/api'
 import PostCard from '../components/PostCard'
+import PostCardSkeleton from '../components/PostCardSkeleton'
 
 const DEBOUNCE_MS = 300
 const accent = '#EF8C60'
@@ -155,7 +156,21 @@ export default function SearchPage() {
       )}
 
       {isLoading && query.length > 0 && (
-        <p className="text-gray-400 py-8">Searching...</p>
+        <div className="space-y-2">
+          {validType === 'people' ? (
+            [...Array(5)].map((_, i) => (
+              <div key={i} className="flex gap-3 p-3 rounded-xl animate-pulse">
+                <div className="w-12 h-12 rounded-full bg-gray-700 shrink-0" />
+                <div className="flex-1 space-y-2">
+                  <div className="h-4 bg-gray-700 rounded w-1/3" />
+                  <div className="h-3 bg-gray-800 rounded w-1/4" />
+                </div>
+              </div>
+            ))
+          ) : (
+            [...Array(3)].map((_, i) => <PostCardSkeleton key={i} />)
+          )}
+        </div>
       )}
 
       {showEmpty && (
@@ -227,13 +242,16 @@ export default function SearchPage() {
                               disabled={
                                 followMutation.isPending || unfollowMutation.isPending
                               }
-                              className="shrink-0 px-4 py-2 rounded-full text-sm font-medium transition-colors disabled:opacity-50"
+                              className="shrink-0 px-4 py-2 rounded-full text-sm font-medium transition-colors hover:opacity-90 focus:outline-none focus:ring-2 focus:ring-[#EF8C60] focus:ring-offset-1 focus:ring-offset-[#0D0D0D] disabled:opacity-50 inline-flex items-center gap-2"
                               style={
                                 u.isFollowing
                                   ? { border: '1px solid #4b5563', color: '#d1d5db' }
                                   : { backgroundColor: accent, color: '#0D0D0D' }
                               }
                             >
+                              {(followMutation.isPending || unfollowMutation.isPending) && (
+                                <span className="w-3.5 h-3.5 border-2 border-current border-t-transparent rounded-full animate-spin" aria-hidden />
+                              )}
                               {u.isFollowing ? 'Unfollow' : 'Follow'}
                             </button>
                           )}
@@ -321,13 +339,16 @@ export default function SearchPage() {
                         disabled={
                           followMutation.isPending || unfollowMutation.isPending
                         }
-                        className="shrink-0 px-4 py-2 rounded-full text-sm font-medium transition-colors disabled:opacity-50"
+                        className="shrink-0 px-4 py-2 rounded-full text-sm font-medium transition-colors hover:opacity-90 focus:outline-none focus:ring-2 focus:ring-[#EF8C60] focus:ring-offset-1 focus:ring-offset-[#0D0D0D] disabled:opacity-50 inline-flex items-center gap-2"
                         style={
                           u.isFollowing
                             ? { border: '1px solid #4b5563', color: '#d1d5db' }
                             : { backgroundColor: accent, color: '#0D0D0D' }
                         }
                       >
+                        {(followMutation.isPending || unfollowMutation.isPending) && (
+                          <span className="w-3.5 h-3.5 border-2 border-current border-t-transparent rounded-full animate-spin" aria-hidden />
+                        )}
                         {u.isFollowing ? 'Unfollow' : 'Follow'}
                       </button>
                     )}

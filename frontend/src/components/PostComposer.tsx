@@ -2,6 +2,7 @@ import { useState } from 'react'
 import { useMutation, useQueryClient } from '@tanstack/react-query'
 import { api } from '../lib/api'
 import { useAuth } from '../hooks/useAuth'
+import { useToast } from '../hooks/useToast'
 import GameTagSelector from './GameTagSelector'
 
 interface PostComposerProps {
@@ -12,6 +13,7 @@ interface PostComposerProps {
 export default function PostComposer({ onSuccess, placeholder = "What's happening?" }: PostComposerProps) {
   const { user } = useAuth()
   const queryClient = useQueryClient()
+  const { showToast } = useToast()
   const [content, setContent] = useState('')
   const [gameTag, setGameTag] = useState<string | null>(null)
   const [isSubmitting, setIsSubmitting] = useState(false)
@@ -72,13 +74,14 @@ export default function PostComposer({ onSuccess, placeholder = "What's happenin
       })
       setContent('')
       setGameTag(null)
+      showToast('Post created', 'success')
       onSuccess?.()
     },
-    onError: (_err, _newPost, context) => {
-      // Rollback on error
+    onError: (err, _newPost, context) => {
       if (context?.previousData) {
         queryClient.setQueryData(['timeline', 'home'], context.previousData)
       }
+      showToast(err?.message ?? 'Failed to create post', 'error')
     },
   })
 
@@ -129,8 +132,11 @@ export default function PostComposer({ onSuccess, placeholder = "What's happenin
               <button
                 type="submit"
                 disabled={content.trim().length === 0 || content.length > 500 || isSubmitting}
-                className="px-4 py-2 bg-primary text-white rounded-full font-semibold hover:bg-primary/90 disabled:opacity-50 disabled:cursor-not-allowed transition-colors"
+                className="px-4 py-2 bg-primary text-white rounded-full font-semibold hover:bg-primary/90 hover:shadow-[0_0_12px_rgba(239,140,96,0.4)] disabled:opacity-50 disabled:cursor-not-allowed transition-all inline-flex items-center gap-2 focus:outline-none focus:ring-2 focus:ring-[#EF8C60] focus:ring-offset-2 focus:ring-offset-[#0D0D0D]"
               >
+                {isSubmitting && (
+                  <span className="w-4 h-4 border-2 border-white border-t-transparent rounded-full animate-spin" />
+                )}
                 {isSubmitting ? 'Posting...' : 'Post'}
               </button>
             </div>

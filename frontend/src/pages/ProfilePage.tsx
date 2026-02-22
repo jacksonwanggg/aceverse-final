@@ -1,6 +1,7 @@
 import { useState, useCallback } from 'react'
 import { useParams, useNavigate } from 'react-router-dom'
 import { useQuery, useMutation, useQueryClient, useInfiniteQuery } from '@tanstack/react-query'
+import { motion } from 'framer-motion'
 import { api } from '../lib/api'
 import { format } from 'date-fns'
 import { useToast } from '../hooks/useToast'
@@ -224,8 +225,9 @@ export default function ProfilePage() {
           }
         }
       )
+      showToast('Post deleted', 'success')
     },
-    [queryClient, username]
+    [queryClient, username, showToast]
   )
 
   const openEdit = () => {
@@ -250,7 +252,24 @@ export default function ProfilePage() {
   }
   if (!user) {
     return (
-      <div className="p-4 text-gray-400">Loading...</div>
+      <div className="min-h-screen">
+        <div className="h-32 md:h-40 w-full bg-gray-800/50 animate-pulse" />
+        <div className="px-4 -mt-16 md:-mt-20 relative z-10 pb-4">
+          <div className="flex gap-4">
+            <div className="w-24 h-24 md:w-32 md:h-32 rounded-full bg-gray-700 animate-pulse shrink-0" />
+            <div className="flex-1 space-y-2 mt-2">
+              <div className="h-6 w-48 bg-gray-700 rounded animate-pulse" />
+              <div className="h-4 w-32 bg-gray-700 rounded animate-pulse" />
+              <div className="h-4 w-24 bg-gray-700 rounded animate-pulse" />
+            </div>
+          </div>
+          <div className="mt-6 space-y-3">
+            {[1, 2, 3].map((i) => (
+              <PostCardSkeleton key={i} />
+            ))}
+          </div>
+        </div>
+      </div>
     )
   }
 
@@ -297,24 +316,34 @@ export default function ProfilePage() {
               ) : (
                 <>
                   {user.isFollowing ? (
-                    <button
+                    <motion.button
                       type="button"
                       onClick={() => unfollowMutation.mutate(username)}
                       disabled={unfollowMutation.isPending}
-                      className="px-4 py-2 rounded-full text-sm font-medium border border-gray-600 text-gray-300 hover:bg-gray-800 transition-colors disabled:opacity-50"
+                      className="px-4 py-2 rounded-full text-sm font-medium border border-gray-600 text-gray-300 hover:bg-gray-800 hover:shadow-[0_0_10px_rgba(239,140,96,0.2)] transition-all disabled:opacity-50 inline-flex items-center justify-center gap-2 min-w-[100px]"
+                      whileTap={{ scale: 0.97 }}
+                      whileHover={{ scale: 1.02 }}
                     >
-                      Unfollow
-                    </button>
+                      {unfollowMutation.isPending ? (
+                        <span className="w-4 h-4 border-2 border-gray-400 border-t-transparent rounded-full animate-spin" />
+                      ) : null}
+                      {unfollowMutation.isPending ? '' : 'Unfollow'}
+                    </motion.button>
                   ) : (
-                    <button
+                    <motion.button
                       type="button"
                       onClick={() => followMutation.mutate(username)}
                       disabled={followMutation.isPending}
-                      className="px-4 py-2 rounded-full text-sm font-medium transition-colors disabled:opacity-50"
+                      className="px-4 py-2 rounded-full text-sm font-medium transition-all disabled:opacity-50 inline-flex items-center justify-center gap-2 min-w-[100px] hover:shadow-[0_0_12px_rgba(239,140,96,0.5)]"
                       style={{ backgroundColor: accent, color: '#0D0D0D' }}
+                      whileTap={{ scale: 0.97 }}
+                      whileHover={{ scale: 1.02 }}
                     >
-                      Follow
-                    </button>
+                      {followMutation.isPending ? (
+                        <span className="w-4 h-4 border-2 border-[#0D0D0D] border-t-transparent rounded-full animate-spin" />
+                      ) : null}
+                      {followMutation.isPending ? '' : 'Follow'}
+                    </motion.button>
                   )}
                 </>
               )}

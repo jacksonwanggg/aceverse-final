@@ -5,6 +5,7 @@ import PostCard from './PostCard'
 import PostCardSkeleton from './PostCardSkeleton'
 import { api } from '../lib/api'
 import { useAuth } from '../hooks/useAuth'
+import { useToast } from '../hooks/useToast'
 
 export interface TimelinePost {
   id: string
@@ -52,6 +53,7 @@ export default function Feed({ type }: FeedProps) {
   const { user } = useAuth()
   const queryClient = useQueryClient()
   const navigate = useNavigate()
+  const { showToast } = useToast()
 
   const { data: suggestionsData } = useQuery({
     queryKey: ['users', 'suggestions'],
@@ -222,8 +224,9 @@ export default function Feed({ type }: FeedProps) {
           })),
         }
       })
+      showToast('Post deleted', 'success')
     },
-    [type, queryClient]
+    [type, queryClient, showToast]
   )
 
   const handleScroll = useCallback(() => {
@@ -293,9 +296,12 @@ export default function Feed({ type }: FeedProps) {
                           type="button"
                           onClick={() => followMutation.mutate(u.username)}
                           disabled={followMutation.isPending}
-                          className="shrink-0 px-3 py-1.5 text-xs font-medium rounded-full transition-colors"
+                          className="shrink-0 px-3 py-1.5 text-xs font-medium rounded-full transition-colors hover:opacity-90 focus:outline-none focus:ring-2 focus:ring-[#EF8C60] focus:ring-offset-1 focus:ring-offset-[#0D0D0D] disabled:opacity-50 inline-flex items-center gap-1.5"
                           style={{ backgroundColor: '#EF8C60', color: '#0D0D0D' }}
                         >
+                          {followMutation.isPending && (
+                            <span className="w-3 h-3 border-2 border-current border-t-transparent rounded-full animate-spin" aria-hidden />
+                          )}
                           Follow
                         </button>
                       )}
