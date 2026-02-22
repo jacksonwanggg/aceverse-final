@@ -30,14 +30,8 @@ export const api = {
     logout: () => apiRequest<{ ok: boolean }>('/auth/logout', { method: 'POST' }),
     me: () => apiRequest<{ user: any | null }>('/auth/me'),
   },
-  timeline: {
-    home: (cursor?: string) =>
-      apiRequest<{ posts: any[]; nextCursor: string | null }>(`/timeline/home${cursor ? `?cursor=${cursor}` : ''}`),
-    explore: (cursor?: string) =>
-      apiRequest<{ posts: any[]; nextCursor: string | null }>(`/timeline/explore${cursor ? `?cursor=${cursor}` : ''}`),
-  },
   posts: {
-    create: (data: { content: string }) =>
+    create: (data: { content: string; gameTag?: string | null }) =>
       apiRequest<{ post: any }>('/posts', { method: 'POST', body: JSON.stringify(data) }),
     getById: (postId: string) =>
       apiRequest<{ post: any; replies: any[] }>(`/posts/${postId}`),
@@ -53,5 +47,33 @@ export const api = {
       apiRequest(`/posts/${postId}/repost`, { method: 'POST' }),
     unrepost: (postId: string) =>
       apiRequest(`/posts/${postId}/repost`, { method: 'DELETE' }),
+  },
+  games: {
+    getAll: () => apiRequest<{ games: any[] }>('/games'),
+  },
+  users: {
+    getProfile: (username: string) =>
+      apiRequest<{ user: any }>(`/users/${encodeURIComponent(username)}`),
+    getPosts: (username: string, cursor?: string) =>
+      apiRequest<{ posts: any[]; nextCursor: string | null }>(
+        `/users/${encodeURIComponent(username)}/posts${cursor ? `?cursor=${cursor}` : ''}`
+      ),
+    getGames: (username: string) =>
+      apiRequest<{ userGames: any[] }>(`/users/${encodeURIComponent(username)}/games`),
+    getSuggestions: (limit?: number) =>
+      apiRequest<{ users: any[] }>(`/users/suggestions${limit != null ? `?limit=${limit}` : ''}`),
+    getFollowing: () => apiRequest<{ users: any[] }>('/users/me/following'),
+    follow: (username: string) =>
+      apiRequest<{ user: any }>(`/users/${encodeURIComponent(username)}/follow`, { method: 'POST' }),
+    unfollow: (username: string) =>
+      apiRequest<{ user: any }>(`/users/${encodeURIComponent(username)}/follow`, { method: 'DELETE' }),
+  },
+  timeline: {
+    home: (cursor?: string) =>
+      apiRequest<{ posts: any[]; nextCursor: string | null }>(`/timeline/home${cursor ? `?cursor=${cursor}` : ''}`),
+    explore: (cursor?: string) =>
+      apiRequest<{ posts: any[]; nextCursor: string | null }>(`/timeline/explore${cursor ? `?cursor=${cursor}` : ''}`),
+    trendingTags: () =>
+      apiRequest<{ tags: { slug: string; name: string; count: number }[] }>('/timeline/trending-tags'),
   },
 };

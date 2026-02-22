@@ -10,6 +10,7 @@ import userRoutes from './routes/users.js';
 import timelineRoutes from './routes/timeline.js';
 import notificationRoutes from './routes/notifications.js';
 import searchRoutes from './routes/search.js';
+import gamesRoutes from './routes/games.js';
 
 const app = express();
 const PORT = parseInt(process.env.PORT || '3001', 10);
@@ -27,6 +28,7 @@ app.use('/api/users', userRoutes);
 app.use('/api/timeline', timelineRoutes);
 app.use('/api/notifications', notificationRoutes);
 app.use('/api/search', searchRoutes);
+app.use('/api/games', gamesRoutes);
 
 app.get('/api/health', (_req, res) => {
   res.json({ status: 'ok' });

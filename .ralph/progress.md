@@ -84,3 +84,9 @@ Next: Phase 2 — Shared Layout & Navigation.
 
 ### 2026-02-22 18:56:12
 **Session 1 started** (model: auto)
+
+### 2026-02-22 19:01:27
+**Session 1 ended** - 🔄 Context rotation (token limit reached)
+
+### 2026-02-22 19:01:29
+**Session 2 started** (model: auto)

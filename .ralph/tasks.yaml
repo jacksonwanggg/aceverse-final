@@ -3,7 +3,896 @@
 # DO NOT EDIT - regenerated on task file change
 
 source_file: RALPH_TASK.md
-source_mtime: 1771746654
-generated_at: 2026-02-22T07:51:31Z
+source_mtime: 1771746937
+generated_at: 2026-02-22T08:01:26Z
 
 tasks:
+  - id: "line_77"
+    line_number: 77
+    status: completed
+    parallel_group: 999999
+    description: `npm install` succeeds with zero errors for all workspaces
+    indent_level: 0
+    raw_marker: -
+  - id: "line_78"
+    line_number: 78
+    status: completed
+    parallel_group: 999999
+    description: `npm run dev` starts both backend (port 3001) and frontend (port 5173) without crashes
+    indent_level: 0
+    raw_marker: -
+  - id: "line_79"
+    line_number: 79
+    status: completed
+    parallel_group: 999999
+    description: `GET /api/health` returns `{ \"status\": \"ok\" }` (200)
+    indent_level: 0
+    raw_marker: -
+  - id: "line_80"
+    line_number: 80
+    status: completed
+    parallel_group: 999999
+    description: Frontend loads at `http://localhost:5173` without console errors
+    indent_level: 0
+    raw_marker: -
+  - id: "line_81"
+    line_number: 81
+    status: completed
+    parallel_group: 999999
+    description: `npm run build` succeeds for both backend and frontend
+    indent_level: 0
+    raw_marker: -
+  - id: "line_82"
+    line_number: 82
+    status: completed
+    parallel_group: 999999
+    description: `npm run typecheck` passes with zero errors
+    indent_level: 0
+    raw_marker: -
+  - id: "line_83"
+    line_number: 83
+    status: completed
+    parallel_group: 999999
+    description: `npm run lint` passes (fix or suppress non-critical warnings)
+    indent_level: 0
+    raw_marker: -
+  - id: "line_87"
+    line_number: 87
+    status: completed
+    parallel_group: 999999
+    description: Create `backend/src/db/seed.ts` — generates at least: 10 users (gamer-themed), 60+ posts (gaming content with game tags), threaded replies (nested 2-3 levels), likes/reposts/follows distributed realistically, notifications matching the actions, at least 3 games, gaming ranks for users
+    indent_level: 0
+    raw_marker: -
+  - id: "line_88"
+    line_number: 88
+    status: completed
+    parallel_group: 999999
+    description: Create `backend/src/db/reset.ts` — wipes DB file then runs seed
+    indent_level: 0
+    raw_marker: -
+  - id: "line_89"
+    line_number: 89
+    status: completed
+    parallel_group: 999999
+    description: `npm run seed` works and creates `db/data/aceverse.db.json` automatically if missing
+    indent_level: 0
+    raw_marker: -
+  - id: "line_90"
+    line_number: 90
+    status: completed
+    parallel_group: 999999
+    description: `npm run reset` works (deletes DB, re-seeds)
+    indent_level: 0
+    raw_marker: -
+  - id: "line_91"
+    line_number: 91
+    status: completed
+    parallel_group: 999999
+    description: Seeded data displays correctly in the frontend feeds after running `npm run seed && npm run dev`
+    indent_level: 0
+    raw_marker: -
+  - id: "line_95"
+    line_number: 95
+    status: pending
+    parallel_group: 999999
+    description: Create a shared `AppLayout` component used by all authenticated pages with 3-column desktop layout: left sidebar (nav + your games), center content, right sidebar (ranks, friends online, who to follow, trending)
+    indent_level: 0
+    raw_marker: -
+  - id: "line_96"
+    line_number: 96
+    status: pending
+    parallel_group: 999999
+    description: Left sidebar shows: user avatar + @username + follower count, nav links (Home, Trending, Profile) with active state using `#EF8C60`, \"Your Games\" section with game icons/names
+    indent_level: 0
+    raw_marker: -
+  - id: "line_97"
+    line_number: 97
+    status: pending
+    parallel_group: 999999
+    description: Right sidebar shows: \"Your Ranks\" with per-game rank + badge icon, \"Friends Online\" with green online dots, \"Who to Follow\" with Follow buttons, \"Trending\" hashtags with post counts
+    indent_level: 0
+    raw_marker: -
+  - id: "line_98"
+    line_number: 98
+    status: pending
+    parallel_group: 999999
+    description: Mobile layout: bottom tab bar (Home, Trending, Search, Notifications, Profile), floating compose FAB button, collapsible sidebars
+    indent_level: 0
+    raw_marker: -
+  - id: "line_99"
+    line_number: 99
+    status: pending
+    parallel_group: 999999
+    description: Navigation links work and highlight the active page with `#EF8C60` accent
+    indent_level: 0
+    raw_marker: -
+  - id: "line_100"
+    line_number: 100
+    status: pending
+    parallel_group: 999999
+    description: Wrap all authenticated pages (Home, Explore, Trending, Search, Notifications, Profile, PostThread) in `AppLayout`
+    indent_level: 0
+    raw_marker: -
+  - id: "line_101"
+    line_number: 101
+    status: pending
+    parallel_group: 999999
+    description: Run `npm run typecheck && npm run build && npm run lint` — all pass
+    indent_level: 0
+    raw_marker: -
+  - id: "line_105"
+    line_number: 105
+    status: pending
+    parallel_group: 999999
+    description: Verify `Game` model in DB types: `{ id, name, slug, iconUrl, color }` — at least: Valorant, Counter-Strike 2, Apex Legends, League of Legends, Rocket League, Super Smash Bros, Fortnite
+    indent_level: 0
+    raw_marker: -
+  - id: "line_106"
+    line_number: 106
+    status: pending
+    parallel_group: 999999
+    description: Verify `UserGame` model: `{ id, userId, gameId, rank, rankTier, updatedAt }` — links users to games with rank
+    indent_level: 0
+    raw_marker: -
+  - id: "line_107"
+    line_number: 107
+    status: pending
+    parallel_group: 999999
+    description: Verify `gameTag` field on `Post` model — optional game slug that tags a post to a specific game
+    indent_level: 0
+    raw_marker: -
+  - id: "line_108"
+    line_number: 108
+    status: pending
+    parallel_group: 999999
+    description: Verify `gamesRepo` and `userGamesRepo` with CRUD operations
+    indent_level: 0
+    raw_marker: -
+  - id: "line_109"
+    line_number: 109
+    status: pending
+    parallel_group: 999999
+    description: Backend: `GET /api/games` returns all games, `GET /api/users/:username/games` returns user's games + ranks, `PUT /api/users/:username/games` updates game ranks — add routes if missing
+    indent_level: 0
+    raw_marker: -
+  - id: "line_110"
+    line_number: 110
+    status: pending
+    parallel_group: 999999
+    description: Profile page shows \"Gaming Ranks\" section with game icon, game name, rank name (e.g., \"Immortal 3\", \"Global Elite\", \"Master\"), rank badge, and last-updated date
+    indent_level: 0
+    raw_marker: -
+  - id: "line_111"
+    line_number: 111
+    status: pending
+    parallel_group: 999999
+    description: Posts can be tagged with a game — post composer has optional game tag selector, PostCard shows game badge/pill
+    indent_level: 0
+    raw_marker: -
+  - id: "line_112"
+    line_number: 112
+    status: pending
+    parallel_group: 999999
+    description: \"Your Games\" sidebar section shows the logged-in user's tracked games with quick links
+    indent_level: 0
+    raw_marker: -
+  - id: "line_113"
+    line_number: 113
+    status: pending
+    parallel_group: 999999
+    description: Run `npm run typecheck && npm run build && npm run lint` — all pass
+    indent_level: 0
+    raw_marker: -
+  - id: "line_117"
+    line_number: 117
+    status: pending
+    parallel_group: 999999
+    description: Register page: username, email, password, display name — validates, shows inline errors, redirects to home on success
+    indent_level: 0
+    raw_marker: -
+  - id: "line_118"
+    line_number: 118
+    status: pending
+    parallel_group: 999999
+    description: Login page: email + password — validates, shows inline errors, redirects to home on success
+    indent_level: 0
+    raw_marker: -
+  - id: "line_119"
+    line_number: 119
+    status: pending
+    parallel_group: 999999
+    description: Logout works and redirects to landing page
+    indent_level: 0
+    raw_marker: -
+  - id: "line_120"
+    line_number: 120
+    status: pending
+    parallel_group: 999999
+    description: Session cookie is HttpOnly, authenticated state persists on page refresh (`GET /api/auth/me`)
+    indent_level: 0
+    raw_marker: -
+  - id: "line_121"
+    line_number: 121
+    status: pending
+    parallel_group: 999999
+    description: Protected pages redirect to `/login` if not authenticated
+    indent_level: 0
+    raw_marker: -
+  - id: "line_122"
+    line_number: 122
+    status: pending
+    parallel_group: 999999
+    description: Auth forms have clean UI with `#EF8C60` accent buttons, loading states, and error toasts
+    indent_level: 0
+    raw_marker: -
+  - id: "line_123"
+    line_number: 123
+    status: pending
+    parallel_group: 999999
+    description: Run `npm run typecheck && npm run build && npm run lint` — all pass
+    indent_level: 0
+    raw_marker: -
+  - id: "line_127"
+    line_number: 127
+    status: pending
+    parallel_group: 999999
+    description: Create a stunning landing page at `/` for logged-out users with: hero section with animated gradient/glow using `#EF8C60`, tagline like \"Your gaming universe. One feed.\", prominent Sign Up and Login CTAs
+    indent_level: 0
+    raw_marker: -
+  - id: "line_128"
+    line_number: 128
+    status: pending
+    parallel_group: 999999
+    description: Landing page has smooth scroll animations (fade-in, slide-up on scroll) using CSS animations or Framer Motion
+    indent_level: 0
+    raw_marker: -
+  - id: "line_129"
+    line_number: 129
+    status: pending
+    parallel_group: 999999
+    description: Feature showcase sections: \"Track Your Ranks\", \"Share Your Clips\", \"Find Your Squad\", \"Stay in the Loop\" — each with icon/illustration and description
+    indent_level: 0
+    raw_marker: -
+  - id: "line_130"
+    line_number: 130
+    status: pending
+    parallel_group: 999999
+    description: Social proof / stats section (e.g., \"Join 50K+ gamers\", \"1M+ clips shared\" — fake numbers, looks good)
+    indent_level: 0
+    raw_marker: -
+  - id: "line_131"
+    line_number: 131
+    status: pending
+    parallel_group: 999999
+    description: Footer with links: About, Help, Terms, Privacy
+    indent_level: 0
+    raw_marker: -
+  - id: "line_132"
+    line_number: 132
+    status: pending
+    parallel_group: 999999
+    description: Visiting `/p/:postId` while logged out shows the post thread read-only (no interaction buttons), with a banner prompting login
+    indent_level: 0
+    raw_marker: -
+  - id: "line_133"
+    line_number: 133
+    status: pending
+    parallel_group: 999999
+    description: Landing page is fully responsive and looks great on mobile
+    indent_level: 0
+    raw_marker: -
+  - id: "line_134"
+    line_number: 134
+    status: pending
+    parallel_group: 999999
+    description: Run `npm run typecheck && npm run build && npm run lint` — all pass
+    indent_level: 0
+    raw_marker: -
+  - id: "line_138"
+    line_number: 138
+    status: pending
+    parallel_group: 999999
+    description: Home feed (`/`) shows posts from people the user follows + own posts, sorted by newest first, with cursor pagination and infinite scroll
+    indent_level: 0
+    raw_marker: -
+  - id: "line_139"
+    line_number: 139
+    status: pending
+    parallel_group: 999999
+    description: Explore feed (`/explore`) shows all posts globally, sorted by newest
+    indent_level: 0
+    raw_marker: -
+  - id: "line_140"
+    line_number: 140
+    status: pending
+    parallel_group: 999999
+    description: Feed uses skeleton loading cards while fetching
+    indent_level: 0
+    raw_marker: -
+  - id: "line_141"
+    line_number: 141
+    status: pending
+    parallel_group: 999999
+    description: Empty state for home feed when following nobody: \"Your feed is empty. Follow some gamers to see their posts!\" with suggested accounts
+    indent_level: 0
+    raw_marker: -
+  - id: "line_142"
+    line_number: 142
+    status: pending
+    parallel_group: 999999
+    description: Post composer at top of home feed: textarea (500 char limit), optional game tag selector, character counter, Post button disabled when empty, `#EF8C60` Post button
+    indent_level: 0
+    raw_marker: -
+  - id: "line_143"
+    line_number: 143
+    status: pending
+    parallel_group: 999999
+    description: New posts appear instantly (optimistic update) at the top of the feed
+    indent_level: 0
+    raw_marker: -
+  - id: "line_144"
+    line_number: 144
+    status: pending
+    parallel_group: 999999
+    description: Run `npm run typecheck && npm run build && npm run lint` — all pass
+    indent_level: 0
+    raw_marker: -
+  - id: "line_148"
+    line_number: 148
+    status: pending
+    parallel_group: 999999
+    description: Create post works: text content (max 500 chars), optional game tag
+    indent_level: 0
+    raw_marker: -
+  - id: "line_149"
+    line_number: 149
+    status: pending
+    parallel_group: 999999
+    description: PostCard displays: avatar, display name, @username, relative timestamp (e.g., \"3h ago\"), content, game tag pill, action row (reply count, like count, repost count, share)
+    indent_level: 0
+    raw_marker: -
+  - id: "line_150"
+    line_number: 150
+    status: pending
+    parallel_group: 999999
+    description: Edit post: author-only, inline edit mode with Save/Cancel
+    indent_level: 0
+    raw_marker: -
+  - id: "line_151"
+    line_number: 151
+    status: pending
+    parallel_group: 999999
+    description: Delete post: author-only, soft delete, shows \"This post has been deleted\" placeholder
+    indent_level: 0
+    raw_marker: -
+  - id: "line_152"
+    line_number: 152
+    status: pending
+    parallel_group: 999999
+    description: Clicking a post navigates to thread view (`/p/:postId`)
+    indent_level: 0
+    raw_marker: -
+  - id: "line_153"
+    line_number: 153
+    status: pending
+    parallel_group: 999999
+    description: Run `npm run typecheck && npm run build && npm run lint` — all pass
+    indent_level: 0
+    raw_marker: -
+  - id: "line_157"
+    line_number: 157
+    status: pending
+    parallel_group: 999999
+    description: Like/unlike a post with optimistic UI — heart fills `#EF8C60`, count updates instantly
+    indent_level: 0
+    raw_marker: -
+  - id: "line_158"
+    line_number: 158
+    status: pending
+    parallel_group: 999999
+    description: Repost/unrepost with optimistic UI — repost icon highlights, count updates instantly
+    indent_level: 0
+    raw_marker: -
+  - id: "line_159"
+    line_number: 159
+    status: pending
+    parallel_group: 999999
+    description: No double likes or double reposts (repo constraint enforced)
+    indent_level: 0
+    raw_marker: -
+  - id: "line_160"
+    line_number: 160
+    status: pending
+    parallel_group: 999999
+    description: Like creates a LIKE notification for the post author (not self)
+    indent_level: 0
+    raw_marker: -
+  - id: "line_161"
+    line_number: 161
+    status: pending
+    parallel_group: 999999
+    description: Repost creates a REPOST notification for the post author (not self)
+    indent_level: 0
+    raw_marker: -
+  - id: "line_162"
+    line_number: 162
+    status: pending
+    parallel_group: 999999
+    description: Add `api.posts.like`, `api.posts.unlike`, `api.posts.repost`, `api.posts.unrepost` to frontend API client if missing
+    indent_level: 0
+    raw_marker: -
+  - id: "line_163"
+    line_number: 163
+    status: pending
+    parallel_group: 999999
+    description: Run `npm run typecheck && npm run build && npm run lint` — all pass
+    indent_level: 0
+    raw_marker: -
+  - id: "line_167"
+    line_number: 167
+    status: pending
+    parallel_group: 999999
+    description: Thread page (`/p/:postId`) shows: root post at top, reply composer below it, replies listed chronologically
+    indent_level: 0
+    raw_marker: -
+  - id: "line_168"
+    line_number: 168
+    status: pending
+    parallel_group: 999999
+    description: Reply to a post — reply appears optimistically
+    indent_level: 0
+    raw_marker: -
+  - id: "line_169"
+    line_number: 169
+    status: pending
+    parallel_group: 999999
+    description: Reply to a reply (nested) — indented in thread, max visible depth of 6
+    indent_level: 0
+    raw_marker: -
+  - id: "line_170"
+    line_number: 170
+    status: pending
+    parallel_group: 999999
+    description: Edit/delete reply: author-only, soft delete shows placeholder
+    indent_level: 0
+    raw_marker: -
+  - id: "line_171"
+    line_number: 171
+    status: pending
+    parallel_group: 999999
+    description: Reply creates a REPLY notification for the post author (and optionally parent reply author)
+    indent_level: 0
+    raw_marker: -
+  - id: "line_172"
+    line_number: 172
+    status: pending
+    parallel_group: 999999
+    description: Add `api.posts.reply(postId, { content })` and `api.replies` (nested reply, edit, delete) to frontend API client
+    indent_level: 0
+    raw_marker: -
+  - id: "line_173"
+    line_number: 173
+    status: pending
+    parallel_group: 999999
+    description: Run `npm run typecheck && npm run build && npm run lint` — all pass
+    indent_level: 0
+    raw_marker: -
+  - id: "line_177"
+    line_number: 177
+    status: pending
+    parallel_group: 999999
+    description: Full profile page (`/u/:username`): cover image area, avatar, display name, @username, bio, join date, follower/following counts
+    indent_level: 0
+    raw_marker: -
+  - id: "line_178"
+    line_number: 178
+    status: pending
+    parallel_group: 999999
+    description: \"Gaming Ranks\" section on profile showing all games + ranks with icons and badges
+    indent_level: 0
+    raw_marker: -
+  - id: "line_179"
+    line_number: 179
+    status: pending
+    parallel_group: 999999
+    description: User's posts tab on profile — paginated feed of their posts
+    indent_level: 0
+    raw_marker: -
+  - id: "line_180"
+    line_number: 180
+    status: pending
+    parallel_group: 999999
+    description: Follow/unfollow button (not shown on own profile): toggles instantly, updates follower count
+    indent_level: 0
+    raw_marker: -
+  - id: "line_181"
+    line_number: 181
+    status: pending
+    parallel_group: 999999
+    description: \"Edit Profile\" button on own profile (at minimum: update display name, bio, avatar URL)
+    indent_level: 0
+    raw_marker: -
+  - id: "line_182"
+    line_number: 182
+    status: pending
+    parallel_group: 999999
+    description: Follow creates a FOLLOW notification for the followed user
+    indent_level: 0
+    raw_marker: -
+  - id: "line_183"
+    line_number: 183
+    status: pending
+    parallel_group: 999999
+    description: Add `api.users` to frontend API client: `getProfile`, `getPosts`, `follow`, `unfollow`, `updateProfile`, `getGames`, `updateGames`
+    indent_level: 0
+    raw_marker: -
+  - id: "line_184"
+    line_number: 184
+    status: pending
+    parallel_group: 999999
+    description: Run `npm run typecheck && npm run build && npm run lint` — all pass
+    indent_level: 0
+    raw_marker: -
+  - id: "line_188"
+    line_number: 188
+    status: pending
+    parallel_group: 999999
+    description: Notifications page (`/notifications`): lists all notifications (LIKE, REPLY, REPOST, FOLLOW) with actor avatar, action text, relative time, and link to relevant post/profile
+    indent_level: 0
+    raw_marker: -
+  - id: "line_189"
+    line_number: 189
+    status: pending
+    parallel_group: 999999
+    description: Unread notification count badge in the nav bar (orange dot or number)
+    indent_level: 0
+    raw_marker: -
+  - id: "line_190"
+    line_number: 190
+    status: pending
+    parallel_group: 999999
+    description: \"Mark all as read\" button clears unread state
+    indent_level: 0
+    raw_marker: -
+  - id: "line_191"
+    line_number: 191
+    status: pending
+    parallel_group: 999999
+    description: Notification dropdown on bell icon click (in addition to full page) showing latest 5 notifications with \"View all notifications\" link
+    indent_level: 0
+    raw_marker: -
+  - id: "line_192"
+    line_number: 192
+    status: pending
+    parallel_group: 999999
+    description: No notifications for your own actions on your own content
+    indent_level: 0
+    raw_marker: -
+  - id: "line_193"
+    line_number: 193
+    status: pending
+    parallel_group: 999999
+    description: Add `api.notifications` to frontend API client: `getAll`, `markAllRead`, `getUnreadCount`
+    indent_level: 0
+    raw_marker: -
+  - id: "line_194"
+    line_number: 194
+    status: pending
+    parallel_group: 999999
+    description: Run `npm run typecheck && npm run build && npm run lint` — all pass
+    indent_level: 0
+    raw_marker: -
+  - id: "line_198"
+    line_number: 198
+    status: pending
+    parallel_group: 999999
+    description: Search page (`/search`) with search input and debounced queries (300ms)
+    indent_level: 0
+    raw_marker: -
+  - id: "line_199"
+    line_number: 199
+    status: pending
+    parallel_group: 999999
+    description: Search tabs: \"Top\" (mixed), \"People\" (users), \"Latest\" (posts by recency)
+    indent_level: 0
+    raw_marker: -
+  - id: "line_200"
+    line_number: 200
+    status: pending
+    parallel_group: 999999
+    description: User results show avatar, display name, @username, bio snippet, Follow button
+    indent_level: 0
+    raw_marker: -
+  - id: "line_201"
+    line_number: 201
+    status: pending
+    parallel_group: 999999
+    description: Post results show standard PostCard
+    indent_level: 0
+    raw_marker: -
+  - id: "line_202"
+    line_number: 202
+    status: pending
+    parallel_group: 999999
+    description: Empty state: \"No results for 'query'\" with suggestions
+    indent_level: 0
+    raw_marker: -
+  - id: "line_203"
+    line_number: 203
+    status: pending
+    parallel_group: 999999
+    description: Search also accessible via the search bar in the top nav / right sidebar
+    indent_level: 0
+    raw_marker: -
+  - id: "line_204"
+    line_number: 204
+    status: pending
+    parallel_group: 999999
+    description: Add `api.search` to frontend API client
+    indent_level: 0
+    raw_marker: -
+  - id: "line_205"
+    line_number: 205
+    status: pending
+    parallel_group: 999999
+    description: Run `npm run typecheck && npm run build && npm run lint` — all pass
+    indent_level: 0
+    raw_marker: -
+  - id: "line_209"
+    line_number: 209
+    status: pending
+    parallel_group: 999999
+    description: Share button on every PostCard copies the canonical link (`/p/:postId`) to clipboard with a toast confirmation
+    indent_level: 0
+    raw_marker: -
+  - id: "line_210"
+    line_number: 210
+    status: pending
+    parallel_group: 999999
+    description: `/p/:postId` is accessible to logged-out users as read-only (shows post + replies, no action buttons)
+    indent_level: 0
+    raw_marker: -
+  - id: "line_211"
+    line_number: 211
+    status: pending
+    parallel_group: 999999
+    description: Logged-out thread view shows a banner: \"Log in to like, reply, and repost\" with login link
+    indent_level: 0
+    raw_marker: -
+  - id: "line_212"
+    line_number: 212
+    status: pending
+    parallel_group: 999999
+    description: Run `npm run typecheck && npm run build && npm run lint` — all pass
+    indent_level: 0
+    raw_marker: -
+  - id: "line_216"
+    line_number: 216
+    status: pending
+    parallel_group: 999999
+    description: Trending page (`/trending`) shows \"Trending Clips\" header with stats (Hot Clips count, Total Likes, last updated)
+    indent_level: 0
+    raw_marker: -
+  - id: "line_217"
+    line_number: 217
+    status: pending
+    parallel_group: 999999
+    description: Posts ranked by engagement (likes + reposts + replies) with rank numbers (#1, #2, #3, etc.)
+    indent_level: 0
+    raw_marker: -
+  - id: "line_218"
+    line_number: 218
+    status: pending
+    parallel_group: 999999
+    description: Game filter in left sidebar: click a game to filter trending posts by that game tag, \"Clear\" button to reset, selected games highlighted with `#EF8C60`
+    indent_level: 0
+    raw_marker: -
+  - id: "line_219"
+    line_number: 219
+    status: pending
+    parallel_group: 999999
+    description: YouTube link detection: if a post contains a YouTube URL, render an embedded player in the PostCard
+    indent_level: 0
+    raw_marker: -
+  - id: "line_220"
+    line_number: 220
+    status: pending
+    parallel_group: 999999
+    description: Trending section in right sidebar shows top 5 hashtags/game tags with post counts
+    indent_level: 0
+    raw_marker: -
+  - id: "line_221"
+    line_number: 221
+    status: pending
+    parallel_group: 999999
+    description: Backend: `GET /api/timeline/trending?cursor=&game=` — posts ranked by engagement, optional game filter
+    indent_level: 0
+    raw_marker: -
+  - id: "line_222"
+    line_number: 222
+    status: pending
+    parallel_group: 999999
+    description: Run `npm run typecheck && npm run build && npm run lint` — all pass
+    indent_level: 0
+    raw_marker: -
+  - id: "line_226"
+    line_number: 226
+    status: pending
+    parallel_group: 999999
+    description: Page transitions: smooth fade/slide animations when navigating between pages (use Framer Motion — install with `npm install framer-motion -w frontend`)
+    indent_level: 0
+    raw_marker: -
+  - id: "line_227"
+    line_number: 227
+    status: pending
+    parallel_group: 999999
+    description: Micro-interactions: like heart bounce, repost icon spin, follow button pulse
+    indent_level: 0
+    raw_marker: -
+  - id: "line_228"
+    line_number: 228
+    status: pending
+    parallel_group: 999999
+    description: Skeleton loading cards on all feeds and profile while data loads
+    indent_level: 0
+    raw_marker: -
+  - id: "line_229"
+    line_number: 229
+    status: pending
+    parallel_group: 999999
+    description: Toast notifications for: post created, post deleted, link copied, error messages — using `#EF8C60` accent
+    indent_level: 0
+    raw_marker: -
+  - id: "line_230"
+    line_number: 230
+    status: pending
+    parallel_group: 999999
+    description: Hover effects on all interactive elements (buttons glow, cards lift slightly)
+    indent_level: 0
+    raw_marker: -
+  - id: "line_231"
+    line_number: 231
+    status: pending
+    parallel_group: 999999
+    description: Smooth scroll-to-top when navigating to a new page
+    indent_level: 0
+    raw_marker: -
+  - id: "line_232"
+    line_number: 232
+    status: pending
+    parallel_group: 999999
+    description: Loading spinners on all async actions (follow, like, post creation)
+    indent_level: 0
+    raw_marker: -
+  - id: "line_233"
+    line_number: 233
+    status: pending
+    parallel_group: 999999
+    description: Run `npm run typecheck && npm run build && npm run lint` — all pass
+    indent_level: 0
+    raw_marker: -
+  - id: "line_237"
+    line_number: 237
+    status: pending
+    parallel_group: 999999
+    description: Create `backend/src/__tests__/auth.test.ts` — test register, login, logout, me (at least 4 tests)
+    indent_level: 0
+    raw_marker: -
+  - id: "line_238"
+    line_number: 238
+    status: pending
+    parallel_group: 999999
+    description: Create `backend/src/__tests__/posts.test.ts` — test create, get, update, delete, like, unlike (at least 6 tests)
+    indent_level: 0
+    raw_marker: -
+  - id: "line_239"
+    line_number: 239
+    status: pending
+    parallel_group: 999999
+    description: Create `backend/src/__tests__/timeline.test.ts` — test home feed (following-based), explore feed (at least 3 tests)
+    indent_level: 0
+    raw_marker: -
+  - id: "line_240"
+    line_number: 240
+    status: pending
+    parallel_group: 999999
+    description: Create `backend/src/__tests__/users.test.ts` — test get profile, follow, unfollow (at least 3 tests)
+    indent_level: 0
+    raw_marker: -
+  - id: "line_241"
+    line_number: 241
+    status: pending
+    parallel_group: 999999
+    description: `npm test` passes all tests
+    indent_level: 0
+    raw_marker: -
+  - id: "line_242"
+    line_number: 242
+    status: pending
+    parallel_group: 999999
+    description: Run `npm run typecheck && npm run build && npm run lint` — all still pass
+    indent_level: 0
+    raw_marker: -
+  - id: "line_246"
+    line_number: 246
+    status: pending
+    parallel_group: 999999
+    description: `npm install` — clean install, no errors
+    indent_level: 0
+    raw_marker: -
+  - id: "line_247"
+    line_number: 247
+    status: pending
+    parallel_group: 999999
+    description: `npm run seed` — seeds DB with realistic gaming data
+    indent_level: 0
+    raw_marker: -
+  - id: "line_248"
+    line_number: 248
+    status: pending
+    parallel_group: 999999
+    description: `npm run dev` — both servers start, no crashes, frontend loads at localhost:5173
+    indent_level: 0
+    raw_marker: -
+  - id: "line_249"
+    line_number: 249
+    status: pending
+    parallel_group: 999999
+    description: `npm run build` — builds both workspaces successfully
+    indent_level: 0
+    raw_marker: -
+  - id: "line_250"
+    line_number: 250
+    status: pending
+    parallel_group: 999999
+    description: `npm run typecheck` — zero type errors
+    indent_level: 0
+    raw_marker: -
+  - id: "line_251"
+    line_number: 251
+    status: pending
+    parallel_group: 999999
+    description: `npm run lint` — passes
+    indent_level: 0
+    raw_marker: -
+  - id: "line_252"
+    line_number: 252
+    status: pending
+    parallel_group: 999999
+    description: `npm test` — all tests pass
+    indent_level: 0
+    raw_marker: -
+  - id: "line_253"
+    line_number: 253
+    status: pending
+    parallel_group: 999999
+    description: Manual QA: register user A, post 3 gaming posts with game tags, register user B, follow A, B's home feed shows A's posts, B likes/reposts A's post, A sees notifications, search works, share link works, logged-out view works, trending page shows ranked posts
+    indent_level: 0
+    raw_marker: -
+  - id: "line_254"
+    line_number: 254
+    status: pending
+    parallel_group: 999999
+    description: Grep this file for `\"[ ]\"` — confirm zero unchecked items remain (excluding this line)
+    indent_level: 0
+    raw_marker: -

@@ -66,7 +66,7 @@ function seedUserGames(users: { id: string }[], games: { id: string; slug: strin
     lol: 'challenger',
     rocketleague: 'ssl',
   };
-  users.forEach((user, i) => {
+  users.forEach((user) => {
     games.slice(0, 3).forEach((game, j) => {
       const r = ranks[game.slug as keyof typeof ranks];
       const t = tier[game.slug as keyof typeof tier];
