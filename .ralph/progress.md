@@ -114,6 +114,20 @@ Next: Phase 3 — Gaming Identity (games & ranks verification, profile gaming se
 ### 2026-02-22 19:03:04
 **Session 3 started** (model: auto)
 
+### 2026-02-22 (Ralph Iteration 3 — Phase 3)
+**Phase 3: Gaming Identity — Games & Ranks completed.**
+
+Completed:
+- Verified Game model (id, name, slug, iconUrl, color) and seed with 7 games (Valorant, CS2, Apex, LoL, Rocket League, Smash, Fortnite).
+- Verified UserGame model (id, userId, gameId, rank, rankTier, updatedAt) and userGamesRepo (getByUser, find, create, upsert).
+- Verified gameTag on Post and gamesRepo/userGamesRepo CRUD. Backend GET /api/games, GET /api/users/:username/games, PUT /api/users/:username/games already present.
+- Added shapePost game info (game name, slug, color) when gameTag set; added api.users.updateGames to frontend.
+- Profile page: full profile with cover, avatar, display name, @username, bio, join date, follower/following counts, and "Gaming Ranks" section (game icon, name, rank, rank badge, last-updated).
+- PostComposer uses GameTagSelector; PostCard shows game badge/pill when post has gameTag/game. LeftSidebar "Your Games" shows tracked games with quick links.
+- npm run typecheck && npm run build && npm run lint — all pass. Phase 3 criteria marked [x].
+
+Next: Phase 4 — Complete Auth Flow.
+
 ### 2026-02-22 19:06:35
 **Session 3 ended** - 🔄 Context rotation (token limit reached)
 
