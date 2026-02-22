@@ -1,2 +1,6 @@
-# Ralph config (may contain API key)
-.cursor/ralph-config.json
+node_modules/
+dist/
+.env
+db/data/*.json
+*.log
+.DS_Store
