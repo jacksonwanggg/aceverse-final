@@ -1,4 +1,5 @@
-import { Link } from 'react-router-dom'
+import { useState } from 'react'
+import { Link, useNavigate } from 'react-router-dom'
 import { useAuth } from '../hooks/useAuth'
 import { useQuery, useMutation, useQueryClient } from '@tanstack/react-query'
 import { api } from '../lib/api'
@@ -7,7 +8,15 @@ const accent = '#EF8C60'
 
 export default function RightSidebar() {
   const { user } = useAuth()
+  const navigate = useNavigate()
   const queryClient = useQueryClient()
+  const [searchInput, setSearchInput] = useState('')
+
+  const handleSearch = (e: React.FormEvent) => {
+    e.preventDefault()
+    const q = searchInput.trim()
+    if (q) navigate(`/search?q=${encodeURIComponent(q)}`)
+  }
 
   const { data: ranksData } = useQuery({
     queryKey: ['users', user?.username, 'games'],
@@ -44,6 +53,17 @@ export default function RightSidebar() {
   return (
     <aside className="w-[320px] shrink-0 flex flex-col border-l border-gray-800 bg-[#0D0D0D] min-h-screen overflow-y-auto hidden lg:flex">
       <div className="p-4 space-y-6">
+        <form onSubmit={handleSearch}>
+          <input
+            type="search"
+            placeholder="Search..."
+            value={searchInput}
+            onChange={(e) => setSearchInput(e.target.value)}
+            className="w-full px-3 py-2 rounded-lg bg-gray-800 border border-gray-700 text-white text-sm placeholder-gray-500 focus:outline-none focus:border-[var(--primary)]"
+            aria-label="Search"
+          />
+        </form>
+
         {/* Your Ranks */}
         {userGames.length > 0 && (
           <section>

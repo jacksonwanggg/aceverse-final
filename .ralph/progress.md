@@ -300,3 +300,14 @@ Next: Phase 12 — Search.
 
 ### 2026-02-22 19:43:02
 **Session 12 started** (model: auto)
+
+### 2026-02-22 (Ralph Iteration 12 — Phase 12)
+**Phase 12: Search completed.**
+
+Completed:
+- Added `api.search(q, type)` to frontend `lib/api.ts` (`GET /api/search?q=&type=top|people|latest`).
+- Search page (`/search`): search input with 300ms debounced URL sync; tabs "Top", "People", "Latest"; Top shows mixed users + posts, People shows user results (avatar, display name, @username, bio snippet, Follow/Unfollow), Latest shows post results; post results use standard PostCard with like/repost handlers; empty state "No results for 'query'" with links to Trending and Explore.
+- Search bar in LeftSidebar (form with input + submit button) and RightSidebar (input, submit on Enter) that navigate to `/search?q=...`.
+- npm run typecheck && npm run build && npm run lint — all pass (warnings only).
+
+Next: Phase 13 — Share & Public Access.

@@ -11,7 +11,14 @@ export default function LeftSidebar() {
   const navigate = useNavigate()
   const { user, logout } = useAuth()
   const [dropdownOpen, setDropdownOpen] = useState(false)
+  const [searchInput, setSearchInput] = useState('')
   const bellRef = useRef<HTMLButtonElement>(null)
+
+  const handleSearch = (e: React.FormEvent) => {
+    e.preventDefault()
+    const q = searchInput.trim()
+    if (q) navigate(`/search?q=${encodeURIComponent(q)}`)
+  }
   const { data: gamesData } = useQuery({
     queryKey: ['games'],
     queryFn: api.games.getAll,
@@ -63,6 +70,27 @@ export default function LeftSidebar() {
             )}
           </div>
         </Link>
+
+        <form onSubmit={handleSearch} className="mb-2">
+          <div className="flex gap-1">
+            <input
+              type="search"
+              placeholder="Search..."
+              value={searchInput}
+              onChange={(e) => setSearchInput(e.target.value)}
+              className="flex-1 min-w-0 px-3 py-2 rounded-lg bg-gray-800 border border-gray-700 text-white text-sm placeholder-gray-500 focus:outline-none focus:border-[var(--primary)]"
+              aria-label="Search"
+            />
+            <button
+              type="submit"
+              className="px-3 py-2 rounded-lg text-sm font-medium shrink-0"
+              style={{ backgroundColor: accent, color: '#0D0D0D' }}
+              aria-label="Submit search"
+            >
+              🔍
+            </button>
+          </div>
+        </form>
 
         <nav className="flex flex-col gap-0.5">
           <NavLink to="/" end className={navLinkClass}>

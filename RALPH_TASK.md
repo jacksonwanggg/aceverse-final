@@ -195,14 +195,14 @@ npm run dev          # starts backend (3001) + frontend (5173) concurrently
 
 ### Phase 12: Search
 
-- [ ] Search page (`/search`) with search input and debounced queries (300ms)
-- [ ] Search tabs: "Top" (mixed), "People" (users), "Latest" (posts by recency)
-- [ ] User results show avatar, display name, @username, bio snippet, Follow button
-- [ ] Post results show standard PostCard
-- [ ] Empty state: "No results for 'query'" with suggestions
-- [ ] Search also accessible via the search bar in the top nav / right sidebar
-- [ ] Add `api.search` to frontend API client
-- [ ] Run `npm run typecheck && npm run build && npm run lint` — all pass
+- [x] Search page (`/search`) with search input and debounced queries (300ms)
+- [x] Search tabs: "Top" (mixed), "People" (users), "Latest" (posts by recency)
+- [x] User results show avatar, display name, @username, bio snippet, Follow button
+- [x] Post results show standard PostCard
+- [x] Empty state: "No results for 'query'" with suggestions
+- [x] Search also accessible via the search bar in the top nav / right sidebar
+- [x] Add `api.search` to frontend API client
+- [x] Run `npm run typecheck && npm run build && npm run lint` — all pass
 
 ### Phase 13: Share & Public Access
 

@@ -119,6 +119,10 @@ export const api = {
     trendingTags: () =>
       apiRequest<{ tags: { slug: string; name: string; count: number }[] }>('/timeline/trending-tags'),
   },
+  search: (q: string, type: 'top' | 'people' | 'latest' = 'top') =>
+    apiRequest<{ users: any[]; posts: any[] }>(
+      `/search?q=${encodeURIComponent(q)}&type=${type}`
+    ),
   notifications: {
     getAll: (cursor?: string) =>
       apiRequest<{
