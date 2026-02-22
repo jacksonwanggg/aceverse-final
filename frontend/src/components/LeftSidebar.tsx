@@ -1,4 +1,4 @@
-import { NavLink, Link } from 'react-router-dom'
+import { NavLink, Link, useNavigate } from 'react-router-dom'
 import { useAuth } from '../hooks/useAuth'
 import { useQuery } from '@tanstack/react-query'
 import { api } from '../lib/api'
@@ -6,7 +6,8 @@ import { api } from '../lib/api'
 const accent = '#EF8C60'
 
 export default function LeftSidebar() {
-  const { user } = useAuth()
+  const navigate = useNavigate()
+  const { user, logout } = useAuth()
   const { data: gamesData } = useQuery({
     queryKey: ['games'],
     queryFn: api.games.getAll,
@@ -63,6 +64,19 @@ export default function LeftSidebar() {
           <NavLink to={user ? `/u/${user.username}` : '/login'} className={navLinkClass}>
             <span className="text-xl">👤</span> Profile
           </NavLink>
+          <button
+            type="button"
+            onClick={async () => {
+              try {
+                await logout()
+              } finally {
+                navigate('/login')
+              }
+            }}
+            className="flex items-center gap-3 px-3 py-2.5 rounded-lg text-left font-medium text-gray-400 hover:bg-gray-800 hover:text-white transition-colors"
+          >
+            <span className="text-xl">🚪</span> Log out
+          </button>
         </nav>
 
         {myGames.length > 0 && (

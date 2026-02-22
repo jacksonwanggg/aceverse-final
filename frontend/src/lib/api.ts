@@ -1,5 +1,17 @@
 const API_BASE = import.meta.env.VITE_API_URL || 'http://localhost:3001/api';
 
+/** Thrown on API errors; may include field-level errors from validation (e.g. register). */
+export class ApiError extends Error {
+  status?: number;
+  fieldErrors?: Record<string, string[]>;
+  constructor(message: string, status?: number, fieldErrors?: Record<string, string[]>) {
+    super(message);
+    this.name = 'ApiError';
+    this.status = status;
+    this.fieldErrors = fieldErrors;
+  }
+}
+
 export async function apiRequest<T>(
   endpoint: string,
   options?: RequestInit
@@ -14,8 +26,19 @@ export async function apiRequest<T>(
   });
 
   if (!response.ok) {
-    const error = await response.json().catch(() => ({ error: 'Request failed' }));
-    throw new Error(error.error || `HTTP ${response.status}`);
+    const body = await response.json().catch(() => ({ error: 'Request failed' }));
+    const err = body.error;
+    const message =
+      typeof err === 'string'
+        ? err
+        : typeof err === 'object' && err !== null && !Array.isArray(err)
+          ? Object.values(err).flat().join(' ') || `HTTP ${response.status}`
+          : `HTTP ${response.status}`;
+    const fieldErrors =
+      typeof err === 'object' && err !== null && !Array.isArray(err)
+        ? (err as Record<string, string[]>)
+        : undefined;
+    throw new ApiError(message, response.status, fieldErrors);
   }
 
   return response.json();

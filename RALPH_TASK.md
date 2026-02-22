@@ -114,13 +114,13 @@ npm run dev          # starts backend (3001) + frontend (5173) concurrently
 
 ### Phase 4: Complete Auth Flow
 
-- [ ] Register page: username, email, password, display name — validates, shows inline errors, redirects to home on success
-- [ ] Login page: email + password — validates, shows inline errors, redirects to home on success
-- [ ] Logout works and redirects to landing page
-- [ ] Session cookie is HttpOnly, authenticated state persists on page refresh (`GET /api/auth/me`)
-- [ ] Protected pages redirect to `/login` if not authenticated
-- [ ] Auth forms have clean UI with `#EF8C60` accent buttons, loading states, and error toasts
-- [ ] Run `npm run typecheck && npm run build && npm run lint` — all pass
+- [x] Register page: username, email, password, display name — validates, shows inline errors, redirects to home on success
+- [x] Login page: email + password — validates, shows inline errors, redirects to home on success
+- [x] Logout works and redirects to landing page
+- [x] Session cookie is HttpOnly, authenticated state persists on page refresh (`GET /api/auth/me`)
+- [x] Protected pages redirect to `/login` if not authenticated
+- [x] Auth forms have clean UI with `#EF8C60` accent buttons, loading states, and error toasts
+- [x] Run `npm run typecheck && npm run build && npm run lint` — all pass
 
 ### Phase 5: Landing Page (Logged-Out Experience)
 

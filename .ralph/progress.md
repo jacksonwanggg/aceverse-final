@@ -128,6 +128,21 @@ Completed:
 
 Next: Phase 4 — Complete Auth Flow.
 
+### 2026-02-22 (Ralph Iteration 4 — Phase 4)
+**Phase 4: Complete Auth Flow completed.**
+
+Completed:
+- Register page: username, email, password, display name with client-side validation and inline errors; API field errors (ApiError) displayed per-field; success toast and redirect to home.
+- Login page: email + password, inline error and error toast, redirect to home on success.
+- Logout: "Log out" button in LeftSidebar; on click calls logout then navigates to /login.
+- Session: backend already sets HttpOnly cookie (setSessionCookie); useAuth uses GET /api/auth/me with credentials, so state persists on refresh.
+- Protected pages: AppLayout redirects to /login when !user.
+- Auth UI: dark gamer theme (bg-[#0D0D0D], #EF8C60 buttons/focus), loading states on submit, Toast component and useToast for error/success toasts.
+- Added ApiError in api.ts for field-level validation errors; ToastProvider + useToast (context in toastContext.ts, hook in hooks/useToast.ts, provider in components/Toast.tsx) for react-refresh lint.
+- npm run typecheck && npm run build && npm run lint — all pass (warnings only).
+
+Next: Phase 5 — Landing Page (Logged-Out Experience).
+
 ### 2026-02-22 19:06:35
 **Session 3 ended** - 🔄 Context rotation (token limit reached)
 
