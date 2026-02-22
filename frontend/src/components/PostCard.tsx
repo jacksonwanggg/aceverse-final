@@ -3,6 +3,7 @@ import { Link } from 'react-router-dom'
 import { motion } from 'framer-motion'
 import { useToast } from '../hooks/useToast'
 import { extractYouTubeVideoId } from '../lib/youtube'
+import { formatConciseTime } from '../lib/formatDate'
 import YouTubeEmbed from './YouTubeEmbed'
 import { Heart, MessageCircle, Repeat2, Share, MoreHorizontal } from 'lucide-react'
 
@@ -77,22 +78,6 @@ export default function PostCard({ post, onLike, onRepost, onReply, onEdit, onDe
   const menuRef = useRef<HTMLDivElement>(null)
   const editTextareaRef = useRef<HTMLTextAreaElement>(null)
 
-  const formatConciseTime = (date: Date): string => {
-    const now = new Date()
-    const diffMs = now.getTime() - date.getTime()
-    const diffSecs = Math.floor(diffMs / 1000)
-    const diffMins = Math.floor(diffSecs / 60)
-    const diffHours = Math.floor(diffMins / 60)
-    const diffDays = Math.floor(diffHours / 24)
-    const diffWeeks = Math.floor(diffDays / 7)
-    
-    if (diffSecs < 60) return 'now'
-    if (diffMins < 60) return `${diffMins}m`
-    if (diffHours < 24) return `${diffHours}h`
-    if (diffDays < 7) return `${diffDays}d`
-    if (diffWeeks < 4) return `${diffWeeks}w`
-    return date.toLocaleDateString('en-US', { month: 'short', day: 'numeric' })
-  }
   const timeAgo = formatConciseTime(new Date(post.createdAt))
   const isDeleted = post.deleted || post.content == null
   const youtubeVideoId = !isDeleted && post.content ? extractYouTubeVideoId(post.content) : null
