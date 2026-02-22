@@ -32,8 +32,22 @@ export const api = {
   },
   timeline: {
     home: (cursor?: string) =>
-      apiRequest(`/timeline/home${cursor ? `?cursor=${cursor}` : ''}`),
+      apiRequest<{ posts: any[]; nextCursor: string | null }>(`/timeline/home${cursor ? `?cursor=${cursor}` : ''}`),
     explore: (cursor?: string) =>
-      apiRequest(`/timeline/explore${cursor ? `?cursor=${cursor}` : ''}`),
+      apiRequest<{ posts: any[]; nextCursor: string | null }>(`/timeline/explore${cursor ? `?cursor=${cursor}` : ''}`),
+  },
+  posts: {
+    create: (data: { content: string }) =>
+      apiRequest<{ post: any }>('/posts', { method: 'POST', body: JSON.stringify(data) }),
+    getById: (postId: string) =>
+      apiRequest<{ post: any; replies: any[] }>(`/posts/${postId}`),
+    like: (postId: string) =>
+      apiRequest(`/posts/${postId}/like`, { method: 'POST' }),
+    unlike: (postId: string) =>
+      apiRequest(`/posts/${postId}/like`, { method: 'DELETE' }),
+    repost: (postId: string) =>
+      apiRequest(`/posts/${postId}/repost`, { method: 'POST' }),
+    unrepost: (postId: string) =>
+      apiRequest(`/posts/${postId}/repost`, { method: 'DELETE' }),
   },
 };
