@@ -148,16 +148,16 @@ The core MVP is fully functional (auth, posts, feeds, likes, reposts, replies, f
 
 ### Phase 2: Light/Dark Mode Toggle
 
-- [ ] Create a `useTheme` hook that manages theme state (`'light' | 'dark' | 'system'`), persists to `localStorage`, applies/removes `dark` class on `<html>`
-- [ ] System preference detection: if `'system'`, follow `prefers-color-scheme` and listen for changes
-- [ ] Add theme toggle button in LeftSidebar (below nav links) — sun icon (light), moon icon (dark), monitor icon (system) — cycles on click
-- [ ] Add the same toggle accessible on mobile (in BottomNav or settings)
-- [ ] Smooth icon transition on toggle, no flash of wrong theme on page load
-- [ ] Prevent FOUC: add inline `<script>` in `index.html` that reads localStorage and applies `dark` class before React hydrates
-- [ ] Verify: light mode — entire app renders with light backgrounds, dark text, accent intact
-- [ ] Verify: dark mode — entire app renders with dark backgrounds, light text
-- [ ] Verify: system mode — follows OS preference
-- [ ] Run `npm run typecheck && npm run build && npm run lint` — all pass
+- [x] Create a `useTheme` hook that manages theme state (`'light' | 'dark' | 'system'`), persists to `localStorage`, applies/removes `dark` class on `<html>`
+- [x] System preference detection: if `'system'`, follow `prefers-color-scheme` and listen for changes
+- [x] Add theme toggle button in LeftSidebar (below nav links) — sun icon (light), moon icon (dark), monitor icon (system) — cycles on click
+- [x] Add the same toggle accessible on mobile (in BottomNav or settings)
+- [x] Smooth icon transition on toggle, no flash of wrong theme on page load
+- [x] Prevent FOUC: add inline `<script>` in `index.html` that reads localStorage and applies `dark` class before React hydrates
+- [x] Verify: light mode — entire app renders with light backgrounds, dark text, accent intact
+- [x] Verify: dark mode — entire app renders with dark backgrounds, light text
+- [x] Verify: system mode — follows OS preference
+- [x] Run `npm run typecheck && npm run build && npm run lint` — all pass
 
 ### Phase 3: Icon System (Replace All Emojis with Lucide SVGs)
 
