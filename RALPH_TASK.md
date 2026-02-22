@@ -1,530 +1,389 @@
 ---
-task: "AceVerse — Full-Stack Social Platform for Gamers"
+task: "AceVerse — UI/UX Polish & Light/Dark Mode"
 test_command: "npm run typecheck && npm run build && npm test"
 ---
 
-# Task: AceVerse
+# Task: AceVerse UI/UX Overhaul
 
-Build a complete, polished social media platform purpose-built for gamers. Think X/Twitter meets gaming culture — gaming ranks, game tags on posts, trending clips, friends online, and a gamer-aesthetic dark UI with the `#EF8C60` accent. Must run locally with zero external services.
+The core MVP is fully functional (auth, posts, feeds, likes, reposts, replies, follows, profiles, notifications, search, trending, share). This iteration is purely about making the UI/UX **beautiful** — matching the design mockups in `.ralph/image.png`, `.ralph/image copy.png`, and `.ralph/image copy 2.png` exactly. Proper theming, consistent design tokens, real SVG icons, smooth interactions, and a proper light/dark mode toggle.
 
 ## CRITICAL RULES FOR RALPH
 
 > **READ THIS FIRST. These rules override everything else.**
 >
-> 1. There are **107 checkboxes** below across **18 phases** (Phase 0–17). You are **NOT DONE** until **EVERY SINGLE ONE** is `[x]`. Count them.
-> 2. **DO NOT** output `<ralph>COMPLETE</ralph>` unless you have **verified** that zero `[ ]` remain in this file. Grep for `"[ ]"` before signaling.
-> 3. After **every phase**, run: `npm run typecheck && npm run build && npm run lint`. If any fail, fix before moving on.
-> 4. After **Phase 16**, also run: `npm test`. All tests must pass.
-> 5. After **Phase 17**, run the **full verification suite**: `npm install && npm run seed && npm run build && npm run typecheck && npm run lint && npm test`. ALL must exit 0.
-> 6. Work phases **in order** (0 → 17). Complete ALL criteria in a phase before starting the next.
-> 7. Install any missing dependencies with `npm install <pkg> -w frontend` or `-w backend`. Never leave broken imports.
-> 8. Commit after each completed phase with a descriptive message.
-> 9. If stuck on the same issue 3+ times, output: `<ralph>GUTTER</ralph>`
+> 1. **LOOK AT THE MOCKUPS.** Read the three image files in `.ralph/` — `image.png` (home feed), `image copy.png` (profile page), `image copy 2.png` (trending page). These are the design targets. Match them as closely as possible.
+> 2. Count the checkboxes below. You are **NOT DONE** until **EVERY SINGLE ONE** is `[x]`. Grep for `"- [ ]"` before signaling complete.
+> 3. **DO NOT** output `<ralph>COMPLETE</ralph>` unless zero `- [ ]` remain in this file.
+> 4. After **every phase**, run: `npm run typecheck && npm run build && npm run lint`. Fix any errors before moving on.
+> 5. **DO NOT break existing functionality.** Every backend API must still work. Every page must still load. Auth must still work. All existing features must remain functional.
+> 6. Run `npm test` at the end — all existing tests must still pass.
+> 7. Work phases **in order**. Complete ALL criteria in a phase before starting the next.
+> 8. Install dependencies as needed: `npm install <pkg> -w frontend` or `-w backend`.
+> 9. Commit after each completed phase with a descriptive message.
+> 10. If stuck on the same issue 3+ times, output: `<ralph>GUTTER</ralph>`
 
 ## Context
 
-### Tech Stack
-- **Frontend**: Vite + React 19 + TypeScript + Tailwind CSS 4 + React Query + React Router 7
-- **Backend**: Express 4 + TypeScript + Zod + bcryptjs + cookie-parser + express-session
-- **Database**: JSON file on disk (`db/data/aceverse.db.json`) with in-memory repos
-- **Dev**: npm workspaces, concurrently, tsx, vitest
+### What's Already Built (DO NOT REBUILD)
+- Full backend API: auth, posts, replies, users, timeline (home/explore/trending), notifications, search, games — all working
+- Frontend: all pages functional (Landing, Login, Register, Home, Explore, Trending, Search, Notifications, Profile, PostThread)
+- Components: AppLayout (3-column), LeftSidebar, RightSidebar, BottomNav, Feed, PostCard, PostComposer, PostCardSkeleton, NotificationDropdown, GameTagSelector, RankBadge, FollowButton, Toast, YouTubeEmbed
+- Framer Motion installed for animations
+- 17 backend tests passing
+- Seed data with 10 users, 60+ posts, games, ranks
 
-### What Already Exists
-- Root `package.json` with workspaces `["backend", "frontend"]` and scripts: `dev`, `seed`, `reset`, `build`, `test`, `typecheck`, `lint`
-- Backend: Express server on port 3001, CORS for `http://localhost:5173`, 7 route files (auth, posts, replies, users, timeline, notifications, search), 8 repos, auth middleware, Zod validation, health endpoint
-- Frontend: Vite dev server on 5173, React app with routing, login/register pages, home/explore feeds with infinite scroll, post composer (280 char), post cards with edit/delete, API client (`lib/api.ts`) for auth + timeline + posts
-- `.env.example` with PORT, SESSION_SECRET, FRONTEND_URL, DATA_DIR
-- Seed and reset scripts exist and work (`backend/src/db/seed.ts`, `backend/src/db/reset.ts`)
-- Game and UserGame types added to DB, gamesRepo and userGamesRepo created, gameTag on Post model
+### Current UI Problems to Fix
+1. **No light mode** — everything is hardcoded dark (`bg-[#0D0D0D]`, `bg-[#1A1A1A]`, `bg-[#242424]`) with no toggle
+2. **Emoji icons** — nav and actions use emoji instead of proper SVG icons
+3. **Hardcoded colors** — scattered inline Tailwind classes instead of CSS variables / theme tokens
+4. **Inconsistent styling** — some components use `dark:` prefix, others hardcode dark colors
+5. **Basic hover/focus states** — missing polish on interactive elements
+6. **Typography** — inconsistent font sizes, weights, spacing
+7. **Mobile polish** — bottom nav works but lacks refinement
+8. **Doesn't match the mockups** — layout structure is right but visual details are off
 
-### What Needs Work
-- Frontend pages `ProfilePage`, `NotificationsPage`, `SearchPage` are stubs ("coming soon" placeholders)
-- Frontend `api.ts` is missing: replies, users/profile, notifications, search, games API calls
-- No shared layout component (sidebar, right panel) — pages are standalone divs
-- No landing page for logged-out visitors
-- No 3-column layout with sidebars
-- No animations or transitions
-- No YouTube/clip embeds
-- No trending clips page
-- No tests (vitest configured, zero test files)
-- Many frontend features not wired to existing backend endpoints
+---
 
-### Branding
-- Primary accent: `#EF8C60` (buttons, active nav, links, focus rings, badges, hover states, tab underlines, notification dots)
-- Dark mode is the default, light mode also supported
-- Gamer aesthetic: dark backgrounds (`#0D0D0D` / `#1A1A1A` / `#242424`), subtle orange glows, clean typography
+## Visual Design Specification (from mockups)
 
-### Design Reference (3-Column Desktop Layout)
-- **Left sidebar**: User avatar + handle + follower count, navigation (Home, Trending, Profile), "Your Games" section listing tracked games (Valorant, Counter-Strike 2, Apex Legends, etc.)
-- **Center column**: Main content area (feed, profile, thread, trending clips, landing page)
-- **Right sidebar**: "Your Ranks" (per-game rank badges), "Friends Online" (online status dots), "Who to Follow" (suggested users with Follow buttons), "Trending" (hashtags like #ValorantClips, #CS2Update, #ApexRanked)
+> Ralph: READ the `.ralph/image.png`, `.ralph/image copy.png`, `.ralph/image copy 2.png` files for the visual targets. Below is a detailed text description of what they show.
 
-### How to Run
+### Top Navigation Bar (all pages)
+- **Left**: Aceverse flame/A logo icon (orange `#EF8C60`) + "Aceverse" text in white/bold
+- **Center-left nav links**: "Home" (with house icon), "Trending" (with flame/trending icon) — text links with icons, active one highlighted in accent
+- **Center**: Search bar — rounded pill, gray background, magnifying glass icon, placeholder "Search users, posts, games..."
+- **Right**: Orange "Post" button (rounded-full, pen/edit icon + "Post" text), bell notification icon (with orange dot when unread), user avatar (rounded-full)
 
-```bash
-npm install          # install all workspaces
-cp .env.example .env # if .env doesn't exist
-npm run seed         # populate fake data
-npm run dev          # starts backend (3001) + frontend (5173) concurrently
-```
+### Left Sidebar
+- **Top**: User avatar (48px round) + @username + "XX followers" count below
+- **Nav links** (vertical stack, each with icon + label):
+  - Home (house icon) — orange/accent when active
+  - Trending (flame icon)
+  - Profile (user icon)
+- **"Your Games" section** (with gamepad icon header):
+  - Each game: colored game icon/logo + game name
+  - Games listed: Valorant (red), Counter-Strike 2 (green), Apex Legends (red)
+  - Each game row is clickable
+- **Footer**: "About  Help  Terms  Privacy" links + "© 2024 Aceverse"
+
+### Post Card (Feed Items)
+- **Layout**: Avatar (40px round) on left, content area on right
+- **Header line**: @username (bold) + relative time ("6h ago") on right + three-dot "..." menu (far right)
+- **Content**: Post text, natural line spacing
+- **Game tag**: Small rounded pill below content — colored game icon + game name (e.g., red square + "Valorant"), background slightly tinted
+- **YouTube embed**: If post has YouTube link, embedded player with rounded corners below content
+- **Action row** (bottom): Four icon+count groups evenly spaced:
+  - Heart icon + like count (e.g., "8.9K")
+  - Comment/reply icon + reply count (e.g., "567")
+  - Repost icon + repost count (e.g., "1.2K")
+  - Share/upload icon (right-most, no count)
+- **Divider**: Subtle 1px line between posts, no card gap/margin
+
+### Post Composer (top of home feed)
+- Avatar on left, textarea on right
+- Placeholder: "What's happening in your games?"
+- **Bottom toolbar**: Row of icon buttons (image, grid/poll, game controller, emoji), then "0/500" character count, then orange "Post" button (rounded-full)
+
+### Right Sidebar
+- **"Your Ranks" section** (gamepad icon + header):
+  - Each row: Game icon + game name + rank name in orange accent text (e.g., "Immortal 3") + small rank badge icon on right
+  - Ranks shown: Valorant "Immortal 3", Counter-Strike 2 "Global Elite", Apex Legends "Master"
+  - "View all games →" link at bottom in accent color
+- **"Friends Online" section** (users icon + header):
+  - Each row: Avatar (32px) + @username + "Online" text with green dot
+  - Shows 4 friends online
+- **"Who to Follow" section** (user-plus icon + header):
+  - Each row: Avatar + @username + "XX,000 followers" below + orange "Follow" button (rounded-full, accent border/bg)
+  - Shows 5 suggestions
+- **"Trending" section** (trending-up icon + header):
+  - Each row: Hashtag name (bold, like "#ValorantClips") + "XXX+ posts" count below in secondary text
+  - Shows 5 trending tags
+
+### Profile Page (`.ralph/image copy.png`)
+- **Cover image**: Full-width banner image (dark, gaming-themed) at top
+- **Avatar**: Large (128px) round avatar, overlapping the cover image bottom edge
+- **Name area**: @username (large, bold) + display name below, "Edit Profile" button (right-aligned, outline style) on own profile
+- **Bio**: Full bio text below name
+- **Stats line**: "156 Posts  6 Followers  7 Following  📅 Joined Jan 15" — all on one line
+- **"Gaming Ranks" section**: Header with "View all (5) ▼" toggle
+  - Each rank row: Large colored game icon (48-56px), game name, rank name in large orange text (e.g., "Immortal 3"), small rank badge on right, "Updated Jan 15" date on far right
+  - Ranks in card-like rows with subtle background
+- **Tabs**: "Posts" | "Clips" | "Likes" — horizontal tabs below ranks, active tab has orange underline
+- **Posts feed**: User's posts listed below tabs
+
+### Trending Page (`.ralph/image copy 2.png`)
+- **Header area**: Fire/trending icon + "Trending Clips" title (large bold) + "Top gaming clips from the community" subtitle
+- **Stats bar**: Three stat cards in a row:
+  - Fire icon + "11+" + "Hot Clips"
+  - Chart icon + "44K+" + "Total Likes"
+  - Clock icon + "24h" + "Updated"
+- **Ranked posts**: Each post has a ranking badge — circular orange badge with "#1", "#2", "#3" overlapping the top-left of the post card
+- **Game filter**: In the left sidebar "Your Games" section, games are clickable to filter trending by game tag, with a "Clear" option when filtering
 
 ---
 
 ## Success Criteria
 
-### Phase 0: Fix Foundation — Build & Run
+### Phase 1: Design Token System & CSS Variables
 
-- [x] `npm install` succeeds with zero errors for all workspaces
-- [x] `npm run dev` starts both backend (port 3001) and frontend (port 5173) without crashes
-- [x] `GET /api/health` returns `{ "status": "ok" }` (200)
-- [x] Frontend loads at `http://localhost:5173` without console errors
-- [x] `npm run build` succeeds for both backend and frontend
-- [x] `npm run typecheck` passes with zero errors
-- [x] `npm run lint` passes (fix or suppress non-critical warnings)
+- [ ] Create a CSS variable system in `index.css` with theme tokens for both light and dark modes:
+  - `--color-bg-primary` (page background): light `#FFFFFF` / dark `#000000`
+  - `--color-bg-secondary` (cards, sidebars): light `#F7F9F9` / dark `#16181C`
+  - `--color-bg-tertiary` (hover, inputs): light `#EFF3F4` / dark `#1D1F23`
+  - `--color-bg-hover` (subtle hover): light `rgba(0,0,0,0.03)` / dark `rgba(255,255,255,0.03)`
+  - `--color-border` (dividers): light `#EFF3F4` / dark `#2F3336`
+  - `--color-text-primary`: light `#0F1419` / dark `#E7E9EA`
+  - `--color-text-secondary`: light `#536471` / dark `#71767B`
+  - `--color-text-tertiary`: light `#8B98A5` / dark `#536471`
+  - `--color-accent`: `#EF8C60` (both modes)
+  - `--color-accent-hover`: `#E07840` (both modes)
+  - `--color-like`: `#F91880` (pink, both modes)
+  - `--color-repost`: `#00BA7C` (green, both modes)
+  - `--color-reply`: `#1D9BF0` (blue, both modes)
+- [ ] Update `tailwind.config.js` to map these CSS variables to Tailwind utility classes (e.g., `bg-primary`, `text-primary`, `border-default`, `text-accent`, `bg-hover`)
+- [ ] Light mode activates when `<html>` has no `dark` class; dark mode when it does — Tailwind `darkMode: 'class'`
+- [ ] Replace ALL hardcoded color values (`bg-[#0D0D0D]`, `bg-[#1A1A1A]`, `bg-[#242424]`, `text-[#EF8C60]`, etc.) across every component and page with the new Tailwind token classes
+- [ ] After this phase, the app should look identical in dark mode (no visual regressions) and acceptable in light mode (colors all swap correctly)
+- [ ] Run `npm run typecheck && npm run build && npm run lint` — all pass
 
-### Phase 1: Seed & Reset Scripts
+### Phase 2: Light/Dark Mode Toggle
 
-- [x] Create `backend/src/db/seed.ts` — generates at least: 10 users (gamer-themed), 60+ posts (gaming content with game tags), threaded replies (nested 2-3 levels), likes/reposts/follows distributed realistically, notifications matching the actions, at least 3 games, gaming ranks for users
-- [x] Create `backend/src/db/reset.ts` — wipes DB file then runs seed
-- [x] `npm run seed` works and creates `db/data/aceverse.db.json` automatically if missing
-- [x] `npm run reset` works (deletes DB, re-seeds)
-- [x] Seeded data displays correctly in the frontend feeds after running `npm run seed && npm run dev`
+- [ ] Create a `useTheme` hook that manages theme state (`'light' | 'dark' | 'system'`), persists to `localStorage`, applies/removes `dark` class on `<html>`
+- [ ] System preference detection: if `'system'`, follow `prefers-color-scheme` and listen for changes
+- [ ] Add theme toggle button in LeftSidebar (below nav links) — sun icon (light), moon icon (dark), monitor icon (system) — cycles on click
+- [ ] Add the same toggle accessible on mobile (in BottomNav or settings)
+- [ ] Smooth icon transition on toggle, no flash of wrong theme on page load
+- [ ] Prevent FOUC: add inline `<script>` in `index.html` that reads localStorage and applies `dark` class before React hydrates
+- [ ] Verify: light mode — entire app renders with light backgrounds, dark text, accent intact
+- [ ] Verify: dark mode — entire app renders with dark backgrounds, light text
+- [ ] Verify: system mode — follows OS preference
+- [ ] Run `npm run typecheck && npm run build && npm run lint` — all pass
 
-### Phase 2: Shared Layout & Navigation
+### Phase 3: Icon System (Replace All Emojis with Lucide SVGs)
 
-- [x] Create a shared `AppLayout` component used by all authenticated pages with 3-column desktop layout: left sidebar (nav + your games), center content, right sidebar (ranks, friends online, who to follow, trending)
-- [x] Left sidebar shows: user avatar + @username + follower count, nav links (Home, Trending, Profile) with active state using `#EF8C60`, "Your Games" section with game icons/names
-- [x] Right sidebar shows: "Your Ranks" with per-game rank + badge icon, "Friends Online" with green online dots, "Who to Follow" with Follow buttons, "Trending" hashtags with post counts
-- [x] Mobile layout: bottom tab bar (Home, Trending, Search, Notifications, Profile), floating compose FAB button, collapsible sidebars
-- [x] Navigation links work and highlight the active page with `#EF8C60` accent
-- [x] Wrap all authenticated pages (Home, Explore, Trending, Search, Notifications, Profile, PostThread) in `AppLayout`
-- [x] Run `npm run typecheck && npm run build && npm run lint` — all pass
+- [ ] Install `lucide-react` (`npm install lucide-react -w frontend`)
+- [ ] Replace ALL emoji icons in `LeftSidebar`: Home (house), Flame (trending), User (profile), Gamepad2 (your games header) — outline default, filled/bold when active page
+- [ ] Replace ALL emoji icons in `BottomNav`: matching icons for Home, Flame, Search, Bell, User
+- [ ] Replace ALL emoji icons in `PostCard` action row: Heart (like, filled when liked), MessageCircle (reply), Repeat2 (repost), Share or Upload (share) — with proper hover color per action
+- [ ] Replace ALL emoji icons in `RightSidebar`: Search, Gamepad2 (ranks header), Users (friends header), UserPlus (who to follow header), TrendingUp (trending header), game-specific icons
+- [ ] Replace ALL emoji icons in `NotificationDropdown` and `NotificationsPage`: Heart (like), MessageCircle (reply), Repeat2 (repost), UserPlus (follow)
+- [ ] Replace ALL emoji icons in `PostComposer`: Image, LayoutGrid, Gamepad2, Smile — matching the toolbar from the mockup
+- [ ] Replace ALL remaining emojis in GameTagSelector, ProfilePage (Calendar, Edit, MapPin etc.), SearchPage, TrendingPage (Flame, TrendingUp, Clock)
+- [ ] Consistent sizing: 18-20px in action rows, 20-24px in navigation, 16px inline
+- [ ] Active nav: filled variant; inactive: outline variant. Colors use theme tokens.
+- [ ] Run `npm run typecheck && npm run build && npm run lint` — all pass
 
-### Phase 3: Gaming Identity — Games & Ranks
+### Phase 4: Top Navigation Bar (Match Mockup Exactly)
 
-- [x] Verify `Game` model in DB types: `{ id, name, slug, iconUrl, color }` — at least: Valorant, Counter-Strike 2, Apex Legends, League of Legends, Rocket League, Super Smash Bros, Fortnite
-- [x] Verify `UserGame` model: `{ id, userId, gameId, rank, rankTier, updatedAt }` — links users to games with rank
-- [x] Verify `gameTag` field on `Post` model — optional game slug that tags a post to a specific game
-- [x] Verify `gamesRepo` and `userGamesRepo` with CRUD operations
-- [x] Backend: `GET /api/games` returns all games, `GET /api/users/:username/games` returns user's games + ranks, `PUT /api/users/:username/games` updates game ranks — add routes if missing
-- [x] Profile page shows "Gaming Ranks" section with game icon, game name, rank name (e.g., "Immortal 3", "Global Elite", "Master"), rank badge, and last-updated date
-- [x] Posts can be tagged with a game — post composer has optional game tag selector, PostCard shows game badge/pill
-- [x] "Your Games" sidebar section shows the logged-in user's tracked games with quick links
-- [x] Run `npm run typecheck && npm run build && npm run lint` — all pass
+- [ ] Create a persistent top nav bar visible on all authenticated pages (part of AppLayout):
+  - **Left**: Aceverse logo (flame icon in accent + "Aceverse" bold text) — links to home
+  - **Center-left**: "Home" link (Home icon + text), "Trending" link (Flame icon + text) — active one highlighted in accent color
+  - **Center**: Search input (rounded-full pill, bg-tertiary, Search icon inside, placeholder "Search users, posts, games...")— typing and pressing enter navigates to /search?q=...
+  - **Right**: Orange "Post" button (Edit/Pen icon + "Post" text, bg-accent text-white rounded-full) — opens compose modal or navigates to composer, Bell icon (with orange unread dot badge overlaid when notifications exist), User avatar (32px round, links to profile)
+- [ ] Top nav is sticky, has subtle bottom border, backdrop blur on scroll
+- [ ] Notification bell shows orange dot when there are unread notifications (poll or check on page load)
+- [ ] Clicking the Post button in the top nav opens the existing PostComposer (either inline at top of feed or as a modal)
+- [ ] Search input in top nav works: submit navigates to `/search?q=...`
+- [ ] Top nav hides on mobile (replaced by bottom nav) or becomes a minimal bar with just logo + bell + avatar
+- [ ] Run `npm run typecheck && npm run build && npm run lint` — all pass
 
-### Phase 4: Complete Auth Flow
+### Phase 5: PostCard — Match Mockup Exactly
 
-- [x] Register page: username, email, password, display name — validates, shows inline errors, redirects to home on success
-- [x] Login page: email + password — validates, shows inline errors, redirects to home on success
-- [x] Logout works and redirects to landing page
-- [x] Session cookie is HttpOnly, authenticated state persists on page refresh (`GET /api/auth/me`)
-- [x] Protected pages redirect to `/login` if not authenticated
-- [x] Auth forms have clean UI with `#EF8C60` accent buttons, loading states, and error toasts
-- [x] Run `npm run typecheck && npm run build && npm run lint` — all pass
+- [ ] Avatar (40px rounded-full) on left, content area on right — no card border, just subtle bottom divider
+- [ ] Header: @username (font-semibold, text-primary) on left, relative time (text-secondary, concise: "6h ago", "1d ago", "2w ago") on right, three-dot menu far right
+- [ ] Content: text-primary, proper line-height (1.4-1.5), hashtags and @mentions highlighted in accent
+- [ ] Game tag pill: small rounded badge with colored square icon + game name text, subtle tinted background matching the game's color
+- [ ] YouTube embeds: rounded corners, proper 16:9 aspect ratio, "Watch on YouTube" link
+- [ ] Action row: four evenly-spaced groups — Heart + count, MessageCircle + count, Repeat2 + count, Share icon (no count). Each with hover color: like=pink, reply=blue, repost=green, share=accent. Active like=filled pink heart, active repost=green filled icon. Counts in text-secondary.
+- [ ] Hover state: entire card gets subtle bg-hover tint (not shadow)
+- [ ] Deleted post: subtle italic text-secondary "This post has been deleted", no action row
+- [ ] Edit mode: clean textarea with accent focus ring, Save/Cancel buttons
+- [ ] Three-dot menu dropdown: clean bg-secondary card with border-default, edit/delete options
+- [ ] Run `npm run typecheck && npm run build && npm run lint` — all pass
 
-### Phase 5: Landing Page (Logged-Out Experience)
+### Phase 6: PostComposer — Match Mockup Exactly
 
-- [x] Create a stunning landing page at `/` for logged-out users with: hero section with animated gradient/glow using `#EF8C60`, tagline like "Your gaming universe. One feed.", prominent Sign Up and Login CTAs
-- [x] Landing page has smooth scroll animations (fade-in, slide-up on scroll) using CSS animations or Framer Motion
-- [x] Feature showcase sections: "Track Your Ranks", "Share Your Clips", "Find Your Squad", "Stay in the Loop" — each with icon/illustration and description
-- [x] Social proof / stats section (e.g., "Join 50K+ gamers", "1M+ clips shared" — fake numbers, looks good)
-- [x] Footer with links: About, Help, Terms, Privacy
-- [x] Visiting `/p/:postId` while logged out shows the post thread read-only (no interaction buttons), with a banner prompting login
-- [x] Landing page is fully responsive and looks great on mobile
-- [x] Run `npm run typecheck && npm run build && npm run lint` — all pass
+- [ ] Layout: avatar (40px) on left, borderless textarea on right, grows with content
+- [ ] Placeholder: "What's happening in your games?"
+- [ ] Bottom toolbar (below textarea): icon buttons row (Image, LayoutGrid, Gamepad2, Smile icons — matching mockup), then character count "0/500", then orange "Post" button (rounded-full bg-accent text-white, disabled/opacity-50 when empty)
+- [ ] Game tag selector: clicking Gamepad2 icon shows game dropdown, selected game appears as pill below textarea
+- [ ] Character count turns orange at 400+, red at 480+
+- [ ] Composer has subtle top border separating it from the feed below
+- [ ] Works in both light and dark mode
+- [ ] Run `npm run typecheck && npm run build && npm run lint` — all pass
 
-### Phase 6: Home & Explore Feeds
+### Phase 7: Left Sidebar — Match Mockup Exactly
 
-- [x] Home feed (`/`) shows posts from people the user follows + own posts, sorted by newest first, with cursor pagination and infinite scroll
-- [x] Explore feed (`/explore`) shows all posts globally, sorted by newest
-- [x] Feed uses skeleton loading cards while fetching
-- [x] Empty state for home feed when following nobody: "Your feed is empty. Follow some gamers to see their posts!" with suggested accounts
-- [x] Post composer at top of home feed: textarea (500 char limit), optional game tag selector, character counter, Post button disabled when empty, `#EF8C60` Post button
-- [x] New posts appear instantly (optimistic update) at the top of the feed
-- [x] Run `npm run typecheck && npm run build && npm run lint` — all pass
+- [ ] **User card** at top: avatar (48px round) + @username (bold) + "XX followers" (text-secondary)
+- [ ] **Nav links** (vertical, icon + label each):
+  - Home (Home icon) — accent color text + filled icon when on home page
+  - Trending (Flame icon) — accent when active
+  - Profile (User icon) — accent when active
+  - Each nav link: hover shows subtle bg-hover rounded pill background
+- [ ] **"Your Games" section**: Gamepad2 icon + "Your Games" header (text-secondary, semibold), divider above
+  - Each game: colored circle/square icon + game name text
+  - Valorant (red icon), Counter-Strike 2 (green icon), Apex Legends (red icon)
+  - Games are clickable (link to trending?game=slug or similar)
+- [ ] **Footer** at bottom: "About  Help  Terms  Privacy" text links (text-tertiary, small) + "© 2024 Aceverse"
+- [ ] Sidebar has subtle right border (border-default)
+- [ ] Sticky positioning, scrolls independently if content overflows viewport
+- [ ] Looks correct in both light and dark mode
+- [ ] Run `npm run typecheck && npm run build && npm run lint` — all pass
 
-### Phase 7: Posts — Full CRUD
+### Phase 8: Right Sidebar — Match Mockup Exactly
 
-- [x] Create post works: text content (max 500 chars), optional game tag
-- [x] PostCard displays: avatar, display name, @username, relative timestamp (e.g., "3h ago"), content, game tag pill, action row (reply count, like count, repost count, share)
-- [x] Edit post: author-only, inline edit mode with Save/Cancel
-- [x] Delete post: author-only, soft delete, shows "This post has been deleted" placeholder
-- [x] Clicking a post navigates to thread view (`/p/:postId`)
-- [x] Run `npm run typecheck && npm run build && npm run lint` — all pass
+- [ ] **"Your Ranks" section**: Gamepad2 icon + "Your Ranks" header
+  - Each row: game icon (colored) + game name (text-primary) + rank name in accent color (e.g., "Immortal 3" in orange) + small rank badge icon on far right
+  - Show user's top 3 game ranks
+  - "View all games →" link at bottom (accent text)
+- [ ] **"Friends Online" section**: Users icon + "Friends Online" header
+  - Each row: avatar (32px) + @username + "Online" text in green with green dot indicator
+  - Show up to 4 friends (pick random seeded users as "online")
+- [ ] **"Who to Follow" section**: UserPlus icon + "Who to Follow" header
+  - Each row: avatar (32px) + @username (text-primary) + "XX,000 followers" (text-secondary) + orange "Follow" button (rounded-full, small, bg-accent text-white or outline with accent border)
+  - Show 5 suggested users (users the current user doesn't follow)
+  - Follow button actually works (calls API, updates state)
+- [ ] **"Trending" section**: TrendingUp icon + "Trending" header (with flame accent)
+  - Each row: hashtag/tag name (bold, text-primary, like "#ValorantClips") + "XXX+ posts" (text-secondary) below
+  - Show top 5 trending tags
+  - Each tag is clickable (links to search or trending filter)
+- [ ] Each section is in a rounded card with bg-secondary background and subtle padding
+- [ ] Sidebar has subtle left border (border-default)
+- [ ] Sticky positioning, scrolls independently
+- [ ] Looks correct in both light and dark mode
+- [ ] Run `npm run typecheck && npm run build && npm run lint` — all pass
 
-### Phase 8: Likes & Reposts
+### Phase 9: Profile Page — Match Mockup Exactly
 
-- [x] Like/unlike a post with optimistic UI — heart fills `#EF8C60`, count updates instantly
-- [x] Repost/unrepost with optimistic UI — repost icon highlights, count updates instantly
-- [x] No double likes or double reposts (repo constraint enforced)
-- [x] Like creates a LIKE notification for the post author (not self)
-- [x] Repost creates a REPOST notification for the post author (not self)
-- [x] Add `api.posts.like`, `api.posts.unlike`, `api.posts.repost`, `api.posts.unrepost` to frontend API client if missing
-- [x] Run `npm run typecheck && npm run build && npm run lint` — all pass
+- [ ] **Cover image**: Full-width, ~200px tall, dark gradient if no custom image. Edge-to-edge within the center column.
+- [ ] **Avatar**: Large (128px) round, positioned to overlap the bottom of the cover image (negative margin or absolute positioning), white/dark border ring
+- [ ] **Name & actions**: @username (large, bold, text-primary) + display name below (text-secondary). "Edit Profile" button (outline, rounded-full, border-default) on own profile. "Follow"/"Unfollow" button (solid bg-accent, rounded-full) on other profiles.
+- [ ] **Bio**: Full bio text (text-primary), below name
+- [ ] **Stats line**: "XXX Posts  X Followers  X Following  📅 Joined Jan 15" — all inline, counts in bold, labels in text-secondary, calendar icon for join date
+- [ ] **Gaming Ranks section**: Section header "Gaming Ranks" + "View all (X) ▼" toggle on right
+  - Each rank: large game icon (48px colored), game name (text-primary), rank name in large accent text (e.g., "Immortal 3"), rank tier badge icon on right, "Updated Jan 15" date on far right (text-secondary)
+  - Rows have subtle bg-secondary background with rounded corners
+- [ ] **Content tabs**: "Posts" | "Clips" | "Likes" horizontal tab bar — active tab has accent-colored underline, tabs are clickable
+  - "Posts" tab shows user's post feed (existing)
+  - "Clips" tab can show posts with YouTube embeds, or "Coming soon" placeholder
+  - "Likes" tab can show posts the user has liked, or "Coming soon" placeholder
+- [ ] User's post feed below tabs, paginated
+- [ ] Entire profile looks correct in both light and dark mode
+- [ ] Run `npm run typecheck && npm run build && npm run lint` — all pass
 
-### Phase 9: Replies & Threads
+### Phase 10: Trending Page — Match Mockup Exactly
 
-- [x] Thread page (`/p/:postId`) shows: root post at top, reply composer below it, replies listed chronologically
-- [x] Reply to a post — reply appears optimistically
-- [x] Reply to a reply (nested) — indented in thread, max visible depth of 6
-- [x] Edit/delete reply: author-only, soft delete shows placeholder
-- [x] Reply creates a REPLY notification for the post author (and optionally parent reply author)
-- [x] Add `api.posts.reply(postId, { content })` and `api.replies` (nested reply, edit, delete) to frontend API client
-- [x] Run `npm run typecheck && npm run build && npm run lint` — all pass
+- [ ] **Header**: Flame icon (large, accent) + "Trending Clips" title (large, bold) + "Top gaming clips from the community" subtitle (text-secondary)
+- [ ] **Stats bar**: Three cards in a row (bg-secondary, rounded):
+  - Fire icon + "11+" (large, bold) + "Hot Clips" (text-secondary)
+  - TrendingUp icon + "44K+" (large, bold) + "Total Likes" (text-secondary)
+  - Clock icon + "24h" (large, bold) + "Updated" (text-secondary)
+  - Stats can be computed from actual data or hardcoded as representative numbers
+- [ ] **Ranked posts**: Each trending post has a circular accent-colored badge with rank number (#1, #2, #3...) positioned overlapping the top-left corner of the post
+- [ ] **Game filter**: In the left sidebar "Your Games" section, clicking a game filters the trending feed to that game's tag. Active filter game is highlighted in accent. "Clear" button resets the filter.
+- [ ] YouTube embeds display properly within trending post cards
+- [ ] Entire page looks correct in both light and dark mode
+- [ ] Run `npm run typecheck && npm run build && npm run lint` — all pass
 
-### Phase 10: Follows & Profile
+### Phase 11: Remaining Pages Polish
 
-- [x] Full profile page (`/u/:username`): cover image area, avatar, display name, @username, bio, join date, follower/following counts
-- [x] "Gaming Ranks" section on profile showing all games + ranks with icons and badges
-- [x] User's posts tab on profile — paginated feed of their posts
-- [x] Follow/unfollow button (not shown on own profile): toggles instantly, updates follower count
-- [x] "Edit Profile" button on own profile (at minimum: update display name, bio, avatar URL)
-- [x] Follow creates a FOLLOW notification for the followed user
-- [x] Add `api.users` to frontend API client: `getProfile`, `getPosts`, `follow`, `unfollow`, `updateProfile`, `getGames`, `updateGames`
-- [x] Run `npm run typecheck && npm run build && npm run lint` — all pass
+- [ ] **Home page**: Sticky header "Home" with subtle bottom border + backdrop blur, PostComposer below, then Feed
+- [ ] **Explore page**: Sticky header "Explore" with subtle bottom border, Feed showing all posts
+- [ ] **Notifications page**: Clean list, each notification has: relevant icon (Heart/MessageCircle/Repeat2/UserPlus) + actor avatar + action text (e.g., "@proaimbot liked your post") + relative time. Unread items have subtle accent-left border or bg tint. "Mark all read" button in accent.
+- [ ] **Search page**: Large search input at top (matching top nav search style), tab bar "Top" | "People" | "Latest" with accent underline on active, results display cleanly (PostCard for posts, user card for people)
+- [ ] **Thread page**: Root post displayed prominently (slightly larger text), reply composer below, replies with vertical connector lines (thin accent or border-default line connecting avatars), nested replies indented
+- [ ] **Landing page**: Verify it still works beautifully in both light/dark mode, animations still smooth
+- [ ] **Login & Register pages**: Centered card (bg-secondary, rounded-xl), clean form fields (bg-tertiary, rounded-lg, accent focus ring), Aceverse logo at top, accent submit button, link to other auth page at bottom. Works in both modes.
+- [ ] Run `npm run typecheck && npm run build && npm run lint` — all pass
 
-### Phase 11: Notifications
+### Phase 12: Mobile Polish
 
-- [x] Notifications page (`/notifications`): lists all notifications (LIKE, REPLY, REPOST, FOLLOW) with actor avatar, action text, relative time, and link to relevant post/profile
-- [x] Unread notification count badge in the nav bar (orange dot or number)
-- [x] "Mark all as read" button clears unread state
-- [x] Notification dropdown on bell icon click (in addition to full page) showing latest 5 notifications with "View all notifications" link
-- [x] No notifications for your own actions on your own content
-- [x] Add `api.notifications` to frontend API client: `getAll`, `markAllRead`, `getUnreadCount`
-- [x] Run `npm run typecheck && npm run build && npm run lint` — all pass
+- [ ] Bottom nav: clean icon-only bar with subtle top border (border-default), bg-primary background, active icon in accent color (filled variant), proper safe-area bottom padding
+- [ ] Floating compose FAB: rounded-full accent button with Feather/Plus icon, bottom-right above nav, subtle shadow
+- [ ] All pages responsive: single-column on mobile, sidebars hidden, proper padding (16px), no horizontal overflow
+- [ ] PostCard: full-width, action icons have min 44px tap targets
+- [ ] Profile: cover image scales, avatar scales, stats wrap properly
+- [ ] Top nav on mobile: minimal — just Aceverse logo left, bell + avatar right (or hidden, replaced by bottom nav)
+- [ ] Modals/dropdowns: bottom-sheet style or full-width on mobile
+- [ ] Search: full-width input, results stack
+- [ ] Run `npm run typecheck && npm run build && npm run lint` — all pass
 
-### Phase 12: Search
+### Phase 13: Micro-Animations & Interactions
 
-- [x] Search page (`/search`) with search input and debounced queries (300ms)
-- [x] Search tabs: "Top" (mixed), "People" (users), "Latest" (posts by recency)
-- [x] User results show avatar, display name, @username, bio snippet, Follow button
-- [x] Post results show standard PostCard
-- [x] Empty state: "No results for 'query'" with suggestions
-- [x] Search also accessible via the search bar in the top nav / right sidebar
-- [x] Add `api.search` to frontend API client
-- [x] Run `npm run typecheck && npm run build && npm run lint` — all pass
+- [ ] Like: heart scales (1 → 1.3 → 1) with color transition to pink when liked
+- [ ] Repost: icon rotates briefly with color transition to green
+- [ ] Follow button: smooth fill transition from outline to solid accent
+- [ ] New post: slides in from top with fade
+- [ ] Notification badge: subtle pulse when count changes
+- [ ] Theme toggle: icon crossfade/rotate on switch
+- [ ] Toast: slides in from top-right with spring, slides out on dismiss
+- [ ] Skeleton loading: shimmer animation (gradient sweep, not just pulse)
+- [ ] All buttons: subtle brightness/scale transition on hover (transform: scale(1.02) or filter: brightness(1.1))
+- [ ] Page transitions: existing framer-motion fade/slide still smooth
+- [ ] Run `npm run typecheck && npm run build && npm run lint` — all pass
 
-### Phase 13: Share & Public Access
+### Phase 14: Typography & Spacing Consistency
 
-- [x] Share button on every PostCard copies the canonical link (`/p/:postId`) to clipboard with a toast confirmation
-- [x] `/p/:postId` is accessible to logged-out users as read-only (shows post + replies, no action buttons)
-- [x] Logged-out thread view shows a banner: "Log in to like, reply, and repost" with login link
-- [x] Run `npm run typecheck && npm run build && npm run lint` — all pass
+- [ ] Type scale: page titles 20-24px bold, section headers 16-18px semibold, body 15px regular, secondary 13-14px, small labels 12px
+- [ ] Spacing: card padding 16px, zero gap between feed items (divider only — like Twitter), sidebar sections 16-24px gap, action row even distribution
+- [ ] Line-height: post content 1.4-1.5, UI text 1.25
+- [ ] Truncation: long display names ellipsis, long bios "...more"
+- [ ] Timestamps: concise format — "2h", "6h", "1d", "2w", "Jan 15" (not "2 hours ago")
+- [ ] Border-radius: rounded-full for avatars/buttons/pills/search, rounded-xl for sidebar cards/modals, rounded-lg for form inputs
+- [ ] Run `npm run typecheck && npm run build && npm run lint` — all pass
 
-### Phase 14: Trending Page
+### Phase 15: Final Verification
 
-- [x] Trending page (`/trending`) shows "Trending Clips" header with stats (Hot Clips count, Total Likes, last updated)
-- [x] Posts ranked by engagement (likes + reposts + replies) with rank numbers (#1, #2, #3, etc.)
-- [x] Game filter in left sidebar: click a game to filter trending posts by that game tag, "Clear" button to reset, selected games highlighted with `#EF8C60`
-- [x] YouTube link detection: if a post contains a YouTube URL, render an embedded player in the PostCard
-- [x] Trending section in right sidebar shows top 5 hashtags/game tags with post counts
-- [x] Backend: `GET /api/timeline/trending?cursor=&game=` — posts ranked by engagement, optional game filter
-- [x] Run `npm run typecheck && npm run build && npm run lint` — all pass
-
-### Phase 15: Animations & Polish
-
-- [x] Page transitions: smooth fade/slide animations when navigating between pages (use Framer Motion — install with `npm install framer-motion -w frontend`)
-- [x] Micro-interactions: like heart bounce, repost icon spin, follow button pulse
-- [x] Skeleton loading cards on all feeds and profile while data loads
-- [x] Toast notifications for: post created, post deleted, link copied, error messages — using `#EF8C60` accent
-- [x] Hover effects on all interactive elements (buttons glow, cards lift slightly)
-- [x] Smooth scroll-to-top when navigating to a new page
-- [x] Loading spinners on all async actions (follow, like, post creation)
-- [x] Run `npm run typecheck && npm run build && npm run lint` — all pass
-
-### Phase 16: Tests
-
-- [x] Create `backend/src/__tests__/auth.test.ts` — test register, login, logout, me (at least 4 tests)
-- [x] Create `backend/src/__tests__/posts.test.ts` — test create, get, update, delete, like, unlike (at least 6 tests)
-- [x] Create `backend/src/__tests__/timeline.test.ts` — test home feed (following-based), explore feed (at least 3 tests)
-- [x] Create `backend/src/__tests__/users.test.ts` — test get profile, follow, unfollow (at least 3 tests)
-- [x] `npm test` passes all tests
-- [x] Run `npm run typecheck && npm run build && npm run lint` — all still pass
-
-### Phase 17: Final Verification
-
-- [x] `npm install` — clean install, no errors
-- [x] `npm run seed` — seeds DB with realistic gaming data
-- [x] `npm run dev` — both servers start, no crashes, frontend loads at localhost:5173
-- [x] `npm run build` — builds both workspaces successfully
-- [x] `npm run typecheck` — zero type errors
-- [x] `npm run lint` — passes
-- [x] `npm test` — all tests pass
-- [x] Manual QA: register user A, post 3 gaming posts with game tags, register user B, follow A, B's home feed shows A's posts, B likes/reposts A's post, A sees notifications, search works, share link works, logged-out view works, trending page shows ranked posts
-- [x] Grep this file for `"[ ]"` — confirm zero unchecked items remain (excluding this line)
-
----
-
-## API Endpoints (Complete Reference)
-
-All inputs validated with Zod. Protected endpoints require session cookie.
-
-### Auth
-- `POST /api/auth/register` — `{ username, email, password, displayName? }`
-- `POST /api/auth/login` — `{ email, password }`
-- `POST /api/auth/logout`
-- `GET /api/auth/me` — returns current user or null
-
-### Timeline
-- `GET /api/timeline/home?cursor=` — posts from following + self
-- `GET /api/timeline/explore?cursor=` — all posts globally
-- `GET /api/timeline/trending?cursor=&game=` — posts ranked by engagement, optional game filter
-
-### Posts
-- `POST /api/posts` — `{ content, gameTag? }`
-- `GET /api/posts/:postId` — post + replies tree
-- `PATCH /api/posts/:postId` — `{ content }` (author only)
-- `DELETE /api/posts/:postId` — soft delete (author only)
-- `POST /api/posts/:postId/like`
-- `DELETE /api/posts/:postId/like`
-- `POST /api/posts/:postId/repost`
-- `DELETE /api/posts/:postId/repost`
-- `POST /api/posts/:postId/replies` — `{ content }`
-
-### Replies
-- `POST /api/replies/:replyId/replies` — `{ content }`
-- `PATCH /api/replies/:replyId` — `{ content }` (author only)
-- `DELETE /api/replies/:replyId` — soft delete (author only)
-
-### Users
-- `GET /api/users/:username` — profile + counts
-- `GET /api/users/:username/posts?cursor=`
-- `POST /api/users/:username/follow`
-- `DELETE /api/users/:username/follow`
-- `GET /api/users/:username/games` — user's games + ranks
-- `PUT /api/users/:username/games` — update own game ranks
-- `PATCH /api/users/:username` — update own profile `{ displayName?, bio?, avatarUrl? }`
-
-### Games
-- `GET /api/games` — all available games
-
-### Notifications
-- `GET /api/notifications?cursor=`
-- `POST /api/notifications/mark-all-read`
-- `GET /api/notifications/unread-count`
-
-### Search
-- `GET /api/search?q=&type=top|people|latest`
-
-### Response Shape
-
-Every Post in API responses includes viewer-specific flags:
-
-```json
-{
-  "id": "...",
-  "content": "...",
-  "gameTag": "valorant",
-  "author": {
-    "username": "...",
-    "displayName": "...",
-    "avatarUrl": "..."
-  },
-  "likeCount": 42,
-  "replyCount": 7,
-  "repostCount": 12,
-  "likedByMe": true,
-  "repostedByMe": false,
-  "canEdit": false,
-  "canDelete": false,
-  "createdAt": "...",
-  "deleted": false
-}
-```
+- [ ] Dark mode: browse every page (home, explore, trending, search, notifications, profile, thread, landing, login, register) — everything polished, consistent, matches mockups
+- [ ] Light mode: browse every page — everything polished, no invisible elements, all text readable
+- [ ] System mode: follows OS preference correctly
+- [ ] Mobile viewport: all pages usable, bottom nav works, no overflow, floating FAB visible
+- [ ] All features work: register, login, logout, post, edit, delete, like, unlike, repost, unrepost, reply, follow, unfollow, search, notifications, share link, trending, game tags, theme toggle
+- [ ] `npm install` — no errors
+- [ ] `npm run build` — succeeds
+- [ ] `npm run typecheck` — zero errors
+- [ ] `npm run lint` — passes
+- [ ] `npm test` — all existing tests pass
+- [ ] Zero console errors in browser on any page
 
 ---
 
-## Database Schema
+## Quick Reference
 
-### Models (in `backend/src/db/types.ts`)
+### Color Tokens
+| Token          | Light          | Dark           |
+|----------------|----------------|----------------|
+| bg-primary     | `#FFFFFF`      | `#000000`      |
+| bg-secondary   | `#F7F9F9`      | `#16181C`      |
+| bg-tertiary    | `#EFF3F4`      | `#1D1F23`      |
+| bg-hover       | `rgba(0,0,0,.03)` | `rgba(255,255,255,.03)` |
+| border-default | `#EFF3F4`      | `#2F3336`      |
+| text-primary   | `#0F1419`      | `#E7E9EA`      |
+| text-secondary | `#536471`      | `#71767B`      |
+| accent         | `#EF8C60`      | `#EF8C60`      |
+| like           | `#F91880`      | `#F91880`      |
+| repost         | `#00BA7C`      | `#00BA7C`      |
+| reply          | `#1D9BF0`      | `#1D9BF0`      |
 
-```typescript
-export interface User {
-  id: string;
-  username: string;
-  email: string;
-  passwordHash: string;
-  displayName: string;
-  bio: string;
-  avatarUrl: string;
-  createdAt: string;
-}
-
-export interface Post {
-  id: string;
-  authorId: string;
-  content: string;
-  gameTag: string | null;
-  createdAt: string;
-  updatedAt: string | null;
-  deletedAt: string | null;
-}
-
-export interface Reply {
-  id: string;
-  postId: string;
-  parentReplyId: string | null;
-  authorId: string;
-  content: string;
-  createdAt: string;
-  updatedAt: string | null;
-  deletedAt: string | null;
-}
-
-export interface Like {
-  id: string;
-  userId: string;
-  postId: string;
-  createdAt: string;
-}
-
-export interface Repost {
-  id: string;
-  userId: string;
-  postId: string;
-  createdAt: string;
-}
-
-export interface Follow {
-  id: string;
-  followerId: string;
-  followingId: string;
-  createdAt: string;
-}
-
-export interface Notification {
-  id: string;
-  userId: string;
-  type: 'LIKE' | 'REPLY' | 'REPOST' | 'FOLLOW';
-  actorId: string;
-  postId: string | null;
-  replyId: string | null;
-  read: boolean;
-  createdAt: string;
-}
-
-export interface Session {
-  id: string;
-  userId: string;
-  createdAt: string;
-  expiresAt: string;
-}
-
-export interface Game {
-  id: string;
-  name: string;
-  slug: string;
-  iconUrl: string;
-  color: string;
-}
-
-export interface UserGame {
-  id: string;
-  userId: string;
-  gameId: string;
-  rank: string;
-  rankTier: string;
-  updatedAt: string;
-}
-
-export interface Database {
-  users: User[];
-  posts: Post[];
-  replies: Reply[];
-  likes: Like[];
-  reposts: Repost[];
-  follows: Follow[];
-  notifications: Notification[];
-  sessions: Session[];
-  games: Game[];
-  userGames: UserGame[];
-}
+### Button Patterns
+```
+Primary:    bg-accent text-white rounded-full px-5 py-2 font-bold
+Secondary:  border border-default text-primary rounded-full px-4 py-1.5
+Follow:     bg-accent text-white rounded-full px-4 py-1 text-sm font-bold
+Ghost:      bg-transparent text-accent hover:bg-accent/10 rounded-full
 ```
 
----
-
-## Target File Structure
-
+### Nav Item Pattern
 ```
-aceverse/
-├── .env.example
-├── package.json
-├── frontend/
-│   ├── package.json
-│   ├── index.html
-│   ├── vite.config.ts
-│   ├── tailwind.config.js
-│   ├── postcss.config.js
-│   └── src/
-│       ├── main.tsx
-│       ├── App.tsx
-│       ├── index.css
-│       ├── hooks/useAuth.ts
-│       ├── lib/api.ts
-│       ├── components/
-│       │   ├── AppLayout.tsx
-│       │   ├── LeftSidebar.tsx
-│       │   ├── RightSidebar.tsx
-│       │   ├── BottomNav.tsx
-│       │   ├── Feed.tsx
-│       │   ├── PostCard.tsx
-│       │   ├── PostComposer.tsx
-│       │   ├── PostCardSkeleton.tsx
-│       │   ├── NotificationDropdown.tsx
-│       │   ├── GameTagSelector.tsx
-│       │   ├── RankBadge.tsx
-│       │   ├── FollowButton.tsx
-│       │   ├── Toast.tsx
-│       │   └── YouTubeEmbed.tsx
-│       └── pages/
-│           ├── LandingPage.tsx
-│           ├── LoginPage.tsx
-│           ├── RegisterPage.tsx
-│           ├── HomePage.tsx
-│           ├── ExplorePage.tsx
-│           ├── TrendingPage.tsx
-│           ├── SearchPage.tsx
-│           ├── NotificationsPage.tsx
-│           ├── ProfilePage.tsx
-│           └── PostThreadPage.tsx
-├── backend/
-│   ├── package.json
-│   ├── tsconfig.json
-│   └── src/
-│       ├── index.ts
-│       ├── helpers.ts
-│       ├── middleware/auth.ts
-│       ├── routes/
-│       │   ├── auth.ts
-│       │   ├── posts.ts
-│       │   ├── replies.ts
-│       │   ├── users.ts
-│       │   ├── timeline.ts
-│       │   ├── notifications.ts
-│       │   ├── search.ts
-│       │   └── games.ts
-│       ├── db/
-│       │   ├── store.ts
-│       │   ├── types.ts
-│       │   ├── seed.ts
-│       │   ├── reset.ts
-│       │   └── repos/
-│       │       ├── users.ts
-│       │       ├── posts.ts
-│       │       ├── replies.ts
-│       │       ├── likes.ts
-│       │       ├── reposts.ts
-│       │       ├── follows.ts
-│       │       ├── notifications.ts
-│       │       ├── sessions.ts
-│       │       ├── games.ts
-│       │       └── userGames.ts
-│       └── __tests__/
-│           ├── auth.test.ts
-│           ├── posts.test.ts
-│           ├── timeline.test.ts
-│           └── users.test.ts
-└── db/
-    └── data/
-        └── aceverse.db.json (auto-generated)
+Inactive:  [outline icon] Label  → text-primary
+Hover:     [outline icon] Label  → text-primary, bg-hover rounded-full pill
+Active:    [filled icon]  Label  → text-accent font-bold
+```
+
+### Icon Sizes
+```
+Navigation:  20-24px (w-5 h-5 or w-6 h-6)
+Action row:  18-20px (w-[18px] h-[18px] or w-5 h-5)
+Inline:      16px (w-4 h-4)
+Section headers: 20px (w-5 h-5)
 ```

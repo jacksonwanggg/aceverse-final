@@ -4,8 +4,9 @@
 
 ## Summary
 
-- Iterations completed: 19
-- Current status: Complete (Phase 17 Final Verification done)
+- Iterations completed: 0
+- Current status: In Progress
+- Task: UI/UX Polish & Light/Dark Mode (new iteration — MVP was completed in previous task)
 
 ## How This Works
 
@@ -13,435 +14,49 @@ Progress is tracked in THIS FILE, not in LLM context.
 When context is rotated (fresh agent), the new agent reads this file.
 This is how Ralph maintains continuity across iterations.
 
+## Previous Task Summary (COMPLETED)
+
+The previous RALPH_TASK completed all 107 criteria across 18 phases:
+- Phase 0: Build & run foundation (npm install, dev, build, typecheck, lint)
+- Phase 1: Seed & reset scripts (10 users, 60+ posts, games, ranks)
+- Phase 2: Shared AppLayout (3-column, sidebars, mobile bottom nav)
+- Phase 3: Gaming identity (games, ranks, game tags on posts)
+- Phase 4: Auth flow (register, login, logout, sessions, protected routes)
+- Phase 5: Landing page (hero, features, stats, footer, animations)
+- Phase 6: Home & explore feeds (infinite scroll, skeleton loading, optimistic updates)
+- Phase 7: Posts CRUD (create, edit, delete, soft delete)
+- Phase 8: Likes & reposts (optimistic UI, notifications)
+- Phase 9: Replies & threads (nested replies, thread view)
+- Phase 10: Follows & profile (full profile page, follow/unfollow, edit profile)
+- Phase 11: Notifications (page, dropdown, badge, mark all read)
+- Phase 12: Search (debounced, tabs, user/post results)
+- Phase 13: Share & public access (copy link, logged-out read-only)
+- Phase 14: Trending page (engagement ranking, game filter, YouTube embeds)
+- Phase 15: Animations & polish (framer-motion, micro-interactions, skeletons)
+- Phase 16: Tests (17 backend tests passing)
+- Phase 17: Final verification (all commands pass)
+
+## Current Task: UI/UX Polish (133 checkboxes, 15 phases)
+
+This task focuses on making the UI match the design mockups in `.ralph/image.png`, `.ralph/image copy.png`, `.ralph/image copy 2.png` exactly. Key work:
+
+1. CSS variable theme system (light + dark tokens)
+2. Light/dark/system mode toggle with localStorage persistence + FOUC prevention
+3. Replace ALL emoji icons with Lucide React SVGs
+4. Top navigation bar matching mockup (logo, nav links, search, post button, bell, avatar)
+5. PostCard matching mockup exactly (layout, game tag pills, action row colors, YouTube embeds)
+6. PostComposer matching mockup (toolbar icons, char count, game tag selector)
+7. Left sidebar matching mockup (user card, nav, Your Games, footer)
+8. Right sidebar matching mockup (Your Ranks, Friends Online, Who to Follow, Trending)
+9. Profile page matching mockup (cover, overlapping avatar, Gaming Ranks, tabs)
+10. Trending page matching mockup (stats cards, ranked posts with #1/#2 badges, game filter)
+11. All remaining pages polished (notifications, search, thread, landing, auth)
+12. Mobile polish (bottom nav, FAB, responsive)
+13. Micro-animations (like bounce, repost spin, follow fill, shimmer skeletons)
+14. Typography & spacing consistency
+15. Final verification (both modes, all features, all commands pass)
+
+**IMPORTANT**: Ralph must look at the `.ralph/image*.png` mockup files for visual targets.
+
 ## Session History
 
-
-### 2026-02-22 18:18:25
-**Session 1 started** (model: opus-4.6-thinking)
-
-### 2026-02-22 18:26:13
-**Session 1 started** (model: composer-1)
-
-### 2026-02-22 18:28:00
-**Session 1 continued** (model: composer-1)
-
-Completed:
-- Created frontend directory with Vite + React + TypeScript + Tailwind setup
-- Configured Tailwind with #EF8C60 as primary accent color
-- Verified root scripts work (dev, build, test, typecheck, lint)
-- Verified DB auto-creates and persists changes across restarts
-- Verified auth implementation (register/login/logout with bcrypt and HttpOnly cookies)
-- Implemented Home and Explore feeds with pagination and loading states
-- Implemented PostComposer with 280 char limit and optimistic updates for instant display
-- Created PostCard component for displaying posts
-- Set up React Query and React Router
-- Created basic page structure (Login, Register, Home, Explore, Search, Notifications, Profile, PostThread)
-
-Next: Continue with remaining criteria - need to implement likes, reposts, replies, editing/deleting posts, profile pages, search, notifications, and X-like layout with sidebar
-
-### 2026-02-22 18:30:34
-**Session 1 started** (model: auto)
-
-### 2026-02-22 (Ralph Iteration 1)
-**Edit and delete posts criterion completed.**
-
-Completed:
-- Added `api.posts.update(postId, { content })` and `api.posts.delete(postId)` in frontend `lib/api.ts`.
-- PostCard: "..." menu (Edit / Delete) shown when `canEdit` or `canDelete`; inline edit with textarea (280 chars), Save/Cancel; delete with confirm; placeholder "This post was deleted." when `post.deleted` or `post.content == null`.
-- Feed: `handleEditPost` and `handleDeletePost` call API and update timeline cache (optimistic-style update for edit, soft-delete placeholder for delete); passed as `onEdit` and `onDelete` to PostCard.
-- Marked "Editing and deleting posts works with correct permissions" as [x] in RALPH_TASK.md.
-
-Backend already had PATCH/DELETE posts with author-only checks and soft delete. Next unchecked criterion: Thread page (/p/:postId) works and displays replies + nested replies.
-
-### 2026-02-22 18:33:50
-**Session 1 ended** - ✅ TASK COMPLETE
-
-### 2026-02-22 18:42:38
-**Session 1 started** (model: Auto)
-
-### 2026-02-22 (Ralph Iteration 1 — Phase 0)
-**Phase 0: Fix Foundation — Build & Run completed.**
-
-Completed:
-- Fixed backend TypeScript: Express `req.params` typed as `string | string[]`; added `paramStr()` in helpers and used it in routes (posts, replies, users).
-- Added backend `eslint.config.js` (ESLint 9 flat config); fixed lint: removed unused `getPostShape` and `usersRepo` from auth middleware, fixed `err: any` in auth route, suppressed namespace rule for Express declaration merging.
-- Fixed frontend build: `useInfiniteQuery` now includes `initialPageParam` and proper types (`TimelinePost`); Tailwind v4: installed `@tailwindcss/postcss`, updated postcss.config.js and index.css to use `@import "tailwindcss"`.
-- Confirmed: npm install, npm run dev, GET /api/health, npm run build, npm run typecheck, npm run lint all pass. Marked all Phase 0 criteria [x] in RALPH_TASK.md.
-
-Next: Phase 1 — Seed & Reset Scripts.
-
-### Phase 1 completed (same session)
-- Added Game, UserGame types and games/userGames to Database; added gameTag to Post; backward-compatible load in store.
-- Created gamesRepo and userGamesRepo; added gameTag to postsRepo.create and createPostSchema in routes.
-- Created backend/src/db/seed.ts: 5 games, 10 gamer users (bcrypt), userGames (ranks), 60+ posts (with game tags), 18 replies (nested 2–3 levels), likes/reposts/follows and matching notifications; seed only runs when executed as entry (not when imported by reset).
-- Created backend/src/db/reset.ts: calls runSeed (which resetDb() then populates).
-- npm run seed and npm run reset verified; frontend TimelinePost includes gameTag.
-
-Next: Phase 2 — Shared Layout & Navigation.
-
-### 2026-02-22 18:51:31
-**Session 1 ended** - ✅ TASK COMPLETE
-
-### 2026-02-22 18:56:12
-**Session 1 started** (model: auto)
-
-### 2026-02-22 (Ralph Iteration 1 — Phase 2)
-**Phase 2: Shared Layout & Navigation completed.**
-
-Completed:
-- Backend: Added GET /api/games, GET /api/users/me/following, GET /api/users/suggestions, GET /api/users/:username/games, GET /api/timeline/trending-tags. Mounted games routes.
-- Frontend API: games.getAll, users.getProfile, getPosts, getGames, getSuggestions, getFollowing, follow, unfollow, timeline.trendingTags.
-- Created AppLayout with 3-column layout (left sidebar, center main, right sidebar), loading and auth redirect.
-- LeftSidebar: user avatar, @username, follower count, nav (Home, Trending, Profile) with NavLink active state (#EF8C60), "Your Games" section from user games.
-- RightSidebar: "Your Ranks" (user games + rank), "Friends Online" (following list with green online dot), "Who to Follow" (suggestions + Follow button), "Trending" (game tags with post counts).
-- BottomNav: mobile-only bottom tab bar (Home, Trending, FAB, Search, Notifications, Profile), FAB for compose.
-- Mobile: sidebars hidden (md:flex / lg:flex), bottom nav and FAB shown; center column full width.
-- Wrapped all authenticated routes (Home, Explore, Trending, Search, Notifications, Profile, PostThread) in AppLayout via nested Route element.
-- Added TrendingPage stub and /trending route. Updated page styles for dark layout. Fixed seed.ts unused var for lint.
-- npm run typecheck && npm run build && npm run lint — all pass. Marked all Phase 2 criteria [x].
-
-Next: Phase 3 — Gaming Identity (games & ranks verification, profile gaming section, post game tag, etc.).
-
-### 2026-02-22 19:01:27
-**Session 1 ended** - 🔄 Context rotation (token limit reached)
-
-### 2026-02-22 19:01:29
-**Session 2 started** (model: auto)
-
-### 2026-02-22 19:03:02
-**Session 2 ended** - 🔄 Context rotation (token limit reached)
-
-### 2026-02-22 19:03:04
-**Session 3 started** (model: auto)
-
-### 2026-02-22 (Ralph Iteration 3 — Phase 3)
-**Phase 3: Gaming Identity — Games & Ranks completed.**
-
-Completed:
-- Verified Game model (id, name, slug, iconUrl, color) and seed with 7 games (Valorant, CS2, Apex, LoL, Rocket League, Smash, Fortnite).
-- Verified UserGame model (id, userId, gameId, rank, rankTier, updatedAt) and userGamesRepo (getByUser, find, create, upsert).
-- Verified gameTag on Post and gamesRepo/userGamesRepo CRUD. Backend GET /api/games, GET /api/users/:username/games, PUT /api/users/:username/games already present.
-- Added shapePost game info (game name, slug, color) when gameTag set; added api.users.updateGames to frontend.
-- Profile page: full profile with cover, avatar, display name, @username, bio, join date, follower/following counts, and "Gaming Ranks" section (game icon, name, rank, rank badge, last-updated).
-- PostComposer uses GameTagSelector; PostCard shows game badge/pill when post has gameTag/game. LeftSidebar "Your Games" shows tracked games with quick links.
-- npm run typecheck && npm run build && npm run lint — all pass. Phase 3 criteria marked [x].
-
-Next: Phase 4 — Complete Auth Flow.
-
-### 2026-02-22 (Ralph Iteration 4 — Phase 4)
-**Phase 4: Complete Auth Flow completed.**
-
-Completed:
-- Register page: username, email, password, display name with client-side validation and inline errors; API field errors (ApiError) displayed per-field; success toast and redirect to home.
-- Login page: email + password, inline error and error toast, redirect to home on success.
-- Logout: "Log out" button in LeftSidebar; on click calls logout then navigates to /login.
-- Session: backend already sets HttpOnly cookie (setSessionCookie); useAuth uses GET /api/auth/me with credentials, so state persists on refresh.
-- Protected pages: AppLayout redirects to /login when !user.
-- Auth UI: dark gamer theme (bg-[#0D0D0D], #EF8C60 buttons/focus), loading states on submit, Toast component and useToast for error/success toasts.
-- Added ApiError in api.ts for field-level validation errors; ToastProvider + useToast (context in toastContext.ts, hook in hooks/useToast.ts, provider in components/Toast.tsx) for react-refresh lint.
-- npm run typecheck && npm run build && npm run lint — all pass (warnings only).
-
-Next: Phase 5 — Landing Page (Logged-Out Experience).
-
-### 2026-02-22 19:06:35
-**Session 3 ended** - 🔄 Context rotation (token limit reached)
-
-### 2026-02-22 19:06:37
-**Session 4 started** (model: auto)
-
-### 2026-02-22 (Ralph Iteration 2)
-**Phase 2 verified; Phase 3 already committed.**
-
-- Confirmed Phase 2 layout (AppLayout, LeftSidebar, RightSidebar, BottomNav) and Phase 3 (games, ranks, profile, game tags) are in repo.
-- RightSidebar: rank badge icon (trophy) already present. Phase 3 RALPH_TASK.md criteria already [x].
-- Next: Phase 4 — Complete Auth Flow (register/login validation, logout redirect, protected routes, auth UI polish).
-
-### 2026-02-22 19:12:24
-**Session 4 ended** - Agent finished naturally (92 criteria remaining)
-
-### 2026-02-22 19:12:26
-**Session 5 started** (model: auto)
-
-### 2026-02-22 (Ralph Iteration 5 — Phase 5)
-**Phase 5: Landing Page (Logged-Out Experience) completed.**
-
-Completed:
-- Created LandingPage at `/` for logged-out users: hero with gradient/glow (#EF8C60), tagline "Your gaming universe. One feed.", Sign Up and Login CTAs; smooth scroll animations (CSS fade-in + IntersectionObserver for scroll-animate sections).
-- Feature sections: Track Your Ranks, Share Your Clips, Find Your Squad, Stay in the Loop with icons and copy.
-- Social proof section: 50K+ gamers, 1M+ clips shared, 7 games supported.
-- Footer: About, Help, Terms, Privacy links.
-- OptionalAuthLayout: `/` shows landing when logged out, AppLayout + HomeOrLanding when logged in (index = Landing or Home).
-- Public /p/:postId: PublicOrAuthPostThread shows StandalonePostThreadPage (read-only thread + "Log in to like, reply, and repost" banner) when logged out; AppLayout + PostThreadPage when logged in.
-- PostThreadPage: fetches post + replies via api.posts.getById, renders PostCard (with readOnly prop) and reply list; PostCard supports readOnly to hide actions and edit/delete menu.
-- Landing page responsive (nav, hero, features, stats, CTA, footer).
-- npm run typecheck && npm run build && npm run lint — all pass. Phase 5 criteria marked [x] in RALPH_TASK.md.
-
-Next: Phase 6 — Home & Explore Feeds.
-
-### 2026-02-22 (Ralph Iteration 6 — Phase 6)
-**Phase 6: Home & Explore Feeds completed.**
-
-Completed:
-- Home feed: already showed following + own posts, newest first, cursor pagination, infinite scroll (backend getHome, Feed useInfiniteQuery + scroll handler).
-- Explore feed: already showed all posts globally, newest first (backend getExplore).
-- Feed: skeleton loading on initial load; added 2 PostCardSkeleton when fetching next page.
-- Home empty state: exact text "Your feed is empty. Follow some gamers to see their posts!" with suggested accounts from api.users.getSuggestions(6), avatar, display name, @username, Follow button.
-- Post composer: 500 char limit (was 280) in frontend PostComposer and backend posts/replies schemas; character counter and Post button disabled when empty; #EF8C60 via bg-primary.
-- PostCard edit mode: 500 char limit and maxLength/display for consistency.
-- New posts: optimistic update already in PostComposer (onMutate adds temp post, onSuccess replaces with real).
-- npm run typecheck && npm run build && npm run lint — all pass (warnings only).
-
-Next: Phase 7 — Posts Full CRUD.
-
-### 2026-02-22 19:20:43
-**Session 5 ended** - Agent finished naturally (84 criteria remaining)
-
-### 2026-02-22 19:20:45
-**Session 6 started** (model: auto)
-
-### 2026-02-22 19:23:27
-**Session 6 ended** - Agent finished naturally (77 criteria remaining)
-
-### 2026-02-22 19:23:29
-**Session 7 started** (model: auto)
-
-### 2026-02-22 (Ralph Iteration 7 — Phase 7)
-**Phase 7: Posts — Full CRUD completed.**
-
-Completed:
-- Verified create post: PostComposer has 500 char limit, optional game tag (GameTagSelector), api.posts.create; added maxLength={500} to textarea.
-- Verified PostCard: avatar, display name, @username, relative timestamp (formatDistanceToNow), content, game tag pill, action row (reply, like, repost, share).
-- Edit post: author-only via canEdit, inline edit with Save/Cancel (already implemented).
-- Delete post: author-only via canDelete, soft delete; updated placeholder to "This post has been deleted." (was "This post was deleted.").
-- Clicking post: timestamp and content link to `/p/:postId` for thread view.
-- npm run typecheck && npm run build && npm run lint — all pass (warnings only).
-- Marked all Phase 7 criteria [x] in RALPH_TASK.md.
-
-Next: Phase 8 — Likes & Reposts (optimistic UI, notifications, api client).
-
-### 2026-02-22 19:25:21
-**Session 7 ended** - Agent finished naturally (71 criteria remaining)
-
-### 2026-02-22 19:25:23
-**Session 8 started** (model: auto)
-
-### 2026-02-22 (Ralph Iteration 8 — Phase 8)
-**Phase 8: Likes & Reposts completed.**
-
-Completed:
-- Feed.tsx: Added optimistic like/unlike and repost/unrepost mutations; update both timeline caches (home + explore) on mutate; rollback on error; pass onLike, onRepost, onReply to PostCard.
-- PostThreadPage: When not readOnly, added like/unlike/repost/unrepost mutations that optimistically update ['post', postId] and invalidate timeline; pass onLike/onRepost to PostCard.
-- PostCard: Heart fill uses `var(--primary)` (#EF8C60) when liked; repost button highlights with text-primary when reposted; added aria-labels for Like/Unlike and Repost/Unrepost.
-- Backend already had: no double like/repost (likesRepo/repostsRepo create throws), LIKE/REPOST notifications only when post.authorId !== req.userId. Frontend api.posts.like/unlike/repost/unrepost already present.
-- npm run typecheck && npm run build && npm run lint — all pass (warnings only).
-
-Next: Phase 9 — Replies & Threads.
-
-### 2026-02-22 19:29:00
-**Session 8 ended** - Agent signaled complete but criteria remain
-
-### 2026-02-22 19:29:02
-**Session 9 started** (model: auto)
-
-### 2026-02-22 (Ralph Iteration 9 — Phase 9)
-**Phase 9: Replies & Threads completed.**
-
-Completed:
-- Thread page: root post at top, reply composer below it (when authenticated), replies listed chronologically with depth-based indent (max depth 6).
-- Reply to post: api.posts.reply(postId, { content }), optimistic add to cache, replace with server reply on success.
-- Reply to reply: api.replies.create(replyId, { content }), inline "Reply" opens ReplyComposer, nested replies indented (max 6).
-- Edit/delete reply: author-only Edit/Delete on ReplyRow, inline edit with Save/Cancel, soft delete shows "This reply has been deleted."; api.replies.update and api.replies.delete in frontend.
-- Backend already creates REPLY notification for post author and parent reply author (replies routes).
-- Added api.posts.reply and api.replies (create, update, delete) to frontend lib/api.ts.
-- npm run typecheck && npm run build && npm run lint — all pass (warnings only).
-
-Next: Phase 10 — Follows & Profile.
-
-### 2026-02-22 19:32:42
-**Session 9 ended** - Agent finished naturally (57 criteria remaining)
-
-### 2026-02-22 19:32:44
-**Session 10 started** (model: auto)
-
-### 2026-02-22 (Ralph Iteration 10 — Phase 10)
-**Phase 10: Follows & Profile completed.**
-
-Completed:
-- Backend: Added PATCH /users/:username for profile update (displayName, bio, avatarUrl) with Zod validation and requireAuth; only profile owner can update.
-- Frontend api: Added users.updateProfile(username, { displayName?, bio?, avatarUrl? }).
-- Profile page: Full profile with cover, avatar, display name, @username, bio, join date, follower/following counts; Gaming Ranks section with game icons and badges; User's posts tab with useInfiniteQuery and paginated PostCards (like, repost, reply, edit, delete with cache updates); Follow/Unfollow button when viewing another user (optimistic toggle and follower count); Edit Profile button on own profile opening modal with display name, bio, avatar URL and Save/Cancel.
-- Follow already creates FOLLOW notification (backend users route). api.users had getProfile, getPosts, follow, unfollow, getGames, updateGames; added updateProfile.
-- npm run typecheck && npm run build && npm run lint — all pass. Phase 10 criteria marked [x] in RALPH_TASK.md.
-
-Next: Phase 11 — Notifications.
-
-### 2026-02-22 19:37:30
-**Session 10 ended** - Agent signaled complete but criteria remain
-
-### 2026-02-22 19:37:32
-**Session 11 started** (model: auto)
-
-### 2026-02-22 (Ralph Iteration 11 — Phase 11)
-**Phase 11: Notifications completed.**
-
-Completed:
-- Backend: Added GET /api/notifications/unread-count for badge polling.
-- Frontend api.notifications: getAll (cursor pagination), markAllRead, getUnreadCount.
-- NotificationsPage: Full list with actor avatar, action text (liked/replied/reposted/followed), relative time, link to post or profile; "Mark all as read" button; Load more for pagination; skeleton loading.
-- Unread badge: LeftSidebar (bell + count) and BottomNav (Alerts tab) with orange #EF8C60 badge.
-- NotificationDropdown: Bell icon in left nav toggles dropdown with latest 5 notifications and "View all notifications" link; click-outside to close.
-- Backend already skips self-notifications (like/repost/reply when actor is post author; follow when following self).
-- npm run typecheck && npm run build && npm run lint — all pass. Phase 11 criteria marked [x] in RALPH_TASK.md.
-
-Next: Phase 12 — Search.
-
-### 2026-02-22 19:43:00
-**Session 11 ended** - Agent finished naturally (42 criteria remaining)
-
-### 2026-02-22 19:43:02
-**Session 12 started** (model: auto)
-
-### 2026-02-22 (Ralph Iteration 12 — Phase 12)
-**Phase 12: Search completed.**
-
-Completed:
-- Added `api.search(q, type)` to frontend `lib/api.ts` (`GET /api/search?q=&type=top|people|latest`).
-- Search page (`/search`): search input with 300ms debounced URL sync; tabs "Top", "People", "Latest"; Top shows mixed users + posts, People shows user results (avatar, display name, @username, bio snippet, Follow/Unfollow), Latest shows post results; post results use standard PostCard with like/repost handlers; empty state "No results for 'query'" with links to Trending and Explore.
-- Search bar in LeftSidebar (form with input + submit button) and RightSidebar (input, submit on Enter) that navigate to `/search?q=...`.
-- npm run typecheck && npm run build && npm run lint — all pass (warnings only).
-
-Next: Phase 13 — Share & Public Access.
-
-### 2026-02-22 19:47:23
-**Session 12 ended** - Agent signaled complete but criteria remain
-
-### 2026-02-22 19:47:25
-**Session 13 started** (model: auto)
-
-### 2026-02-22 (Ralph Iteration 13 — Phase 13)
-**Phase 13: Share & Public Access completed.**
-
-Completed:
-- Share button on every PostCard: copies canonical link `window.location.origin + '/p/' + post.id` to clipboard via `navigator.clipboard.writeText`, shows success toast "Link copied to clipboard" (or error toast on failure). PostCard uses `useToast` from ToastProvider.
-- `/p/:postId` already accessible to logged-out users: `PublicOrAuthPostThread` renders `StandalonePostThreadPage` when no user; `PostThreadPage readOnly` shows post + replies with no action buttons.
-- Logged-out thread view already has banner: "Log in to like, reply, and repost." with "Log in" and "Sign up" links in `StandalonePostThreadPage`.
-- npm run typecheck && npm run build && npm run lint — all pass (warnings only). Marked all Phase 13 criteria [x] in RALPH_TASK.md.
-
-Next: Phase 14 — Trending Page.
-
-### 2026-02-22 19:49:37
-**Session 13 ended** - Agent finished naturally (30 criteria remaining)
-
-### 2026-02-22 19:49:39
-**Session 14 started** (model: auto)
-
-### 2026-02-22 (Ralph Iteration 14 — Phase 14)
-**Phase 14: Trending Page completed.**
-
-Completed:
-- Backend: Added `postsRepo.getTrending(engagementByPostId, { game, cursor, limit })` for posts ranked by likes + reposts + replies; added `GET /api/timeline/trending?cursor=&game=` returning posts, nextCursor, hotClipsCount, totalLikes, lastUpdated.
-- Frontend API: Added `api.timeline.trending(cursor, game)`.
-- TrendingPage: "Trending Clips" header with stats (hot clips count, total likes, last updated); posts with rank badges (#1, #2, #3); game filter in left sidebar (desktop) and horizontal pills (mobile) with Clear button and #EF8C60 highlight for selected game; infinite scroll; like/repost/reply/edit/delete with cache updates.
-- YouTube: Created `frontend/src/lib/youtube.ts` (extractYouTubeVideoId) and `YouTubeEmbed.tsx`; PostCard renders embedded YouTube player when post content contains a YouTube URL.
-- Right sidebar already shows top 5 trending tags (slice(0, 5)).
-- npm run typecheck && npm run build && npm run lint — all pass. Phase 14 criteria marked [x] in RALPH_TASK.md.
-
-Next: Phase 15 — Animations & Polish.
-
-### 2026-02-22 19:52:38
-**Session 14 ended** - 🔄 Context rotation (token limit reached)
-
-### 2026-02-22 19:52:40
-**Session 15 started** (model: auto)
-
-### 2026-02-22 (Ralph Iteration 15 — Phase 15)
-**Phase 15: Animations & Polish completed.**
-
-Completed:
-- Phase 14 was already complete (Trending page with stats, ranked posts, game filter, YouTube embeds, right sidebar top 5 tags, backend GET /api/timeline/trending).
-- Installed framer-motion; AppLayout already had page transitions (AnimatePresence + motion.div) and ScrollToTop (smooth scroll on pathname change).
-- PostCard: motion.article with whileHover (lift + orange glow shadow), like button bounce (whileTap + animate scale when liked), repost icon spin (animate rotate when reposted).
-- Profile Follow/Unfollow: motion.button with whileTap/whileHover pulse, loading spinner when isPending, hover glow.
-- PostComposer: showToast('Post created', 'success') on success; submit button shows spinner + "Posting..." when isSubmitting; hover glow on Post button.
-- Feed and Profile handleDeletePost: showToast('Post deleted', 'success'). Toasts already use #EF8C60 for success.
-- Profile loading: skeleton (cover, avatar, name lines, 3 PostCardSkeletons) instead of "Loading...". Feed and Notifications and Search already had skeleton loading.
-- Hover: cards lift (PostCard), buttons glow (primary shadow on Post, Follow, share focus ring).
-- npm run typecheck && npm run build && npm run lint — all pass (warnings only).
-
-Next: Phase 16 — Tests (auth, posts, timeline, users test files; npm test).
-
-### 2026-02-22 19:54:09
-**Session 15 ended** - 🔄 Context rotation (token limit reached)
-
-### 2026-02-22 19:54:11
-**Session 16 started** (model: auto)
-
-### 2026-02-22 19:56:24
-**Session 16 ended** - 🔄 Context rotation (token limit reached)
-
-### 2026-02-22 19:56:26
-**Session 17 started** (model: auto)
-
-### 2026-02-22 (Ralph Iteration 17 — Phase 15)
-**Phase 15: Animations & Polish completed.**
-
-Completed:
-- Page transitions: AppLayout already had AnimatePresence + motion.div with fade/slide variants; set transition to 0.25s easeOut for smoother feel. ScrollToTop on pathname change already present.
-- Micro-interactions: PostCard like button uses spring scale bounce (1 → 1.35 → 1); repost button animates rotate 0→360 when reposted with spring. Follow buttons (Feed, ProfilePage, RightSidebar, SearchPage) have hover glow and loading spinners when pending.
-- Skeleton loading: Feed (home/explore), TrendingPage, ProfilePage, SearchPage, NotificationsPage already use PostCardSkeleton or custom pulse skeletons while loading.
-- Toast: Success toasts use #EF8C60 left border and subtle glow; error/info use border-l accent.
-- Hover effects: PostCard has lift + shadow; Load more and Follow buttons have hover:shadow glow; primary buttons use #EF8C60 glow.
-- Loading spinners: PostComposer shows spinner + "Posting..."; all Follow/Unfollow buttons show spinner when isPending. Like/repost use optimistic UI.
-- Fixed backend test type errors: normalized set-cookie header to string[] in posts.test.ts, timeline.test.ts, users.test.ts.
-- npm run typecheck && npm run build && npm run lint — all pass (warnings only).
-
-Next: Phase 16 — Tests (verify/create backend tests, npm test passes).
-
-### 2026-02-22 19:58:45
-**Session 17 ended** - 🔄 Context rotation (token limit reached)
-
-### 2026-02-22 19:58:47
-**Session 18 started** (model: auto)
-
-### 2026-02-22 (Ralph Iteration 18 — Phase 16)
-**Phase 16: Tests completed.**
-
-Completed:
-- Confirmed app exported from `backend/src/app.ts` for testing (index.ts already used it).
-- Added supertest to backend (already present).
-- Created `backend/src/__tests__/auth.test.ts`: register (201 + user + cookie), login (200 + cookie), GET /me (user when session / null when not), logout (ok + me null) — 4 tests.
-- Created `backend/src/__tests__/posts.test.ts`: create post, get post, PATCH update, DELETE soft-delete, like, unlike — 6 tests.
-- Created `backend/src/__tests__/timeline.test.ts`: home feed (authenticated), home empty when unauthenticated, explore feed — 3 tests.
-- Created `backend/src/__tests__/users.test.ts`: get profile, follow + unfollow, get user posts — 3 tests.
-- All tests use resetDb() in beforeAll for isolation; auth uses request.agent(app) or Set-Cookie for session.
-- `npm test` passes (16 tests, 4 files). `npm run typecheck && npm run build && npm run lint` pass (lint warnings only).
-- Marked all Phase 16 criteria [x] in RALPH_TASK.md.
-
-Next: Phase 17 — Final Verification (full install/seed/build/typecheck/lint/test and manual QA).
-
-### 2026-02-22 20:02:33
-**Session 18 ended** - Agent finished naturally (9 criteria remaining)
-
-### 2026-02-22 20:02:35
-**Session 19 started** (model: auto)
-
-### 2026-02-22 (Ralph Iteration 19 — Phase 17)
-**Phase 17: Final Verification completed.**
-
-Completed:
-- Ran full verification suite: `npm install` (exit 0), `npm run seed` (exit 0), `npm run dev` (both backend 3001 and frontend start without crashes), `npm run build` (exit 0), `npm run typecheck` (exit 0), `npm run lint` (exit 0, warnings only), `npm test` (17 tests passed).
-- Marked all Phase 17 criteria [x] in RALPH_TASK.md.
-- Grep for `"[ ]"` confirms zero unchecked criteria remain (only match is in the instruction text on line 15).
-
-Next: Task complete. All 107 checkboxes across Phases 0–17 are done.
-
-### 2026-02-22 (Ralph Iteration 16 — Phase 15 & 16)
-**Phase 15 already complete. Phase 16 verified and small additions.**
-
-Completed:
-- Read RALPH_TASK.md, .ralph/progress.md (lessons.md and failures.md not found).
-- Phase 15: Committed polish — AppLayout page transition ease (0.25s easeOut), PostCard hover/focus ring tweaks.
-- Phase 16: Verified all 4 test files exist (auth, posts, timeline, users); added users.test.ts case "GET /api/users/:username returns 404 for unknown username". `npm test` passes (17 tests). `npm run typecheck && npm run build && npm run lint` all pass (warnings only).
-- RALPH_TASK.md Phase 15 and Phase 16 already marked [x].
-
-Next: Phase 17 — Final Verification (npm install, seed, dev, build, typecheck, lint, test, manual QA, grep for unchecked).

@@ -3,8 +3,8 @@
 # DO NOT EDIT - regenerated on task file change
 
 source_file: RALPH_TASK.md
-source_mtime: 1771750900
-generated_at: 2026-02-22T09:02:31Z
+source_mtime: 1771751017
+generated_at: 2026-02-22T09:04:22Z
 
 tasks:
   - id: "line_77"
@@ -835,63 +835,63 @@ tasks:
     raw_marker: -
   - id: "line_246"
     line_number: 246
-    status: pending
+    status: completed
     parallel_group: 999999
     description: `npm install` — clean install, no errors
     indent_level: 0
     raw_marker: -
   - id: "line_247"
     line_number: 247
-    status: pending
+    status: completed
     parallel_group: 999999
     description: `npm run seed` — seeds DB with realistic gaming data
     indent_level: 0
     raw_marker: -
   - id: "line_248"
     line_number: 248
-    status: pending
+    status: completed
     parallel_group: 999999
     description: `npm run dev` — both servers start, no crashes, frontend loads at localhost:5173
     indent_level: 0
     raw_marker: -
   - id: "line_249"
     line_number: 249
-    status: pending
+    status: completed
     parallel_group: 999999
     description: `npm run build` — builds both workspaces successfully
     indent_level: 0
     raw_marker: -
   - id: "line_250"
     line_number: 250
-    status: pending
+    status: completed
     parallel_group: 999999
     description: `npm run typecheck` — zero type errors
     indent_level: 0
     raw_marker: -
   - id: "line_251"
     line_number: 251
-    status: pending
+    status: completed
     parallel_group: 999999
     description: `npm run lint` — passes
     indent_level: 0
     raw_marker: -
   - id: "line_252"
     line_number: 252
-    status: pending
+    status: completed
     parallel_group: 999999
     description: `npm test` — all tests pass
     indent_level: 0
     raw_marker: -
   - id: "line_253"
     line_number: 253
-    status: pending
+    status: completed
     parallel_group: 999999
     description: Manual QA: register user A, post 3 gaming posts with game tags, register user B, follow A, B's home feed shows A's posts, B likes/reposts A's post, A sees notifications, search works, share link works, logged-out view works, trending page shows ranked posts
     indent_level: 0
     raw_marker: -
   - id: "line_254"
     line_number: 254
-    status: pending
+    status: completed
     parallel_group: 999999
     description: Grep this file for `\"[ ]\"` — confirm zero unchecked items remain (excluding this line)
     indent_level: 0
