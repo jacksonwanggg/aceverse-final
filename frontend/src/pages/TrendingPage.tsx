@@ -5,6 +5,7 @@ import { formatDistanceToNow } from 'date-fns'
 import PostCard from '../components/PostCard'
 import PostCardSkeleton from '../components/PostCardSkeleton'
 import { api } from '../lib/api'
+import { Flame, TrendingUp, Clock } from 'lucide-react'
 
 interface TimelinePost {
   id: string
@@ -247,13 +248,30 @@ export default function TrendingPage() {
       </aside>
 
       <div className="flex-1 min-w-0">
-        <div className="sticky top-0 bg-primary/95 backdrop-blur-sm border-b border-border-default px-4 py-3 z-10">
-          <h1 className="text-xl font-bold text-primary">Trending Clips</h1>
+        <div className="sticky top-0 bg-primary/95 backdrop-blur-sm border-b border-border-default px-4 py-4 z-10">
+          <div className="flex items-center gap-2 mb-2">
+            <Flame className="w-6 h-6 text-accent" />
+            <h1 className="text-xl font-bold text-primary">Trending Clips</h1>
+          </div>
+          <p className="text-sm text-secondary mb-3">Top gaming clips from the community</p>
           {stats && (
-            <p className="text-sm text-secondary mt-0.5">
-              {stats.hotClipsCount} hot clips · {stats.totalLikes} total likes · updated{' '}
-              {formatDistanceToNow(new Date(stats.lastUpdated), { addSuffix: true })}
-            </p>
+            <div className="flex gap-3">
+              <div className="flex items-center gap-2 px-3 py-2 rounded-lg bg-secondary">
+                <Flame className="w-4 h-4 text-accent" />
+                <span className="text-sm font-bold text-primary">{stats.hotClipsCount}+</span>
+                <span className="text-xs text-secondary">Hot Clips</span>
+              </div>
+              <div className="flex items-center gap-2 px-3 py-2 rounded-lg bg-secondary">
+                <TrendingUp className="w-4 h-4 text-accent" />
+                <span className="text-sm font-bold text-primary">{stats.totalLikes >= 1000 ? `${(stats.totalLikes / 1000).toFixed(1)}K` : stats.totalLikes}+</span>
+                <span className="text-xs text-secondary">Total Likes</span>
+              </div>
+              <div className="flex items-center gap-2 px-3 py-2 rounded-lg bg-secondary">
+                <Clock className="w-4 h-4 text-accent" />
+                <span className="text-sm font-bold text-primary">24h</span>
+                <span className="text-xs text-secondary">Updated</span>
+              </div>
+            </div>
           )}
         </div>
 

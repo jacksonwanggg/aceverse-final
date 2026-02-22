@@ -3,6 +3,7 @@ import { Link, useNavigate } from 'react-router-dom'
 import { useAuth } from '../hooks/useAuth'
 import { useQuery, useMutation, useQueryClient } from '@tanstack/react-query'
 import { api } from '../lib/api'
+import { Gamepad2, Users, UserPlus, TrendingUp, Trophy } from 'lucide-react'
 
 export default function RightSidebar() {
   const { user } = useAuth()
@@ -64,8 +65,9 @@ export default function RightSidebar() {
 
         {/* Your Ranks */}
         {userGames.length > 0 && (
-          <section>
-            <h3 className="text-sm font-semibold text-secondary uppercase tracking-wider mb-2">
+          <section className="p-4 rounded-xl bg-secondary">
+            <h3 className="flex items-center gap-2 text-sm font-semibold text-secondary mb-3">
+              <Gamepad2 className="w-4 h-4" />
               Your Ranks
             </h3>
             <ul className="space-y-2">
@@ -75,11 +77,11 @@ export default function RightSidebar() {
                   className="flex items-center gap-2 p-2 rounded-lg bg-secondary"
                 >
                   <span
-                    className="w-8 h-8 rounded-lg flex items-center justify-center shrink-0 text-sm"
+                    className="w-8 h-8 rounded-lg flex items-center justify-center shrink-0"
                     style={{ backgroundColor: `${ug.game?.color || 'var(--color-accent)'}22`, color: ug.game?.color || 'var(--color-accent)' }}
                     title={ug.rank}
                   >
-                    🏆
+                    <Trophy className="w-4 h-4" />
                   </span>
                   <span className="text-sm text-primary truncate flex-1">{ug.game?.name ?? 'Game'}</span>
                   <span className="text-xs font-medium truncate max-w-[100px] text-accent">
@@ -88,13 +90,17 @@ export default function RightSidebar() {
                 </li>
               ))}
             </ul>
+            <Link to="/trending" className="block mt-3 text-sm text-accent hover:underline">
+              View all games →
+            </Link>
           </section>
         )}
 
         {/* Friends Online */}
         {following.length > 0 && (
-          <section>
-            <h3 className="text-sm font-semibold text-secondary uppercase tracking-wider mb-2">
+          <section className="bg-secondary rounded-xl p-4">
+            <h3 className="flex items-center gap-2 text-sm font-semibold text-secondary mb-3">
+              <Users className="w-4 h-4" />
               Friends Online
             </h3>
             <ul className="space-y-1.5">
@@ -126,8 +132,9 @@ export default function RightSidebar() {
 
         {/* Who to Follow */}
         {suggestions.length > 0 && (
-          <section>
-            <h3 className="text-sm font-semibold text-secondary uppercase tracking-wider mb-2">
+          <section className="bg-secondary rounded-xl p-4">
+            <h3 className="flex items-center gap-2 text-sm font-semibold text-secondary mb-3">
+              <UserPlus className="w-4 h-4" />
               Who to Follow
             </h3>
             <ul className="space-y-2">
@@ -168,8 +175,9 @@ export default function RightSidebar() {
 
         {/* Trending */}
         {tags.length > 0 && (
-          <section>
-            <h3 className="text-sm font-semibold text-secondary uppercase tracking-wider mb-2">
+          <section className="bg-secondary rounded-xl p-4">
+            <h3 className="flex items-center gap-2 text-sm font-semibold text-secondary mb-3">
+              <TrendingUp className="w-4 h-4" />
               Trending
             </h3>
             <ul className="space-y-1.5">

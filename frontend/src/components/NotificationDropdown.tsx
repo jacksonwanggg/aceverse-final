@@ -3,6 +3,7 @@ import { Link } from 'react-router-dom'
 import { useQuery } from '@tanstack/react-query'
 import { formatDistanceToNow } from 'date-fns'
 import { api } from '../lib/api'
+import { Heart, MessageCircle, Repeat2, UserPlus } from 'lucide-react'
 
 type NotificationItem = {
   id: string
@@ -26,6 +27,21 @@ function actionText(n: NotificationItem): string {
       return 'followed you'
     default:
       return 'interacted with you'
+  }
+}
+
+function NotificationIcon({ type }: { type: NotificationItem['type'] }) {
+  switch (type) {
+    case 'LIKE':
+      return <Heart className="w-4 h-4 text-like" fill="currentColor" />
+    case 'REPOST':
+      return <Repeat2 className="w-4 h-4 text-repost" />
+    case 'REPLY':
+      return <MessageCircle className="w-4 h-4 text-reply" fill="currentColor" />
+    case 'FOLLOW':
+      return <UserPlus className="w-4 h-4 text-accent" />
+    default:
+      return null
   }
 }
 
@@ -95,11 +111,16 @@ export default function NotificationDropdown({ isOpen, onClose, anchorRef }: Not
                   !n.read ? 'bg-accent/5' : ''
                 }`}
               >
-                <img
-                  src={n.actor?.avatarUrl || 'https://api.dicebear.com/7.x/initials/svg?seed=user'}
-                  alt=""
-                  className="w-8 h-8 rounded-full object-cover shrink-0 border border-border-default"
-                />
+                <div className="relative shrink-0">
+                  <img
+                    src={n.actor?.avatarUrl || 'https://api.dicebear.com/7.x/initials/svg?seed=user'}
+                    alt=""
+                    className="w-8 h-8 rounded-full object-cover border border-border-default"
+                  />
+                  <span className="absolute -bottom-1 -right-1 w-5 h-5 rounded-full bg-secondary flex items-center justify-center border border-border-default">
+                    <NotificationIcon type={n.type} />
+                  </span>
+                </div>
                 <div className="min-w-0 flex-1">
                   <p className="text-primary text-xs">
                     <span className="font-semibold text-primary">{name}</span>{' '}

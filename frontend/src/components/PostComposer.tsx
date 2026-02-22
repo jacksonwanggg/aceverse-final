@@ -4,6 +4,7 @@ import { api } from '../lib/api'
 import { useAuth } from '../hooks/useAuth'
 import { useToast } from '../hooks/useToast'
 import GameTagSelector from './GameTagSelector'
+import { Image, LayoutGrid, Gamepad2, Smile, Pencil } from 'lucide-react'
 
 interface PostComposerProps {
   onSuccess?: () => void
@@ -122,21 +123,60 @@ export default function PostComposer({ onSuccess, placeholder = "What's happenin
               maxLength={500}
               className="w-full resize-none bg-transparent text-primary placeholder-secondary focus:outline-none text-lg"
             />
-            <GameTagSelector value={gameTag} onChange={setGameTag} className="mt-2" />
-            <div className="flex items-center justify-between mt-3">
-              <div className={`text-sm ${isOverLimit ? 'text-red-500' : remaining < 20 ? 'text-accent' : 'text-secondary'}`}>
-                {remaining}
+            {gameTag && (
+              <div className="mt-2">
+                <GameTagSelector value={gameTag} onChange={setGameTag} />
               </div>
-              <button
-                type="submit"
-                disabled={content.trim().length === 0 || content.length > 500 || isSubmitting}
-                className="px-4 py-2 bg-accent text-white rounded-full font-semibold hover:bg-accent-hover disabled:opacity-50 disabled:cursor-not-allowed transition-all inline-flex items-center gap-2 focus:outline-none focus:ring-2 focus:ring-accent focus:ring-offset-2"
-              >
-                {isSubmitting && (
-                  <span className="w-4 h-4 border-2 border-white border-t-transparent rounded-full animate-spin" />
-                )}
-                {isSubmitting ? 'Posting...' : 'Post'}
-              </button>
+            )}
+            <div className="flex items-center justify-between mt-3 pt-3 border-t border-border-default">
+              <div className="flex items-center gap-1">
+                <button
+                  type="button"
+                  className="p-2 rounded-full text-accent hover:bg-accent/10 transition-colors"
+                  title="Add image (coming soon)"
+                >
+                  <Image className="w-5 h-5" />
+                </button>
+                <button
+                  type="button"
+                  className="p-2 rounded-full text-accent hover:bg-accent/10 transition-colors"
+                  title="Add poll (coming soon)"
+                >
+                  <LayoutGrid className="w-5 h-5" />
+                </button>
+                <button
+                  type="button"
+                  onClick={() => setGameTag(gameTag ? null : 'valorant')}
+                  className={`p-2 rounded-full transition-colors ${gameTag ? 'text-accent bg-accent/10' : 'text-accent hover:bg-accent/10'}`}
+                  title="Add game tag"
+                >
+                  <Gamepad2 className="w-5 h-5" />
+                </button>
+                <button
+                  type="button"
+                  className="p-2 rounded-full text-accent hover:bg-accent/10 transition-colors"
+                  title="Add emoji (coming soon)"
+                >
+                  <Smile className="w-5 h-5" />
+                </button>
+              </div>
+              <div className="flex items-center gap-3">
+                <span className={`text-sm ${isOverLimit ? 'text-red-500' : remaining < 100 ? 'text-accent' : 'text-secondary'}`}>
+                  {content.length}/500
+                </span>
+                <button
+                  type="submit"
+                  disabled={content.trim().length === 0 || content.length > 500 || isSubmitting}
+                  className="px-5 py-2 bg-accent text-white rounded-full font-semibold hover:bg-accent-hover disabled:opacity-50 disabled:cursor-not-allowed transition-all inline-flex items-center gap-2 focus:outline-none focus:ring-2 focus:ring-accent focus:ring-offset-2"
+                >
+                  {isSubmitting ? (
+                    <span className="w-4 h-4 border-2 border-white border-t-transparent rounded-full animate-spin" />
+                  ) : (
+                    <Pencil className="w-4 h-4" />
+                  )}
+                  <span>Post</span>
+                </button>
+              </div>
             </div>
           </div>
         </div>

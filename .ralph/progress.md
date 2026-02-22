@@ -81,3 +81,9 @@ This task focuses on making the UI match the design mockups in `.ralph/image.png
 
 ### 2026-02-22 20:35:29
 **Session 4 started** (model: opus-4.5-thinking)
+
+### 2026-02-22 20:37:37
+**Session 4 ended** - 🔄 Context rotation (token limit reached)
+
+### 2026-02-22 20:37:39
+**Session 5 started** (model: opus-4.5-thinking)

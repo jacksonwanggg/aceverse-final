@@ -19,14 +19,7 @@ export default function LeftSidebar() {
   const { user, logout } = useAuth()
   const { theme, cycleTheme } = useTheme()
   const [dropdownOpen, setDropdownOpen] = useState(false)
-  const [searchInput, setSearchInput] = useState('')
   const bellRef = useRef<HTMLButtonElement>(null)
-
-  const handleSearch = (e: React.FormEvent) => {
-    e.preventDefault()
-    const q = searchInput.trim()
-    if (q) navigate(`/search?q=${encodeURIComponent(q)}`)
-  }
   const { data: gamesData } = useQuery({
     queryKey: ['games'],
     queryFn: api.games.getAll,

@@ -2,6 +2,7 @@ import { useInfiniteQuery, useMutation, useQueryClient } from '@tanstack/react-q
 import { Link } from 'react-router-dom'
 import { formatDistanceToNow } from 'date-fns'
 import { api } from '../lib/api'
+import { Heart, MessageCircle, Repeat2, UserPlus } from 'lucide-react'
 
 type NotificationItem = {
   id: string
@@ -28,6 +29,21 @@ function actionText(n: NotificationItem): string {
   }
 }
 
+function NotificationIcon({ type }: { type: NotificationItem['type'] }) {
+  switch (type) {
+    case 'LIKE':
+      return <Heart className="w-5 h-5 text-like" fill="currentColor" />
+    case 'REPOST':
+      return <Repeat2 className="w-5 h-5 text-repost" />
+    case 'REPLY':
+      return <MessageCircle className="w-5 h-5 text-reply" fill="currentColor" />
+    case 'FOLLOW':
+      return <UserPlus className="w-5 h-5 text-accent" />
+    default:
+      return null
+  }
+}
+
 function NotificationRow({ n }: { n: NotificationItem }) {
   const linkTo = n.type === 'FOLLOW'
     ? (n.actor ? `/u/${n.actor.username}` : '#')
@@ -38,14 +54,19 @@ function NotificationRow({ n }: { n: NotificationItem }) {
     <Link
       to={linkTo}
       className={`flex gap-3 p-3 rounded-lg transition-colors hover:bg-hover ${
-        !n.read ? 'bg-accent/5' : ''
+        !n.read ? 'bg-accent/5 border-l-2 border-accent' : ''
       }`}
     >
-      <img
-        src={n.actor?.avatarUrl || 'https://api.dicebear.com/7.x/initials/svg?seed=user'}
-        alt=""
-        className="w-10 h-10 rounded-full object-cover shrink-0 border border-border-default"
-      />
+      <div className="relative shrink-0">
+        <img
+          src={n.actor?.avatarUrl || 'https://api.dicebear.com/7.x/initials/svg?seed=user'}
+          alt=""
+          className="w-10 h-10 rounded-full object-cover border border-border-default"
+        />
+        <span className="absolute -bottom-1 -right-1 w-6 h-6 rounded-full bg-secondary flex items-center justify-center border border-border-default">
+          <NotificationIcon type={n.type} />
+        </span>
+      </div>
       <div className="min-w-0 flex-1">
         <p className="text-primary text-sm">
           <span className="font-semibold text-primary">{name}</span>{' '}

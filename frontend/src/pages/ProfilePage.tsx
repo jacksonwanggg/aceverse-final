@@ -8,6 +8,8 @@ import { useToast } from '../hooks/useToast'
 import PostCard from '../components/PostCard'
 import PostCardSkeleton from '../components/PostCardSkeleton'
 import type { TimelinePost } from '../components/Feed'
+import { Trophy, Calendar, Edit } from 'lucide-react'
+import { Trophy } from 'lucide-react'
 
 export default function ProfilePage() {
   const { username } = useParams<{ username: string }>()
@@ -365,14 +367,14 @@ export default function ProfilePage() {
                   className="flex items-center gap-3 p-3 rounded-xl bg-secondary border border-border-default"
                 >
                   <span
-                    className="w-10 h-10 rounded-lg flex items-center justify-center shrink-0 text-lg"
+                    className="w-10 h-10 rounded-lg flex items-center justify-center shrink-0"
                     style={{ backgroundColor: `${ug.game?.color || 'var(--color-accent)'}30`, color: ug.game?.color || 'var(--color-accent)' }}
                     title={ug.rank}
                   >
                     {ug.game?.iconUrl ? (
                       <img src={ug.game.iconUrl} alt="" className="w-6 h-6 object-contain" />
                     ) : (
-                      '🏆'
+                      <Trophy className="w-5 h-5" />
                     )}
                   </span>
                   <div className="flex-1 min-w-0">

@@ -1,5 +1,6 @@
 import { useEffect } from 'react'
 import { Link } from 'react-router-dom'
+import { Trophy, Users, Clapperboard, Bell } from 'lucide-react'
 
 export default function LandingPage() {
   return (
@@ -64,8 +65,8 @@ export default function LandingPage() {
         <div className="max-w-5xl mx-auto space-y-24">
           <div className="scroll-animate opacity-0 translate-y-8">
             <div className="flex flex-col md:flex-row items-center gap-8 md:gap-12">
-              <div className="flex-shrink-0 w-16 h-16 rounded-2xl flex items-center justify-center text-3xl bg-accent/10">
-                🏆
+              <div className="flex-shrink-0 w-16 h-16 rounded-2xl flex items-center justify-center bg-accent/10 text-accent">
+                <Trophy className="w-8 h-8" />
               </div>
               <div>
                 <h3 className="text-2xl font-bold text-primary">Track Your Ranks</h3>
@@ -78,8 +79,8 @@ export default function LandingPage() {
 
           <div className="scroll-animate opacity-0 translate-y-8">
             <div className="flex flex-col md:flex-row-reverse items-center gap-8 md:gap-12">
-              <div className="flex-shrink-0 w-16 h-16 rounded-2xl flex items-center justify-center text-3xl bg-accent/10">
-                🎬
+              <div className="flex-shrink-0 w-16 h-16 rounded-2xl flex items-center justify-center bg-accent/10 text-accent">
+                <Clapperboard className="w-8 h-8" />
               </div>
               <div className="md:text-right">
                 <h3 className="text-2xl font-bold text-primary">Share Your Clips</h3>
@@ -92,8 +93,8 @@ export default function LandingPage() {
 
           <div className="scroll-animate opacity-0 translate-y-8">
             <div className="flex flex-col md:flex-row items-center gap-8 md:gap-12">
-              <div className="flex-shrink-0 w-16 h-16 rounded-2xl flex items-center justify-center text-3xl bg-accent/10">
-                👥
+              <div className="flex-shrink-0 w-16 h-16 rounded-2xl flex items-center justify-center bg-accent/10 text-accent">
+                <Users className="w-8 h-8" />
               </div>
               <div>
                 <h3 className="text-2xl font-bold text-primary">Find Your Squad</h3>
@@ -106,8 +107,8 @@ export default function LandingPage() {
 
           <div className="scroll-animate opacity-0 translate-y-8">
             <div className="flex flex-col md:flex-row-reverse items-center gap-8 md:gap-12">
-              <div className="flex-shrink-0 w-16 h-16 rounded-2xl flex items-center justify-center text-3xl bg-accent/10">
-                🔔
+              <div className="flex-shrink-0 w-16 h-16 rounded-2xl flex items-center justify-center bg-accent/10 text-accent">
+                <Bell className="w-8 h-8" />
               </div>
               <div className="md:text-right">
                 <h3 className="text-2xl font-bold text-primary">Stay in the Loop</h3>
