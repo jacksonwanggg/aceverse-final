@@ -542,3 +542,20 @@ Ralph Session Started: Sun Feb 22 19:25:23 AEDT 2026
 [19:28:09] 🟡 SHELL cd /Users/kahowang/projects/aceverse && npm run build → exit 0
 [19:28:14] 🟡 SHELL cd /Users/kahowang/projects/aceverse && npm run lint → exit 0
 [19:28:28] 🟡 TOKENS: 56647 / 80000 (70%) [read:217KB write:0KB assist:0KB shell:0KB]
+[19:28:33] 🟡 SHELL cd /Users/kahowang/projects/aceverse && git add -A && git status → exit 0
+[19:28:41] 🟡 SHELL cd /Users/kahowang/projects/aceverse && git commit --trailer "Co-authored-by: Cursor <cursoragent@cursor.com>" -m "ralph: Phase 8 — Likes & Reposts with optimistic UI
+
+- Feed: like/unlike and repost/unrepost mutations with optimistic cache updates for home and explore; pass onLike, onRepost, onReply to PostCard
+- PostThreadPage: like/repost handlers when not readOnly with optimistic update of post query and timeline invalidation
+- PostCard: heart fill #EF8C60 when liked (var(--primary)); repost button highlights; aria-labels for Like/Repost
+- Backend already enforces no double like/repost and creates LIKE/REPOST notifications for post author (not self)
+- api.posts.like/unlike/repost/unrepost already in frontend; typecheck, build, lint pass" → exit 0
+[19:28:47] 🟡 SHELL cd /Users/kahowang/projects/aceverse && git push → exit 0
+[19:28:58] 🟡 ✅ Agent signaled COMPLETE
+[19:28:58] 🟡 TOKENS: 57150 / 80000 (71%) [read:217KB write:0KB assist:2KB shell:0KB]
+[19:28:58] 🟡 SESSION END: 210210ms, ~57150 tokens used
+[19:28:59] 🟡 TOKENS: 57150 / 80000 (71%) [read:217KB write:0KB assist:2KB shell:0KB]
+
+═══════════════════════════════════════════════════════════════
+Ralph Session Started: Sun Feb 22 19:29:02 AEDT 2026
+═══════════════════════════════════════════════════════════════

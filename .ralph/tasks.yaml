@@ -3,8 +3,8 @@
 # DO NOT EDIT - regenerated on task file change
 
 source_file: RALPH_TASK.md
-source_mtime: 1771748689
-generated_at: 2026-02-22T08:25:19Z
+source_mtime: 1771748901
+generated_at: 2026-02-22T08:28:59Z
 
 tasks:
   - id: "line_77"
@@ -401,49 +401,49 @@ tasks:
     raw_marker: -
   - id: "line_157"
     line_number: 157
-    status: pending
+    status: completed
     parallel_group: 999999
     description: Like/unlike a post with optimistic UI — heart fills `#EF8C60`, count updates instantly
     indent_level: 0
     raw_marker: -
   - id: "line_158"
     line_number: 158
-    status: pending
+    status: completed
     parallel_group: 999999
     description: Repost/unrepost with optimistic UI — repost icon highlights, count updates instantly
     indent_level: 0
     raw_marker: -
   - id: "line_159"
     line_number: 159
-    status: pending
+    status: completed
     parallel_group: 999999
     description: No double likes or double reposts (repo constraint enforced)
     indent_level: 0
     raw_marker: -
   - id: "line_160"
     line_number: 160
-    status: pending
+    status: completed
     parallel_group: 999999
     description: Like creates a LIKE notification for the post author (not self)
     indent_level: 0
     raw_marker: -
   - id: "line_161"
     line_number: 161
-    status: pending
+    status: completed
     parallel_group: 999999
     description: Repost creates a REPOST notification for the post author (not self)
     indent_level: 0
     raw_marker: -
   - id: "line_162"
     line_number: 162
-    status: pending
+    status: completed
     parallel_group: 999999
     description: Add `api.posts.like`, `api.posts.unlike`, `api.posts.repost`, `api.posts.unrepost` to frontend API client if missing
     indent_level: 0
     raw_marker: -
   - id: "line_163"
     line_number: 163
-    status: pending
+    status: completed
     parallel_group: 999999
     description: Run `npm run typecheck && npm run build && npm run lint` — all pass
     indent_level: 0
