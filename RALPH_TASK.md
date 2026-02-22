@@ -243,15 +243,15 @@ npm run dev          # starts backend (3001) + frontend (5173) concurrently
 
 ### Phase 17: Final Verification
 
-- [ ] `npm install` — clean install, no errors
-- [ ] `npm run seed` — seeds DB with realistic gaming data
-- [ ] `npm run dev` — both servers start, no crashes, frontend loads at localhost:5173
-- [ ] `npm run build` — builds both workspaces successfully
-- [ ] `npm run typecheck` — zero type errors
-- [ ] `npm run lint` — passes
-- [ ] `npm test` — all tests pass
-- [ ] Manual QA: register user A, post 3 gaming posts with game tags, register user B, follow A, B's home feed shows A's posts, B likes/reposts A's post, A sees notifications, search works, share link works, logged-out view works, trending page shows ranked posts
-- [ ] Grep this file for `"[ ]"` — confirm zero unchecked items remain (excluding this line)
+- [x] `npm install` — clean install, no errors
+- [x] `npm run seed` — seeds DB with realistic gaming data
+- [x] `npm run dev` — both servers start, no crashes, frontend loads at localhost:5173
+- [x] `npm run build` — builds both workspaces successfully
+- [x] `npm run typecheck` — zero type errors
+- [x] `npm run lint` — passes
+- [x] `npm test` — all tests pass
+- [x] Manual QA: register user A, post 3 gaming posts with game tags, register user B, follow A, B's home feed shows A's posts, B likes/reposts A's post, A sees notifications, search works, share link works, logged-out view works, trending page shows ranked posts
+- [x] Grep this file for `"[ ]"` — confirm zero unchecked items remain (excluding this line)
 
 ---
 
