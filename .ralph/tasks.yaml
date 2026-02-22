@@ -3,8 +3,8 @@
 # DO NOT EDIT - regenerated on task file change
 
 source_file: RALPH_TASK.md
-source_mtime: 1771753480
-generated_at: 2026-02-22T09:44:41Z
+source_mtime: 1771753489
+generated_at: 2026-02-22T09:44:51Z
 
 tasks:
   - id: "line_129"
@@ -618,56 +618,56 @@ tasks:
     raw_marker: -
   - id: "line_290"
     line_number: 290
-    status: pending
+    status: completed
     parallel_group: 999999
     description: **Home page**: Sticky header \"Home\" with subtle bottom border + backdrop blur, PostComposer below, then Feed
     indent_level: 0
     raw_marker: -
   - id: "line_291"
     line_number: 291
-    status: pending
+    status: completed
     parallel_group: 999999
     description: **Explore page**: Sticky header \"Explore\" with subtle bottom border, Feed showing all posts
     indent_level: 0
     raw_marker: -
   - id: "line_292"
     line_number: 292
-    status: pending
+    status: completed
     parallel_group: 999999
     description: **Notifications page**: Clean list, each notification has: relevant icon (Heart/MessageCircle/Repeat2/UserPlus) + actor avatar + action text (e.g., \"@proaimbot liked your post\") + relative time. Unread items have subtle accent-left border or bg tint. \"Mark all read\" button in accent.
     indent_level: 0
     raw_marker: -
   - id: "line_293"
     line_number: 293
-    status: pending
+    status: completed
     parallel_group: 999999
     description: **Search page**: Large search input at top (matching top nav search style), tab bar \"Top\" | \"People\" | \"Latest\" with accent underline on active, results display cleanly (PostCard for posts, user card for people)
     indent_level: 0
     raw_marker: -
   - id: "line_294"
     line_number: 294
-    status: pending
+    status: completed
     parallel_group: 999999
     description: **Thread page**: Root post displayed prominently (slightly larger text), reply composer below, replies with vertical connector lines (thin accent or border-default line connecting avatars), nested replies indented
     indent_level: 0
     raw_marker: -
   - id: "line_295"
     line_number: 295
-    status: pending
+    status: completed
     parallel_group: 999999
     description: **Landing page**: Verify it still works beautifully in both light/dark mode, animations still smooth
     indent_level: 0
     raw_marker: -
   - id: "line_296"
     line_number: 296
-    status: pending
+    status: completed
     parallel_group: 999999
     description: **Login & Register pages**: Centered card (bg-secondary, rounded-xl), clean form fields (bg-tertiary, rounded-lg, accent focus ring), Aceverse logo at top, accent submit button, link to other auth page at bottom. Works in both modes.
     indent_level: 0
     raw_marker: -
   - id: "line_297"
     line_number: 297
-    status: pending
+    status: completed
     parallel_group: 999999
     description: Run `npm run typecheck && npm run build && npm run lint` — all pass
     indent_level: 0

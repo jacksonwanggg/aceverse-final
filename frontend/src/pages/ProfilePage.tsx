@@ -463,6 +463,20 @@ export default function ProfilePage() {
               )}
             </div>
           )}
+            </>
+          )}
+          
+          {activeTab === 'clips' && (
+            <div className="py-12 text-center">
+              <p className="text-tertiary">Clips coming soon</p>
+            </div>
+          )}
+          
+          {activeTab === 'likes' && (
+            <div className="py-12 text-center">
+              <p className="text-tertiary">Likes coming soon</p>
+            </div>
+          )}
         </section>
       </div>
 

@@ -287,14 +287,14 @@ The core MVP is fully functional (auth, posts, feeds, likes, reposts, replies, f
 
 ### Phase 11: Remaining Pages Polish
 
-- [ ] **Home page**: Sticky header "Home" with subtle bottom border + backdrop blur, PostComposer below, then Feed
-- [ ] **Explore page**: Sticky header "Explore" with subtle bottom border, Feed showing all posts
-- [ ] **Notifications page**: Clean list, each notification has: relevant icon (Heart/MessageCircle/Repeat2/UserPlus) + actor avatar + action text (e.g., "@proaimbot liked your post") + relative time. Unread items have subtle accent-left border or bg tint. "Mark all read" button in accent.
-- [ ] **Search page**: Large search input at top (matching top nav search style), tab bar "Top" | "People" | "Latest" with accent underline on active, results display cleanly (PostCard for posts, user card for people)
-- [ ] **Thread page**: Root post displayed prominently (slightly larger text), reply composer below, replies with vertical connector lines (thin accent or border-default line connecting avatars), nested replies indented
-- [ ] **Landing page**: Verify it still works beautifully in both light/dark mode, animations still smooth
-- [ ] **Login & Register pages**: Centered card (bg-secondary, rounded-xl), clean form fields (bg-tertiary, rounded-lg, accent focus ring), Aceverse logo at top, accent submit button, link to other auth page at bottom. Works in both modes.
-- [ ] Run `npm run typecheck && npm run build && npm run lint` — all pass
+- [x] **Home page**: Sticky header "Home" with subtle bottom border + backdrop blur, PostComposer below, then Feed
+- [x] **Explore page**: Sticky header "Explore" with subtle bottom border, Feed showing all posts
+- [x] **Notifications page**: Clean list, each notification has: relevant icon (Heart/MessageCircle/Repeat2/UserPlus) + actor avatar + action text (e.g., "@proaimbot liked your post") + relative time. Unread items have subtle accent-left border or bg tint. "Mark all read" button in accent.
+- [x] **Search page**: Large search input at top (matching top nav search style), tab bar "Top" | "People" | "Latest" with accent underline on active, results display cleanly (PostCard for posts, user card for people)
+- [x] **Thread page**: Root post displayed prominently (slightly larger text), reply composer below, replies with vertical connector lines (thin accent or border-default line connecting avatars), nested replies indented
+- [x] **Landing page**: Verify it still works beautifully in both light/dark mode, animations still smooth
+- [x] **Login & Register pages**: Centered card (bg-secondary, rounded-xl), clean form fields (bg-tertiary, rounded-lg, accent focus ring), Aceverse logo at top, accent submit button, link to other auth page at bottom. Works in both modes.
+- [x] Run `npm run typecheck && npm run build && npm run lint` — all pass
 
 ### Phase 12: Mobile Polish
 
