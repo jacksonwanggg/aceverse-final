@@ -419,7 +419,7 @@ No Docker required. No external services required.
 
 Success Criteria Checklist (Ralph)
 
- Repo has frontend/ backend/ db/ and root scripts, dev runs both servers together
+ [x] Repo has frontend/ backend/ db/ and root scripts, dev runs both servers together
 
  Fake DB JSON file auto-creates and persists changes across restarts
 
