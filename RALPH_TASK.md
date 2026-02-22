@@ -421,7 +421,7 @@ Success Criteria Checklist (Ralph)
 
  [x] Repo has frontend/ backend/ db/ and root scripts, dev runs both servers together
 
- Fake DB JSON file auto-creates and persists changes across restarts
+ [x] Fake DB JSON file auto-creates and persists changes across restarts
 
  Register/login/logout works, passwords hashed, sessions via HttpOnly cookies
 
