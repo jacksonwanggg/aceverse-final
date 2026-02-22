@@ -423,7 +423,7 @@ Success Criteria Checklist (Ralph)
 
  [x] Fake DB JSON file auto-creates and persists changes across restarts
 
- Register/login/logout works, passwords hashed, sessions via HttpOnly cookies
+ [x] Register/login/logout works, passwords hashed, sessions via HttpOnly cookies
 
  Home and Explore feeds load with pagination and nice loading states
 
