@@ -104,7 +104,7 @@ export default function RightSidebar() {
               Friends Online
             </h3>
             <ul className="space-y-1.5">
-              {following.slice(0, 5).map((u: { id: string; username: string; displayName: string; avatarUrl: string }) => (
+              {following.slice(0, 4).map((u: { id: string; username: string; displayName: string; avatarUrl: string }) => (
                 <li key={u.id}>
                   <Link
                     to={`/u/${u.username}`}
@@ -122,7 +122,10 @@ export default function RightSidebar() {
                         title="Online"
                       />
                     </span>
-                    <span className="text-sm text-primary truncate">{u.displayName || u.username}</span>
+                    <div className="min-w-0 flex-1">
+                      <span className="text-sm text-primary truncate block">{u.displayName || u.username}</span>
+                      <span className="text-xs text-green-500">Online</span>
+                    </div>
                   </Link>
                 </li>
               ))}
