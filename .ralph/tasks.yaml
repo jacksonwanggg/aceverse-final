@@ -3,8 +3,8 @@
 # DO NOT EDIT - regenerated on task file change
 
 source_file: RALPH_TASK.md
-source_mtime: 1771748565
-generated_at: 2026-02-22T08:23:26Z
+source_mtime: 1771748689
+generated_at: 2026-02-22T08:25:19Z
 
 tasks:
   - id: "line_77"
@@ -359,42 +359,42 @@ tasks:
     raw_marker: -
   - id: "line_148"
     line_number: 148
-    status: pending
+    status: completed
     parallel_group: 999999
     description: Create post works: text content (max 500 chars), optional game tag
     indent_level: 0
     raw_marker: -
   - id: "line_149"
     line_number: 149
-    status: pending
+    status: completed
     parallel_group: 999999
     description: PostCard displays: avatar, display name, @username, relative timestamp (e.g., \"3h ago\"), content, game tag pill, action row (reply count, like count, repost count, share)
     indent_level: 0
     raw_marker: -
   - id: "line_150"
     line_number: 150
-    status: pending
+    status: completed
     parallel_group: 999999
     description: Edit post: author-only, inline edit mode with Save/Cancel
     indent_level: 0
     raw_marker: -
   - id: "line_151"
     line_number: 151
-    status: pending
+    status: completed
     parallel_group: 999999
     description: Delete post: author-only, soft delete, shows \"This post has been deleted\" placeholder
     indent_level: 0
     raw_marker: -
   - id: "line_152"
     line_number: 152
-    status: pending
+    status: completed
     parallel_group: 999999
     description: Clicking a post navigates to thread view (`/p/:postId`)
     indent_level: 0
     raw_marker: -
   - id: "line_153"
     line_number: 153
-    status: pending
+    status: completed
     parallel_group: 999999
     description: Run `npm run typecheck && npm run build && npm run lint` — all pass
     indent_level: 0
