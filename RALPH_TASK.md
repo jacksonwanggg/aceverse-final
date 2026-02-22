@@ -92,13 +92,13 @@ npm run dev          # starts backend (3001) + frontend (5173) concurrently
 
 ### Phase 2: Shared Layout & Navigation
 
-- [ ] Create a shared `AppLayout` component used by all authenticated pages with 3-column desktop layout: left sidebar (nav + your games), center content, right sidebar (ranks, friends online, who to follow, trending)
-- [ ] Left sidebar shows: user avatar + @username + follower count, nav links (Home, Trending, Profile) with active state using `#EF8C60`, "Your Games" section with game icons/names
-- [ ] Right sidebar shows: "Your Ranks" with per-game rank + badge icon, "Friends Online" with green online dots, "Who to Follow" with Follow buttons, "Trending" hashtags with post counts
-- [ ] Mobile layout: bottom tab bar (Home, Trending, Search, Notifications, Profile), floating compose FAB button, collapsible sidebars
-- [ ] Navigation links work and highlight the active page with `#EF8C60` accent
-- [ ] Wrap all authenticated pages (Home, Explore, Trending, Search, Notifications, Profile, PostThread) in `AppLayout`
-- [ ] Run `npm run typecheck && npm run build && npm run lint` — all pass
+- [x] Create a shared `AppLayout` component used by all authenticated pages with 3-column desktop layout: left sidebar (nav + your games), center content, right sidebar (ranks, friends online, who to follow, trending)
+- [x] Left sidebar shows: user avatar + @username + follower count, nav links (Home, Trending, Profile) with active state using `#EF8C60`, "Your Games" section with game icons/names
+- [x] Right sidebar shows: "Your Ranks" with per-game rank + badge icon, "Friends Online" with green online dots, "Who to Follow" with Follow buttons, "Trending" hashtags with post counts
+- [x] Mobile layout: bottom tab bar (Home, Trending, Search, Notifications, Profile), floating compose FAB button, collapsible sidebars
+- [x] Navigation links work and highlight the active page with `#EF8C60` accent
+- [x] Wrap all authenticated pages (Home, Explore, Trending, Search, Notifications, Profile, PostThread) in `AppLayout`
+- [x] Run `npm run typecheck && npm run build && npm run lint` — all pass
 
 ### Phase 3: Gaming Identity — Games & Ranks
 

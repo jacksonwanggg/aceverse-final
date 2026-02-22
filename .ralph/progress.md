@@ -85,6 +85,23 @@ Next: Phase 2 — Shared Layout & Navigation.
 ### 2026-02-22 18:56:12
 **Session 1 started** (model: auto)
 
+### 2026-02-22 (Ralph Iteration 1 — Phase 2)
+**Phase 2: Shared Layout & Navigation completed.**
+
+Completed:
+- Backend: Added GET /api/games, GET /api/users/me/following, GET /api/users/suggestions, GET /api/users/:username/games, GET /api/timeline/trending-tags. Mounted games routes.
+- Frontend API: games.getAll, users.getProfile, getPosts, getGames, getSuggestions, getFollowing, follow, unfollow, timeline.trendingTags.
+- Created AppLayout with 3-column layout (left sidebar, center main, right sidebar), loading and auth redirect.
+- LeftSidebar: user avatar, @username, follower count, nav (Home, Trending, Profile) with NavLink active state (#EF8C60), "Your Games" section from user games.
+- RightSidebar: "Your Ranks" (user games + rank), "Friends Online" (following list with green online dot), "Who to Follow" (suggestions + Follow button), "Trending" (game tags with post counts).
+- BottomNav: mobile-only bottom tab bar (Home, Trending, FAB, Search, Notifications, Profile), FAB for compose.
+- Mobile: sidebars hidden (md:flex / lg:flex), bottom nav and FAB shown; center column full width.
+- Wrapped all authenticated routes (Home, Explore, Trending, Search, Notifications, Profile, PostThread) in AppLayout via nested Route element.
+- Added TrendingPage stub and /trending route. Updated page styles for dark layout. Fixed seed.ts unused var for lint.
+- npm run typecheck && npm run build && npm run lint — all pass. Marked all Phase 2 criteria [x].
+
+Next: Phase 3 — Gaming Identity (games & ranks verification, profile gaming section, post game tag, etc.).
+
 ### 2026-02-22 19:01:27
 **Session 1 ended** - 🔄 Context rotation (token limit reached)
 
