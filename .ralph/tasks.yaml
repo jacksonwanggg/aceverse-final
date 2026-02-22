@@ -3,8 +3,8 @@
 # DO NOT EDIT - regenerated on task file change
 
 source_file: RALPH_TASK.md
-source_mtime: 1771753699
-generated_at: 2026-02-22T09:48:44Z
+source_mtime: 1771753850
+generated_at: 2026-02-22T09:51:07Z
 
 tasks:
   - id: "line_129"
@@ -898,35 +898,35 @@ tasks:
     raw_marker: -
   - id: "line_342"
     line_number: 342
-    status: pending
+    status: completed
     parallel_group: 999999
     description: `npm install` — no errors
     indent_level: 0
     raw_marker: -
   - id: "line_343"
     line_number: 343
-    status: pending
+    status: completed
     parallel_group: 999999
     description: `npm run build` — succeeds
     indent_level: 0
     raw_marker: -
   - id: "line_344"
     line_number: 344
-    status: pending
+    status: completed
     parallel_group: 999999
     description: `npm run typecheck` — zero errors
     indent_level: 0
     raw_marker: -
   - id: "line_345"
     line_number: 345
-    status: pending
+    status: completed
     parallel_group: 999999
     description: `npm run lint` — passes
     indent_level: 0
     raw_marker: -
   - id: "line_346"
     line_number: 346
-    status: pending
+    status: completed
     parallel_group: 999999
     description: `npm test` — all existing tests pass
     indent_level: 0
