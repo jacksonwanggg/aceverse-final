@@ -3,8 +3,8 @@
 # DO NOT EDIT - regenerated on task file change
 
 source_file: RALPH_TASK.md
-source_mtime: 1771750010
-generated_at: 2026-02-22T08:47:22Z
+source_mtime: 1771750137
+generated_at: 2026-02-22T08:49:36Z
 
 tasks:
   - id: "line_77"
@@ -660,28 +660,28 @@ tasks:
     raw_marker: -
   - id: "line_209"
     line_number: 209
-    status: pending
+    status: completed
     parallel_group: 999999
     description: Share button on every PostCard copies the canonical link (`/p/:postId`) to clipboard with a toast confirmation
     indent_level: 0
     raw_marker: -
   - id: "line_210"
     line_number: 210
-    status: pending
+    status: completed
     parallel_group: 999999
     description: `/p/:postId` is accessible to logged-out users as read-only (shows post + replies, no action buttons)
     indent_level: 0
     raw_marker: -
   - id: "line_211"
     line_number: 211
-    status: pending
+    status: completed
     parallel_group: 999999
     description: Logged-out thread view shows a banner: \"Log in to like, reply, and repost\" with login link
     indent_level: 0
     raw_marker: -
   - id: "line_212"
     line_number: 212
-    status: pending
+    status: completed
     parallel_group: 999999
     description: Run `npm run typecheck && npm run build && npm run lint` — all pass
     indent_level: 0
