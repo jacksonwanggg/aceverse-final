@@ -189,17 +189,17 @@ The core MVP is fully functional (auth, posts, feeds, likes, reposts, replies, f
 
 ### Phase 5: PostCard — Match Mockup Exactly
 
-- [ ] Avatar (40px rounded-full) on left, content area on right — no card border, just subtle bottom divider
-- [ ] Header: @username (font-semibold, text-primary) on left, relative time (text-secondary, concise: "6h ago", "1d ago", "2w ago") on right, three-dot menu far right
-- [ ] Content: text-primary, proper line-height (1.4-1.5), hashtags and @mentions highlighted in accent
-- [ ] Game tag pill: small rounded badge with colored square icon + game name text, subtle tinted background matching the game's color
-- [ ] YouTube embeds: rounded corners, proper 16:9 aspect ratio, "Watch on YouTube" link
-- [ ] Action row: four evenly-spaced groups — Heart + count, MessageCircle + count, Repeat2 + count, Share icon (no count). Each with hover color: like=pink, reply=blue, repost=green, share=accent. Active like=filled pink heart, active repost=green filled icon. Counts in text-secondary.
-- [ ] Hover state: entire card gets subtle bg-hover tint (not shadow)
-- [ ] Deleted post: subtle italic text-secondary "This post has been deleted", no action row
-- [ ] Edit mode: clean textarea with accent focus ring, Save/Cancel buttons
-- [ ] Three-dot menu dropdown: clean bg-secondary card with border-default, edit/delete options
-- [ ] Run `npm run typecheck && npm run build && npm run lint` — all pass
+- [x] Avatar (40px rounded-full) on left, content area on right — no card border, just subtle bottom divider
+- [x] Header: @username (font-semibold, text-primary) on left, relative time (text-secondary, concise: "6h ago", "1d ago", "2w ago") on right, three-dot menu far right
+- [x] Content: text-primary, proper line-height (1.4-1.5), hashtags and @mentions highlighted in accent
+- [x] Game tag pill: small rounded badge with colored square icon + game name text, subtle tinted background matching the game's color
+- [x] YouTube embeds: rounded corners, proper 16:9 aspect ratio, "Watch on YouTube" link
+- [x] Action row: four evenly-spaced groups — Heart + count, MessageCircle + count, Repeat2 + count, Share icon (no count). Each with hover color: like=pink, reply=blue, repost=green, share=accent. Active like=filled pink heart, active repost=green filled icon. Counts in text-secondary.
+- [x] Hover state: entire card gets subtle bg-hover tint (not shadow)
+- [x] Deleted post: subtle italic text-secondary "This post has been deleted", no action row
+- [x] Edit mode: clean textarea with accent focus ring, Save/Cancel buttons
+- [x] Three-dot menu dropdown: clean bg-secondary card with border-default, edit/delete options
+- [x] Run `npm run typecheck && npm run build && npm run lint` — all pass
 
 ### Phase 6: PostComposer — Match Mockup Exactly
 

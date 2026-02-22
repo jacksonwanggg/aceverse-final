@@ -1,7 +1,6 @@
 import { useState, useRef, useEffect } from 'react'
 import { Link } from 'react-router-dom'
 import { motion } from 'framer-motion'
-import { formatDistanceToNow } from 'date-fns'
 import { useToast } from '../hooks/useToast'
 import { extractYouTubeVideoId } from '../lib/youtube'
 import YouTubeEmbed from './YouTubeEmbed'
@@ -47,7 +46,23 @@ export default function PostCard({ post, onLike, onRepost, onReply, onEdit, onDe
   const menuRef = useRef<HTMLDivElement>(null)
   const editTextareaRef = useRef<HTMLTextAreaElement>(null)
 
-  const timeAgo = formatDistanceToNow(new Date(post.createdAt), { addSuffix: true })
+  const formatConciseTime = (date: Date): string => {
+    const now = new Date()
+    const diffMs = now.getTime() - date.getTime()
+    const diffSecs = Math.floor(diffMs / 1000)
+    const diffMins = Math.floor(diffSecs / 60)
+    const diffHours = Math.floor(diffMins / 60)
+    const diffDays = Math.floor(diffHours / 24)
+    const diffWeeks = Math.floor(diffDays / 7)
+    
+    if (diffSecs < 60) return 'now'
+    if (diffMins < 60) return `${diffMins}m`
+    if (diffHours < 24) return `${diffHours}h`
+    if (diffDays < 7) return `${diffDays}d`
+    if (diffWeeks < 4) return `${diffWeeks}w`
+    return date.toLocaleDateString('en-US', { month: 'short', day: 'numeric' })
+  }
+  const timeAgo = formatConciseTime(new Date(post.createdAt))
   const isDeleted = post.deleted || post.content == null
   const youtubeVideoId = !isDeleted && post.content ? extractYouTubeVideoId(post.content) : null
 
@@ -111,18 +126,46 @@ export default function PostCard({ post, onLike, onRepost, onReply, onEdit, onDe
     }
   }
 
+  const renderContent = (text: string) => {
+    const parts = text.split(/(@\w+|#\w+)/g)
+    return parts.map((part, i) => {
+      if (part.startsWith('@')) {
+        const username = part.slice(1)
+        return (
+          <Link
+            key={i}
+            to={`/u/${username}`}
+            className="text-accent hover:underline"
+            onClick={(e) => e.stopPropagation()}
+          >
+            {part}
+          </Link>
+        )
+      }
+      if (part.startsWith('#')) {
+        return (
+          <Link
+            key={i}
+            to={`/search?q=${encodeURIComponent(part)}`}
+            className="text-accent hover:underline"
+            onClick={(e) => e.stopPropagation()}
+          >
+            {part}
+          </Link>
+        )
+      }
+      return part
+    })
+  }
+
   return (
-    <motion.article
-      className="border-b border-border-default p-4 hover:bg-hover transition-colors duration-200"
-      whileHover={{ y: -1 }}
-      transition={{ duration: 0.15 }}
-    >
+    <article className="border-b border-border-default p-4 hover:bg-hover transition-colors duration-200">
       <div className="flex gap-3">
-        <Link to={`/u/${post.author.username}`}>
+        <Link to={`/u/${post.author.username}`} className="shrink-0">
           <img
             src={post.author.avatarUrl}
             alt={post.author.displayName}
-            className="w-12 h-12 rounded-full"
+            className="w-10 h-10 rounded-full object-cover"
           />
         </Link>
         <div className="flex-1 min-w-0">
@@ -146,14 +189,6 @@ export default function PostCard({ post, onLike, onRepost, onReply, onEdit, onDe
             >
               {timeAgo}
             </Link>
-            {(post.gameTag || post.game) && (
-              <span
-                className="inline-flex items-center px-2 py-0.5 rounded text-xs font-medium"
-                style={{ backgroundColor: (post.game?.color || 'var(--color-accent)') + '30', color: post.game?.color || 'var(--color-accent)' }}
-              >
-                {post.game?.name ?? post.gameTag}
-              </span>
-            )}
             {(post.canEdit || post.canDelete) && !isDeleted && !readOnly && (
               <div className="ml-auto relative" ref={menuRef}>
                 <button
@@ -217,23 +252,31 @@ export default function PostCard({ post, onLike, onRepost, onReply, onEdit, onDe
             </div>
           ) : (
             <>
-              {post.gameTag && (
-                <Link
-                  to={`/explore?game=${encodeURIComponent(post.gameTag)}`}
-                  className="inline-flex items-center px-2 py-0.5 rounded text-xs font-medium mb-1 transition-colors bg-accent text-white"
-                >
-                  #{post.gameTag}
-                </Link>
-              )}
               <Link to={`/p/${post.id}`} className="block">
-                <p className="text-primary whitespace-pre-wrap break-words">
+                <p className="text-primary whitespace-pre-wrap break-words leading-relaxed">
                   {isDeleted ? (
                     <span className="italic text-secondary">This post has been deleted.</span>
                   ) : (
-                    post.content
+                    renderHighlightedContent(post.content ?? '')
                   )}
                 </p>
               </Link>
+              {(post.gameTag || post.game) && !isDeleted && (
+                <Link
+                  to={`/trending?game=${encodeURIComponent(post.game?.slug ?? post.gameTag ?? '')}`}
+                  className="inline-flex items-center gap-1.5 px-2 py-1 rounded text-xs font-medium mt-2 transition-colors hover:opacity-80"
+                  style={{
+                    backgroundColor: (post.game?.color || 'var(--color-accent)') + '20',
+                    color: post.game?.color || 'var(--color-accent)',
+                  }}
+                >
+                  <span
+                    className="w-3 h-3 rounded-sm"
+                    style={{ backgroundColor: post.game?.color || 'var(--color-accent)' }}
+                  />
+                  {post.game?.name ?? post.gameTag}
+                </Link>
+              )}
               {youtubeVideoId && (
                 <div className="mt-3">
                   <YouTubeEmbed videoId={youtubeVideoId} />
