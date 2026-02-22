@@ -41,3 +41,14 @@ Next: Continue with remaining criteria - need to implement likes, reposts, repli
 
 ### 2026-02-22 18:30:34
 **Session 1 started** (model: auto)
+
+### 2026-02-22 (Ralph Iteration 1)
+**Edit and delete posts criterion completed.**
+
+Completed:
+- Added `api.posts.update(postId, { content })` and `api.posts.delete(postId)` in frontend `lib/api.ts`.
+- PostCard: "..." menu (Edit / Delete) shown when `canEdit` or `canDelete`; inline edit with textarea (280 chars), Save/Cancel; delete with confirm; placeholder "This post was deleted." when `post.deleted` or `post.content == null`.
+- Feed: `handleEditPost` and `handleDeletePost` call API and update timeline cache (optimistic-style update for edit, soft-delete placeholder for delete); passed as `onEdit` and `onDelete` to PostCard.
+- Marked "Editing and deleting posts works with correct permissions" as [x] in RALPH_TASK.md.
+
+Backend already had PATCH/DELETE posts with author-only checks and soft delete. Next unchecked criterion: Thread page (/p/:postId) works and displays replies + nested replies.

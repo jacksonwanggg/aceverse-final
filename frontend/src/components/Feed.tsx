@@ -1,4 +1,4 @@
-import { useInfiniteQuery } from '@tanstack/react-query'
+import { useInfiniteQuery, useQueryClient } from '@tanstack/react-query'
 import { useEffect, useCallback } from 'react'
 import PostCard from './PostCard'
 import PostCardSkeleton from './PostCardSkeleton'
@@ -11,7 +11,8 @@ interface FeedProps {
 
 export default function Feed({ type }: FeedProps) {
   const { user } = useAuth()
-  
+  const queryClient = useQueryClient()
+
   const {
     data,
     fetchNextPage,
@@ -30,6 +31,42 @@ export default function Feed({ type }: FeedProps) {
     getNextPageParam: (lastPage) => lastPage.nextCursor ?? undefined,
     enabled: type === 'explore' || !!user,
   })
+
+  const handleEditPost = useCallback(
+    async (postId: string, content: string) => {
+      const { post } = await api.posts.update(postId, { content })
+      queryClient.setQueryData(['timeline', type], (old: { pages: { posts: any[]; nextCursor: string | null }[] } | undefined) => {
+        if (!old) return old
+        return {
+          ...old,
+          pages: old.pages.map((page) => ({
+            ...page,
+            posts: page.posts.map((p) => (p.id === postId ? post : p)),
+          })),
+        }
+      })
+    },
+    [type, queryClient]
+  )
+
+  const handleDeletePost = useCallback(
+    async (postId: string) => {
+      await api.posts.delete(postId)
+      queryClient.setQueryData(['timeline', type], (old: { pages: { posts: any[]; nextCursor: string | null }[] } | undefined) => {
+        if (!old) return old
+        return {
+          ...old,
+          pages: old.pages.map((page) => ({
+            ...page,
+            posts: page.posts.map((p) =>
+              p.id === postId ? { ...p, content: null, deleted: true, canEdit: false, canDelete: false } : p
+            ),
+          })),
+        }
+      })
+    },
+    [type, queryClient]
+  )
 
   const handleScroll = useCallback(() => {
     if (
@@ -85,7 +122,12 @@ export default function Feed({ type }: FeedProps) {
     <div>
       <div className="space-y-0">
         {posts.map((post) => (
-          <PostCard key={post.id} post={post} />
+          <PostCard
+            key={post.id}
+            post={post}
+            onEdit={handleEditPost}
+            onDelete={handleDeletePost}
+          />
         ))}
       </div>
       {hasNextPage && (

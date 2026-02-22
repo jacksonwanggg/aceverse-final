@@ -41,6 +41,10 @@ export const api = {
       apiRequest<{ post: any }>('/posts', { method: 'POST', body: JSON.stringify(data) }),
     getById: (postId: string) =>
       apiRequest<{ post: any; replies: any[] }>(`/posts/${postId}`),
+    update: (postId: string, data: { content: string }) =>
+      apiRequest<{ post: any }>(`/posts/${postId}`, { method: 'PATCH', body: JSON.stringify(data) }),
+    delete: (postId: string) =>
+      apiRequest<{ ok: boolean }>(`/posts/${postId}`, { method: 'DELETE' }),
     like: (postId: string) =>
       apiRequest(`/posts/${postId}/like`, { method: 'POST' }),
     unlike: (postId: string) =>

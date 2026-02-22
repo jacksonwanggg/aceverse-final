@@ -429,7 +429,7 @@ Success Criteria Checklist (Ralph)
 
  [x] Creating a post works, shows instantly, respects 280 char limit
 
- Editing and deleting posts works with correct permissions
+ [x] Editing and deleting posts works with correct permissions
 
  Thread page (/p/:postId) works and displays replies + nested replies
 
