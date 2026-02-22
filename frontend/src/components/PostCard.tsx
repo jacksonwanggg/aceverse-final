@@ -91,6 +91,8 @@ export default function PostCard({ post, onLike, onRepost, onReply, onEdit, onDe
     return () => document.removeEventListener('click', close)
   }, [menuOpen])
 
+  // Focus and move cursor to end when entering edit mode only; editContent in deps would move cursor on every keystroke
+  // eslint-disable-next-line react-hooks/exhaustive-deps
   useEffect(() => {
     if (editing && editTextareaRef.current) {
       editTextareaRef.current.focus()

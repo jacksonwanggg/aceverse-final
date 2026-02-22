@@ -19,7 +19,7 @@ export default function GameTagSelector({ value, onChange, className = '' }: Gam
       <button
         type="button"
         onClick={() => onChange(null)}
-        className={`px-2 py-1 rounded text-xs font-medium transition-colors ${
+        className={`px-2 py-1 rounded-full text-xs font-medium transition-colors ${
           value === null
             ? 'bg-accent text-white'
             : 'bg-tertiary text-secondary hover:bg-hover hover:text-primary'
@@ -32,8 +32,8 @@ export default function GameTagSelector({ value, onChange, className = '' }: Gam
           key={g.id}
           type="button"
           onClick={() => onChange(value === g.slug ? null : g.slug)}
-          className={`px-2 py-1 rounded text-xs font-medium transition-colors ${
-            value === g.slug ? 'text-white' : 'text-secondary hover:bg-tertiary hover:text-primary'
+          className={`px-2 py-1 rounded-full text-xs font-medium transition-colors ${
+          value === g.slug ? 'text-white' : 'text-secondary hover:bg-tertiary hover:text-primary'
           }`}
           style={value === g.slug ? { backgroundColor: g.color || 'var(--color-accent)' } : undefined}
         >

@@ -53,7 +53,7 @@ function NotificationRow({ n }: { n: NotificationItem }) {
   return (
     <Link
       to={linkTo}
-      className={`flex gap-3 p-3 rounded-lg transition-colors hover:bg-hover ${
+      className={`flex gap-3 p-4 rounded-xl transition-colors hover:bg-hover ${
         !n.read ? 'bg-accent/5 border-l-2 border-accent' : ''
       }`}
     >
@@ -125,7 +125,7 @@ export default function NotificationsPage() {
       {isLoading ? (
         <div className="space-y-2">
           {[1, 2, 3].map((i) => (
-            <div key={i} className="flex gap-3 p-3 rounded-lg animate-pulse">
+            <div key={i} className="flex gap-3 p-4 rounded-xl animate-pulse">
               <div className="w-10 h-10 rounded-full bg-tertiary shrink-0" />
               <div className="flex-1 space-y-2">
                 <div className="h-3 bg-tertiary rounded w-3/4" />

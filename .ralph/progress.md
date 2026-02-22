@@ -157,6 +157,16 @@ This task focuses on making the UI match the design mockups in `.ralph/image.png
 ### 2026-02-22 20:45:30
 **Session 1 started** (model: auto)
 
+### 2026-02-22 (current session)
+**Phase 14 completed**: Typography & spacing consistency.
+- Shared `formatConciseTime()` in `frontend/src/lib/formatDate.ts`; used in PostCard, PostThreadPage, NotificationsPage, NotificationDropdown (timestamps: "2h", "6h", "1d", "2w", "Jan 15").
+- Typography tokens in `index.css` and `tailwind.config.js` (page-title, section, body, secondary, small; leading-content, leading-ui).
+- PostCard: post content uses `text-body leading-content`; time link and game pill polish.
+- ProfilePage: long bio truncates with "...more" / "Show less" (BIO_TRUNCATE_LENGTH 160).
+- Border-radius and spacing already aligned (rounded-full for pills/avatars, rounded-xl for cards, rounded-lg for inputs; card padding 16px, feed zero gap).
+**Phase 15**: Command verification done (typecheck, build, lint, test pass). Remaining: manual verification (browse dark/light/system, mobile, all features, zero console errors).
+**Next**: Complete Phase 15 manual checks or mark complete; then commit and push.
+
 ### 2026-02-22 20:46:23
 **Session 1 ended** - 🔄 Context rotation (token limit reached)
 
