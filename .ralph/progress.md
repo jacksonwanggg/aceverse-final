@@ -161,3 +161,19 @@ Next: Phase 5 — Landing Page (Logged-Out Experience).
 
 ### 2026-02-22 19:12:26
 **Session 5 started** (model: auto)
+
+### 2026-02-22 (Ralph Iteration 5 — Phase 5)
+**Phase 5: Landing Page (Logged-Out Experience) completed.**
+
+Completed:
+- Created LandingPage at `/` for logged-out users: hero with gradient/glow (#EF8C60), tagline "Your gaming universe. One feed.", Sign Up and Login CTAs; smooth scroll animations (CSS fade-in + IntersectionObserver for scroll-animate sections).
+- Feature sections: Track Your Ranks, Share Your Clips, Find Your Squad, Stay in the Loop with icons and copy.
+- Social proof section: 50K+ gamers, 1M+ clips shared, 7 games supported.
+- Footer: About, Help, Terms, Privacy links.
+- OptionalAuthLayout: `/` shows landing when logged out, AppLayout + HomeOrLanding when logged in (index = Landing or Home).
+- Public /p/:postId: PublicOrAuthPostThread shows StandalonePostThreadPage (read-only thread + "Log in to like, reply, and repost" banner) when logged out; AppLayout + PostThreadPage when logged in.
+- PostThreadPage: fetches post + replies via api.posts.getById, renders PostCard (with readOnly prop) and reply list; PostCard supports readOnly to hide actions and edit/delete menu.
+- Landing page responsive (nav, hero, features, stats, CTA, footer).
+- npm run typecheck && npm run build && npm run lint — all pass. Phase 5 criteria marked [x] in RALPH_TASK.md.
+
+Next: Phase 6 — Home & Explore Feeds.

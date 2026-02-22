@@ -29,9 +29,11 @@ interface PostCardProps {
   onReply?: () => void
   onEdit?: (postId: string, content: string) => Promise<void>
   onDelete?: (postId: string) => Promise<void>
+  /** When true, hide action row (reply, like, repost, share) and edit/delete menu. */
+  readOnly?: boolean
 }
 
-export default function PostCard({ post, onLike, onRepost, onReply, onEdit, onDelete }: PostCardProps) {
+export default function PostCard({ post, onLike, onRepost, onReply, onEdit, onDelete, readOnly }: PostCardProps) {
   const [menuOpen, setMenuOpen] = useState(false)
   const [editing, setEditing] = useState(false)
   const [editContent, setEditContent] = useState(post.content ?? '')
@@ -132,7 +134,7 @@ export default function PostCard({ post, onLike, onRepost, onReply, onEdit, onDe
                 {post.game?.name ?? post.gameTag}
               </span>
             )}
-            {(post.canEdit || post.canDelete) && !isDeleted && (
+            {(post.canEdit || post.canDelete) && !isDeleted && !readOnly && (
               <div className="ml-auto relative" ref={menuRef}>
                 <button
                   onClick={() => setMenuOpen((o) => !o)}
@@ -219,7 +221,7 @@ export default function PostCard({ post, onLike, onRepost, onReply, onEdit, onDe
               </Link>
             </>
           )}
-          {!editing && (
+          {!editing && !readOnly && (
             <div className="flex items-center gap-6 mt-3 text-gray-500 dark:text-gray-400">
               <button
                 onClick={onReply}

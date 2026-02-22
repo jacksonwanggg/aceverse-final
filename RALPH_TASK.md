@@ -124,14 +124,14 @@ npm run dev          # starts backend (3001) + frontend (5173) concurrently
 
 ### Phase 5: Landing Page (Logged-Out Experience)
 
-- [ ] Create a stunning landing page at `/` for logged-out users with: hero section with animated gradient/glow using `#EF8C60`, tagline like "Your gaming universe. One feed.", prominent Sign Up and Login CTAs
-- [ ] Landing page has smooth scroll animations (fade-in, slide-up on scroll) using CSS animations or Framer Motion
-- [ ] Feature showcase sections: "Track Your Ranks", "Share Your Clips", "Find Your Squad", "Stay in the Loop" — each with icon/illustration and description
-- [ ] Social proof / stats section (e.g., "Join 50K+ gamers", "1M+ clips shared" — fake numbers, looks good)
-- [ ] Footer with links: About, Help, Terms, Privacy
-- [ ] Visiting `/p/:postId` while logged out shows the post thread read-only (no interaction buttons), with a banner prompting login
-- [ ] Landing page is fully responsive and looks great on mobile
-- [ ] Run `npm run typecheck && npm run build && npm run lint` — all pass
+- [x] Create a stunning landing page at `/` for logged-out users with: hero section with animated gradient/glow using `#EF8C60`, tagline like "Your gaming universe. One feed.", prominent Sign Up and Login CTAs
+- [x] Landing page has smooth scroll animations (fade-in, slide-up on scroll) using CSS animations or Framer Motion
+- [x] Feature showcase sections: "Track Your Ranks", "Share Your Clips", "Find Your Squad", "Stay in the Loop" — each with icon/illustration and description
+- [x] Social proof / stats section (e.g., "Join 50K+ gamers", "1M+ clips shared" — fake numbers, looks good)
+- [x] Footer with links: About, Help, Terms, Privacy
+- [x] Visiting `/p/:postId` while logged out shows the post thread read-only (no interaction buttons), with a banner prompting login
+- [x] Landing page is fully responsive and looks great on mobile
+- [x] Run `npm run typecheck && npm run build && npm run lint` — all pass
 
 ### Phase 6: Home & Explore Feeds
 
