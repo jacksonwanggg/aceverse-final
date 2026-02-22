@@ -273,17 +273,17 @@ The core MVP is fully functional (auth, posts, feeds, likes, reposts, replies, f
 
 ### Phase 10: Trending Page — Match Mockup Exactly
 
-- [ ] **Header**: Flame icon (large, accent) + "Trending Clips" title (large, bold) + "Top gaming clips from the community" subtitle (text-secondary)
-- [ ] **Stats bar**: Three cards in a row (bg-secondary, rounded):
+- [x] **Header**: Flame icon (large, accent) + "Trending Clips" title (large, bold) + "Top gaming clips from the community" subtitle (text-secondary)
+- [x] **Stats bar**: Three cards in a row (bg-secondary, rounded):
   - Fire icon + "11+" (large, bold) + "Hot Clips" (text-secondary)
   - TrendingUp icon + "44K+" (large, bold) + "Total Likes" (text-secondary)
   - Clock icon + "24h" (large, bold) + "Updated" (text-secondary)
   - Stats can be computed from actual data or hardcoded as representative numbers
-- [ ] **Ranked posts**: Each trending post has a circular accent-colored badge with rank number (#1, #2, #3...) positioned overlapping the top-left corner of the post
-- [ ] **Game filter**: In the left sidebar "Your Games" section, clicking a game filters the trending feed to that game's tag. Active filter game is highlighted in accent. "Clear" button resets the filter.
-- [ ] YouTube embeds display properly within trending post cards
-- [ ] Entire page looks correct in both light and dark mode
-- [ ] Run `npm run typecheck && npm run build && npm run lint` — all pass
+- [x] **Ranked posts**: Each trending post has a circular accent-colored badge with rank number (#1, #2, #3...) positioned overlapping the top-left corner of the post
+- [x] **Game filter**: In the left sidebar "Your Games" section, clicking a game filters the trending feed to that game's tag. Active filter game is highlighted in accent. "Clear" button resets the filter.
+- [x] YouTube embeds display properly within trending post cards
+- [x] Entire page looks correct in both light and dark mode
+- [x] Run `npm run typecheck && npm run build && npm run lint` — all pass
 
 ### Phase 11: Remaining Pages Polish
 

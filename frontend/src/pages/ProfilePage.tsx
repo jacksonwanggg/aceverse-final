@@ -19,6 +19,7 @@ export default function ProfilePage() {
   const [editDisplayName, setEditDisplayName] = useState('')
   const [editBio, setEditBio] = useState('')
   const [editAvatarUrl, setEditAvatarUrl] = useState('')
+  const [activeTab, setActiveTab] = useState<'posts' | 'clips' | 'likes'>('posts')
 
   const { data: profileData } = useQuery({
     queryKey: ['users', username],
@@ -399,11 +400,27 @@ export default function ProfilePage() {
           </section>
         )}
 
-        {/* User's posts tab */}
-        <section className="mt-6 pt-4 border-t border-border-default">
-          <h2 className="text-sm font-semibold text-secondary uppercase tracking-wider mb-3">
-            Posts
-          </h2>
+        {/* Content tabs */}
+        <section className="mt-6 border-t border-border-default">
+          <div className="flex border-b border-border-default">
+            {(['posts', 'clips', 'likes'] as const).map((tab) => (
+              <button
+                key={tab}
+                type="button"
+                onClick={() => setActiveTab(tab)}
+                className={`flex-1 py-3 text-sm font-medium transition-colors relative ${
+                  activeTab === tab
+                    ? 'text-accent'
+                    : 'text-secondary hover:text-primary hover:bg-hover'
+                }`}
+              >
+                {tab.charAt(0).toUpperCase() + tab.slice(1)}
+                {activeTab === tab && (
+                  <span className="absolute bottom-0 left-0 right-0 h-0.5 bg-accent" />
+                )}
+              </button>
+            ))}
+          </div>
           {postsLoading ? (
             <>
               <PostCardSkeleton />

@@ -3,8 +3,8 @@
 # DO NOT EDIT - regenerated on task file change
 
 source_file: RALPH_TASK.md
-source_mtime: 1771753469
-generated_at: 2026-02-22T09:44:32Z
+source_mtime: 1771753480
+generated_at: 2026-02-22T09:44:41Z
 
 tasks:
   - id: "line_129"
@@ -569,49 +569,49 @@ tasks:
     raw_marker: -
   - id: "line_276"
     line_number: 276
-    status: pending
+    status: completed
     parallel_group: 999999
     description: **Header**: Flame icon (large, accent) + \"Trending Clips\" title (large, bold) + \"Top gaming clips from the community\" subtitle (text-secondary)
     indent_level: 0
     raw_marker: -
   - id: "line_277"
     line_number: 277
-    status: pending
+    status: completed
     parallel_group: 999999
     description: **Stats bar**: Three cards in a row (bg-secondary, rounded):
     indent_level: 0
     raw_marker: -
   - id: "line_282"
     line_number: 282
-    status: pending
+    status: completed
     parallel_group: 999999
     description: **Ranked posts**: Each trending post has a circular accent-colored badge with rank number (#1, #2, #3...) positioned overlapping the top-left corner of the post
     indent_level: 0
     raw_marker: -
   - id: "line_283"
     line_number: 283
-    status: pending
+    status: completed
     parallel_group: 999999
     description: **Game filter**: In the left sidebar \"Your Games\" section, clicking a game filters the trending feed to that game's tag. Active filter game is highlighted in accent. \"Clear\" button resets the filter.
     indent_level: 0
     raw_marker: -
   - id: "line_284"
     line_number: 284
-    status: pending
+    status: completed
     parallel_group: 999999
     description: YouTube embeds display properly within trending post cards
     indent_level: 0
     raw_marker: -
   - id: "line_285"
     line_number: 285
-    status: pending
+    status: completed
     parallel_group: 999999
     description: Entire page looks correct in both light and dark mode
     indent_level: 0
     raw_marker: -
   - id: "line_286"
     line_number: 286
-    status: pending
+    status: completed
     parallel_group: 999999
     description: Run `npm run typecheck && npm run build && npm run lint` — all pass
     indent_level: 0
