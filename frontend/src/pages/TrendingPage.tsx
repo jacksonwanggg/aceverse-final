@@ -250,9 +250,9 @@ export default function TrendingPage() {
         <div className="sticky top-0 bg-primary/95 backdrop-blur-sm border-b border-border-default px-4 py-4 z-10">
           <div className="flex items-center gap-2 mb-2">
             <Flame className="w-6 h-6 text-accent" />
-            <h1 className="text-page-title text-primary">Trending Clips</h1>
+            <h1 className="text-page-title-lg text-primary">Trending Clips</h1>
           </div>
-          <p className="text-sm text-secondary mb-3">Top gaming clips from the community</p>
+          <p className="text-secondary-size text-secondary mb-3 leading-ui">Top gaming clips from the community</p>
           {stats && (
             <div className="flex gap-3">
               <div className="flex items-center gap-2 px-3 py-2 rounded-lg bg-secondary">

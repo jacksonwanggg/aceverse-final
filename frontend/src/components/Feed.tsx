@@ -270,10 +270,10 @@ export default function Feed({ type }: FeedProps) {
       <div className="p-8 text-center text-secondary">
         {type === 'home' ? (
           <div className="max-w-md mx-auto">
-            <p className="text-lg font-semibold mb-2 text-primary">Your feed is empty. Follow some gamers to see their posts!</p>
+            <p className="text-section-lg mb-2 text-primary leading-ui">Your feed is empty. Follow some gamers to see their posts!</p>
             {suggestions.length > 0 && (
               <div className="mt-6 text-left">
-                <p className="text-sm font-medium text-secondary uppercase tracking-wider mb-3">Suggested accounts</p>
+                <p className="text-secondary-size font-medium text-secondary uppercase tracking-wider mb-3 leading-ui">Suggested accounts</p>
                 <ul className="space-y-2">
                   {suggestions.map((u: { id: string; username: string; displayName: string; avatarUrl: string; isFollowing?: boolean }) => (
                     <li

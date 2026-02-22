@@ -169,7 +169,7 @@ export default function PostCard({ post, onLike, onRepost, onReply, onEdit, onDe
             <span className="text-secondary shrink-0">·</span>
             <Link
               to={`/p/${post.id}`}
-              className="text-secondary hover:underline shrink-0"
+              className="text-small text-secondary hover:underline shrink-0"
             >
               {timeAgo}
             </Link>
@@ -248,7 +248,7 @@ export default function PostCard({ post, onLike, onRepost, onReply, onEdit, onDe
               {(post.gameTag || post.game) && !isDeleted && (
                 <Link
                   to={`/trending?game=${post.game?.slug || post.gameTag}`}
-                  className="inline-flex items-center gap-1.5 px-2 py-1 rounded text-xs font-medium mt-2 transition-colors"
+                  className="inline-flex items-center gap-1.5 px-2 py-1 rounded-full text-xs font-medium mt-2 transition-colors"
                   style={{ 
                     backgroundColor: (post.game?.color || 'var(--color-accent)') + '20', 
                     color: post.game?.color || 'var(--color-accent)' 

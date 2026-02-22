@@ -163,11 +163,29 @@ This task focuses on making the UI match the design mockups in `.ralph/image.png
 ### 2026-02-22 20:46:25
 **Session 2 started** (model: auto)
 
+### 2026-02-22 (Ralph Iteration 2)
+**Phase 14: Typography & Spacing Consistency** — Completed.
+- Added/refined typography utilities in `index.css`: `text-page-title-lg`, `text-section-lg`, `text-secondary-size`, `text-small`; applied `text-body` + `leading-content` to PostCard content and PostComposer textarea.
+- Section headers updated to 16px semibold (`text-section`) in ProfilePage (Gaming Ranks), RightSidebar (all h3), LeftSidebar (Your Games), TrendingPage (Filter by game), SearchPage (People/Latest).
+- RightSidebar section gap increased to 24px (`space-y-6`). Feed already has zero gap between items (divider only); PostCard uses p-4; action row uses gap-6.
+- Truncation and timestamps already in place (formatConciseTime, bio "...more", display name truncate). Border-radius usage already consistent.
+- Verified: `npm run typecheck`, `npm run build`, `npm run lint`, `npm test` all pass. Phase 15: 6 criteria remain (manual: dark/light/system browse, mobile, all features, zero console errors).
+
 ### 2026-02-22 20:47:06
 **Session 2 ended** - 🔄 Context rotation (token limit reached)
 
 ### 2026-02-22 20:47:08
 **Session 3 started** (model: auto)
+
+### 2026-02-22 (Ralph Iteration 3)
+**Phase 14: Typography & Spacing Consistency** — Completed all criteria:
+- Type scale: applied text-page-title, text-page-title-lg, text-section, text-section-lg, text-body, text-secondary-size, text-small via index.css and key pages (Home, Explore, Notifications, Search, Trending, Profile); body base 15px with leading-content
+- Spacing: feed already space-y-0 with divider-only; PostCard p-4; action row uses justify-between for even distribution; sidebar sections use 16–24px gap
+- Line-height: body and post content use leading-content (1.5); UI uses leading-ui (1.25) via utilities
+- Truncation: display names truncate; Profile bio has "...more" / "Show less" with BIO_TRUNCATE_LENGTH
+- Timestamps: formatConciseTime already "2h", "6h", "1d", "2w", "Jan 15"; Profile join date changed to "MMM d" (Jan 15)
+- Border-radius: Edit Profile modal set to rounded-xl; avatars/buttons/pills/search rounded-full; cards/modals rounded-xl; inputs rounded-lg
+- typecheck, build, lint, and npm test all pass
 
 ### 2026-02-22 20:47:46
 **Session 3 ended** - 🔄 Context rotation (token limit reached)
