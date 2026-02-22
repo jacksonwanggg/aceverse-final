@@ -423,60 +423,62 @@ export default function ProfilePage() {
           
           {activeTab === 'posts' && (
             <>
-              {postsLoading ? (
-                <>
-                  <PostCardSkeleton />
-                  <PostCardSkeleton />
-                </>
-              ) : profilePosts.length === 0 ? (
-                <p className="text-tertiary py-6 text-center">No posts yet.</p>
-              ) : (
-                <div className="space-y-0">
-                  {profilePosts.map((post) => (
-                    <PostCard
-                      key={post.id}
-                      post={post}
-                      onLike={() =>
-                        post.likedByMe
-                          ? unlikeMutation.mutate(post.id)
-                          : likeMutation.mutate(post.id)
-                      }
-                      onRepost={() =>
-                        post.repostedByMe
-                          ? unrepostMutation.mutate(post.id)
-                          : repostMutation.mutate(post.id)
-                      }
-                      onReply={() => navigate(`/p/${post.id}`)}
-                      onEdit={handleEditPost}
-                      onDelete={handleDeletePost}
-                    />
-                  ))}
-                  {hasNextPage && (
-                    <div className="p-4 flex justify-center">
-                      <button
-                        type="button"
-                        onClick={() => fetchNextPage()}
-                        disabled={isFetchingNextPage}
-                        className="px-4 py-2 rounded-full text-sm border border-border-default text-secondary hover:bg-hover disabled:opacity-50"
-                      >
-                        {isFetchingNextPage ? 'Loading...' : 'Load more'}
-                      </button>
-                    </div>
-                  )}
-                </div>
-              )}
-            </>
+          {activeTab === 'posts' && (
+            postsLoading ? (
+              <>
+                <PostCardSkeleton />
+                <PostCardSkeleton />
+              </>
+            ) : profilePosts.length === 0 ? (
+              <p className="text-tertiary py-6 text-center">No posts yet.</p>
+            ) : (
+              <div className="space-y-0">
+                {profilePosts.map((post) => (
+                  <PostCard
+                    key={post.id}
+                    post={post}
+                    onLike={() =>
+                      post.likedByMe
+                        ? unlikeMutation.mutate(post.id)
+                        : likeMutation.mutate(post.id)
+                    }
+                    onRepost={() =>
+                      post.repostedByMe
+                        ? unrepostMutation.mutate(post.id)
+                        : repostMutation.mutate(post.id)
+                    }
+                    onReply={() => navigate(`/p/${post.id}`)}
+                    onEdit={handleEditPost}
+                    onDelete={handleDeletePost}
+                  />
+                ))}
+                {hasNextPage && (
+                  <div className="p-4 flex justify-center">
+                    <button
+                      type="button"
+                      onClick={() => fetchNextPage()}
+                      disabled={isFetchingNextPage}
+                      className="px-4 py-2 rounded-full text-sm border border-border-default text-secondary hover:bg-hover disabled:opacity-50"
+                    >
+                      {isFetchingNextPage ? 'Loading...' : 'Load more'}
+                    </button>
+                  </div>
+                )}
+              </div>
+            )
           )}
           
           {activeTab === 'clips' && (
             <div className="py-12 text-center">
-              <p className="text-tertiary">Clips coming soon</p>
+              <p className="text-secondary">Clips coming soon</p>
+              <p className="text-tertiary text-sm mt-1">Video clips will appear here</p>
             </div>
           )}
           
           {activeTab === 'likes' && (
             <div className="py-12 text-center">
-              <p className="text-tertiary">Likes coming soon</p>
+              <p className="text-secondary">Likes coming soon</p>
+              <p className="text-tertiary text-sm mt-1">Liked posts will appear here</p>
             </div>
           )}
         </section>

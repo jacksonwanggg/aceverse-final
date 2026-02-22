@@ -310,17 +310,17 @@ The core MVP is fully functional (auth, posts, feeds, likes, reposts, replies, f
 
 ### Phase 13: Micro-Animations & Interactions
 
-- [ ] Like: heart scales (1 → 1.3 → 1) with color transition to pink when liked
-- [ ] Repost: icon rotates briefly with color transition to green
-- [ ] Follow button: smooth fill transition from outline to solid accent
-- [ ] New post: slides in from top with fade
-- [ ] Notification badge: subtle pulse when count changes
-- [ ] Theme toggle: icon crossfade/rotate on switch
-- [ ] Toast: slides in from top-right with spring, slides out on dismiss
-- [ ] Skeleton loading: shimmer animation (gradient sweep, not just pulse)
-- [ ] All buttons: subtle brightness/scale transition on hover (transform: scale(1.02) or filter: brightness(1.1))
-- [ ] Page transitions: existing framer-motion fade/slide still smooth
-- [ ] Run `npm run typecheck && npm run build && npm run lint` — all pass
+- [x] Like: heart scales (1 → 1.3 → 1) with color transition to pink when liked
+- [x] Repost: icon rotates briefly with color transition to green
+- [x] Follow button: smooth fill transition from outline to solid accent
+- [x] New post: slides in from top with fade
+- [x] Notification badge: subtle pulse when count changes
+- [x] Theme toggle: icon crossfade/rotate on switch
+- [x] Toast: slides in from top-right with spring, slides out on dismiss
+- [x] Skeleton loading: shimmer animation (gradient sweep, not just pulse)
+- [x] All buttons: subtle brightness/scale transition on hover (transform: scale(1.02) or filter: brightness(1.1))
+- [x] Page transitions: existing framer-motion fade/slide still smooth
+- [x] Run `npm run typecheck && npm run build && npm run lint` — all pass
 
 ### Phase 14: Typography & Spacing Consistency
 

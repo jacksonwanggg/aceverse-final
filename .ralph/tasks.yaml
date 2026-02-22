@@ -3,8 +3,8 @@
 # DO NOT EDIT - regenerated on task file change
 
 source_file: RALPH_TASK.md
-source_mtime: 1771753497
-generated_at: 2026-02-22T09:45:00Z
+source_mtime: 1771753512
+generated_at: 2026-02-22T09:45:17Z
 
 tasks:
   - id: "line_129"
@@ -737,77 +737,77 @@ tasks:
     raw_marker: -
   - id: "line_313"
     line_number: 313
-    status: pending
+    status: completed
     parallel_group: 999999
     description: Like: heart scales (1 → 1.3 → 1) with color transition to pink when liked
     indent_level: 0
     raw_marker: -
   - id: "line_314"
     line_number: 314
-    status: pending
+    status: completed
     parallel_group: 999999
     description: Repost: icon rotates briefly with color transition to green
     indent_level: 0
     raw_marker: -
   - id: "line_315"
     line_number: 315
-    status: pending
+    status: completed
     parallel_group: 999999
     description: Follow button: smooth fill transition from outline to solid accent
     indent_level: 0
     raw_marker: -
   - id: "line_316"
     line_number: 316
-    status: pending
+    status: completed
     parallel_group: 999999
     description: New post: slides in from top with fade
     indent_level: 0
     raw_marker: -
   - id: "line_317"
     line_number: 317
-    status: pending
+    status: completed
     parallel_group: 999999
     description: Notification badge: subtle pulse when count changes
     indent_level: 0
     raw_marker: -
   - id: "line_318"
     line_number: 318
-    status: pending
+    status: completed
     parallel_group: 999999
     description: Theme toggle: icon crossfade/rotate on switch
     indent_level: 0
     raw_marker: -
   - id: "line_319"
     line_number: 319
-    status: pending
+    status: completed
     parallel_group: 999999
     description: Toast: slides in from top-right with spring, slides out on dismiss
     indent_level: 0
     raw_marker: -
   - id: "line_320"
     line_number: 320
-    status: pending
+    status: completed
     parallel_group: 999999
     description: Skeleton loading: shimmer animation (gradient sweep, not just pulse)
     indent_level: 0
     raw_marker: -
   - id: "line_321"
     line_number: 321
-    status: pending
+    status: completed
     parallel_group: 999999
     description: All buttons: subtle brightness/scale transition on hover (transform: scale(1.02) or filter: brightness(1.1))
     indent_level: 0
     raw_marker: -
   - id: "line_322"
     line_number: 322
-    status: pending
+    status: completed
     parallel_group: 999999
     description: Page transitions: existing framer-motion fade/slide still smooth
     indent_level: 0
     raw_marker: -
   - id: "line_323"
     line_number: 323
-    status: pending
+    status: completed
     parallel_group: 999999
     description: Run `npm run typecheck && npm run build && npm run lint` — all pass
     indent_level: 0
