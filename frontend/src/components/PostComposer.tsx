@@ -17,13 +17,64 @@ export default function PostComposer({ onSuccess, placeholder = "What's happenin
   const createPostMutation = useMutation({
     mutationFn: api.posts.create,
     onMutate: async (newPost) => {
-      await queryClient.cancelQueries({ queryKey: ['timeline'] })
-      return { previousTimeline: queryClient.getQueryData(['timeline']) }
+      await queryClient.cancelQueries({ queryKey: ['timeline', 'home'] })
+      const previousData = queryClient.getQueryData(['timeline', 'home'])
+      
+      // Optimistically add the post
+      queryClient.setQueryData(['timeline', 'home'], (old: any) => {
+        if (!old) return old
+        const optimisticPost = {
+          id: 'temp-' + Date.now(),
+          content: newPost.content,
+          createdAt: new Date().toISOString(),
+          author: {
+            id: user!.id,
+            username: user!.username,
+            displayName: user!.displayName,
+            avatarUrl: user!.avatarUrl,
+          },
+          replyCount: 0,
+          likeCount: 0,
+          repostCount: 0,
+          likedByMe: false,
+          repostedByMe: false,
+          canEdit: true,
+          canDelete: true,
+        }
+        return {
+          ...old,
+          pages: old.pages.map((page: any, idx: number) => 
+            idx === 0 
+              ? { ...page, posts: [optimisticPost, ...page.posts] }
+              : page
+          ),
+        }
+      })
+      
+      return { previousData }
     },
-    onSuccess: () => {
-      queryClient.invalidateQueries({ queryKey: ['timeline'] })
+    onSuccess: (data) => {
+      // Replace optimistic post with real one
+      queryClient.setQueryData(['timeline', 'home'], (old: any) => {
+        if (!old) return old
+        return {
+          ...old,
+          pages: old.pages.map((page: any) => ({
+            ...page,
+            posts: page.posts.map((post: any) => 
+              post.id.startsWith('temp-') ? data.post : post
+            ),
+          })),
+        }
+      })
       setContent('')
       onSuccess?.()
+    },
+    onError: (_err, _newPost, context) => {
+      // Rollback on error
+      if (context?.previousData) {
+        queryClient.setQueryData(['timeline', 'home'], context.previousData)
+      }
     },
   })
 

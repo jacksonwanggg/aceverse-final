@@ -427,7 +427,7 @@ Success Criteria Checklist (Ralph)
 
  [x] Home and Explore feeds load with pagination and nice loading states
 
- Creating a post works, shows instantly, respects 280 char limit
+ [x] Creating a post works, shows instantly, respects 280 char limit
 
  Editing and deleting posts works with correct permissions
 
