@@ -188,10 +188,10 @@ export default function RightSidebar() {
                 <li key={tag.slug}>
                   <Link
                     to={`/trending?game=${tag.slug}`}
-                    className="flex items-center justify-between p-2 rounded-lg hover:bg-hover transition-colors group"
+                    className="block p-2 rounded-lg hover:bg-hover transition-colors"
                   >
-                    <span className="text-sm text-secondary group-hover:text-primary">#{tag.name}</span>
-                    <span className="text-xs text-tertiary">{tag.count} posts</span>
+                    <p className="text-sm font-semibold text-primary">#{tag.name}</p>
+                    <p className="text-xs text-secondary">{tag.count}+ posts</p>
                   </Link>
                 </li>
               ))}
