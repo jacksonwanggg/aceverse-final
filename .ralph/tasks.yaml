@@ -3,8 +3,8 @@
 # DO NOT EDIT - regenerated on task file change
 
 source_file: RALPH_TASK.md
-source_mtime: 1771749411
-generated_at: 2026-02-22T08:37:29Z
+source_mtime: 1771749732
+generated_at: 2026-02-22T08:42:58Z
 
 tasks:
   - id: "line_77"
@@ -555,49 +555,49 @@ tasks:
     raw_marker: -
   - id: "line_188"
     line_number: 188
-    status: pending
+    status: completed
     parallel_group: 999999
     description: Notifications page (`/notifications`): lists all notifications (LIKE, REPLY, REPOST, FOLLOW) with actor avatar, action text, relative time, and link to relevant post/profile
     indent_level: 0
     raw_marker: -
   - id: "line_189"
     line_number: 189
-    status: pending
+    status: completed
     parallel_group: 999999
     description: Unread notification count badge in the nav bar (orange dot or number)
     indent_level: 0
     raw_marker: -
   - id: "line_190"
     line_number: 190
-    status: pending
+    status: completed
     parallel_group: 999999
     description: \"Mark all as read\" button clears unread state
     indent_level: 0
     raw_marker: -
   - id: "line_191"
     line_number: 191
-    status: pending
+    status: completed
     parallel_group: 999999
     description: Notification dropdown on bell icon click (in addition to full page) showing latest 5 notifications with \"View all notifications\" link
     indent_level: 0
     raw_marker: -
   - id: "line_192"
     line_number: 192
-    status: pending
+    status: completed
     parallel_group: 999999
     description: No notifications for your own actions on your own content
     indent_level: 0
     raw_marker: -
   - id: "line_193"
     line_number: 193
-    status: pending
+    status: completed
     parallel_group: 999999
     description: Add `api.notifications` to frontend API client: `getAll`, `markAllRead`, `getUnreadCount`
     indent_level: 0
     raw_marker: -
   - id: "line_194"
     line_number: 194
-    status: pending
+    status: completed
     parallel_group: 999999
     description: Run `npm run typecheck && npm run build && npm run lint` — all pass
     indent_level: 0
