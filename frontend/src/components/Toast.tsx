@@ -49,10 +49,10 @@ function ToastList({
             t.type === 'error'
               ? 'bg-red-950/95 border border-red-700 border-l-red-500 text-red-100'
               : t.type === 'success'
-                ? 'bg-[#0D0D0D] border border-[#EF8C60] border-l-[#EF8C60] text-gray-100 shadow-[0_0_20px_rgba(239,140,96,0.15)]'
+                ? 'bg-primary border border-accent border-l-accent text-primary shadow-[0_0_20px_rgba(239,140,96,0.15)]'
                 : t.type === 'info'
-                  ? 'bg-[#1A1A1A] border border-gray-600 border-l-[#EF8C60] text-gray-100'
-                  : 'bg-[#1A1A1A] border border-gray-600 border-l-[#EF8C60]/60 text-gray-100'
+                  ? 'bg-secondary border border-border-default border-l-accent text-primary'
+                  : 'bg-secondary border border-border-default border-l-accent/60 text-primary'
           }`}
         >
           <div className="flex items-start justify-between gap-2">
@@ -60,7 +60,7 @@ function ToastList({
             <button
               type="button"
               onClick={() => onDismiss(t.id)}
-              className="shrink-0 text-gray-400 hover:text-white focus:outline-none focus:ring-2 focus:ring-[#EF8C60] rounded"
+              className="shrink-0 text-secondary hover:text-primary focus:outline-none focus:ring-2 focus:ring-accent rounded"
               aria-label="Dismiss"
             >
               ×

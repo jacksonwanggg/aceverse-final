@@ -1,11 +1,47 @@
 @import "tailwindcss";
 
+/* Theme Token System - Light/Dark Mode CSS Variables */
 :root {
-  --primary: #EF8C60;
+  /* Background Colors - Light Mode */
+  --color-bg-primary: #FFFFFF;
+  --color-bg-secondary: #F7F9F9;
+  --color-bg-tertiary: #EFF3F4;
+  --color-bg-hover: rgba(0, 0, 0, 0.03);
+  
+  /* Border Colors - Light Mode */
+  --color-border: #EFF3F4;
+  
+  /* Text Colors - Light Mode */
+  --color-text-primary: #0F1419;
+  --color-text-secondary: #536471;
+  --color-text-tertiary: #8B98A5;
+  
+  /* Accent Colors (same for both modes) */
+  --color-accent: #EF8C60;
+  --color-accent-hover: #E07840;
+  
+  /* Action Colors (same for both modes) */
+  --color-like: #F91880;
+  --color-repost: #00BA7C;
+  --color-reply: #1D9BF0;
+}
+
+/* Dark Mode */
+.dark {
+  --color-bg-primary: #000000;
+  --color-bg-secondary: #16181C;
+  --color-bg-tertiary: #1D1F23;
+  --color-bg-hover: rgba(255, 255, 255, 0.03);
+  
+  --color-border: #2F3336;
+  
+  --color-text-primary: #E7E9EA;
+  --color-text-secondary: #71767B;
+  --color-text-tertiary: #536471;
 }
 
 @layer base {
   body {
-    @apply bg-white dark:bg-gray-900 text-gray-900 dark:text-gray-100;
+    @apply bg-primary text-primary;
   }
 }

@@ -31,8 +31,8 @@ export default function AppLayout({ children }: AppLayoutProps) {
 
   if (isLoading) {
     return (
-      <div className="min-h-screen bg-[#0D0D0D] flex items-center justify-center">
-        <div className="w-8 h-8 border-2 border-[#EF8C60] border-t-transparent rounded-full animate-spin" />
+      <div className="min-h-screen bg-primary flex items-center justify-center">
+        <div className="w-8 h-8 border-2 border-accent border-t-transparent rounded-full animate-spin" />
       </div>
     )
   }
@@ -58,10 +58,10 @@ export default function AppLayout({ children }: AppLayoutProps) {
   )
 
   return (
-    <div className="min-h-screen bg-[#0D0D0D] text-gray-100 flex">
+    <div className="min-h-screen bg-primary text-primary flex">
       <ScrollToTop />
       <LeftSidebar />
-      <main className="flex-1 min-w-0 flex flex-col border-x border-gray-800 max-w-2xl mx-auto w-full pb-20 md:pb-0">
+      <main className="flex-1 min-w-0 flex flex-col border-x border-border-default max-w-2xl mx-auto w-full pb-20 md:pb-0">
         {content}
       </main>
       <RightSidebar />

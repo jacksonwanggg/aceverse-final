@@ -24,7 +24,6 @@ export default function PostComposer({ onSuccess, placeholder = "What's happenin
       await queryClient.cancelQueries({ queryKey: ['timeline', 'home'] })
       const previousData = queryClient.getQueryData(['timeline', 'home'])
       
-      // Optimistically add the post
       queryClient.setQueryData(['timeline', 'home'], (old: any) => {
         if (!old) return old
         const optimisticPost = {
@@ -59,7 +58,6 @@ export default function PostComposer({ onSuccess, placeholder = "What's happenin
       return { previousData }
     },
     onSuccess: (data) => {
-      // Replace optimistic post with real one
       queryClient.setQueryData(['timeline', 'home'], (old: any) => {
         if (!old) return old
         return {
@@ -107,7 +105,7 @@ export default function PostComposer({ onSuccess, placeholder = "What's happenin
   const isOverLimit = content.length > 500
 
   return (
-    <div className="border-b border-gray-200 dark:border-gray-700 p-4">
+    <div className="border-b border-border-default p-4">
       <form onSubmit={handleSubmit}>
         <div className="flex gap-3">
           <img
@@ -122,17 +120,17 @@ export default function PostComposer({ onSuccess, placeholder = "What's happenin
               placeholder={placeholder}
               rows={3}
               maxLength={500}
-              className="w-full resize-none bg-transparent text-gray-900 dark:text-gray-100 placeholder-gray-500 dark:placeholder-gray-400 focus:outline-none text-lg"
+              className="w-full resize-none bg-transparent text-primary placeholder-secondary focus:outline-none text-lg"
             />
             <GameTagSelector value={gameTag} onChange={setGameTag} className="mt-2" />
             <div className="flex items-center justify-between mt-3">
-              <div className={`text-sm ${isOverLimit ? 'text-red-500' : remaining < 20 ? 'text-primary' : 'text-gray-500 dark:text-gray-400'}`}>
+              <div className={`text-sm ${isOverLimit ? 'text-red-500' : remaining < 20 ? 'text-accent' : 'text-secondary'}`}>
                 {remaining}
               </div>
               <button
                 type="submit"
                 disabled={content.trim().length === 0 || content.length > 500 || isSubmitting}
-                className="px-4 py-2 bg-primary text-white rounded-full font-semibold hover:bg-primary/90 hover:shadow-[0_0_12px_rgba(239,140,96,0.4)] disabled:opacity-50 disabled:cursor-not-allowed transition-all inline-flex items-center gap-2 focus:outline-none focus:ring-2 focus:ring-[#EF8C60] focus:ring-offset-2 focus:ring-offset-[#0D0D0D]"
+                className="px-4 py-2 bg-accent text-white rounded-full font-semibold hover:bg-accent-hover disabled:opacity-50 disabled:cursor-not-allowed transition-all inline-flex items-center gap-2 focus:outline-none focus:ring-2 focus:ring-accent focus:ring-offset-2"
               >
                 {isSubmitting && (
                   <span className="w-4 h-4 border-2 border-white border-t-transparent rounded-full animate-spin" />

@@ -5,8 +5,6 @@ import { useQuery } from '@tanstack/react-query'
 import { api } from '../lib/api'
 import NotificationDropdown from './NotificationDropdown'
 
-const accent = '#EF8C60'
-
 export default function LeftSidebar() {
   const navigate = useNavigate()
   const { user, logout } = useAuth()
@@ -43,28 +41,27 @@ export default function LeftSidebar() {
   const navLinkClass = ({ isActive }: { isActive: boolean }) =>
     `flex items-center gap-3 px-3 py-2.5 rounded-lg text-left font-medium transition-colors ${
       isActive
-        ? 'text-[var(--primary)] bg-[var(--primary)]/10'
-        : 'text-gray-300 hover:bg-gray-800 hover:text-white'
+        ? 'text-accent bg-accent/10'
+        : 'text-secondary hover:bg-hover hover:text-primary'
     }`
 
   return (
-    <aside className="w-[260px] shrink-0 flex flex-col border-r border-gray-800 bg-[#0D0D0D] min-h-screen md:flex hidden">
+    <aside className="w-[260px] shrink-0 flex flex-col border-r border-border-default bg-primary min-h-screen md:flex hidden">
       <div className="p-4 flex flex-col gap-4 sticky top-0">
         <Link
           to="/"
-          className="flex items-center gap-3 p-2 rounded-lg hover:bg-gray-800/50 transition-colors"
+          className="flex items-center gap-3 p-2 rounded-lg hover:bg-hover transition-colors"
         >
           <img
             src={user?.avatarUrl || 'https://api.dicebear.com/7.x/initials/svg?seed=user'}
             alt=""
-            className="w-10 h-10 rounded-full border-2 object-cover"
-            style={{ borderColor: accent }}
+            className="w-10 h-10 rounded-full border-2 border-accent object-cover"
           />
           <div className="min-w-0">
-            <p className="font-semibold text-white truncate">{user?.displayName || 'User'}</p>
-            <p className="text-sm text-gray-400 truncate">@{user?.username || 'username'}</p>
+            <p className="font-semibold text-primary truncate">{user?.displayName || 'User'}</p>
+            <p className="text-sm text-secondary truncate">@{user?.username || 'username'}</p>
             {user && (
-              <p className="text-xs text-gray-500">
+              <p className="text-xs text-tertiary">
                 {(user as { followerCount?: number }).followerCount ?? 0} followers
               </p>
             )}
@@ -78,13 +75,12 @@ export default function LeftSidebar() {
               placeholder="Search..."
               value={searchInput}
               onChange={(e) => setSearchInput(e.target.value)}
-              className="flex-1 min-w-0 px-3 py-2 rounded-lg bg-gray-800 border border-gray-700 text-white text-sm placeholder-gray-500 focus:outline-none focus:border-[var(--primary)]"
+              className="flex-1 min-w-0 px-3 py-2 rounded-lg bg-tertiary border border-border-default text-primary text-sm placeholder-secondary focus:outline-none focus:border-accent"
               aria-label="Search"
             />
             <button
               type="submit"
-              className="px-3 py-2 rounded-lg text-sm font-medium shrink-0"
-              style={{ backgroundColor: accent, color: '#0D0D0D' }}
+              className="px-3 py-2 rounded-lg text-sm font-medium shrink-0 bg-accent text-primary"
               aria-label="Submit search"
             >
               🔍
@@ -107,15 +103,12 @@ export default function LeftSidebar() {
               ref={bellRef}
               type="button"
               onClick={(e) => { e.preventDefault(); setDropdownOpen((o) => !o); }}
-              className="absolute right-1 p-1 rounded-md hover:bg-gray-800 text-gray-400 hover:text-white"
+              className="absolute right-1 p-1 rounded-md hover:bg-hover text-secondary hover:text-primary"
               aria-label="Toggle notifications"
             >
               <span className="text-lg">🔔</span>
               {unreadCount > 0 && (
-                <span
-                  className="absolute -top-0.5 -right-0.5 min-w-[18px] h-[18px] rounded-full flex items-center justify-center text-[10px] font-bold text-[#0D0D0D]"
-                  style={{ backgroundColor: accent }}
-                >
+                <span className="absolute -top-0.5 -right-0.5 min-w-[18px] h-[18px] rounded-full flex items-center justify-center text-[10px] font-bold bg-accent text-primary">
                   {unreadCount > 99 ? '99+' : unreadCount}
                 </span>
               )}
@@ -138,15 +131,15 @@ export default function LeftSidebar() {
                 navigate('/login')
               }
             }}
-            className="flex items-center gap-3 px-3 py-2.5 rounded-lg text-left font-medium text-gray-400 hover:bg-gray-800 hover:text-white transition-colors"
+            className="flex items-center gap-3 px-3 py-2.5 rounded-lg text-left font-medium text-secondary hover:bg-hover hover:text-primary transition-colors"
           >
             <span className="text-xl">🚪</span> Log out
           </button>
         </nav>
 
         {myGames.length > 0 && (
-          <div className="pt-2 border-t border-gray-800">
-            <h3 className="px-3 py-1 text-xs font-semibold text-gray-500 uppercase tracking-wider">
+          <div className="pt-2 border-t border-border-default">
+            <h3 className="px-3 py-1 text-xs font-semibold text-tertiary uppercase tracking-wider">
               Your Games
             </h3>
             <ul className="mt-1 space-y-0.5">
@@ -154,11 +147,11 @@ export default function LeftSidebar() {
                 <li key={g.id}>
                   <Link
                     to={`/explore?game=${g.slug}`}
-                    className="flex items-center gap-2 px-3 py-2 rounded-lg text-gray-300 hover:bg-gray-800 hover:text-white text-sm"
+                    className="flex items-center gap-2 px-3 py-2 rounded-lg text-secondary hover:bg-hover hover:text-primary text-sm"
                   >
                     <span
                       className="w-2 h-2 rounded-full shrink-0"
-                      style={{ backgroundColor: g.color || accent }}
+                      style={{ backgroundColor: g.color || 'var(--color-accent)' }}
                     />
                     <span className="truncate">{g.name}</span>
                   </Link>

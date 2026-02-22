@@ -3,896 +3,938 @@
 # DO NOT EDIT - regenerated on task file change
 
 source_file: RALPH_TASK.md
-source_mtime: 1771751017
-generated_at: 2026-02-22T09:04:22Z
+source_mtime: 1771751873
+generated_at: 2026-02-22T09:27:17Z
 
 tasks:
-  - id: "line_77"
-    line_number: 77
-    status: completed
-    parallel_group: 999999
-    description: `npm install` succeeds with zero errors for all workspaces
-    indent_level: 0
-    raw_marker: -
-  - id: "line_78"
-    line_number: 78
-    status: completed
-    parallel_group: 999999
-    description: `npm run dev` starts both backend (port 3001) and frontend (port 5173) without crashes
-    indent_level: 0
-    raw_marker: -
-  - id: "line_79"
-    line_number: 79
-    status: completed
-    parallel_group: 999999
-    description: `GET /api/health` returns `{ \"status\": \"ok\" }` (200)
-    indent_level: 0
-    raw_marker: -
-  - id: "line_80"
-    line_number: 80
-    status: completed
-    parallel_group: 999999
-    description: Frontend loads at `http://localhost:5173` without console errors
-    indent_level: 0
-    raw_marker: -
-  - id: "line_81"
-    line_number: 81
-    status: completed
-    parallel_group: 999999
-    description: `npm run build` succeeds for both backend and frontend
-    indent_level: 0
-    raw_marker: -
-  - id: "line_82"
-    line_number: 82
-    status: completed
-    parallel_group: 999999
-    description: `npm run typecheck` passes with zero errors
-    indent_level: 0
-    raw_marker: -
-  - id: "line_83"
-    line_number: 83
-    status: completed
-    parallel_group: 999999
-    description: `npm run lint` passes (fix or suppress non-critical warnings)
-    indent_level: 0
-    raw_marker: -
-  - id: "line_87"
-    line_number: 87
-    status: completed
-    parallel_group: 999999
-    description: Create `backend/src/db/seed.ts` — generates at least: 10 users (gamer-themed), 60+ posts (gaming content with game tags), threaded replies (nested 2-3 levels), likes/reposts/follows distributed realistically, notifications matching the actions, at least 3 games, gaming ranks for users
-    indent_level: 0
-    raw_marker: -
-  - id: "line_88"
-    line_number: 88
-    status: completed
-    parallel_group: 999999
-    description: Create `backend/src/db/reset.ts` — wipes DB file then runs seed
-    indent_level: 0
-    raw_marker: -
-  - id: "line_89"
-    line_number: 89
-    status: completed
-    parallel_group: 999999
-    description: `npm run seed` works and creates `db/data/aceverse.db.json` automatically if missing
-    indent_level: 0
-    raw_marker: -
-  - id: "line_90"
-    line_number: 90
-    status: completed
-    parallel_group: 999999
-    description: `npm run reset` works (deletes DB, re-seeds)
-    indent_level: 0
-    raw_marker: -
-  - id: "line_91"
-    line_number: 91
-    status: completed
-    parallel_group: 999999
-    description: Seeded data displays correctly in the frontend feeds after running `npm run seed && npm run dev`
-    indent_level: 0
-    raw_marker: -
-  - id: "line_95"
-    line_number: 95
-    status: completed
-    parallel_group: 999999
-    description: Create a shared `AppLayout` component used by all authenticated pages with 3-column desktop layout: left sidebar (nav + your games), center content, right sidebar (ranks, friends online, who to follow, trending)
-    indent_level: 0
-    raw_marker: -
-  - id: "line_96"
-    line_number: 96
-    status: completed
-    parallel_group: 999999
-    description: Left sidebar shows: user avatar + @username + follower count, nav links (Home, Trending, Profile) with active state using `#EF8C60`, \"Your Games\" section with game icons/names
-    indent_level: 0
-    raw_marker: -
-  - id: "line_97"
-    line_number: 97
-    status: completed
-    parallel_group: 999999
-    description: Right sidebar shows: \"Your Ranks\" with per-game rank + badge icon, \"Friends Online\" with green online dots, \"Who to Follow\" with Follow buttons, \"Trending\" hashtags with post counts
-    indent_level: 0
-    raw_marker: -
-  - id: "line_98"
-    line_number: 98
-    status: completed
-    parallel_group: 999999
-    description: Mobile layout: bottom tab bar (Home, Trending, Search, Notifications, Profile), floating compose FAB button, collapsible sidebars
-    indent_level: 0
-    raw_marker: -
-  - id: "line_99"
-    line_number: 99
-    status: completed
-    parallel_group: 999999
-    description: Navigation links work and highlight the active page with `#EF8C60` accent
-    indent_level: 0
-    raw_marker: -
-  - id: "line_100"
-    line_number: 100
-    status: completed
-    parallel_group: 999999
-    description: Wrap all authenticated pages (Home, Explore, Trending, Search, Notifications, Profile, PostThread) in `AppLayout`
-    indent_level: 0
-    raw_marker: -
-  - id: "line_101"
-    line_number: 101
-    status: completed
-    parallel_group: 999999
-    description: Run `npm run typecheck && npm run build && npm run lint` — all pass
-    indent_level: 0
-    raw_marker: -
-  - id: "line_105"
-    line_number: 105
-    status: completed
-    parallel_group: 999999
-    description: Verify `Game` model in DB types: `{ id, name, slug, iconUrl, color }` — at least: Valorant, Counter-Strike 2, Apex Legends, League of Legends, Rocket League, Super Smash Bros, Fortnite
-    indent_level: 0
-    raw_marker: -
-  - id: "line_106"
-    line_number: 106
-    status: completed
-    parallel_group: 999999
-    description: Verify `UserGame` model: `{ id, userId, gameId, rank, rankTier, updatedAt }` — links users to games with rank
-    indent_level: 0
-    raw_marker: -
-  - id: "line_107"
-    line_number: 107
-    status: completed
-    parallel_group: 999999
-    description: Verify `gameTag` field on `Post` model — optional game slug that tags a post to a specific game
-    indent_level: 0
-    raw_marker: -
-  - id: "line_108"
-    line_number: 108
-    status: completed
-    parallel_group: 999999
-    description: Verify `gamesRepo` and `userGamesRepo` with CRUD operations
-    indent_level: 0
-    raw_marker: -
-  - id: "line_109"
-    line_number: 109
-    status: completed
-    parallel_group: 999999
-    description: Backend: `GET /api/games` returns all games, `GET /api/users/:username/games` returns user's games + ranks, `PUT /api/users/:username/games` updates game ranks — add routes if missing
-    indent_level: 0
-    raw_marker: -
-  - id: "line_110"
-    line_number: 110
-    status: completed
-    parallel_group: 999999
-    description: Profile page shows \"Gaming Ranks\" section with game icon, game name, rank name (e.g., \"Immortal 3\", \"Global Elite\", \"Master\"), rank badge, and last-updated date
-    indent_level: 0
-    raw_marker: -
-  - id: "line_111"
-    line_number: 111
-    status: completed
-    parallel_group: 999999
-    description: Posts can be tagged with a game — post composer has optional game tag selector, PostCard shows game badge/pill
-    indent_level: 0
-    raw_marker: -
-  - id: "line_112"
-    line_number: 112
-    status: completed
-    parallel_group: 999999
-    description: \"Your Games\" sidebar section shows the logged-in user's tracked games with quick links
-    indent_level: 0
-    raw_marker: -
-  - id: "line_113"
-    line_number: 113
-    status: completed
-    parallel_group: 999999
-    description: Run `npm run typecheck && npm run build && npm run lint` — all pass
-    indent_level: 0
-    raw_marker: -
-  - id: "line_117"
-    line_number: 117
-    status: completed
-    parallel_group: 999999
-    description: Register page: username, email, password, display name — validates, shows inline errors, redirects to home on success
-    indent_level: 0
-    raw_marker: -
-  - id: "line_118"
-    line_number: 118
-    status: completed
-    parallel_group: 999999
-    description: Login page: email + password — validates, shows inline errors, redirects to home on success
-    indent_level: 0
-    raw_marker: -
-  - id: "line_119"
-    line_number: 119
-    status: completed
-    parallel_group: 999999
-    description: Logout works and redirects to landing page
-    indent_level: 0
-    raw_marker: -
-  - id: "line_120"
-    line_number: 120
-    status: completed
-    parallel_group: 999999
-    description: Session cookie is HttpOnly, authenticated state persists on page refresh (`GET /api/auth/me`)
-    indent_level: 0
-    raw_marker: -
-  - id: "line_121"
-    line_number: 121
-    status: completed
-    parallel_group: 999999
-    description: Protected pages redirect to `/login` if not authenticated
-    indent_level: 0
-    raw_marker: -
-  - id: "line_122"
-    line_number: 122
-    status: completed
-    parallel_group: 999999
-    description: Auth forms have clean UI with `#EF8C60` accent buttons, loading states, and error toasts
-    indent_level: 0
-    raw_marker: -
-  - id: "line_123"
-    line_number: 123
-    status: completed
-    parallel_group: 999999
-    description: Run `npm run typecheck && npm run build && npm run lint` — all pass
-    indent_level: 0
-    raw_marker: -
-  - id: "line_127"
-    line_number: 127
-    status: completed
-    parallel_group: 999999
-    description: Create a stunning landing page at `/` for logged-out users with: hero section with animated gradient/glow using `#EF8C60`, tagline like \"Your gaming universe. One feed.\", prominent Sign Up and Login CTAs
-    indent_level: 0
-    raw_marker: -
-  - id: "line_128"
-    line_number: 128
-    status: completed
-    parallel_group: 999999
-    description: Landing page has smooth scroll animations (fade-in, slide-up on scroll) using CSS animations or Framer Motion
-    indent_level: 0
-    raw_marker: -
   - id: "line_129"
     line_number: 129
-    status: completed
+    status: pending
     parallel_group: 999999
-    description: Feature showcase sections: \"Track Your Ranks\", \"Share Your Clips\", \"Find Your Squad\", \"Stay in the Loop\" — each with icon/illustration and description
-    indent_level: 0
-    raw_marker: -
-  - id: "line_130"
-    line_number: 130
-    status: completed
-    parallel_group: 999999
-    description: Social proof / stats section (e.g., \"Join 50K+ gamers\", \"1M+ clips shared\" — fake numbers, looks good)
-    indent_level: 0
-    raw_marker: -
-  - id: "line_131"
-    line_number: 131
-    status: completed
-    parallel_group: 999999
-    description: Footer with links: About, Help, Terms, Privacy
-    indent_level: 0
-    raw_marker: -
-  - id: "line_132"
-    line_number: 132
-    status: completed
-    parallel_group: 999999
-    description: Visiting `/p/:postId` while logged out shows the post thread read-only (no interaction buttons), with a banner prompting login
-    indent_level: 0
-    raw_marker: -
-  - id: "line_133"
-    line_number: 133
-    status: completed
-    parallel_group: 999999
-    description: Landing page is fully responsive and looks great on mobile
-    indent_level: 0
-    raw_marker: -
-  - id: "line_134"
-    line_number: 134
-    status: completed
-    parallel_group: 999999
-    description: Run `npm run typecheck && npm run build && npm run lint` — all pass
-    indent_level: 0
-    raw_marker: -
-  - id: "line_138"
-    line_number: 138
-    status: completed
-    parallel_group: 999999
-    description: Home feed (`/`) shows posts from people the user follows + own posts, sorted by newest first, with cursor pagination and infinite scroll
-    indent_level: 0
-    raw_marker: -
-  - id: "line_139"
-    line_number: 139
-    status: completed
-    parallel_group: 999999
-    description: Explore feed (`/explore`) shows all posts globally, sorted by newest
-    indent_level: 0
-    raw_marker: -
-  - id: "line_140"
-    line_number: 140
-    status: completed
-    parallel_group: 999999
-    description: Feed uses skeleton loading cards while fetching
-    indent_level: 0
-    raw_marker: -
-  - id: "line_141"
-    line_number: 141
-    status: completed
-    parallel_group: 999999
-    description: Empty state for home feed when following nobody: \"Your feed is empty. Follow some gamers to see their posts!\" with suggested accounts
-    indent_level: 0
-    raw_marker: -
-  - id: "line_142"
-    line_number: 142
-    status: completed
-    parallel_group: 999999
-    description: Post composer at top of home feed: textarea (500 char limit), optional game tag selector, character counter, Post button disabled when empty, `#EF8C60` Post button
+    description: Create a CSS variable system in `index.css` with theme tokens for both light and dark modes:
     indent_level: 0
     raw_marker: -
   - id: "line_143"
     line_number: 143
-    status: completed
+    status: pending
     parallel_group: 999999
-    description: New posts appear instantly (optimistic update) at the top of the feed
+    description: Update `tailwind.config.js` to map these CSS variables to Tailwind utility classes (e.g., `bg-primary`, `text-primary`, `border-default`, `text-accent`, `bg-hover`)
     indent_level: 0
     raw_marker: -
   - id: "line_144"
     line_number: 144
-    status: completed
+    status: pending
+    parallel_group: 999999
+    description: Light mode activates when `<html>` has no `dark` class; dark mode when it does — Tailwind `darkMode: 'class'`
+    indent_level: 0
+    raw_marker: -
+  - id: "line_145"
+    line_number: 145
+    status: pending
+    parallel_group: 999999
+    description: Replace ALL hardcoded color values (`bg-[#0D0D0D]`, `bg-[#1A1A1A]`, `bg-[#242424]`, `text-[#EF8C60]`, etc.) across every component and page with the new Tailwind token classes
+    indent_level: 0
+    raw_marker: -
+  - id: "line_146"
+    line_number: 146
+    status: pending
+    parallel_group: 999999
+    description: After this phase, the app should look identical in dark mode (no visual regressions) and acceptable in light mode (colors all swap correctly)
+    indent_level: 0
+    raw_marker: -
+  - id: "line_147"
+    line_number: 147
+    status: pending
     parallel_group: 999999
     description: Run `npm run typecheck && npm run build && npm run lint` — all pass
-    indent_level: 0
-    raw_marker: -
-  - id: "line_148"
-    line_number: 148
-    status: completed
-    parallel_group: 999999
-    description: Create post works: text content (max 500 chars), optional game tag
-    indent_level: 0
-    raw_marker: -
-  - id: "line_149"
-    line_number: 149
-    status: completed
-    parallel_group: 999999
-    description: PostCard displays: avatar, display name, @username, relative timestamp (e.g., \"3h ago\"), content, game tag pill, action row (reply count, like count, repost count, share)
-    indent_level: 0
-    raw_marker: -
-  - id: "line_150"
-    line_number: 150
-    status: completed
-    parallel_group: 999999
-    description: Edit post: author-only, inline edit mode with Save/Cancel
     indent_level: 0
     raw_marker: -
   - id: "line_151"
     line_number: 151
-    status: completed
+    status: pending
     parallel_group: 999999
-    description: Delete post: author-only, soft delete, shows \"This post has been deleted\" placeholder
+    description: Create a `useTheme` hook that manages theme state (`'light' | 'dark' | 'system'`), persists to `localStorage`, applies/removes `dark` class on `<html>`
     indent_level: 0
     raw_marker: -
   - id: "line_152"
     line_number: 152
-    status: completed
+    status: pending
     parallel_group: 999999
-    description: Clicking a post navigates to thread view (`/p/:postId`)
+    description: System preference detection: if `'system'`, follow `prefers-color-scheme` and listen for changes
     indent_level: 0
     raw_marker: -
   - id: "line_153"
     line_number: 153
-    status: completed
+    status: pending
     parallel_group: 999999
-    description: Run `npm run typecheck && npm run build && npm run lint` — all pass
+    description: Add theme toggle button in LeftSidebar (below nav links) — sun icon (light), moon icon (dark), monitor icon (system) — cycles on click
+    indent_level: 0
+    raw_marker: -
+  - id: "line_154"
+    line_number: 154
+    status: pending
+    parallel_group: 999999
+    description: Add the same toggle accessible on mobile (in BottomNav or settings)
+    indent_level: 0
+    raw_marker: -
+  - id: "line_155"
+    line_number: 155
+    status: pending
+    parallel_group: 999999
+    description: Smooth icon transition on toggle, no flash of wrong theme on page load
+    indent_level: 0
+    raw_marker: -
+  - id: "line_156"
+    line_number: 156
+    status: pending
+    parallel_group: 999999
+    description: Prevent FOUC: add inline `<script>` in `index.html` that reads localStorage and applies `dark` class before React hydrates
     indent_level: 0
     raw_marker: -
   - id: "line_157"
     line_number: 157
-    status: completed
+    status: pending
     parallel_group: 999999
-    description: Like/unlike a post with optimistic UI — heart fills `#EF8C60`, count updates instantly
+    description: Verify: light mode — entire app renders with light backgrounds, dark text, accent intact
     indent_level: 0
     raw_marker: -
   - id: "line_158"
     line_number: 158
-    status: completed
+    status: pending
     parallel_group: 999999
-    description: Repost/unrepost with optimistic UI — repost icon highlights, count updates instantly
+    description: Verify: dark mode — entire app renders with dark backgrounds, light text
     indent_level: 0
     raw_marker: -
   - id: "line_159"
     line_number: 159
-    status: completed
+    status: pending
     parallel_group: 999999
-    description: No double likes or double reposts (repo constraint enforced)
+    description: Verify: system mode — follows OS preference
     indent_level: 0
     raw_marker: -
   - id: "line_160"
     line_number: 160
-    status: completed
-    parallel_group: 999999
-    description: Like creates a LIKE notification for the post author (not self)
-    indent_level: 0
-    raw_marker: -
-  - id: "line_161"
-    line_number: 161
-    status: completed
-    parallel_group: 999999
-    description: Repost creates a REPOST notification for the post author (not self)
-    indent_level: 0
-    raw_marker: -
-  - id: "line_162"
-    line_number: 162
-    status: completed
-    parallel_group: 999999
-    description: Add `api.posts.like`, `api.posts.unlike`, `api.posts.repost`, `api.posts.unrepost` to frontend API client if missing
-    indent_level: 0
-    raw_marker: -
-  - id: "line_163"
-    line_number: 163
-    status: completed
+    status: pending
     parallel_group: 999999
     description: Run `npm run typecheck && npm run build && npm run lint` — all pass
+    indent_level: 0
+    raw_marker: -
+  - id: "line_164"
+    line_number: 164
+    status: pending
+    parallel_group: 999999
+    description: Install `lucide-react` (`npm install lucide-react -w frontend`)
+    indent_level: 0
+    raw_marker: -
+  - id: "line_165"
+    line_number: 165
+    status: pending
+    parallel_group: 999999
+    description: Replace ALL emoji icons in `LeftSidebar`: Home (house), Flame (trending), User (profile), Gamepad2 (your games header) — outline default, filled/bold when active page
+    indent_level: 0
+    raw_marker: -
+  - id: "line_166"
+    line_number: 166
+    status: pending
+    parallel_group: 999999
+    description: Replace ALL emoji icons in `BottomNav`: matching icons for Home, Flame, Search, Bell, User
     indent_level: 0
     raw_marker: -
   - id: "line_167"
     line_number: 167
-    status: completed
+    status: pending
     parallel_group: 999999
-    description: Thread page (`/p/:postId`) shows: root post at top, reply composer below it, replies listed chronologically
+    description: Replace ALL emoji icons in `PostCard` action row: Heart (like, filled when liked), MessageCircle (reply), Repeat2 (repost), Share or Upload (share) — with proper hover color per action
     indent_level: 0
     raw_marker: -
   - id: "line_168"
     line_number: 168
-    status: completed
+    status: pending
     parallel_group: 999999
-    description: Reply to a post — reply appears optimistically
+    description: Replace ALL emoji icons in `RightSidebar`: Search, Gamepad2 (ranks header), Users (friends header), UserPlus (who to follow header), TrendingUp (trending header), game-specific icons
     indent_level: 0
     raw_marker: -
   - id: "line_169"
     line_number: 169
-    status: completed
+    status: pending
     parallel_group: 999999
-    description: Reply to a reply (nested) — indented in thread, max visible depth of 6
+    description: Replace ALL emoji icons in `NotificationDropdown` and `NotificationsPage`: Heart (like), MessageCircle (reply), Repeat2 (repost), UserPlus (follow)
     indent_level: 0
     raw_marker: -
   - id: "line_170"
     line_number: 170
-    status: completed
+    status: pending
     parallel_group: 999999
-    description: Edit/delete reply: author-only, soft delete shows placeholder
+    description: Replace ALL emoji icons in `PostComposer`: Image, LayoutGrid, Gamepad2, Smile — matching the toolbar from the mockup
     indent_level: 0
     raw_marker: -
   - id: "line_171"
     line_number: 171
-    status: completed
+    status: pending
     parallel_group: 999999
-    description: Reply creates a REPLY notification for the post author (and optionally parent reply author)
+    description: Replace ALL remaining emojis in GameTagSelector, ProfilePage (Calendar, Edit, MapPin etc.), SearchPage, TrendingPage (Flame, TrendingUp, Clock)
     indent_level: 0
     raw_marker: -
   - id: "line_172"
     line_number: 172
-    status: completed
+    status: pending
     parallel_group: 999999
-    description: Add `api.posts.reply(postId, { content })` and `api.replies` (nested reply, edit, delete) to frontend API client
+    description: Consistent sizing: 18-20px in action rows, 20-24px in navigation, 16px inline
     indent_level: 0
     raw_marker: -
   - id: "line_173"
     line_number: 173
-    status: completed
+    status: pending
     parallel_group: 999999
-    description: Run `npm run typecheck && npm run build && npm run lint` — all pass
+    description: Active nav: filled variant; inactive: outline variant. Colors use theme tokens.
     indent_level: 0
     raw_marker: -
-  - id: "line_177"
-    line_number: 177
-    status: completed
+  - id: "line_174"
+    line_number: 174
+    status: pending
     parallel_group: 999999
-    description: Full profile page (`/u/:username`): cover image area, avatar, display name, @username, bio, join date, follower/following counts
+    description: Run `npm run typecheck && npm run build && npm run lint` — all pass
     indent_level: 0
     raw_marker: -
   - id: "line_178"
     line_number: 178
-    status: completed
+    status: pending
     parallel_group: 999999
-    description: \"Gaming Ranks\" section on profile showing all games + ranks with icons and badges
-    indent_level: 0
-    raw_marker: -
-  - id: "line_179"
-    line_number: 179
-    status: completed
-    parallel_group: 999999
-    description: User's posts tab on profile — paginated feed of their posts
-    indent_level: 0
-    raw_marker: -
-  - id: "line_180"
-    line_number: 180
-    status: completed
-    parallel_group: 999999
-    description: Follow/unfollow button (not shown on own profile): toggles instantly, updates follower count
-    indent_level: 0
-    raw_marker: -
-  - id: "line_181"
-    line_number: 181
-    status: completed
-    parallel_group: 999999
-    description: \"Edit Profile\" button on own profile (at minimum: update display name, bio, avatar URL)
-    indent_level: 0
-    raw_marker: -
-  - id: "line_182"
-    line_number: 182
-    status: completed
-    parallel_group: 999999
-    description: Follow creates a FOLLOW notification for the followed user
+    description: Create a persistent top nav bar visible on all authenticated pages (part of AppLayout):
     indent_level: 0
     raw_marker: -
   - id: "line_183"
     line_number: 183
-    status: completed
+    status: pending
     parallel_group: 999999
-    description: Add `api.users` to frontend API client: `getProfile`, `getPosts`, `follow`, `unfollow`, `updateProfile`, `getGames`, `updateGames`
+    description: Top nav is sticky, has subtle bottom border, backdrop blur on scroll
     indent_level: 0
     raw_marker: -
   - id: "line_184"
     line_number: 184
-    status: completed
+    status: pending
     parallel_group: 999999
-    description: Run `npm run typecheck && npm run build && npm run lint` — all pass
+    description: Notification bell shows orange dot when there are unread notifications (poll or check on page load)
+    indent_level: 0
+    raw_marker: -
+  - id: "line_185"
+    line_number: 185
+    status: pending
+    parallel_group: 999999
+    description: Clicking the Post button in the top nav opens the existing PostComposer (either inline at top of feed or as a modal)
+    indent_level: 0
+    raw_marker: -
+  - id: "line_186"
+    line_number: 186
+    status: pending
+    parallel_group: 999999
+    description: Search input in top nav works: submit navigates to `/search?q=...`
+    indent_level: 0
+    raw_marker: -
+  - id: "line_187"
+    line_number: 187
+    status: pending
+    parallel_group: 999999
+    description: Top nav hides on mobile (replaced by bottom nav) or becomes a minimal bar with just logo + bell + avatar
     indent_level: 0
     raw_marker: -
   - id: "line_188"
     line_number: 188
-    status: completed
+    status: pending
     parallel_group: 999999
-    description: Notifications page (`/notifications`): lists all notifications (LIKE, REPLY, REPOST, FOLLOW) with actor avatar, action text, relative time, and link to relevant post/profile
-    indent_level: 0
-    raw_marker: -
-  - id: "line_189"
-    line_number: 189
-    status: completed
-    parallel_group: 999999
-    description: Unread notification count badge in the nav bar (orange dot or number)
-    indent_level: 0
-    raw_marker: -
-  - id: "line_190"
-    line_number: 190
-    status: completed
-    parallel_group: 999999
-    description: \"Mark all as read\" button clears unread state
-    indent_level: 0
-    raw_marker: -
-  - id: "line_191"
-    line_number: 191
-    status: completed
-    parallel_group: 999999
-    description: Notification dropdown on bell icon click (in addition to full page) showing latest 5 notifications with \"View all notifications\" link
+    description: Run `npm run typecheck && npm run build && npm run lint` — all pass
     indent_level: 0
     raw_marker: -
   - id: "line_192"
     line_number: 192
-    status: completed
+    status: pending
     parallel_group: 999999
-    description: No notifications for your own actions on your own content
+    description: Avatar (40px rounded-full) on left, content area on right — no card border, just subtle bottom divider
     indent_level: 0
     raw_marker: -
   - id: "line_193"
     line_number: 193
-    status: completed
+    status: pending
     parallel_group: 999999
-    description: Add `api.notifications` to frontend API client: `getAll`, `markAllRead`, `getUnreadCount`
+    description: Header: @username (font-semibold, text-primary) on left, relative time (text-secondary, concise: \"6h ago\", \"1d ago\", \"2w ago\") on right, three-dot menu far right
     indent_level: 0
     raw_marker: -
   - id: "line_194"
     line_number: 194
-    status: completed
+    status: pending
     parallel_group: 999999
-    description: Run `npm run typecheck && npm run build && npm run lint` — all pass
+    description: Content: text-primary, proper line-height (1.4-1.5), hashtags and @mentions highlighted in accent
+    indent_level: 0
+    raw_marker: -
+  - id: "line_195"
+    line_number: 195
+    status: pending
+    parallel_group: 999999
+    description: Game tag pill: small rounded badge with colored square icon + game name text, subtle tinted background matching the game's color
+    indent_level: 0
+    raw_marker: -
+  - id: "line_196"
+    line_number: 196
+    status: pending
+    parallel_group: 999999
+    description: YouTube embeds: rounded corners, proper 16:9 aspect ratio, \"Watch on YouTube\" link
+    indent_level: 0
+    raw_marker: -
+  - id: "line_197"
+    line_number: 197
+    status: pending
+    parallel_group: 999999
+    description: Action row: four evenly-spaced groups — Heart + count, MessageCircle + count, Repeat2 + count, Share icon (no count). Each with hover color: like=pink, reply=blue, repost=green, share=accent. Active like=filled pink heart, active repost=green filled icon. Counts in text-secondary.
     indent_level: 0
     raw_marker: -
   - id: "line_198"
     line_number: 198
-    status: completed
+    status: pending
     parallel_group: 999999
-    description: Search page (`/search`) with search input and debounced queries (300ms)
+    description: Hover state: entire card gets subtle bg-hover tint (not shadow)
     indent_level: 0
     raw_marker: -
   - id: "line_199"
     line_number: 199
-    status: completed
+    status: pending
     parallel_group: 999999
-    description: Search tabs: \"Top\" (mixed), \"People\" (users), \"Latest\" (posts by recency)
+    description: Deleted post: subtle italic text-secondary \"This post has been deleted\", no action row
     indent_level: 0
     raw_marker: -
   - id: "line_200"
     line_number: 200
-    status: completed
+    status: pending
     parallel_group: 999999
-    description: User results show avatar, display name, @username, bio snippet, Follow button
+    description: Edit mode: clean textarea with accent focus ring, Save/Cancel buttons
     indent_level: 0
     raw_marker: -
   - id: "line_201"
     line_number: 201
-    status: completed
+    status: pending
     parallel_group: 999999
-    description: Post results show standard PostCard
+    description: Three-dot menu dropdown: clean bg-secondary card with border-default, edit/delete options
     indent_level: 0
     raw_marker: -
   - id: "line_202"
     line_number: 202
-    status: completed
-    parallel_group: 999999
-    description: Empty state: \"No results for 'query'\" with suggestions
-    indent_level: 0
-    raw_marker: -
-  - id: "line_203"
-    line_number: 203
-    status: completed
-    parallel_group: 999999
-    description: Search also accessible via the search bar in the top nav / right sidebar
-    indent_level: 0
-    raw_marker: -
-  - id: "line_204"
-    line_number: 204
-    status: completed
-    parallel_group: 999999
-    description: Add `api.search` to frontend API client
-    indent_level: 0
-    raw_marker: -
-  - id: "line_205"
-    line_number: 205
-    status: completed
+    status: pending
     parallel_group: 999999
     description: Run `npm run typecheck && npm run build && npm run lint` — all pass
+    indent_level: 0
+    raw_marker: -
+  - id: "line_206"
+    line_number: 206
+    status: pending
+    parallel_group: 999999
+    description: Layout: avatar (40px) on left, borderless textarea on right, grows with content
+    indent_level: 0
+    raw_marker: -
+  - id: "line_207"
+    line_number: 207
+    status: pending
+    parallel_group: 999999
+    description: Placeholder: \"What's happening in your games?\"
+    indent_level: 0
+    raw_marker: -
+  - id: "line_208"
+    line_number: 208
+    status: pending
+    parallel_group: 999999
+    description: Bottom toolbar (below textarea): icon buttons row (Image, LayoutGrid, Gamepad2, Smile icons — matching mockup), then character count \"0/500\", then orange \"Post\" button (rounded-full bg-accent text-white, disabled/opacity-50 when empty)
     indent_level: 0
     raw_marker: -
   - id: "line_209"
     line_number: 209
-    status: completed
+    status: pending
     parallel_group: 999999
-    description: Share button on every PostCard copies the canonical link (`/p/:postId`) to clipboard with a toast confirmation
+    description: Game tag selector: clicking Gamepad2 icon shows game dropdown, selected game appears as pill below textarea
     indent_level: 0
     raw_marker: -
   - id: "line_210"
     line_number: 210
-    status: completed
+    status: pending
     parallel_group: 999999
-    description: `/p/:postId` is accessible to logged-out users as read-only (shows post + replies, no action buttons)
+    description: Character count turns orange at 400+, red at 480+
     indent_level: 0
     raw_marker: -
   - id: "line_211"
     line_number: 211
-    status: completed
+    status: pending
     parallel_group: 999999
-    description: Logged-out thread view shows a banner: \"Log in to like, reply, and repost\" with login link
+    description: Composer has subtle top border separating it from the feed below
     indent_level: 0
     raw_marker: -
   - id: "line_212"
     line_number: 212
-    status: completed
+    status: pending
     parallel_group: 999999
-    description: Run `npm run typecheck && npm run build && npm run lint` — all pass
+    description: Works in both light and dark mode
     indent_level: 0
     raw_marker: -
-  - id: "line_216"
-    line_number: 216
-    status: completed
+  - id: "line_213"
+    line_number: 213
+    status: pending
     parallel_group: 999999
-    description: Trending page (`/trending`) shows \"Trending Clips\" header with stats (Hot Clips count, Total Likes, last updated)
+    description: Run `npm run typecheck && npm run build && npm run lint` — all pass
     indent_level: 0
     raw_marker: -
   - id: "line_217"
     line_number: 217
-    status: completed
+    status: pending
     parallel_group: 999999
-    description: Posts ranked by engagement (likes + reposts + replies) with rank numbers (#1, #2, #3, etc.)
+    description: **User card** at top: avatar (48px round) + @username (bold) + \"XX followers\" (text-secondary)
     indent_level: 0
     raw_marker: -
   - id: "line_218"
     line_number: 218
-    status: completed
+    status: pending
     parallel_group: 999999
-    description: Game filter in left sidebar: click a game to filter trending posts by that game tag, \"Clear\" button to reset, selected games highlighted with `#EF8C60`
+    description: **Nav links** (vertical, icon + label each):
     indent_level: 0
     raw_marker: -
-  - id: "line_219"
-    line_number: 219
-    status: completed
+  - id: "line_223"
+    line_number: 223
+    status: pending
     parallel_group: 999999
-    description: YouTube link detection: if a post contains a YouTube URL, render an embedded player in the PostCard
-    indent_level: 0
-    raw_marker: -
-  - id: "line_220"
-    line_number: 220
-    status: completed
-    parallel_group: 999999
-    description: Trending section in right sidebar shows top 5 hashtags/game tags with post counts
-    indent_level: 0
-    raw_marker: -
-  - id: "line_221"
-    line_number: 221
-    status: completed
-    parallel_group: 999999
-    description: Backend: `GET /api/timeline/trending?cursor=&game=` — posts ranked by engagement, optional game filter
-    indent_level: 0
-    raw_marker: -
-  - id: "line_222"
-    line_number: 222
-    status: completed
-    parallel_group: 999999
-    description: Run `npm run typecheck && npm run build && npm run lint` — all pass
-    indent_level: 0
-    raw_marker: -
-  - id: "line_226"
-    line_number: 226
-    status: completed
-    parallel_group: 999999
-    description: Page transitions: smooth fade/slide animations when navigating between pages (use Framer Motion — install with `npm install framer-motion -w frontend`)
+    description: **\"Your Games\" section**: Gamepad2 icon + \"Your Games\" header (text-secondary, semibold), divider above
     indent_level: 0
     raw_marker: -
   - id: "line_227"
     line_number: 227
-    status: completed
+    status: pending
     parallel_group: 999999
-    description: Micro-interactions: like heart bounce, repost icon spin, follow button pulse
+    description: **Footer** at bottom: \"About  Help  Terms  Privacy\" text links (text-tertiary, small) + \"© 2024 Aceverse\"
     indent_level: 0
     raw_marker: -
   - id: "line_228"
     line_number: 228
-    status: completed
+    status: pending
     parallel_group: 999999
-    description: Skeleton loading cards on all feeds and profile while data loads
+    description: Sidebar has subtle right border (border-default)
     indent_level: 0
     raw_marker: -
   - id: "line_229"
     line_number: 229
-    status: completed
+    status: pending
     parallel_group: 999999
-    description: Toast notifications for: post created, post deleted, link copied, error messages — using `#EF8C60` accent
+    description: Sticky positioning, scrolls independently if content overflows viewport
     indent_level: 0
     raw_marker: -
   - id: "line_230"
     line_number: 230
-    status: completed
+    status: pending
     parallel_group: 999999
-    description: Hover effects on all interactive elements (buttons glow, cards lift slightly)
+    description: Looks correct in both light and dark mode
     indent_level: 0
     raw_marker: -
   - id: "line_231"
     line_number: 231
-    status: completed
-    parallel_group: 999999
-    description: Smooth scroll-to-top when navigating to a new page
-    indent_level: 0
-    raw_marker: -
-  - id: "line_232"
-    line_number: 232
-    status: completed
-    parallel_group: 999999
-    description: Loading spinners on all async actions (follow, like, post creation)
-    indent_level: 0
-    raw_marker: -
-  - id: "line_233"
-    line_number: 233
-    status: completed
+    status: pending
     parallel_group: 999999
     description: Run `npm run typecheck && npm run build && npm run lint` — all pass
     indent_level: 0
     raw_marker: -
-  - id: "line_237"
-    line_number: 237
-    status: completed
+  - id: "line_235"
+    line_number: 235
+    status: pending
     parallel_group: 999999
-    description: Create `backend/src/__tests__/auth.test.ts` — test register, login, logout, me (at least 4 tests)
-    indent_level: 0
-    raw_marker: -
-  - id: "line_238"
-    line_number: 238
-    status: completed
-    parallel_group: 999999
-    description: Create `backend/src/__tests__/posts.test.ts` — test create, get, update, delete, like, unlike (at least 6 tests)
+    description: **\"Your Ranks\" section**: Gamepad2 icon + \"Your Ranks\" header
     indent_level: 0
     raw_marker: -
   - id: "line_239"
     line_number: 239
-    status: completed
+    status: pending
     parallel_group: 999999
-    description: Create `backend/src/__tests__/timeline.test.ts` — test home feed (following-based), explore feed (at least 3 tests)
-    indent_level: 0
-    raw_marker: -
-  - id: "line_240"
-    line_number: 240
-    status: completed
-    parallel_group: 999999
-    description: Create `backend/src/__tests__/users.test.ts` — test get profile, follow, unfollow (at least 3 tests)
-    indent_level: 0
-    raw_marker: -
-  - id: "line_241"
-    line_number: 241
-    status: completed
-    parallel_group: 999999
-    description: `npm test` passes all tests
+    description: **\"Friends Online\" section**: Users icon + \"Friends Online\" header
     indent_level: 0
     raw_marker: -
   - id: "line_242"
     line_number: 242
-    status: completed
+    status: pending
     parallel_group: 999999
-    description: Run `npm run typecheck && npm run build && npm run lint` — all still pass
+    description: **\"Who to Follow\" section**: UserPlus icon + \"Who to Follow\" header
     indent_level: 0
     raw_marker: -
   - id: "line_246"
     line_number: 246
-    status: completed
+    status: pending
     parallel_group: 999999
-    description: `npm install` — clean install, no errors
-    indent_level: 0
-    raw_marker: -
-  - id: "line_247"
-    line_number: 247
-    status: completed
-    parallel_group: 999999
-    description: `npm run seed` — seeds DB with realistic gaming data
-    indent_level: 0
-    raw_marker: -
-  - id: "line_248"
-    line_number: 248
-    status: completed
-    parallel_group: 999999
-    description: `npm run dev` — both servers start, no crashes, frontend loads at localhost:5173
-    indent_level: 0
-    raw_marker: -
-  - id: "line_249"
-    line_number: 249
-    status: completed
-    parallel_group: 999999
-    description: `npm run build` — builds both workspaces successfully
+    description: **\"Trending\" section**: TrendingUp icon + \"Trending\" header (with flame accent)
     indent_level: 0
     raw_marker: -
   - id: "line_250"
     line_number: 250
-    status: completed
+    status: pending
     parallel_group: 999999
-    description: `npm run typecheck` — zero type errors
+    description: Each section is in a rounded card with bg-secondary background and subtle padding
     indent_level: 0
     raw_marker: -
   - id: "line_251"
     line_number: 251
-    status: completed
+    status: pending
     parallel_group: 999999
-    description: `npm run lint` — passes
+    description: Sidebar has subtle left border (border-default)
     indent_level: 0
     raw_marker: -
   - id: "line_252"
     line_number: 252
-    status: completed
+    status: pending
     parallel_group: 999999
-    description: `npm test` — all tests pass
+    description: Sticky positioning, scrolls independently
     indent_level: 0
     raw_marker: -
   - id: "line_253"
     line_number: 253
-    status: completed
+    status: pending
     parallel_group: 999999
-    description: Manual QA: register user A, post 3 gaming posts with game tags, register user B, follow A, B's home feed shows A's posts, B likes/reposts A's post, A sees notifications, search works, share link works, logged-out view works, trending page shows ranked posts
+    description: Looks correct in both light and dark mode
     indent_level: 0
     raw_marker: -
   - id: "line_254"
     line_number: 254
-    status: completed
+    status: pending
     parallel_group: 999999
-    description: Grep this file for `\"[ ]\"` — confirm zero unchecked items remain (excluding this line)
+    description: Run `npm run typecheck && npm run build && npm run lint` — all pass
+    indent_level: 0
+    raw_marker: -
+  - id: "line_258"
+    line_number: 258
+    status: pending
+    parallel_group: 999999
+    description: **Cover image**: Full-width, ~200px tall, dark gradient if no custom image. Edge-to-edge within the center column.
+    indent_level: 0
+    raw_marker: -
+  - id: "line_259"
+    line_number: 259
+    status: pending
+    parallel_group: 999999
+    description: **Avatar**: Large (128px) round, positioned to overlap the bottom of the cover image (negative margin or absolute positioning), white/dark border ring
+    indent_level: 0
+    raw_marker: -
+  - id: "line_260"
+    line_number: 260
+    status: pending
+    parallel_group: 999999
+    description: **Name & actions**: @username (large, bold, text-primary) + display name below (text-secondary). \"Edit Profile\" button (outline, rounded-full, border-default) on own profile. \"Follow\"/\"Unfollow\" button (solid bg-accent, rounded-full) on other profiles.
+    indent_level: 0
+    raw_marker: -
+  - id: "line_261"
+    line_number: 261
+    status: pending
+    parallel_group: 999999
+    description: **Bio**: Full bio text (text-primary), below name
+    indent_level: 0
+    raw_marker: -
+  - id: "line_262"
+    line_number: 262
+    status: pending
+    parallel_group: 999999
+    description: **Stats line**: \"XXX Posts  X Followers  X Following  📅 Joined Jan 15\" — all inline, counts in bold, labels in text-secondary, calendar icon for join date
+    indent_level: 0
+    raw_marker: -
+  - id: "line_263"
+    line_number: 263
+    status: pending
+    parallel_group: 999999
+    description: **Gaming Ranks section**: Section header \"Gaming Ranks\" + \"View all (X) ▼\" toggle on right
+    indent_level: 0
+    raw_marker: -
+  - id: "line_266"
+    line_number: 266
+    status: pending
+    parallel_group: 999999
+    description: **Content tabs**: \"Posts\" | \"Clips\" | \"Likes\" horizontal tab bar — active tab has accent-colored underline, tabs are clickable
+    indent_level: 0
+    raw_marker: -
+  - id: "line_270"
+    line_number: 270
+    status: pending
+    parallel_group: 999999
+    description: User's post feed below tabs, paginated
+    indent_level: 0
+    raw_marker: -
+  - id: "line_271"
+    line_number: 271
+    status: pending
+    parallel_group: 999999
+    description: Entire profile looks correct in both light and dark mode
+    indent_level: 0
+    raw_marker: -
+  - id: "line_272"
+    line_number: 272
+    status: pending
+    parallel_group: 999999
+    description: Run `npm run typecheck && npm run build && npm run lint` — all pass
+    indent_level: 0
+    raw_marker: -
+  - id: "line_276"
+    line_number: 276
+    status: pending
+    parallel_group: 999999
+    description: **Header**: Flame icon (large, accent) + \"Trending Clips\" title (large, bold) + \"Top gaming clips from the community\" subtitle (text-secondary)
+    indent_level: 0
+    raw_marker: -
+  - id: "line_277"
+    line_number: 277
+    status: pending
+    parallel_group: 999999
+    description: **Stats bar**: Three cards in a row (bg-secondary, rounded):
+    indent_level: 0
+    raw_marker: -
+  - id: "line_282"
+    line_number: 282
+    status: pending
+    parallel_group: 999999
+    description: **Ranked posts**: Each trending post has a circular accent-colored badge with rank number (#1, #2, #3...) positioned overlapping the top-left corner of the post
+    indent_level: 0
+    raw_marker: -
+  - id: "line_283"
+    line_number: 283
+    status: pending
+    parallel_group: 999999
+    description: **Game filter**: In the left sidebar \"Your Games\" section, clicking a game filters the trending feed to that game's tag. Active filter game is highlighted in accent. \"Clear\" button resets the filter.
+    indent_level: 0
+    raw_marker: -
+  - id: "line_284"
+    line_number: 284
+    status: pending
+    parallel_group: 999999
+    description: YouTube embeds display properly within trending post cards
+    indent_level: 0
+    raw_marker: -
+  - id: "line_285"
+    line_number: 285
+    status: pending
+    parallel_group: 999999
+    description: Entire page looks correct in both light and dark mode
+    indent_level: 0
+    raw_marker: -
+  - id: "line_286"
+    line_number: 286
+    status: pending
+    parallel_group: 999999
+    description: Run `npm run typecheck && npm run build && npm run lint` — all pass
+    indent_level: 0
+    raw_marker: -
+  - id: "line_290"
+    line_number: 290
+    status: pending
+    parallel_group: 999999
+    description: **Home page**: Sticky header \"Home\" with subtle bottom border + backdrop blur, PostComposer below, then Feed
+    indent_level: 0
+    raw_marker: -
+  - id: "line_291"
+    line_number: 291
+    status: pending
+    parallel_group: 999999
+    description: **Explore page**: Sticky header \"Explore\" with subtle bottom border, Feed showing all posts
+    indent_level: 0
+    raw_marker: -
+  - id: "line_292"
+    line_number: 292
+    status: pending
+    parallel_group: 999999
+    description: **Notifications page**: Clean list, each notification has: relevant icon (Heart/MessageCircle/Repeat2/UserPlus) + actor avatar + action text (e.g., \"@proaimbot liked your post\") + relative time. Unread items have subtle accent-left border or bg tint. \"Mark all read\" button in accent.
+    indent_level: 0
+    raw_marker: -
+  - id: "line_293"
+    line_number: 293
+    status: pending
+    parallel_group: 999999
+    description: **Search page**: Large search input at top (matching top nav search style), tab bar \"Top\" | \"People\" | \"Latest\" with accent underline on active, results display cleanly (PostCard for posts, user card for people)
+    indent_level: 0
+    raw_marker: -
+  - id: "line_294"
+    line_number: 294
+    status: pending
+    parallel_group: 999999
+    description: **Thread page**: Root post displayed prominently (slightly larger text), reply composer below, replies with vertical connector lines (thin accent or border-default line connecting avatars), nested replies indented
+    indent_level: 0
+    raw_marker: -
+  - id: "line_295"
+    line_number: 295
+    status: pending
+    parallel_group: 999999
+    description: **Landing page**: Verify it still works beautifully in both light/dark mode, animations still smooth
+    indent_level: 0
+    raw_marker: -
+  - id: "line_296"
+    line_number: 296
+    status: pending
+    parallel_group: 999999
+    description: **Login & Register pages**: Centered card (bg-secondary, rounded-xl), clean form fields (bg-tertiary, rounded-lg, accent focus ring), Aceverse logo at top, accent submit button, link to other auth page at bottom. Works in both modes.
+    indent_level: 0
+    raw_marker: -
+  - id: "line_297"
+    line_number: 297
+    status: pending
+    parallel_group: 999999
+    description: Run `npm run typecheck && npm run build && npm run lint` — all pass
+    indent_level: 0
+    raw_marker: -
+  - id: "line_301"
+    line_number: 301
+    status: pending
+    parallel_group: 999999
+    description: Bottom nav: clean icon-only bar with subtle top border (border-default), bg-primary background, active icon in accent color (filled variant), proper safe-area bottom padding
+    indent_level: 0
+    raw_marker: -
+  - id: "line_302"
+    line_number: 302
+    status: pending
+    parallel_group: 999999
+    description: Floating compose FAB: rounded-full accent button with Feather/Plus icon, bottom-right above nav, subtle shadow
+    indent_level: 0
+    raw_marker: -
+  - id: "line_303"
+    line_number: 303
+    status: pending
+    parallel_group: 999999
+    description: All pages responsive: single-column on mobile, sidebars hidden, proper padding (16px), no horizontal overflow
+    indent_level: 0
+    raw_marker: -
+  - id: "line_304"
+    line_number: 304
+    status: pending
+    parallel_group: 999999
+    description: PostCard: full-width, action icons have min 44px tap targets
+    indent_level: 0
+    raw_marker: -
+  - id: "line_305"
+    line_number: 305
+    status: pending
+    parallel_group: 999999
+    description: Profile: cover image scales, avatar scales, stats wrap properly
+    indent_level: 0
+    raw_marker: -
+  - id: "line_306"
+    line_number: 306
+    status: pending
+    parallel_group: 999999
+    description: Top nav on mobile: minimal — just Aceverse logo left, bell + avatar right (or hidden, replaced by bottom nav)
+    indent_level: 0
+    raw_marker: -
+  - id: "line_307"
+    line_number: 307
+    status: pending
+    parallel_group: 999999
+    description: Modals/dropdowns: bottom-sheet style or full-width on mobile
+    indent_level: 0
+    raw_marker: -
+  - id: "line_308"
+    line_number: 308
+    status: pending
+    parallel_group: 999999
+    description: Search: full-width input, results stack
+    indent_level: 0
+    raw_marker: -
+  - id: "line_309"
+    line_number: 309
+    status: pending
+    parallel_group: 999999
+    description: Run `npm run typecheck && npm run build && npm run lint` — all pass
+    indent_level: 0
+    raw_marker: -
+  - id: "line_313"
+    line_number: 313
+    status: pending
+    parallel_group: 999999
+    description: Like: heart scales (1 → 1.3 → 1) with color transition to pink when liked
+    indent_level: 0
+    raw_marker: -
+  - id: "line_314"
+    line_number: 314
+    status: pending
+    parallel_group: 999999
+    description: Repost: icon rotates briefly with color transition to green
+    indent_level: 0
+    raw_marker: -
+  - id: "line_315"
+    line_number: 315
+    status: pending
+    parallel_group: 999999
+    description: Follow button: smooth fill transition from outline to solid accent
+    indent_level: 0
+    raw_marker: -
+  - id: "line_316"
+    line_number: 316
+    status: pending
+    parallel_group: 999999
+    description: New post: slides in from top with fade
+    indent_level: 0
+    raw_marker: -
+  - id: "line_317"
+    line_number: 317
+    status: pending
+    parallel_group: 999999
+    description: Notification badge: subtle pulse when count changes
+    indent_level: 0
+    raw_marker: -
+  - id: "line_318"
+    line_number: 318
+    status: pending
+    parallel_group: 999999
+    description: Theme toggle: icon crossfade/rotate on switch
+    indent_level: 0
+    raw_marker: -
+  - id: "line_319"
+    line_number: 319
+    status: pending
+    parallel_group: 999999
+    description: Toast: slides in from top-right with spring, slides out on dismiss
+    indent_level: 0
+    raw_marker: -
+  - id: "line_320"
+    line_number: 320
+    status: pending
+    parallel_group: 999999
+    description: Skeleton loading: shimmer animation (gradient sweep, not just pulse)
+    indent_level: 0
+    raw_marker: -
+  - id: "line_321"
+    line_number: 321
+    status: pending
+    parallel_group: 999999
+    description: All buttons: subtle brightness/scale transition on hover (transform: scale(1.02) or filter: brightness(1.1))
+    indent_level: 0
+    raw_marker: -
+  - id: "line_322"
+    line_number: 322
+    status: pending
+    parallel_group: 999999
+    description: Page transitions: existing framer-motion fade/slide still smooth
+    indent_level: 0
+    raw_marker: -
+  - id: "line_323"
+    line_number: 323
+    status: pending
+    parallel_group: 999999
+    description: Run `npm run typecheck && npm run build && npm run lint` — all pass
+    indent_level: 0
+    raw_marker: -
+  - id: "line_327"
+    line_number: 327
+    status: pending
+    parallel_group: 999999
+    description: Type scale: page titles 20-24px bold, section headers 16-18px semibold, body 15px regular, secondary 13-14px, small labels 12px
+    indent_level: 0
+    raw_marker: -
+  - id: "line_328"
+    line_number: 328
+    status: pending
+    parallel_group: 999999
+    description: Spacing: card padding 16px, zero gap between feed items (divider only — like Twitter), sidebar sections 16-24px gap, action row even distribution
+    indent_level: 0
+    raw_marker: -
+  - id: "line_329"
+    line_number: 329
+    status: pending
+    parallel_group: 999999
+    description: Line-height: post content 1.4-1.5, UI text 1.25
+    indent_level: 0
+    raw_marker: -
+  - id: "line_330"
+    line_number: 330
+    status: pending
+    parallel_group: 999999
+    description: Truncation: long display names ellipsis, long bios \"...more\"
+    indent_level: 0
+    raw_marker: -
+  - id: "line_331"
+    line_number: 331
+    status: pending
+    parallel_group: 999999
+    description: Timestamps: concise format — \"2h\", \"6h\", \"1d\", \"2w\", \"Jan 15\" (not \"2 hours ago\")
+    indent_level: 0
+    raw_marker: -
+  - id: "line_332"
+    line_number: 332
+    status: pending
+    parallel_group: 999999
+    description: Border-radius: rounded-full for avatars/buttons/pills/search, rounded-xl for sidebar cards/modals, rounded-lg for form inputs
+    indent_level: 0
+    raw_marker: -
+  - id: "line_333"
+    line_number: 333
+    status: pending
+    parallel_group: 999999
+    description: Run `npm run typecheck && npm run build && npm run lint` — all pass
+    indent_level: 0
+    raw_marker: -
+  - id: "line_337"
+    line_number: 337
+    status: pending
+    parallel_group: 999999
+    description: Dark mode: browse every page (home, explore, trending, search, notifications, profile, thread, landing, login, register) — everything polished, consistent, matches mockups
+    indent_level: 0
+    raw_marker: -
+  - id: "line_338"
+    line_number: 338
+    status: pending
+    parallel_group: 999999
+    description: Light mode: browse every page — everything polished, no invisible elements, all text readable
+    indent_level: 0
+    raw_marker: -
+  - id: "line_339"
+    line_number: 339
+    status: pending
+    parallel_group: 999999
+    description: System mode: follows OS preference correctly
+    indent_level: 0
+    raw_marker: -
+  - id: "line_340"
+    line_number: 340
+    status: pending
+    parallel_group: 999999
+    description: Mobile viewport: all pages usable, bottom nav works, no overflow, floating FAB visible
+    indent_level: 0
+    raw_marker: -
+  - id: "line_341"
+    line_number: 341
+    status: pending
+    parallel_group: 999999
+    description: All features work: register, login, logout, post, edit, delete, like, unlike, repost, unrepost, reply, follow, unfollow, search, notifications, share link, trending, game tags, theme toggle
+    indent_level: 0
+    raw_marker: -
+  - id: "line_342"
+    line_number: 342
+    status: pending
+    parallel_group: 999999
+    description: `npm install` — no errors
+    indent_level: 0
+    raw_marker: -
+  - id: "line_343"
+    line_number: 343
+    status: pending
+    parallel_group: 999999
+    description: `npm run build` — succeeds
+    indent_level: 0
+    raw_marker: -
+  - id: "line_344"
+    line_number: 344
+    status: pending
+    parallel_group: 999999
+    description: `npm run typecheck` — zero errors
+    indent_level: 0
+    raw_marker: -
+  - id: "line_345"
+    line_number: 345
+    status: pending
+    parallel_group: 999999
+    description: `npm run lint` — passes
+    indent_level: 0
+    raw_marker: -
+  - id: "line_346"
+    line_number: 346
+    status: pending
+    parallel_group: 999999
+    description: `npm test` — all existing tests pass
+    indent_level: 0
+    raw_marker: -
+  - id: "line_347"
+    line_number: 347
+    status: pending
+    parallel_group: 999999
+    description: Zero console errors in browser on any page
     indent_level: 0
     raw_marker: -
