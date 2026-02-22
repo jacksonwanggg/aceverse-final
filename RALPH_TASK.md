@@ -145,12 +145,12 @@ npm run dev          # starts backend (3001) + frontend (5173) concurrently
 
 ### Phase 7: Posts — Full CRUD
 
-- [ ] Create post works: text content (max 500 chars), optional game tag
-- [ ] PostCard displays: avatar, display name, @username, relative timestamp (e.g., "3h ago"), content, game tag pill, action row (reply count, like count, repost count, share)
-- [ ] Edit post: author-only, inline edit mode with Save/Cancel
-- [ ] Delete post: author-only, soft delete, shows "This post has been deleted" placeholder
-- [ ] Clicking a post navigates to thread view (`/p/:postId`)
-- [ ] Run `npm run typecheck && npm run build && npm run lint` — all pass
+- [x] Create post works: text content (max 500 chars), optional game tag
+- [x] PostCard displays: avatar, display name, @username, relative timestamp (e.g., "3h ago"), content, game tag pill, action row (reply count, like count, repost count, share)
+- [x] Edit post: author-only, inline edit mode with Save/Cancel
+- [x] Delete post: author-only, soft delete, shows "This post has been deleted" placeholder
+- [x] Clicking a post navigates to thread view (`/p/:postId`)
+- [x] Run `npm run typecheck && npm run build && npm run lint` — all pass
 
 ### Phase 8: Likes & Reposts
 

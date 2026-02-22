@@ -118,6 +118,7 @@ export default function PostComposer({ onSuccess, placeholder = "What's happenin
               onChange={(e) => setContent(e.target.value)}
               placeholder={placeholder}
               rows={3}
+              maxLength={500}
               className="w-full resize-none bg-transparent text-gray-900 dark:text-gray-100 placeholder-gray-500 dark:placeholder-gray-400 focus:outline-none text-lg"
             />
             <GameTagSelector value={gameTag} onChange={setGameTag} className="mt-2" />

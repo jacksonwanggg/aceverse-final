@@ -204,3 +204,17 @@ Next: Phase 7 — Posts Full CRUD.
 
 ### 2026-02-22 19:23:29
 **Session 7 started** (model: auto)
+
+### 2026-02-22 (Ralph Iteration 7 — Phase 7)
+**Phase 7: Posts — Full CRUD completed.**
+
+Completed:
+- Verified create post: PostComposer has 500 char limit, optional game tag (GameTagSelector), api.posts.create; added maxLength={500} to textarea.
+- Verified PostCard: avatar, display name, @username, relative timestamp (formatDistanceToNow), content, game tag pill, action row (reply, like, repost, share).
+- Edit post: author-only via canEdit, inline edit with Save/Cancel (already implemented).
+- Delete post: author-only via canDelete, soft delete; updated placeholder to "This post has been deleted." (was "This post was deleted.").
+- Clicking post: timestamp and content link to `/p/:postId` for thread view.
+- npm run typecheck && npm run build && npm run lint — all pass (warnings only).
+- Marked all Phase 7 criteria [x] in RALPH_TASK.md.
+
+Next: Phase 8 — Likes & Reposts (optimistic UI, notifications, api client).
