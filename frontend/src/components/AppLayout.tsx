@@ -49,7 +49,7 @@ export default function AppLayout({ children }: AppLayoutProps) {
         animate="animate"
         exit="exit"
         variants={pageVariants}
-        transition={{ duration: 0.2 }}
+        transition={{ duration: 0.25, ease: 'easeOut' }}
         className="min-h-full flex flex-col"
       >
         <Outlet />
