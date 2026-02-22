@@ -1,8 +1,24 @@
-import { Outlet, Navigate } from 'react-router-dom'
+import { useEffect } from 'react'
+import { Outlet, Navigate, useLocation } from 'react-router-dom'
+import { AnimatePresence, motion } from 'framer-motion'
 import { useAuth } from '../hooks/useAuth'
 import LeftSidebar from './LeftSidebar'
 import RightSidebar from './RightSidebar'
 import BottomNav from './BottomNav'
+
+function ScrollToTop() {
+  const { pathname } = useLocation()
+  useEffect(() => {
+    window.scrollTo({ top: 0, behavior: 'smooth' })
+  }, [pathname])
+  return null
+}
+
+const pageVariants = {
+  initial: { opacity: 0, y: 8 },
+  animate: { opacity: 1, y: 0 },
+  exit: { opacity: 0, y: -4 },
+}
 
 interface AppLayoutProps {
   /** When set, render this instead of Outlet (e.g. for /p/:postId when opened from a public link). */
@@ -11,6 +27,7 @@ interface AppLayoutProps {
 
 export default function AppLayout({ children }: AppLayoutProps) {
   const { user, isLoading } = useAuth()
+  const location = useLocation()
 
   if (isLoading) {
     return (
@@ -24,11 +41,28 @@ export default function AppLayout({ children }: AppLayoutProps) {
     return <Navigate to="/login" replace />
   }
 
+  const content = children ?? (
+    <AnimatePresence mode="wait">
+      <motion.div
+        key={location.pathname}
+        initial="initial"
+        animate="animate"
+        exit="exit"
+        variants={pageVariants}
+        transition={{ duration: 0.2 }}
+        className="min-h-full flex flex-col"
+      >
+        <Outlet />
+      </motion.div>
+    </AnimatePresence>
+  )
+
   return (
     <div className="min-h-screen bg-[#0D0D0D] text-gray-100 flex">
+      <ScrollToTop />
       <LeftSidebar />
       <main className="flex-1 min-w-0 flex flex-col border-x border-gray-800 max-w-2xl mx-auto w-full pb-20 md:pb-0">
-        {children ?? <Outlet />}
+        {content}
       </main>
       <RightSidebar />
       <BottomNav />

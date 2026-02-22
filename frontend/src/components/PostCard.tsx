@@ -1,5 +1,6 @@
 import { useState, useRef, useEffect } from 'react'
 import { Link } from 'react-router-dom'
+import { motion } from 'framer-motion'
 import { formatDistanceToNow } from 'date-fns'
 import { useToast } from '../hooks/useToast'
 import { extractYouTubeVideoId } from '../lib/youtube'
@@ -111,7 +112,11 @@ export default function PostCard({ post, onLike, onRepost, onReply, onEdit, onDe
   }
 
   return (
-    <article className="border-b border-gray-200 dark:border-gray-700 p-4 hover:bg-gray-50 dark:hover:bg-gray-800/50 transition-colors">
+    <motion.article
+      className="border-b border-gray-200 dark:border-gray-700 p-4 hover:bg-gray-50 dark:hover:bg-gray-800/50 transition-colors duration-200 hover:shadow-lg hover:shadow-[0_4px_14px_rgba(239,140,96,0.12)] dark:hover:shadow-[0_4px_14px_rgba(239,140,96,0.15)]"
+      whileHover={{ y: -1 }}
+      transition={{ duration: 0.15 }}
+    >
       <div className="flex gap-3">
         <Link to={`/u/${post.author.username}`}>
           <img
@@ -245,31 +250,36 @@ export default function PostCard({ post, onLike, onRepost, onReply, onEdit, onDe
             <div className="flex items-center gap-6 mt-3 text-gray-500 dark:text-gray-400">
               <button
                 onClick={onReply}
-                className="flex items-center gap-2 hover:text-primary transition-colors"
+                className="flex items-center gap-2 hover:text-primary transition-colors focus:outline-none focus:ring-2 focus:ring-[#EF8C60] focus:ring-offset-1 focus:ring-offset-[#0D0D0D] rounded"
               >
                 <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M8 12h.01M12 12h.01M16 12h.01M21 12c0 4.418-4.03 8-9 8a9.863 9.863 0 01-4.255-.949L3 20l1.395-3.72C3.512 15.042 3 13.574 3 12c0-4.418 4.03-8 9-8s9 3.582 9 8z" />
                 </svg>
                 <span>{post.replyCount}</span>
               </button>
-              <button
+              <motion.button
                 onClick={onRepost}
-                className={`flex items-center gap-2 hover:text-primary transition-colors ${
+                className={`flex items-center gap-2 hover:text-primary transition-colors focus:outline-none focus:ring-2 focus:ring-[#EF8C60] focus:ring-offset-1 focus:ring-offset-[#0D0D0D] rounded ${
                   post.repostedByMe ? 'text-primary' : ''
                 }`}
                 aria-label={post.repostedByMe ? 'Unrepost' : 'Repost'}
+                animate={post.repostedByMe ? { rotate: [0, -15, 15, 0] } : {}}
+                transition={{ duration: 0.4 }}
               >
                 <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4 4v5h.582m15.356 2A8.001 8.001 0 004.582 9m0 0H9m11 11v-5h-.581m0 0a8.003 8.003 0 01-15.357-2m15.357 2H15" />
                 </svg>
                 <span>{post.repostCount}</span>
-              </button>
-              <button
+              </motion.button>
+              <motion.button
                 onClick={onLike}
-                className={`flex items-center gap-2 hover:text-primary transition-colors ${
+                className={`flex items-center gap-2 hover:text-primary transition-colors focus:outline-none focus:ring-2 focus:ring-[#EF8C60] focus:ring-offset-1 focus:ring-offset-[#0D0D0D] rounded ${
                   post.likedByMe ? 'text-primary' : ''
                 }`}
                 aria-label={post.likedByMe ? 'Unlike' : 'Like'}
+                whileTap={{ scale: 0.9 }}
+                animate={post.likedByMe ? { scale: [1, 1.3, 1] } : {}}
+                transition={{ duration: 0.3 }}
               >
                 <svg
                   className="w-5 h-5"
@@ -280,10 +290,10 @@ export default function PostCard({ post, onLike, onRepost, onReply, onEdit, onDe
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z" />
                 </svg>
                 <span>{post.likeCount}</span>
-              </button>
+              </motion.button>
               <button
                 onClick={handleShare}
-                className="flex items-center gap-2 hover:text-primary transition-colors"
+                className="flex items-center gap-2 hover:text-primary transition-colors focus:outline-none focus:ring-2 focus:ring-[#EF8C60] focus:ring-offset-1 focus:ring-offset-[#0D0D0D] rounded"
                 aria-label="Share"
               >
                 <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -294,6 +304,6 @@ export default function PostCard({ post, onLike, onRepost, onReply, onEdit, onDe
           )}
         </div>
       </div>
-    </article>
+    </motion.article>
   )
 }
