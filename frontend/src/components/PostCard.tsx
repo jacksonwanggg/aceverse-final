@@ -6,6 +6,8 @@ interface PostCardProps {
   post: {
     id: string
     content: string | null
+    gameTag?: string | null
+    game?: { name: string; slug: string; color: string } | null
     deleted?: boolean
     createdAt: string
     author: {
@@ -122,6 +124,14 @@ export default function PostCard({ post, onLike, onRepost, onReply, onEdit, onDe
             >
               {timeAgo}
             </Link>
+            {(post.gameTag || post.game) && (
+              <span
+                className="inline-flex items-center px-2 py-0.5 rounded text-xs font-medium"
+                style={{ backgroundColor: (post.game?.color || '#EF8C60') + '30', color: post.game?.color || '#EF8C60' }}
+              >
+                {post.game?.name ?? post.gameTag}
+              </span>
+            )}
             {(post.canEdit || post.canDelete) && !isDeleted && (
               <div className="ml-auto relative" ref={menuRef}>
                 <button
@@ -188,15 +198,26 @@ export default function PostCard({ post, onLike, onRepost, onReply, onEdit, onDe
               </div>
             </div>
           ) : (
-            <Link to={`/p/${post.id}`} className="block">
-              <p className="text-gray-900 dark:text-gray-100 whitespace-pre-wrap break-words">
-                {isDeleted ? (
-                  <span className="italic text-gray-500 dark:text-gray-400">This post was deleted.</span>
-                ) : (
-                  post.content
-                )}
-              </p>
-            </Link>
+            <>
+              {post.gameTag && (
+                <Link
+                  to={`/explore?game=${encodeURIComponent(post.gameTag)}`}
+                  className="inline-flex items-center px-2 py-0.5 rounded text-xs font-medium mb-1 transition-colors"
+                  style={{ backgroundColor: 'var(--primary)', color: '#0D0D0D' }}
+                >
+                  #{post.gameTag}
+                </Link>
+              )}
+              <Link to={`/p/${post.id}`} className="block">
+                <p className="text-gray-900 dark:text-gray-100 whitespace-pre-wrap break-words">
+                  {isDeleted ? (
+                    <span className="italic text-gray-500 dark:text-gray-400">This post was deleted.</span>
+                  ) : (
+                    post.content
+                  )}
+                </p>
+              </Link>
+            </>
           )}
           {!editing && (
             <div className="flex items-center gap-6 mt-3 text-gray-500 dark:text-gray-400">

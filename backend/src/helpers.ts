@@ -4,6 +4,7 @@ import { likesRepo } from './db/repos/likes.js';
 import { repostsRepo } from './db/repos/reposts.js';
 import { followsRepo } from './db/repos/follows.js';
 import { repliesRepo } from './db/repos/replies.js';
+import { gamesRepo } from './db/repos/games.js';
 import { Post, User } from './db/types.js';
 
 /** Normalize Express route param to string (Express typings can give string | string[]). */
@@ -22,10 +23,12 @@ export function shapePost(post: Post, viewerId?: string) {
   const canEdit = viewerId === post.authorId;
   const canDelete = viewerId === post.authorId;
 
+  const game = post.gameTag ? gamesRepo.findBySlug(post.gameTag) : null;
   return {
     id: post.id,
     content: post.deletedAt ? null : post.content,
     gameTag: post.gameTag ?? null,
+    game: game ? { name: game.name, slug: game.slug, color: game.color } : null,
     deleted: !!post.deletedAt,
     createdAt: post.createdAt,
     updatedAt: post.updatedAt,

@@ -2,6 +2,7 @@ import { useState } from 'react'
 import { useMutation, useQueryClient } from '@tanstack/react-query'
 import { api } from '../lib/api'
 import { useAuth } from '../hooks/useAuth'
+import GameTagSelector from './GameTagSelector'
 
 interface PostComposerProps {
   onSuccess?: () => void
@@ -12,6 +13,7 @@ export default function PostComposer({ onSuccess, placeholder = "What's happenin
   const { user } = useAuth()
   const queryClient = useQueryClient()
   const [content, setContent] = useState('')
+  const [gameTag, setGameTag] = useState<string | null>(null)
   const [isSubmitting, setIsSubmitting] = useState(false)
 
   const createPostMutation = useMutation({
@@ -26,6 +28,7 @@ export default function PostComposer({ onSuccess, placeholder = "What's happenin
         const optimisticPost = {
           id: 'temp-' + Date.now(),
           content: newPost.content,
+          gameTag: newPost.gameTag ?? null,
           createdAt: new Date().toISOString(),
           author: {
             id: user!.id,
@@ -68,6 +71,7 @@ export default function PostComposer({ onSuccess, placeholder = "What's happenin
         }
       })
       setContent('')
+      setGameTag(null)
       onSuccess?.()
     },
     onError: (_err, _newPost, context) => {
@@ -84,7 +88,7 @@ export default function PostComposer({ onSuccess, placeholder = "What's happenin
     
     setIsSubmitting(true)
     try {
-      await createPostMutation.mutateAsync({ content: content.trim() })
+      await createPostMutation.mutateAsync({ content: content.trim(), gameTag: gameTag ?? undefined })
     } catch (error) {
       console.error('Failed to create post:', error)
     } finally {
@@ -116,6 +120,7 @@ export default function PostComposer({ onSuccess, placeholder = "What's happenin
               rows={3}
               className="w-full resize-none bg-transparent text-gray-900 dark:text-gray-100 placeholder-gray-500 dark:placeholder-gray-400 focus:outline-none text-lg"
             />
+            <GameTagSelector value={gameTag} onChange={setGameTag} className="mt-2" />
             <div className="flex items-center justify-between mt-3">
               <div className={`text-sm ${isOverLimit ? 'text-red-500' : remaining < 20 ? 'text-primary' : 'text-gray-500 dark:text-gray-400'}`}>
                 {remaining}

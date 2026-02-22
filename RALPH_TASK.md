@@ -102,15 +102,15 @@ npm run dev          # starts backend (3001) + frontend (5173) concurrently
 
 ### Phase 3: Gaming Identity — Games & Ranks
 
-- [ ] Verify `Game` model in DB types: `{ id, name, slug, iconUrl, color }` — at least: Valorant, Counter-Strike 2, Apex Legends, League of Legends, Rocket League, Super Smash Bros, Fortnite
-- [ ] Verify `UserGame` model: `{ id, userId, gameId, rank, rankTier, updatedAt }` — links users to games with rank
-- [ ] Verify `gameTag` field on `Post` model — optional game slug that tags a post to a specific game
-- [ ] Verify `gamesRepo` and `userGamesRepo` with CRUD operations
-- [ ] Backend: `GET /api/games` returns all games, `GET /api/users/:username/games` returns user's games + ranks, `PUT /api/users/:username/games` updates game ranks — add routes if missing
-- [ ] Profile page shows "Gaming Ranks" section with game icon, game name, rank name (e.g., "Immortal 3", "Global Elite", "Master"), rank badge, and last-updated date
-- [ ] Posts can be tagged with a game — post composer has optional game tag selector, PostCard shows game badge/pill
-- [ ] "Your Games" sidebar section shows the logged-in user's tracked games with quick links
-- [ ] Run `npm run typecheck && npm run build && npm run lint` — all pass
+- [x] Verify `Game` model in DB types: `{ id, name, slug, iconUrl, color }` — at least: Valorant, Counter-Strike 2, Apex Legends, League of Legends, Rocket League, Super Smash Bros, Fortnite
+- [x] Verify `UserGame` model: `{ id, userId, gameId, rank, rankTier, updatedAt }` — links users to games with rank
+- [x] Verify `gameTag` field on `Post` model — optional game slug that tags a post to a specific game
+- [x] Verify `gamesRepo` and `userGamesRepo` with CRUD operations
+- [x] Backend: `GET /api/games` returns all games, `GET /api/users/:username/games` returns user's games + ranks, `PUT /api/users/:username/games` updates game ranks — add routes if missing
+- [x] Profile page shows "Gaming Ranks" section with game icon, game name, rank name (e.g., "Immortal 3", "Global Elite", "Master"), rank badge, and last-updated date
+- [x] Posts can be tagged with a game — post composer has optional game tag selector, PostCard shows game badge/pill
+- [x] "Your Games" sidebar section shows the logged-in user's tracked games with quick links
+- [x] Run `npm run typecheck && npm run build && npm run lint` — all pass
 
 ### Phase 4: Complete Auth Flow
 

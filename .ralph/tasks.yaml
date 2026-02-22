@@ -3,8 +3,8 @@
 # DO NOT EDIT - regenerated on task file change
 
 source_file: RALPH_TASK.md
-source_mtime: 1771747301
-generated_at: 2026-02-22T08:03:01Z
+source_mtime: 1771747558
+generated_at: 2026-02-22T08:06:34Z
 
 tasks:
   - id: "line_77"
@@ -142,63 +142,63 @@ tasks:
     raw_marker: -
   - id: "line_105"
     line_number: 105
-    status: pending
+    status: completed
     parallel_group: 999999
     description: Verify `Game` model in DB types: `{ id, name, slug, iconUrl, color }` — at least: Valorant, Counter-Strike 2, Apex Legends, League of Legends, Rocket League, Super Smash Bros, Fortnite
     indent_level: 0
     raw_marker: -
   - id: "line_106"
     line_number: 106
-    status: pending
+    status: completed
     parallel_group: 999999
     description: Verify `UserGame` model: `{ id, userId, gameId, rank, rankTier, updatedAt }` — links users to games with rank
     indent_level: 0
     raw_marker: -
   - id: "line_107"
     line_number: 107
-    status: pending
+    status: completed
     parallel_group: 999999
     description: Verify `gameTag` field on `Post` model — optional game slug that tags a post to a specific game
     indent_level: 0
     raw_marker: -
   - id: "line_108"
     line_number: 108
-    status: pending
+    status: completed
     parallel_group: 999999
     description: Verify `gamesRepo` and `userGamesRepo` with CRUD operations
     indent_level: 0
     raw_marker: -
   - id: "line_109"
     line_number: 109
-    status: pending
+    status: completed
     parallel_group: 999999
     description: Backend: `GET /api/games` returns all games, `GET /api/users/:username/games` returns user's games + ranks, `PUT /api/users/:username/games` updates game ranks — add routes if missing
     indent_level: 0
     raw_marker: -
   - id: "line_110"
     line_number: 110
-    status: pending
+    status: completed
     parallel_group: 999999
     description: Profile page shows \"Gaming Ranks\" section with game icon, game name, rank name (e.g., \"Immortal 3\", \"Global Elite\", \"Master\"), rank badge, and last-updated date
     indent_level: 0
     raw_marker: -
   - id: "line_111"
     line_number: 111
-    status: pending
+    status: completed
     parallel_group: 999999
     description: Posts can be tagged with a game — post composer has optional game tag selector, PostCard shows game badge/pill
     indent_level: 0
     raw_marker: -
   - id: "line_112"
     line_number: 112
-    status: pending
+    status: completed
     parallel_group: 999999
     description: \"Your Games\" sidebar section shows the logged-in user's tracked games with quick links
     indent_level: 0
     raw_marker: -
   - id: "line_113"
     line_number: 113
-    status: pending
+    status: completed
     parallel_group: 999999
     description: Run `npm run typecheck && npm run build && npm run lint` — all pass
     indent_level: 0

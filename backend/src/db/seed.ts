@@ -21,6 +21,8 @@ function seedGames() {
     { name: 'Apex Legends', slug: 'apex', iconUrl: '/icons/apex.svg', color: '#DA292A' },
     { name: 'League of Legends', slug: 'lol', iconUrl: '/icons/lol.svg', color: '#C89B3C' },
     { name: 'Rocket League', slug: 'rocketleague', iconUrl: '/icons/rocketleague.svg', color: '#FF9500' },
+    { name: 'Super Smash Bros', slug: 'smash', iconUrl: '/icons/smash.svg', color: '#E60012' },
+    { name: 'Fortnite', slug: 'fortnite', iconUrl: '/icons/fortnite.svg', color: '#7B2D8E' },
   ];
   return games.map((g) => gamesRepo.create(g));
 }
@@ -58,6 +60,8 @@ function seedUserGames(users: { id: string }[], games: { id: string; slug: strin
     apex: ['Predator', 'Master', 'Diamond', 'Platinum', 'Gold'],
     lol: ['Challenger', 'Grandmaster', 'Master', 'Diamond', 'Platinum'],
     rocketleague: ['Supersonic Legend', 'Grand Champ', 'Champ', 'Diamond', 'Platinum'],
+    smash: ['Elite Smash', 'GSP 13M+', 'GSP 12M+', 'GSP 11M+', 'GSP 10M+'],
+    fortnite: ['Unreal', 'Champion', 'Diamond', 'Platinum', 'Gold'],
   };
   const tier: Record<string, string> = {
     valorant: 'radiant',
@@ -65,6 +69,8 @@ function seedUserGames(users: { id: string }[], games: { id: string; slug: strin
     apex: 'predator',
     lol: 'challenger',
     rocketleague: 'ssl',
+    smash: 'elite',
+    fortnite: 'unreal',
   };
   users.forEach((user) => {
     games.slice(0, 3).forEach((game, j) => {

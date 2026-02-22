@@ -112,4 +112,37 @@ router.get('/:username/games', (req, res) => {
   res.json({ userGames: items });
 });
 
+router.put('/:username/games', requireAuth, (req, res) => {
+  const username = paramStr(req.params.username);
+  const user = usersRepo.findByUsername(username);
+  if (!user) {
+    res.status(404).json({ error: 'User not found' });
+    return;
+  }
+  if (user.id !== req.userId) {
+    res.status(403).json({ error: 'Can only update your own game ranks' });
+    return;
+  }
+  const body = req.body as { userGames?: Array<{ gameId: string; rank: string; rankTier: string }> };
+  const userGames = Array.isArray(body?.userGames) ? body.userGames : [];
+  const updated: typeof userGames = [];
+  for (const entry of userGames) {
+    if (typeof entry?.gameId !== 'string' || typeof entry?.rank !== 'string' || typeof entry?.rankTier !== 'string') continue;
+    if (!gamesRepo.findById(entry.gameId)) continue;
+    const ug = userGamesRepo.upsert(user.id, entry.gameId, entry.rank.trim(), entry.rankTier.trim());
+    updated.push({ gameId: ug.gameId, rank: ug.rank, rankTier: ug.rankTier });
+  }
+  const all = userGamesRepo.getByUser(user.id);
+  const games = gamesRepo.getAll();
+  const byId = Object.fromEntries(games.map((g) => [g.id, g]));
+  const items = all.map((ug) => {
+    const game = byId[ug.gameId];
+    return {
+      ...ug,
+      game: game ? { id: game.id, name: game.name, slug: game.slug, iconUrl: game.iconUrl, color: game.color } : null,
+    };
+  });
+  res.json({ userGames: items });
+});
+
 export default router;

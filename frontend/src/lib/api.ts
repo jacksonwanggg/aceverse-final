@@ -60,6 +60,11 @@ export const api = {
       ),
     getGames: (username: string) =>
       apiRequest<{ userGames: any[] }>(`/users/${encodeURIComponent(username)}/games`),
+    updateGames: (username: string, userGames: { gameId: string; rank: string; rankTier: string }[]) =>
+      apiRequest<{ userGames: any[] }>(`/users/${encodeURIComponent(username)}/games`, {
+        method: 'PUT',
+        body: JSON.stringify({ userGames }),
+      }),
     getSuggestions: (limit?: number) =>
       apiRequest<{ users: any[] }>(`/users/suggestions${limit != null ? `?limit=${limit}` : ''}`),
     getFollowing: () => apiRequest<{ users: any[] }>('/users/me/following'),
