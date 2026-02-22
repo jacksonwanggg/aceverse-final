@@ -3,8 +3,8 @@
 # DO NOT EDIT - regenerated on task file change
 
 source_file: RALPH_TASK.md
-source_mtime: 1771748374
-generated_at: 2026-02-22T08:20:42Z
+source_mtime: 1771748565
+generated_at: 2026-02-22T08:23:26Z
 
 tasks:
   - id: "line_77"
@@ -310,49 +310,49 @@ tasks:
     raw_marker: -
   - id: "line_138"
     line_number: 138
-    status: pending
+    status: completed
     parallel_group: 999999
     description: Home feed (`/`) shows posts from people the user follows + own posts, sorted by newest first, with cursor pagination and infinite scroll
     indent_level: 0
     raw_marker: -
   - id: "line_139"
     line_number: 139
-    status: pending
+    status: completed
     parallel_group: 999999
     description: Explore feed (`/explore`) shows all posts globally, sorted by newest
     indent_level: 0
     raw_marker: -
   - id: "line_140"
     line_number: 140
-    status: pending
+    status: completed
     parallel_group: 999999
     description: Feed uses skeleton loading cards while fetching
     indent_level: 0
     raw_marker: -
   - id: "line_141"
     line_number: 141
-    status: pending
+    status: completed
     parallel_group: 999999
     description: Empty state for home feed when following nobody: \"Your feed is empty. Follow some gamers to see their posts!\" with suggested accounts
     indent_level: 0
     raw_marker: -
   - id: "line_142"
     line_number: 142
-    status: pending
+    status: completed
     parallel_group: 999999
     description: Post composer at top of home feed: textarea (500 char limit), optional game tag selector, character counter, Post button disabled when empty, `#EF8C60` Post button
     indent_level: 0
     raw_marker: -
   - id: "line_143"
     line_number: 143
-    status: pending
+    status: completed
     parallel_group: 999999
     description: New posts appear instantly (optimistic update) at the top of the feed
     indent_level: 0
     raw_marker: -
   - id: "line_144"
     line_number: 144
-    status: pending
+    status: completed
     parallel_group: 999999
     description: Run `npm run typecheck && npm run build && npm run lint` — all pass
     indent_level: 0
