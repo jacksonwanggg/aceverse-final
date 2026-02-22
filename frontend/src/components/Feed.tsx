@@ -5,6 +5,21 @@ import PostCardSkeleton from './PostCardSkeleton'
 import { api } from '../lib/api'
 import { useAuth } from '../hooks/useAuth'
 
+export interface TimelinePost {
+  id: string
+  content: string | null
+  deleted?: boolean
+  createdAt: string
+  author: { id: string; username: string; displayName: string; avatarUrl: string }
+  replyCount: number
+  likeCount: number
+  repostCount: number
+  likedByMe: boolean
+  repostedByMe: boolean
+  canEdit: boolean
+  canDelete: boolean
+}
+
 interface FeedProps {
   type: 'home' | 'explore'
 }
@@ -22,20 +37,21 @@ export default function Feed({ type }: FeedProps) {
     isError,
   } = useInfiniteQuery({
     queryKey: ['timeline', type],
-    queryFn: ({ pageParam }) => {
+    initialPageParam: undefined as string | undefined,
+    queryFn: ({ pageParam }: { pageParam: string | undefined }) => {
       if (type === 'home') {
         return api.timeline.home(pageParam)
       }
       return api.timeline.explore(pageParam)
     },
-    getNextPageParam: (lastPage) => lastPage.nextCursor ?? undefined,
+    getNextPageParam: (lastPage: { posts: TimelinePost[]; nextCursor: string | null }) => lastPage.nextCursor ?? undefined,
     enabled: type === 'explore' || !!user,
   })
 
   const handleEditPost = useCallback(
     async (postId: string, content: string) => {
       const { post } = await api.posts.update(postId, { content })
-      queryClient.setQueryData(['timeline', type], (old: { pages: { posts: any[]; nextCursor: string | null }[] } | undefined) => {
+      queryClient.setQueryData(['timeline', type], (old: { pages: { posts: TimelinePost[]; nextCursor: string | null }[] } | undefined) => {
         if (!old) return old
         return {
           ...old,
@@ -52,7 +68,7 @@ export default function Feed({ type }: FeedProps) {
   const handleDeletePost = useCallback(
     async (postId: string) => {
       await api.posts.delete(postId)
-      queryClient.setQueryData(['timeline', type], (old: { pages: { posts: any[]; nextCursor: string | null }[] } | undefined) => {
+      queryClient.setQueryData(['timeline', type], (old: { pages: { posts: TimelinePost[]; nextCursor: string | null }[] } | undefined) => {
         if (!old) return old
         return {
           ...old,
@@ -101,7 +117,7 @@ export default function Feed({ type }: FeedProps) {
     )
   }
 
-  const posts = data?.pages.flatMap((page) => page.posts) || []
+  const posts = data?.pages.flatMap((page: { posts: TimelinePost[] }) => page.posts) || []
 
   if (posts.length === 0) {
     return (

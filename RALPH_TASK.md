@@ -52,13 +52,13 @@ npm run seed         # populate fake data
 npm run dev          # starts backend (3001) + frontend (5173) concurrently
 Success Criteria
 Phase 0: Fix Foundation — Build & Run
-[ ] npm install succeeds with zero errors for all workspaces
-[ ] npm run dev starts both backend (port 3001) and frontend (port 5173) without crashes
-[ ] GET /api/health returns { "status": "ok" } (200)
-[ ] Frontend loads at http://localhost:5173 without console errors
-[ ] npm run build succeeds for both backend and frontend
-[ ] npm run typecheck passes with zero errors
-[ ] npm run lint passes (fix or suppress non-critical warnings)
+[x] npm install succeeds with zero errors for all workspaces
+[x] npm run dev starts both backend (port 3001) and frontend (port 5173) without crashes
+[x] GET /api/health returns { "status": "ok" } (200)
+[x] Frontend loads at http://localhost:5173 without console errors
+[x] npm run build succeeds for both backend and frontend
+[x] npm run typecheck passes with zero errors
+[x] npm run lint passes (fix or suppress non-critical warnings)
 Phase 1: Seed & Reset Scripts
 [ ] Create backend/src/db/seed.ts — generates at least: 10 users (with gamer-themed usernames/display names), 60+ posts (gaming content with game tags), threaded replies (nested 2-3 levels), likes/reposts/follows distributed realistically, notifications matching the actions, at least 3 games in the games table, gaming ranks for users
 [ ] Create backend/src/db/reset.ts — wipes DB file then runs seed

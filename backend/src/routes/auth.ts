@@ -41,8 +41,8 @@ router.post('/register', async (req, res) => {
     const session = sessionsRepo.create(user.id);
     setSessionCookie(res, session.id);
     res.status(201).json({ user: shapeUser(user, user.id) });
-  } catch (err: any) {
-    res.status(409).json({ error: err.message });
+  } catch (err: unknown) {
+    res.status(409).json({ error: err instanceof Error ? err.message : 'Conflict' });
   }
 });
 

@@ -58,3 +58,14 @@ Backend already had PATCH/DELETE posts with author-only checks and soft delete. 
 
 ### 2026-02-22 18:42:38
 **Session 1 started** (model: Auto)
+
+### 2026-02-22 (Ralph Iteration 1 — Phase 0)
+**Phase 0: Fix Foundation — Build & Run completed.**
+
+Completed:
+- Fixed backend TypeScript: Express `req.params` typed as `string | string[]`; added `paramStr()` in helpers and used it in routes (posts, replies, users).
+- Added backend `eslint.config.js` (ESLint 9 flat config); fixed lint: removed unused `getPostShape` and `usersRepo` from auth middleware, fixed `err: any` in auth route, suppressed namespace rule for Express declaration merging.
+- Fixed frontend build: `useInfiniteQuery` now includes `initialPageParam` and proper types (`TimelinePost`); Tailwind v4: installed `@tailwindcss/postcss`, updated postcss.config.js and index.css to use `@import "tailwindcss"`.
+- Confirmed: npm install, npm run dev, GET /api/health, npm run build, npm run typecheck, npm run lint all pass. Marked all Phase 0 criteria [x] in RALPH_TASK.md.
+
+Next: Phase 1 — Seed & Reset Scripts.

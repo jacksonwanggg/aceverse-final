@@ -6,6 +6,11 @@ import { followsRepo } from './db/repos/follows.js';
 import { repliesRepo } from './db/repos/replies.js';
 import { Post, User } from './db/types.js';
 
+/** Normalize Express route param to string (Express typings can give string | string[]). */
+export function paramStr(p: string | string[] | undefined): string {
+  return Array.isArray(p) ? p[0] ?? '' : p ?? '';
+}
+
 export function shapePost(post: Post, viewerId?: string) {
   const author = usersRepo.findById(post.authorId);
   const likeCount = likesRepo.countByPost(post.id);

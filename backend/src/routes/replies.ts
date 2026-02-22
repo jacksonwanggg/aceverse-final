@@ -5,12 +5,14 @@ import { postsRepo } from '../db/repos/posts.js';
 import { notificationsRepo } from '../db/repos/notifications.js';
 import { usersRepo } from '../db/repos/users.js';
 import { requireAuth } from '../middleware/auth.js';
+import { paramStr } from '../helpers.js';
 
 const router = Router();
 const replySchema = z.object({ content: z.string().min(1).max(280) });
 
 router.post('/:replyId/replies', requireAuth, (req, res) => {
-  const parent = repliesRepo.findById(req.params.replyId);
+  const replyId = paramStr(req.params.replyId);
+  const parent = repliesRepo.findById(replyId);
   if (!parent || parent.deletedAt) {
     res.status(404).json({ error: 'Reply not found' });
     return;
@@ -65,7 +67,8 @@ router.post('/:replyId/replies', requireAuth, (req, res) => {
 });
 
 router.patch('/:replyId', requireAuth, (req, res) => {
-  const reply = repliesRepo.findById(req.params.replyId);
+  const replyId = paramStr(req.params.replyId);
+  const reply = repliesRepo.findById(replyId);
   if (!reply || reply.deletedAt) {
     res.status(404).json({ error: 'Reply not found' });
     return;
@@ -100,7 +103,8 @@ router.patch('/:replyId', requireAuth, (req, res) => {
 });
 
 router.delete('/:replyId', requireAuth, (req, res) => {
-  const reply = repliesRepo.findById(req.params.replyId);
+  const replyId = paramStr(req.params.replyId);
+  const reply = repliesRepo.findById(replyId);
   if (!reply || reply.deletedAt) {
     res.status(404).json({ error: 'Reply not found' });
     return;

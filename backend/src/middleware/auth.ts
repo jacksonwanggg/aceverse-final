@@ -1,7 +1,8 @@
 import { Request, Response, NextFunction } from 'express';
-import { sessionsRepo, usersRepo } from '../db/repos/index.js';
+import { sessionsRepo } from '../db/repos/index.js';
 
 declare global {
+  // eslint-disable-next-line @typescript-eslint/no-namespace -- Express declaration merging
   namespace Express {
     interface Request {
       userId?: string;
@@ -43,7 +44,3 @@ export function clearSessionCookie(res: Response): void {
   res.clearCookie(SESSION_COOKIE, { path: '/' });
 }
 
-export function getPostShape(postId: string, viewerId?: string) {
-  const { postsRepo, likesRepo, repostsRepo, followsRepo, repliesRepo } = require('../db/repos/index.js');
-  return null;
-}

@@ -4,12 +4,13 @@ import { postsRepo } from '../db/repos/posts.js';
 import { followsRepo } from '../db/repos/follows.js';
 import { notificationsRepo } from '../db/repos/notifications.js';
 import { requireAuth } from '../middleware/auth.js';
-import { shapePost, shapeUser } from '../helpers.js';
+import { shapePost, shapeUser, paramStr } from '../helpers.js';
 
 const router = Router();
 
 router.get('/:username', (req, res) => {
-  const user = usersRepo.findByUsername(req.params.username);
+  const username = paramStr(req.params.username);
+  const user = usersRepo.findByUsername(username);
   if (!user) {
     res.status(404).json({ error: 'User not found' });
     return;
@@ -18,7 +19,8 @@ router.get('/:username', (req, res) => {
 });
 
 router.get('/:username/posts', (req, res) => {
-  const user = usersRepo.findByUsername(req.params.username);
+  const username = paramStr(req.params.username);
+  const user = usersRepo.findByUsername(username);
   if (!user) {
     res.status(404).json({ error: 'User not found' });
     return;
@@ -33,7 +35,8 @@ router.get('/:username/posts', (req, res) => {
 });
 
 router.post('/:username/follow', requireAuth, (req, res) => {
-  const user = usersRepo.findByUsername(req.params.username);
+  const username = paramStr(req.params.username);
+  const user = usersRepo.findByUsername(username);
   if (!user) {
     res.status(404).json({ error: 'User not found' });
     return;
@@ -58,7 +61,8 @@ router.post('/:username/follow', requireAuth, (req, res) => {
 });
 
 router.delete('/:username/follow', requireAuth, (req, res) => {
-  const user = usersRepo.findByUsername(req.params.username);
+  const username = paramStr(req.params.username);
+  const user = usersRepo.findByUsername(username);
   if (!user) {
     res.status(404).json({ error: 'User not found' });
     return;

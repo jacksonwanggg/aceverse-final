@@ -7,7 +7,7 @@ import { repliesRepo } from '../db/repos/replies.js';
 import { notificationsRepo } from '../db/repos/notifications.js';
 import { usersRepo } from '../db/repos/users.js';
 import { requireAuth } from '../middleware/auth.js';
-import { shapePost } from '../helpers.js';
+import { shapePost, paramStr } from '../helpers.js';
 
 const router = Router();
 
@@ -26,7 +26,8 @@ router.post('/', requireAuth, (req, res) => {
 });
 
 router.get('/:postId', (req, res) => {
-  const post = postsRepo.findById(req.params.postId);
+  const postId = paramStr(req.params.postId);
+  const post = postsRepo.findById(postId);
   if (!post) {
     res.status(404).json({ error: 'Post not found' });
     return;
@@ -53,7 +54,8 @@ router.get('/:postId', (req, res) => {
 });
 
 router.patch('/:postId', requireAuth, (req, res) => {
-  const post = postsRepo.findById(req.params.postId);
+  const postId = paramStr(req.params.postId);
+  const post = postsRepo.findById(postId);
   if (!post || post.deletedAt) {
     res.status(404).json({ error: 'Post not found' });
     return;
@@ -72,7 +74,8 @@ router.patch('/:postId', requireAuth, (req, res) => {
 });
 
 router.delete('/:postId', requireAuth, (req, res) => {
-  const post = postsRepo.findById(req.params.postId);
+  const postId = paramStr(req.params.postId);
+  const post = postsRepo.findById(postId);
   if (!post || post.deletedAt) {
     res.status(404).json({ error: 'Post not found' });
     return;
@@ -86,7 +89,8 @@ router.delete('/:postId', requireAuth, (req, res) => {
 });
 
 router.post('/:postId/like', requireAuth, (req, res) => {
-  const post = postsRepo.findById(req.params.postId);
+  const postId = paramStr(req.params.postId);
+  const post = postsRepo.findById(postId);
   if (!post || post.deletedAt) {
     res.status(404).json({ error: 'Post not found' });
     return;
@@ -103,7 +107,8 @@ router.post('/:postId/like', requireAuth, (req, res) => {
 });
 
 router.delete('/:postId/like', requireAuth, (req, res) => {
-  const post = postsRepo.findById(req.params.postId);
+  const postId = paramStr(req.params.postId);
+  const post = postsRepo.findById(postId);
   if (!post) {
     res.status(404).json({ error: 'Post not found' });
     return;
@@ -113,7 +118,8 @@ router.delete('/:postId/like', requireAuth, (req, res) => {
 });
 
 router.post('/:postId/repost', requireAuth, (req, res) => {
-  const post = postsRepo.findById(req.params.postId);
+  const postId = paramStr(req.params.postId);
+  const post = postsRepo.findById(postId);
   if (!post || post.deletedAt) {
     res.status(404).json({ error: 'Post not found' });
     return;
@@ -130,7 +136,8 @@ router.post('/:postId/repost', requireAuth, (req, res) => {
 });
 
 router.delete('/:postId/repost', requireAuth, (req, res) => {
-  const post = postsRepo.findById(req.params.postId);
+  const postId = paramStr(req.params.postId);
+  const post = postsRepo.findById(postId);
   if (!post) {
     res.status(404).json({ error: 'Post not found' });
     return;
@@ -140,7 +147,8 @@ router.delete('/:postId/repost', requireAuth, (req, res) => {
 });
 
 router.post('/:postId/replies', requireAuth, (req, res) => {
-  const post = postsRepo.findById(req.params.postId);
+  const postId = paramStr(req.params.postId);
+  const post = postsRepo.findById(postId);
   if (!post || post.deletedAt) {
     res.status(404).json({ error: 'Post not found' });
     return;
