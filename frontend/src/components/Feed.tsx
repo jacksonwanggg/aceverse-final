@@ -256,7 +256,7 @@ export default function Feed({ type }: FeedProps) {
 
   if (isError) {
     return (
-      <div className="p-4 text-center text-red-600 dark:text-red-400">
+      <div className="p-4 text-center text-red-500">
         Failed to load feed. Please try again.
       </div>
     )
@@ -267,18 +267,18 @@ export default function Feed({ type }: FeedProps) {
 
   if (posts.length === 0) {
     return (
-      <div className="p-8 text-center text-gray-500 dark:text-gray-400">
+      <div className="p-8 text-center text-secondary">
         {type === 'home' ? (
           <div className="max-w-md mx-auto">
-            <p className="text-lg font-semibold mb-2 text-white">Your feed is empty. Follow some gamers to see their posts!</p>
+            <p className="text-lg font-semibold mb-2 text-primary">Your feed is empty. Follow some gamers to see their posts!</p>
             {suggestions.length > 0 && (
               <div className="mt-6 text-left">
-                <p className="text-sm font-medium text-gray-400 uppercase tracking-wider mb-3">Suggested accounts</p>
+                <p className="text-sm font-medium text-secondary uppercase tracking-wider mb-3">Suggested accounts</p>
                 <ul className="space-y-2">
                   {suggestions.map((u: { id: string; username: string; displayName: string; avatarUrl: string; isFollowing?: boolean }) => (
                     <li
                       key={u.id}
-                      className="flex items-center gap-3 p-3 rounded-xl bg-gray-800/50 hover:bg-gray-800 transition-colors"
+                      className="flex items-center gap-3 p-3 rounded-xl bg-secondary hover:bg-hover transition-colors"
                     >
                       <Link to={`/u/${u.username}`} className="flex items-center gap-3 min-w-0 flex-1">
                         <img
@@ -287,8 +287,8 @@ export default function Feed({ type }: FeedProps) {
                           className="w-10 h-10 rounded-full object-cover shrink-0"
                         />
                         <div className="min-w-0">
-                          <p className="text-sm font-medium text-white truncate">{u.displayName || u.username}</p>
-                          <p className="text-xs text-gray-400 truncate">@{u.username}</p>
+                          <p className="text-sm font-medium text-primary truncate">{u.displayName || u.username}</p>
+                          <p className="text-xs text-secondary truncate">@{u.username}</p>
                         </div>
                       </Link>
                       {!u.isFollowing && (
@@ -296,11 +296,10 @@ export default function Feed({ type }: FeedProps) {
                           type="button"
                           onClick={() => followMutation.mutate(u.username)}
                           disabled={followMutation.isPending}
-                          className="shrink-0 px-3 py-1.5 text-xs font-medium rounded-full transition-all hover:shadow-[0_0_12px_rgba(239,140,96,0.5)] focus:outline-none focus:ring-2 focus:ring-[#EF8C60] focus:ring-offset-1 focus:ring-offset-[#0D0D0D] disabled:opacity-50 inline-flex items-center justify-center gap-1.5 min-w-[72px]"
-                          style={{ backgroundColor: '#EF8C60', color: '#0D0D0D' }}
+                          className="shrink-0 px-3 py-1.5 text-xs font-medium rounded-full transition-all focus:outline-none focus:ring-2 focus:ring-accent focus:ring-offset-1 disabled:opacity-50 inline-flex items-center justify-center gap-1.5 min-w-[72px] bg-accent text-white"
                         >
                           {followMutation.isPending && (
-                            <span className="w-3.5 h-3.5 border-2 border-[#0D0D0D] border-t-transparent rounded-full animate-spin" aria-hidden />
+                            <span className="w-3.5 h-3.5 border-2 border-white border-t-transparent rounded-full animate-spin" aria-hidden />
                           )}
                           {followMutation.isPending ? '' : 'Follow'}
                         </button>
@@ -351,7 +350,7 @@ export default function Feed({ type }: FeedProps) {
         <div className="p-4 text-center">
           <button
             onClick={() => fetchNextPage()}
-            className="px-4 py-2 text-primary hover:underline hover:shadow-[0_0_12px_rgba(239,140,96,0.25)] rounded-full transition-all disabled:opacity-50"
+            className="px-4 py-2 text-accent hover:underline rounded-full transition-all disabled:opacity-50"
           >
             Load more
           </button>

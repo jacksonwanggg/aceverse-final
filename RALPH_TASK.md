@@ -126,7 +126,7 @@ The core MVP is fully functional (auth, posts, feeds, likes, reposts, replies, f
 
 ### Phase 1: Design Token System & CSS Variables
 
-- [ ] Create a CSS variable system in `index.css` with theme tokens for both light and dark modes:
+- [x] Create a CSS variable system in `index.css` with theme tokens for both light and dark modes:
   - `--color-bg-primary` (page background): light `#FFFFFF` / dark `#000000`
   - `--color-bg-secondary` (cards, sidebars): light `#F7F9F9` / dark `#16181C`
   - `--color-bg-tertiary` (hover, inputs): light `#EFF3F4` / dark `#1D1F23`
@@ -140,11 +140,11 @@ The core MVP is fully functional (auth, posts, feeds, likes, reposts, replies, f
   - `--color-like`: `#F91880` (pink, both modes)
   - `--color-repost`: `#00BA7C` (green, both modes)
   - `--color-reply`: `#1D9BF0` (blue, both modes)
-- [ ] Update `tailwind.config.js` to map these CSS variables to Tailwind utility classes (e.g., `bg-primary`, `text-primary`, `border-default`, `text-accent`, `bg-hover`)
-- [ ] Light mode activates when `<html>` has no `dark` class; dark mode when it does — Tailwind `darkMode: 'class'`
-- [ ] Replace ALL hardcoded color values (`bg-[#0D0D0D]`, `bg-[#1A1A1A]`, `bg-[#242424]`, `text-[#EF8C60]`, etc.) across every component and page with the new Tailwind token classes
-- [ ] After this phase, the app should look identical in dark mode (no visual regressions) and acceptable in light mode (colors all swap correctly)
-- [ ] Run `npm run typecheck && npm run build && npm run lint` — all pass
+- [x] Update `tailwind.config.js` to map these CSS variables to Tailwind utility classes (e.g., `bg-primary`, `text-primary`, `border-default`, `text-accent`, `bg-hover`)
+- [x] Light mode activates when `<html>` has no `dark` class; dark mode when it does — Tailwind `darkMode: 'class'`
+- [x] Replace ALL hardcoded color values (`bg-[#0D0D0D]`, `bg-[#1A1A1A]`, `bg-[#242424]`, `text-[#EF8C60]`, etc.) across every component and page with the new Tailwind token classes
+- [x] After this phase, the app should look identical in dark mode (no visual regressions) and acceptable in light mode (colors all swap correctly)
+- [x] Run `npm run typecheck && npm run build && npm run lint` — all pass
 
 ### Phase 2: Light/Dark Mode Toggle
 

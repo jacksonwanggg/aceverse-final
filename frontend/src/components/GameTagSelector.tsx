@@ -35,7 +35,7 @@ export default function GameTagSelector({ value, onChange, className = '' }: Gam
           className={`px-2 py-1 rounded text-xs font-medium transition-colors ${
             value === g.slug ? 'text-white' : 'text-secondary hover:bg-tertiary hover:text-primary'
           }`}
-          style={value === g.slug ? { backgroundColor: g.color || '#EF8C60' } : undefined}
+          style={value === g.slug ? { backgroundColor: g.color || 'var(--color-accent)' } : undefined}
         >
           {g.name}
         </button>

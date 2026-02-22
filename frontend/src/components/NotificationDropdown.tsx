@@ -67,19 +67,19 @@ export default function NotificationDropdown({ isOpen, onClose, anchorRef }: Not
       ref={panelRef}
       className="absolute right-0 top-full mt-1 z-50 w-[320px] rounded-xl border border-border-default bg-secondary shadow-xl overflow-hidden"
     >
-      <div className="p-2 border-b border-gray-700 flex items-center justify-between">
-        <span className="text-sm font-semibold text-white">Notifications</span>
+      <div className="p-2 border-b border-border-default flex items-center justify-between">
+        <span className="text-sm font-semibold text-primary">Notifications</span>
         <Link
           to="/notifications"
           onClick={onClose}
-          className="text-xs font-medium text-[var(--primary)] hover:underline"
+          className="text-xs font-medium text-accent hover:underline"
         >
           View all notifications
         </Link>
       </div>
       <div className="max-h-[280px] overflow-y-auto">
         {notifications.length === 0 ? (
-          <p className="p-4 text-gray-400 text-sm text-center">No notifications yet.</p>
+          <p className="p-4 text-secondary text-sm text-center">No notifications yet.</p>
         ) : (
           notifications.map((n) => {
             const linkTo = n.type === 'FOLLOW'
@@ -91,21 +91,21 @@ export default function NotificationDropdown({ isOpen, onClose, anchorRef }: Not
                 key={n.id}
                 to={linkTo}
                 onClick={onClose}
-                className={`flex gap-2 p-2 rounded-lg transition-colors hover:bg-gray-800/80 ${
-                  !n.read ? 'bg-[var(--primary)]/5' : ''
+                className={`flex gap-2 p-2 rounded-lg transition-colors hover:bg-hover ${
+                  !n.read ? 'bg-accent/5' : ''
                 }`}
               >
                 <img
                   src={n.actor?.avatarUrl || 'https://api.dicebear.com/7.x/initials/svg?seed=user'}
                   alt=""
-                  className="w-8 h-8 rounded-full object-cover shrink-0 border border-gray-700"
+                  className="w-8 h-8 rounded-full object-cover shrink-0 border border-border-default"
                 />
                 <div className="min-w-0 flex-1">
-                  <p className="text-gray-100 text-xs">
-                    <span className="font-semibold text-white">{name}</span>{' '}
-                    <span className="text-gray-400">{actionText(n)}</span>
+                  <p className="text-primary text-xs">
+                    <span className="font-semibold text-primary">{name}</span>{' '}
+                    <span className="text-secondary">{actionText(n)}</span>
                   </p>
-                  <p className="text-[10px] text-gray-500 mt-0.5">
+                  <p className="text-[10px] text-tertiary mt-0.5">
                     {formatDistanceToNow(new Date(n.createdAt), { addSuffix: true })}
                   </p>
                 </div>

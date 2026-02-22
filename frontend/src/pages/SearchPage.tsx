@@ -6,7 +6,6 @@ import PostCard from '../components/PostCard'
 import PostCardSkeleton from '../components/PostCardSkeleton'
 
 const DEBOUNCE_MS = 300
-const accent = '#EF8C60'
 
 type SearchType = 'top' | 'people' | 'latest'
 
@@ -20,12 +19,10 @@ export default function SearchPage() {
 
   const [inputValue, setInputValue] = useState(qFromUrl)
 
-  // Sync URL -> input when navigating (e.g. from sidebar search)
   useEffect(() => {
     setInputValue(qFromUrl)
   }, [qFromUrl])
 
-  // Debounce input -> URL (300ms)
   useEffect(() => {
     if (inputValue === qFromUrl) return
     const t = setTimeout(() => {
@@ -114,19 +111,19 @@ export default function SearchPage() {
 
   return (
     <div className="max-w-2xl mx-auto p-4 pb-20 md:pb-4">
-      <h1 className="text-2xl font-bold text-white mb-4">Search</h1>
+      <h1 className="text-2xl font-bold text-primary mb-4">Search</h1>
 
       <input
         type="search"
         placeholder="Search gamers and posts..."
         value={inputValue}
         onChange={(e) => setInputValue(e.target.value)}
-        className="w-full px-4 py-3 rounded-xl bg-gray-800 border border-gray-700 text-white placeholder-gray-500 focus:outline-none focus:border-[var(--primary)] focus:ring-1 focus:ring-[var(--primary)] mb-4"
+        className="w-full px-4 py-3 rounded-xl bg-tertiary border border-border-default text-primary placeholder-tertiary focus:outline-none focus:border-accent focus:ring-1 focus:ring-accent mb-4"
         aria-label="Search"
       />
 
       {query.length > 0 && (
-        <div className="flex gap-1 border-b border-gray-800 mb-4">
+        <div className="flex gap-1 border-b border-border-default mb-4">
           {(
             [
               { key: 'top' as const, label: 'Top' },
@@ -140,14 +137,9 @@ export default function SearchPage() {
               onClick={() => setType(key)}
               className={`px-4 py-2 text-sm font-medium rounded-t-lg transition-colors ${
                 validType === key
-                  ? 'text-[#0D0D0D] border-b-2'
-                  : 'text-gray-400 hover:text-white'
+                  ? 'bg-accent text-white border-b-2 border-accent'
+                  : 'text-secondary hover:text-primary'
               }`}
-              style={
-                validType === key
-                  ? { backgroundColor: accent, borderBottomColor: accent }
-                  : undefined
-              }
             >
               {label}
             </button>
@@ -160,10 +152,10 @@ export default function SearchPage() {
           {validType === 'people' ? (
             [...Array(5)].map((_, i) => (
               <div key={i} className="flex gap-3 p-3 rounded-xl animate-pulse">
-                <div className="w-12 h-12 rounded-full bg-gray-700 shrink-0" />
+                <div className="w-12 h-12 rounded-full bg-tertiary shrink-0" />
                 <div className="flex-1 space-y-2">
-                  <div className="h-4 bg-gray-700 rounded w-1/3" />
-                  <div className="h-3 bg-gray-800 rounded w-1/4" />
+                  <div className="h-4 bg-tertiary rounded w-1/3" />
+                  <div className="h-3 bg-secondary rounded w-1/4" />
                 </div>
               </div>
             ))
@@ -175,11 +167,11 @@ export default function SearchPage() {
 
       {showEmpty && (
         <div className="py-8 text-center">
-          <p className="text-gray-400 text-lg">
+          <p className="text-secondary text-lg">
             No results for &quot;{query}&quot;
           </p>
-          <p className="text-gray-500 text-sm mt-2">
-            Try different keywords or check out <Link to="/trending" className="text-[var(--primary)] hover:underline">Trending</Link> and <Link to="/explore" className="text-[var(--primary)] hover:underline">Explore</Link>.
+          <p className="text-tertiary text-sm mt-2">
+            Try different keywords or check out <Link to="/trending" className="text-accent hover:underline">Trending</Link> and <Link to="/explore" className="text-accent hover:underline">Explore</Link>.
           </p>
         </div>
       )}
@@ -190,7 +182,7 @@ export default function SearchPage() {
             <>
               {users.length > 0 && (
                 <section>
-                  <h2 className="text-sm font-semibold text-gray-400 uppercase tracking-wider mb-2">
+                  <h2 className="text-sm font-semibold text-secondary uppercase tracking-wider mb-2">
                     People
                   </h2>
                   <ul className="space-y-2">
@@ -206,7 +198,7 @@ export default function SearchPage() {
                       }) => (
                         <li
                           key={u.id}
-                          className="flex items-center gap-3 p-3 rounded-xl bg-gray-800/50 hover:bg-gray-800 transition-colors"
+                          className="flex items-center gap-3 p-3 rounded-xl bg-secondary hover:bg-hover transition-colors"
                         >
                           <Link
                             to={`/u/${u.username}`}
@@ -218,14 +210,14 @@ export default function SearchPage() {
                               className="w-12 h-12 rounded-full object-cover shrink-0"
                             />
                             <div className="min-w-0 flex-1">
-                              <p className="font-semibold text-white truncate">
+                              <p className="font-semibold text-primary truncate">
                                 {u.displayName}
                               </p>
-                              <p className="text-sm text-gray-400 truncate">
+                              <p className="text-sm text-secondary truncate">
                                 @{u.username}
                               </p>
                               {u.bio && (
-                                <p className="text-sm text-gray-500 truncate mt-0.5">
+                                <p className="text-sm text-tertiary truncate mt-0.5">
                                   {u.bio}
                                 </p>
                               )}
@@ -242,12 +234,11 @@ export default function SearchPage() {
                               disabled={
                                 followMutation.isPending || unfollowMutation.isPending
                               }
-                              className="shrink-0 px-4 py-2 rounded-full text-sm font-medium transition-all hover:shadow-[0_0_12px_rgba(239,140,96,0.4)] focus:outline-none focus:ring-2 focus:ring-[#EF8C60] focus:ring-offset-1 focus:ring-offset-[#0D0D0D] disabled:opacity-50 inline-flex items-center justify-center gap-2 min-w-[90px]"
-                              style={
+                              className={`shrink-0 px-4 py-2 rounded-full text-sm font-medium transition-all focus:outline-none focus:ring-2 focus:ring-accent focus:ring-offset-1 disabled:opacity-50 inline-flex items-center justify-center gap-2 min-w-[90px] ${
                                 u.isFollowing
-                                  ? { border: '1px solid #4b5563', color: '#d1d5db' }
-                                  : { backgroundColor: accent, color: '#0D0D0D' }
-                              }
+                                  ? 'border border-border-default text-secondary'
+                                  : 'bg-accent text-white'
+                              }`}
                             >
                               {(followMutation.isPending || unfollowMutation.isPending) && (
                                 <span className="w-3.5 h-3.5 border-2 border-current border-t-transparent rounded-full animate-spin" aria-hidden />
@@ -263,7 +254,7 @@ export default function SearchPage() {
               )}
               {posts.length > 0 && (
                 <section>
-                  <h2 className="text-sm font-semibold text-gray-400 uppercase tracking-wider mb-2">
+                  <h2 className="text-sm font-semibold text-secondary uppercase tracking-wider mb-2">
                     Posts
                   </h2>
                   <div className="space-y-2">
@@ -303,7 +294,7 @@ export default function SearchPage() {
                 }) => (
                   <li
                     key={u.id}
-                    className="flex items-center gap-3 p-3 rounded-xl bg-gray-800/50 hover:bg-gray-800 transition-colors"
+                    className="flex items-center gap-3 p-3 rounded-xl bg-secondary hover:bg-hover transition-colors"
                   >
                     <Link
                       to={`/u/${u.username}`}
@@ -315,14 +306,14 @@ export default function SearchPage() {
                         className="w-12 h-12 rounded-full object-cover shrink-0"
                       />
                       <div className="min-w-0 flex-1">
-                        <p className="font-semibold text-white truncate">
+                        <p className="font-semibold text-primary truncate">
                           {u.displayName}
                         </p>
-                        <p className="text-sm text-gray-400 truncate">
+                        <p className="text-sm text-secondary truncate">
                           @{u.username}
                         </p>
                         {u.bio && (
-                          <p className="text-sm text-gray-500 truncate mt-0.5">
+                          <p className="text-sm text-tertiary truncate mt-0.5">
                             {u.bio}
                           </p>
                         )}
@@ -339,12 +330,11 @@ export default function SearchPage() {
                         disabled={
                           followMutation.isPending || unfollowMutation.isPending
                         }
-                        className="shrink-0 px-4 py-2 rounded-full text-sm font-medium transition-all hover:shadow-[0_0_12px_rgba(239,140,96,0.4)] focus:outline-none focus:ring-2 focus:ring-[#EF8C60] focus:ring-offset-1 focus:ring-offset-[#0D0D0D] disabled:opacity-50 inline-flex items-center justify-center gap-2 min-w-[90px]"
-                        style={
+                        className={`shrink-0 px-4 py-2 rounded-full text-sm font-medium transition-all focus:outline-none focus:ring-2 focus:ring-accent focus:ring-offset-1 disabled:opacity-50 inline-flex items-center justify-center gap-2 min-w-[90px] ${
                           u.isFollowing
-                            ? { border: '1px solid #4b5563', color: '#d1d5db' }
-                            : { backgroundColor: accent, color: '#0D0D0D' }
-                        }
+                            ? 'border border-border-default text-secondary'
+                            : 'bg-accent text-white'
+                        }`}
                       >
                         {(followMutation.isPending || unfollowMutation.isPending) && (
                           <span className="w-3.5 h-3.5 border-2 border-current border-t-transparent rounded-full animate-spin" aria-hidden />
@@ -382,7 +372,7 @@ export default function SearchPage() {
       )}
 
       {query.length === 0 && (
-        <p className="text-gray-500 py-8">
+        <p className="text-tertiary py-8">
           Enter a name or keyword to search people and posts.
         </p>
       )}

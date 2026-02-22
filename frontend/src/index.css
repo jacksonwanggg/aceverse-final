@@ -1,47 +1,117 @@
 @import "tailwindcss";
 
-/* Theme Token System - Light/Dark Mode CSS Variables */
-:root {
-  /* Background Colors - Light Mode */
-  --color-bg-primary: #FFFFFF;
-  --color-bg-secondary: #F7F9F9;
-  --color-bg-tertiary: #EFF3F4;
-  --color-bg-hover: rgba(0, 0, 0, 0.03);
-  
-  /* Border Colors - Light Mode */
-  --color-border: #EFF3F4;
-  
-  /* Text Colors - Light Mode */
-  --color-text-primary: #0F1419;
-  --color-text-secondary: #536471;
-  --color-text-tertiary: #8B98A5;
-  
-  /* Accent Colors (same for both modes) */
+/* Theme Token System - Tailwind v4 CSS-based configuration */
+@theme {
+  /* Accent colors (same for both modes) */
   --color-accent: #EF8C60;
   --color-accent-hover: #E07840;
   
-  /* Action Colors (same for both modes) */
+  /* Action colors (same for both modes) */
   --color-like: #F91880;
   --color-repost: #00BA7C;
   --color-reply: #1D9BF0;
 }
 
-/* Dark Mode */
+/* Light Mode Variables (default) */
+:root {
+  --color-bg-primary: #FFFFFF;
+  --color-bg-secondary: #F7F9F9;
+  --color-bg-tertiary: #EFF3F4;
+  --color-bg-hover: rgba(0, 0, 0, 0.03);
+  --color-border: #EFF3F4;
+  --color-text-primary: #0F1419;
+  --color-text-secondary: #536471;
+  --color-text-tertiary: #8B98A5;
+}
+
+/* Dark Mode Variables */
 .dark {
   --color-bg-primary: #000000;
   --color-bg-secondary: #16181C;
   --color-bg-tertiary: #1D1F23;
   --color-bg-hover: rgba(255, 255, 255, 0.03);
-  
   --color-border: #2F3336;
-  
   --color-text-primary: #E7E9EA;
   --color-text-secondary: #71767B;
   --color-text-tertiary: #536471;
 }
 
-@layer base {
-  body {
-    @apply bg-primary text-primary;
-  }
+/* Base body styles using CSS variables directly */
+body {
+  background-color: var(--color-bg-primary);
+  color: var(--color-text-primary);
 }
+
+/* Utility classes for theme tokens */
+@utility bg-primary {
+  background-color: var(--color-bg-primary);
+}
+
+@utility bg-secondary {
+  background-color: var(--color-bg-secondary);
+}
+
+@utility bg-tertiary {
+  background-color: var(--color-bg-tertiary);
+}
+
+@utility bg-hover {
+  background-color: var(--color-bg-hover);
+}
+
+@utility text-primary {
+  color: var(--color-text-primary);
+}
+
+@utility text-secondary {
+  color: var(--color-text-secondary);
+}
+
+@utility text-tertiary {
+  color: var(--color-text-tertiary);
+}
+
+@utility border-default {
+  border-color: var(--color-border);
+}
+
+@utility bg-accent {
+  background-color: var(--color-accent);
+}
+
+@utility bg-accent-hover {
+  background-color: var(--color-accent-hover);
+}
+
+@utility text-accent {
+  color: var(--color-accent);
+}
+
+@utility border-accent {
+  border-color: var(--color-accent);
+}
+
+@utility bg-like {
+  background-color: var(--color-like);
+}
+
+@utility text-like {
+  color: var(--color-like);
+}
+
+@utility bg-repost {
+  background-color: var(--color-repost);
+}
+
+@utility text-repost {
+  color: var(--color-repost);
+}
+
+@utility bg-reply {
+  background-color: var(--color-reply);
+}
+
+@utility text-reply {
+  color: var(--color-reply);
+}
+

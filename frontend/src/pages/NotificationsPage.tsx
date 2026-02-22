@@ -37,21 +37,21 @@ function NotificationRow({ n }: { n: NotificationItem }) {
   return (
     <Link
       to={linkTo}
-      className={`flex gap-3 p-3 rounded-lg transition-colors hover:bg-gray-800/80 ${
-        !n.read ? 'bg-[var(--primary)]/5' : ''
+      className={`flex gap-3 p-3 rounded-lg transition-colors hover:bg-hover ${
+        !n.read ? 'bg-accent/5' : ''
       }`}
     >
       <img
         src={n.actor?.avatarUrl || 'https://api.dicebear.com/7.x/initials/svg?seed=user'}
         alt=""
-        className="w-10 h-10 rounded-full object-cover shrink-0 border border-gray-700"
+        className="w-10 h-10 rounded-full object-cover shrink-0 border border-border-default"
       />
       <div className="min-w-0 flex-1">
-        <p className="text-gray-100 text-sm">
-          <span className="font-semibold text-white">{name}</span>{' '}
-          <span className="text-gray-400">{actionText(n)}</span>
+        <p className="text-primary text-sm">
+          <span className="font-semibold text-primary">{name}</span>{' '}
+          <span className="text-secondary">{actionText(n)}</span>
         </p>
-        <p className="text-xs text-gray-500 mt-0.5">
+        <p className="text-xs text-tertiary mt-0.5">
           {formatDistanceToNow(new Date(n.createdAt), { addSuffix: true })}
         </p>
       </div>
@@ -88,13 +88,13 @@ export default function NotificationsPage() {
   return (
     <div className="p-4">
       <div className="flex items-center justify-between mb-4">
-        <h1 className="text-2xl font-bold text-white">Notifications</h1>
+        <h1 className="text-2xl font-bold text-primary">Notifications</h1>
         {unreadCount > 0 && (
           <button
             type="button"
             onClick={() => markAllRead.mutate()}
             disabled={markAllRead.isPending}
-            className="text-sm font-medium text-[var(--primary)] hover:underline disabled:opacity-50"
+            className="text-sm font-medium text-accent hover:underline disabled:opacity-50"
           >
             Mark all as read
           </button>
@@ -105,16 +105,16 @@ export default function NotificationsPage() {
         <div className="space-y-2">
           {[1, 2, 3].map((i) => (
             <div key={i} className="flex gap-3 p-3 rounded-lg animate-pulse">
-              <div className="w-10 h-10 rounded-full bg-gray-700 shrink-0" />
+              <div className="w-10 h-10 rounded-full bg-tertiary shrink-0" />
               <div className="flex-1 space-y-2">
-                <div className="h-3 bg-gray-700 rounded w-3/4" />
-                <div className="h-2 bg-gray-800 rounded w-1/4" />
+                <div className="h-3 bg-tertiary rounded w-3/4" />
+                <div className="h-2 bg-secondary rounded w-1/4" />
               </div>
             </div>
           ))}
         </div>
       ) : notifications.length === 0 ? (
-        <p className="text-gray-400 py-8 text-center">No notifications yet.</p>
+        <p className="text-secondary py-8 text-center">No notifications yet.</p>
       ) : (
         <>
           <div className="space-y-0.5">
@@ -128,7 +128,7 @@ export default function NotificationsPage() {
                 type="button"
                 onClick={() => fetchNextPage()}
                 disabled={isFetchingNextPage}
-                className="text-sm font-medium text-[var(--primary)] hover:underline disabled:opacity-50"
+                className="text-sm font-medium text-accent hover:underline disabled:opacity-50"
               >
                 {isFetchingNextPage ? 'Loading…' : 'Load more'}
               </button>
