@@ -45,14 +45,14 @@ function ToastList({
         <div
           key={t.id}
           role="alert"
-          className={`pointer-events-auto rounded-lg px-4 py-3 shadow-lg border ${
+          className={`pointer-events-auto rounded-lg pl-4 pr-4 py-3 shadow-lg border-l-4 ${
             t.type === 'error'
-              ? 'bg-red-950/95 border-red-700 text-red-100'
+              ? 'bg-red-950/95 border border-red-700 border-l-red-500 text-red-100'
               : t.type === 'success'
-                ? 'bg-[#0D0D0D] border-[#EF8C60] text-gray-100'
+                ? 'bg-[#0D0D0D] border border-[#EF8C60] border-l-[#EF8C60] text-gray-100 shadow-[0_0_20px_rgba(239,140,96,0.15)]'
                 : t.type === 'info'
-                  ? 'bg-[#1A1A1A] border-[#EF8C60] text-gray-100'
-                  : 'bg-[#1A1A1A] border-[#EF8C60]/60 text-gray-100'
+                  ? 'bg-[#1A1A1A] border border-gray-600 border-l-[#EF8C60] text-gray-100'
+                  : 'bg-[#1A1A1A] border border-gray-600 border-l-[#EF8C60]/60 text-gray-100'
           }`}
         >
           <div className="flex items-start justify-between gap-2">

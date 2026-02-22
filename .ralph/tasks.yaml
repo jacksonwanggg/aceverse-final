@@ -3,8 +3,8 @@
 # DO NOT EDIT - regenerated on task file change
 
 source_file: RALPH_TASK.md
-source_mtime: 1771750678
-generated_at: 2026-02-22T08:58:43Z
+source_mtime: 1771750900
+generated_at: 2026-02-22T09:02:31Z
 
 tasks:
   - id: "line_77"
@@ -793,42 +793,42 @@ tasks:
     raw_marker: -
   - id: "line_237"
     line_number: 237
-    status: pending
+    status: completed
     parallel_group: 999999
     description: Create `backend/src/__tests__/auth.test.ts` — test register, login, logout, me (at least 4 tests)
     indent_level: 0
     raw_marker: -
   - id: "line_238"
     line_number: 238
-    status: pending
+    status: completed
     parallel_group: 999999
     description: Create `backend/src/__tests__/posts.test.ts` — test create, get, update, delete, like, unlike (at least 6 tests)
     indent_level: 0
     raw_marker: -
   - id: "line_239"
     line_number: 239
-    status: pending
+    status: completed
     parallel_group: 999999
     description: Create `backend/src/__tests__/timeline.test.ts` — test home feed (following-based), explore feed (at least 3 tests)
     indent_level: 0
     raw_marker: -
   - id: "line_240"
     line_number: 240
-    status: pending
+    status: completed
     parallel_group: 999999
     description: Create `backend/src/__tests__/users.test.ts` — test get profile, follow, unfollow (at least 3 tests)
     indent_level: 0
     raw_marker: -
   - id: "line_241"
     line_number: 241
-    status: pending
+    status: completed
     parallel_group: 999999
     description: `npm test` passes all tests
     indent_level: 0
     raw_marker: -
   - id: "line_242"
     line_number: 242
-    status: pending
+    status: completed
     parallel_group: 999999
     description: Run `npm run typecheck && npm run build && npm run lint` — all still pass
     indent_level: 0

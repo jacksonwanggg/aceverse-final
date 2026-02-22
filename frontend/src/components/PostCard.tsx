@@ -278,8 +278,8 @@ export default function PostCard({ post, onLike, onRepost, onReply, onEdit, onDe
                 }`}
                 aria-label={post.likedByMe ? 'Unlike' : 'Like'}
                 whileTap={{ scale: 0.9 }}
-                animate={post.likedByMe ? { scale: [1, 1.3, 1] } : {}}
-                transition={{ duration: 0.3 }}
+                animate={post.likedByMe ? { scale: [1, 1.35, 1] } : { scale: 1 }}
+                transition={{ type: 'spring', stiffness: 400, damping: 12 }}
               >
                 <svg
                   className="w-5 h-5"
