@@ -2,6 +2,7 @@ import { useEffect } from 'react'
 import { Outlet, Navigate, useLocation } from 'react-router-dom'
 import { AnimatePresence, motion } from 'framer-motion'
 import { useAuth } from '../hooks/useAuth'
+import TopNav from './TopNav'
 import LeftSidebar from './LeftSidebar'
 import RightSidebar from './RightSidebar'
 import BottomNav from './BottomNav'
@@ -58,13 +59,16 @@ export default function AppLayout({ children }: AppLayoutProps) {
   )
 
   return (
-    <div className="min-h-screen bg-primary text-primary flex">
+    <div className="min-h-screen bg-primary text-primary flex flex-col">
       <ScrollToTop />
-      <LeftSidebar />
-      <main className="flex-1 min-w-0 flex flex-col border-x border-border-default max-w-2xl mx-auto w-full pb-20 md:pb-0">
-        {content}
-      </main>
-      <RightSidebar />
+      <TopNav />
+      <div className="flex flex-1">
+        <LeftSidebar />
+        <main className="flex-1 min-w-0 flex flex-col border-x border-border-default max-w-2xl mx-auto w-full pb-20 md:pb-0">
+          {content}
+        </main>
+        <RightSidebar />
+      </div>
       <BottomNav />
     </div>
   )
