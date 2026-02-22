@@ -4,6 +4,7 @@ import { useQuery, useMutation, useQueryClient } from '@tanstack/react-query'
 import { api } from '../lib/api'
 import PostCard from '../components/PostCard'
 import PostCardSkeleton from '../components/PostCardSkeleton'
+import { Search } from 'lucide-react'
 
 const DEBOUNCE_MS = 300
 
@@ -113,14 +114,17 @@ export default function SearchPage() {
     <div className="max-w-2xl mx-auto p-4 pb-20 md:pb-4">
       <h1 className="text-2xl font-bold text-primary mb-4">Search</h1>
 
-      <input
-        type="search"
-        placeholder="Search gamers and posts..."
-        value={inputValue}
-        onChange={(e) => setInputValue(e.target.value)}
-        className="w-full px-4 py-3 rounded-xl bg-tertiary border border-border-default text-primary placeholder-tertiary focus:outline-none focus:border-accent focus:ring-1 focus:ring-accent mb-4"
-        aria-label="Search"
-      />
+      <div className="relative mb-4">
+        <Search className="absolute left-4 top-1/2 -translate-y-1/2 w-5 h-5 text-secondary pointer-events-none" />
+        <input
+          type="search"
+          placeholder="Search gamers and posts..."
+          value={inputValue}
+          onChange={(e) => setInputValue(e.target.value)}
+          className="w-full pl-12 pr-4 py-3 rounded-full bg-tertiary border border-border-default text-primary placeholder-secondary focus:outline-none focus:border-accent focus:ring-1 focus:ring-accent"
+          aria-label="Search"
+        />
+      </div>
 
       {query.length > 0 && (
         <div className="flex gap-1 border-b border-border-default mb-4">

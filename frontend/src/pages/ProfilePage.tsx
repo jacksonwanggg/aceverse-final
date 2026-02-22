@@ -8,7 +8,6 @@ import { useToast } from '../hooks/useToast'
 import PostCard from '../components/PostCard'
 import PostCardSkeleton from '../components/PostCardSkeleton'
 import type { TimelinePost } from '../components/Feed'
-import { Trophy, Calendar, Edit } from 'lucide-react'
 import { Trophy } from 'lucide-react'
 
 export default function ProfilePage() {
@@ -293,7 +292,9 @@ export default function ProfilePage() {
             </h1>
             <p className="text-secondary">@{user.username}</p>
             {joinDate && (
-              <p className="text-sm text-tertiary mt-1">Joined {joinDate}</p>
+              <p className="text-sm text-tertiary mt-1 flex items-center gap-1">
+                <Calendar className="w-4 h-4" /> Joined {joinDate}
+              </p>
             )}
             <div className="flex items-center gap-4 mt-2 text-sm text-secondary">
               <span><strong className="text-primary">{user.followerCount ?? 0}</strong> followers</span>

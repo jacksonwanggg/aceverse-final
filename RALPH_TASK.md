@@ -161,17 +161,17 @@ The core MVP is fully functional (auth, posts, feeds, likes, reposts, replies, f
 
 ### Phase 3: Icon System (Replace All Emojis with Lucide SVGs)
 
-- [ ] Install `lucide-react` (`npm install lucide-react -w frontend`)
-- [ ] Replace ALL emoji icons in `LeftSidebar`: Home (house), Flame (trending), User (profile), Gamepad2 (your games header) — outline default, filled/bold when active page
-- [ ] Replace ALL emoji icons in `BottomNav`: matching icons for Home, Flame, Search, Bell, User
-- [ ] Replace ALL emoji icons in `PostCard` action row: Heart (like, filled when liked), MessageCircle (reply), Repeat2 (repost), Share or Upload (share) — with proper hover color per action
-- [ ] Replace ALL emoji icons in `RightSidebar`: Search, Gamepad2 (ranks header), Users (friends header), UserPlus (who to follow header), TrendingUp (trending header), game-specific icons
-- [ ] Replace ALL emoji icons in `NotificationDropdown` and `NotificationsPage`: Heart (like), MessageCircle (reply), Repeat2 (repost), UserPlus (follow)
-- [ ] Replace ALL emoji icons in `PostComposer`: Image, LayoutGrid, Gamepad2, Smile — matching the toolbar from the mockup
-- [ ] Replace ALL remaining emojis in GameTagSelector, ProfilePage (Calendar, Edit, MapPin etc.), SearchPage, TrendingPage (Flame, TrendingUp, Clock)
-- [ ] Consistent sizing: 18-20px in action rows, 20-24px in navigation, 16px inline
-- [ ] Active nav: filled variant; inactive: outline variant. Colors use theme tokens.
-- [ ] Run `npm run typecheck && npm run build && npm run lint` — all pass
+- [x] Install `lucide-react` (`npm install lucide-react -w frontend`)
+- [x] Replace ALL emoji icons in `LeftSidebar`: Home (house), Flame (trending), User (profile), Gamepad2 (your games header) — outline default, filled/bold when active page
+- [x] Replace ALL emoji icons in `BottomNav`: matching icons for Home, Flame, Search, Bell, User
+- [x] Replace ALL emoji icons in `PostCard` action row: Heart (like, filled when liked), MessageCircle (reply), Repeat2 (repost), Share or Upload (share) — with proper hover color per action
+- [x] Replace ALL emoji icons in `RightSidebar`: Search, Gamepad2 (ranks header), Users (friends header), UserPlus (who to follow header), TrendingUp (trending header), game-specific icons
+- [x] Replace ALL emoji icons in `NotificationDropdown` and `NotificationsPage`: Heart (like), MessageCircle (reply), Repeat2 (repost), UserPlus (follow)
+- [x] Replace ALL emoji icons in `PostComposer`: Image, LayoutGrid, Gamepad2, Smile — matching the toolbar from the mockup
+- [x] Replace ALL remaining emojis in GameTagSelector, ProfilePage (Calendar, Edit, MapPin etc.), SearchPage, TrendingPage (Flame, TrendingUp, Clock)
+- [x] Consistent sizing: 18-20px in action rows, 20-24px in navigation, 16px inline
+- [x] Active nav: filled variant; inactive: outline variant. Colors use theme tokens.
+- [x] Run `npm run typecheck && npm run build && npm run lint` — all pass
 
 ### Phase 4: Top Navigation Bar (Match Mockup Exactly)
 
