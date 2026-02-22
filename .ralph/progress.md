@@ -424,3 +424,14 @@ Next: Phase 17 — Final Verification (full install/seed/build/typecheck/lint/te
 
 ### 2026-02-22 20:02:35
 **Session 19 started** (model: auto)
+
+### 2026-02-22 (Ralph Iteration 16 — Phase 15 & 16)
+**Phase 15 already complete. Phase 16 verified and small additions.**
+
+Completed:
+- Read RALPH_TASK.md, .ralph/progress.md (lessons.md and failures.md not found).
+- Phase 15: Committed polish — AppLayout page transition ease (0.25s easeOut), PostCard hover/focus ring tweaks.
+- Phase 16: Verified all 4 test files exist (auth, posts, timeline, users); added users.test.ts case "GET /api/users/:username returns 404 for unknown username". `npm test` passes (17 tests). `npm run typecheck && npm run build && npm run lint` all pass (warnings only).
+- RALPH_TASK.md Phase 15 and Phase 16 already marked [x].
+
+Next: Phase 17 — Final Verification (npm install, seed, dev, build, typecheck, lint, test, manual QA, grep for unchecked).
