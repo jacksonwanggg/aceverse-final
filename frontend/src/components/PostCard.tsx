@@ -5,6 +5,7 @@ import { formatDistanceToNow } from 'date-fns'
 import { useToast } from '../hooks/useToast'
 import { extractYouTubeVideoId } from '../lib/youtube'
 import YouTubeEmbed from './YouTubeEmbed'
+import { Heart, MessageCircle, Repeat2, Share, MoreHorizontal } from 'lucide-react'
 
 interface PostCardProps {
   post: {
@@ -160,11 +161,7 @@ export default function PostCard({ post, onLike, onRepost, onReply, onEdit, onDe
                   className="p-1 rounded-full hover:bg-hover text-secondary"
                   aria-label="More options"
                 >
-                  <svg className="w-5 h-5" fill="currentColor" viewBox="0 0 24 24">
-                    <circle cx="12" cy="6" r="1.5" />
-                    <circle cx="12" cy="12" r="1.5" />
-                    <circle cx="12" cy="18" r="1.5" />
-                  </svg>
+                  <MoreHorizontal className="w-5 h-5" />
                 </button>
                 {menuOpen && (
                   <div className="absolute right-0 top-full mt-1 py-1 w-40 bg-secondary border border-border-default rounded-lg shadow-lg z-10">
@@ -250,10 +247,8 @@ export default function PostCard({ post, onLike, onRepost, onReply, onEdit, onDe
                 onClick={onReply}
                 className="flex items-center gap-2 hover:text-reply transition-colors focus:outline-none focus:ring-2 focus:ring-accent focus:ring-offset-1 rounded"
               >
-                <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M8 12h.01M12 12h.01M16 12h.01M21 12c0 4.418-4.03 8-9 8a9.863 9.863 0 01-4.255-.949L3 20l1.395-3.72C3.512 15.042 3 13.574 3 12c0-4.418 4.03-8 9-8s9 3.582 9 8z" />
-                </svg>
-                <span>{post.replyCount}</span>
+                <MessageCircle className="w-[18px] h-[18px]" />
+                <span className="text-sm">{post.replyCount}</span>
               </button>
               <motion.button
                 onClick={onRepost}
@@ -264,10 +259,8 @@ export default function PostCard({ post, onLike, onRepost, onReply, onEdit, onDe
                 animate={{ rotate: post.repostedByMe ? 360 : 0 }}
                 transition={{ type: 'spring', stiffness: 200, damping: 15 }}
               >
-                <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4 4v5h.582m15.356 2A8.001 8.001 0 004.582 9m0 0H9m11 11v-5h-.581m0 0a8.003 8.003 0 01-15.357-2m15.357 2H15" />
-                </svg>
-                <span>{post.repostCount}</span>
+                <Repeat2 className="w-[18px] h-[18px]" />
+                <span className="text-sm">{post.repostCount}</span>
               </motion.button>
               <motion.button
                 onClick={onLike}
@@ -279,24 +272,15 @@ export default function PostCard({ post, onLike, onRepost, onReply, onEdit, onDe
                 animate={post.likedByMe ? { scale: [1, 1.35, 1] } : { scale: 1 }}
                 transition={{ type: 'spring', stiffness: 400, damping: 12 }}
               >
-                <svg
-                  className="w-5 h-5"
-                  fill={post.likedByMe ? 'var(--color-like)' : 'none'}
-                  stroke="currentColor"
-                  viewBox="0 0 24 24"
-                >
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z" />
-                </svg>
-                <span>{post.likeCount}</span>
+                <Heart className="w-[18px] h-[18px]" fill={post.likedByMe ? 'currentColor' : 'none'} />
+                <span className="text-sm">{post.likeCount}</span>
               </motion.button>
               <button
                 onClick={handleShare}
                 className="flex items-center gap-2 hover:text-accent transition-colors focus:outline-none focus:ring-2 focus:ring-accent focus:ring-offset-1 rounded"
                 aria-label="Share"
               >
-                <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M8.684 13.342C8.886 12.938 9 12.482 9 12c0-.482-.114-.938-.316-1.342m0 2.684a3 3 0 110-2.684m0 2.684l6.632 3.316m-6.632-6l6.632-3.316m0 0a3 3 0 105.367-2.684 3 3 0 00-5.367 2.684zm0 9.316a3 3 0 105.368 2.684 3 3 0 00-5.368-2.684z" />
-                </svg>
+                <Share className="w-[18px] h-[18px]" />
               </button>
             </div>
           )}

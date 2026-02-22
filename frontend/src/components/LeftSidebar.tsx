@@ -5,29 +5,13 @@ import { useQuery } from '@tanstack/react-query'
 import { api } from '../lib/api'
 import { useTheme } from '../hooks/useTheme'
 import NotificationDropdown from './NotificationDropdown'
+import { Home, Flame, Bell, User, LogOut, Sun, Moon, Monitor, Gamepad2 } from 'lucide-react'
 
 function ThemeIcon({ theme }: { theme: 'light' | 'dark' | 'system' }) {
-  if (theme === 'light') {
-    return (
-      <svg className="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
-        <circle cx="12" cy="12" r="5" />
-        <path d="M12 1v2M12 21v2M4.22 4.22l1.42 1.42M18.36 18.36l1.42 1.42M1 12h2M21 12h2M4.22 19.78l1.42-1.42M18.36 5.64l1.42-1.42" />
-      </svg>
-    )
-  }
-  if (theme === 'dark') {
-    return (
-      <svg className="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
-        <path d="M21 12.79A9 9 0 1111.21 3 7 7 0 0021 12.79z" />
-      </svg>
-    )
-  }
-  return (
-    <svg className="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
-      <rect x="2" y="3" width="20" height="14" rx="2" ry="2" />
-      <path d="M8 21h8M12 17v4" />
-    </svg>
-  )
+  const iconClass = "w-5 h-5"
+  if (theme === 'light') return <Sun className={iconClass} />
+  if (theme === 'dark') return <Moon className={iconClass} />
+  return <Monitor className={iconClass} />
 }
 
 export default function LeftSidebar() {
@@ -65,7 +49,7 @@ export default function LeftSidebar() {
   const unreadCount = unreadData?.count ?? 0
 
   const navLinkClass = ({ isActive }: { isActive: boolean }) =>
-    `flex items-center gap-3 px-3 py-2.5 rounded-lg text-left font-medium transition-colors ${
+    `flex items-center gap-3 px-3 py-2.5 rounded-full text-left font-medium transition-colors ${
       isActive
         ? 'text-accent bg-accent/10'
         : 'text-secondary hover:bg-hover hover:text-primary'
@@ -83,7 +67,7 @@ export default function LeftSidebar() {
           <img
             src={user?.avatarUrl || 'https://api.dicebear.com/7.x/initials/svg?seed=user'}
             alt=""
-            className="w-10 h-10 rounded-full border-2 border-accent object-cover"
+            className="w-12 h-12 rounded-full border-2 border-accent object-cover"
           />
           <div className="min-w-0">
             <p className="font-semibold text-primary truncate">{user?.displayName || 'User'}</p>
@@ -96,50 +80,54 @@ export default function LeftSidebar() {
           </div>
         </Link>
 
-        <form onSubmit={handleSearch} className="mb-2">
-          <div className="flex gap-1">
-            <input
-              type="search"
-              placeholder="Search..."
-              value={searchInput}
-              onChange={(e) => setSearchInput(e.target.value)}
-              className="flex-1 min-w-0 px-3 py-2 rounded-lg bg-tertiary border border-border-default text-primary text-sm placeholder-secondary focus:outline-none focus:border-accent"
-              aria-label="Search"
-            />
-            <button
-              type="submit"
-              className="px-3 py-2 rounded-lg text-sm font-medium shrink-0 bg-accent text-primary"
-              aria-label="Submit search"
-            >
-              🔍
-            </button>
-          </div>
-        </form>
-
         <nav className="flex flex-col gap-0.5">
           <NavLink to="/" end className={navLinkClass}>
-            <span className="text-xl">🏠</span> Home
+            {({ isActive }) => (
+              <>
+                <Home className="w-5 h-5" fill={isActive ? 'currentColor' : 'none'} />
+                <span>Home</span>
+              </>
+            )}
           </NavLink>
           <NavLink to="/trending" className={navLinkClass}>
-            <span className="text-xl">🔥</span> Trending
+            {({ isActive }) => (
+              <>
+                <Flame className="w-5 h-5" fill={isActive ? 'currentColor' : 'none'} />
+                <span>Trending</span>
+              </>
+            )}
           </NavLink>
+          <NavLink to={user ? `/u/${user.username}` : '/login'} className={navLinkClass}>
+            {({ isActive }) => (
+              <>
+                <User className="w-5 h-5" fill={isActive ? 'currentColor' : 'none'} />
+                <span>Profile</span>
+              </>
+            )}
+          </NavLink>
+          
           <div className="relative flex items-center">
             <NavLink to="/notifications" className={navLinkClass}>
-              <span className="text-xl">🔔</span> Notifications
+              {({ isActive }) => (
+                <>
+                  <Bell className="w-5 h-5" fill={isActive ? 'currentColor' : 'none'} />
+                  <span>Notifications</span>
+                  {unreadCount > 0 && (
+                    <span className="ml-auto min-w-[20px] h-[20px] rounded-full flex items-center justify-center text-[11px] font-bold bg-accent text-white">
+                      {unreadCount > 99 ? '99+' : unreadCount}
+                    </span>
+                  )}
+                </>
+              )}
             </NavLink>
             <button
               ref={bellRef}
               type="button"
               onClick={(e) => { e.preventDefault(); setDropdownOpen((o) => !o); }}
-              className="absolute right-1 p-1 rounded-md hover:bg-hover text-secondary hover:text-primary"
-              aria-label="Toggle notifications"
+              className="absolute right-2 p-1 rounded-md hover:bg-hover text-secondary hover:text-primary"
+              aria-label="Toggle notifications dropdown"
             >
-              <span className="text-lg">🔔</span>
-              {unreadCount > 0 && (
-                <span className="absolute -top-0.5 -right-0.5 min-w-[18px] h-[18px] rounded-full flex items-center justify-center text-[10px] font-bold bg-accent text-primary">
-                  {unreadCount > 99 ? '99+' : unreadCount}
-                </span>
-              )}
+              <Bell className="w-4 h-4" />
             </button>
             <NotificationDropdown
               isOpen={dropdownOpen}
@@ -147,19 +135,14 @@ export default function LeftSidebar() {
               anchorRef={bellRef}
             />
           </div>
-          <NavLink to={user ? `/u/${user.username}` : '/login'} className={navLinkClass}>
-            <span className="text-xl">👤</span> Profile
-          </NavLink>
           
           <button
             type="button"
             onClick={cycleTheme}
-            className="flex items-center gap-3 px-3 py-2.5 rounded-lg text-left font-medium text-secondary hover:bg-hover hover:text-primary transition-colors"
+            className="flex items-center gap-3 px-3 py-2.5 rounded-full text-left font-medium text-secondary hover:bg-hover hover:text-primary transition-colors"
             title={`Theme: ${themeLabel}`}
           >
-            <span className="text-xl flex items-center justify-center w-[1em]">
-              <ThemeIcon theme={theme} />
-            </span>
+            <ThemeIcon theme={theme} />
             <span>{themeLabel}</span>
           </button>
           
@@ -172,26 +155,28 @@ export default function LeftSidebar() {
                 navigate('/login')
               }
             }}
-            className="flex items-center gap-3 px-3 py-2.5 rounded-lg text-left font-medium text-secondary hover:bg-hover hover:text-primary transition-colors"
+            className="flex items-center gap-3 px-3 py-2.5 rounded-full text-left font-medium text-secondary hover:bg-hover hover:text-primary transition-colors"
           >
-            <span className="text-xl">🚪</span> Log out
+            <LogOut className="w-5 h-5" />
+            <span>Log out</span>
           </button>
         </nav>
 
         {myGames.length > 0 && (
-          <div className="pt-2 border-t border-border-default">
-            <h3 className="px-3 py-1 text-xs font-semibold text-tertiary uppercase tracking-wider">
+          <div className="pt-4 border-t border-border-default">
+            <h3 className="flex items-center gap-2 px-3 py-1 text-xs font-semibold text-secondary uppercase tracking-wider">
+              <Gamepad2 className="w-4 h-4" />
               Your Games
             </h3>
             <ul className="mt-1 space-y-0.5">
               {myGames.slice(0, 6).map((g: { id: string; name: string; slug: string; color?: string }) => (
                 <li key={g.id}>
                   <Link
-                    to={`/explore?game=${g.slug}`}
+                    to={`/trending?game=${g.slug}`}
                     className="flex items-center gap-2 px-3 py-2 rounded-lg text-secondary hover:bg-hover hover:text-primary text-sm"
                   >
                     <span
-                      className="w-2 h-2 rounded-full shrink-0"
+                      className="w-3 h-3 rounded-sm shrink-0"
                       style={{ backgroundColor: g.color || 'var(--color-accent)' }}
                     />
                     <span className="truncate">{g.name}</span>

@@ -3,118 +3,118 @@
 # DO NOT EDIT - regenerated on task file change
 
 source_file: RALPH_TASK.md
-source_mtime: 1771751873
-generated_at: 2026-02-22T09:27:17Z
+source_mtime: 1771752823
+generated_at: 2026-02-22T09:35:26Z
 
 tasks:
   - id: "line_129"
     line_number: 129
-    status: pending
+    status: completed
     parallel_group: 999999
     description: Create a CSS variable system in `index.css` with theme tokens for both light and dark modes:
     indent_level: 0
     raw_marker: -
   - id: "line_143"
     line_number: 143
-    status: pending
+    status: completed
     parallel_group: 999999
     description: Update `tailwind.config.js` to map these CSS variables to Tailwind utility classes (e.g., `bg-primary`, `text-primary`, `border-default`, `text-accent`, `bg-hover`)
     indent_level: 0
     raw_marker: -
   - id: "line_144"
     line_number: 144
-    status: pending
+    status: completed
     parallel_group: 999999
     description: Light mode activates when `<html>` has no `dark` class; dark mode when it does — Tailwind `darkMode: 'class'`
     indent_level: 0
     raw_marker: -
   - id: "line_145"
     line_number: 145
-    status: pending
+    status: completed
     parallel_group: 999999
     description: Replace ALL hardcoded color values (`bg-[#0D0D0D]`, `bg-[#1A1A1A]`, `bg-[#242424]`, `text-[#EF8C60]`, etc.) across every component and page with the new Tailwind token classes
     indent_level: 0
     raw_marker: -
   - id: "line_146"
     line_number: 146
-    status: pending
+    status: completed
     parallel_group: 999999
     description: After this phase, the app should look identical in dark mode (no visual regressions) and acceptable in light mode (colors all swap correctly)
     indent_level: 0
     raw_marker: -
   - id: "line_147"
     line_number: 147
-    status: pending
+    status: completed
     parallel_group: 999999
     description: Run `npm run typecheck && npm run build && npm run lint` — all pass
     indent_level: 0
     raw_marker: -
   - id: "line_151"
     line_number: 151
-    status: pending
+    status: completed
     parallel_group: 999999
     description: Create a `useTheme` hook that manages theme state (`'light' | 'dark' | 'system'`), persists to `localStorage`, applies/removes `dark` class on `<html>`
     indent_level: 0
     raw_marker: -
   - id: "line_152"
     line_number: 152
-    status: pending
+    status: completed
     parallel_group: 999999
     description: System preference detection: if `'system'`, follow `prefers-color-scheme` and listen for changes
     indent_level: 0
     raw_marker: -
   - id: "line_153"
     line_number: 153
-    status: pending
+    status: completed
     parallel_group: 999999
     description: Add theme toggle button in LeftSidebar (below nav links) — sun icon (light), moon icon (dark), monitor icon (system) — cycles on click
     indent_level: 0
     raw_marker: -
   - id: "line_154"
     line_number: 154
-    status: pending
+    status: completed
     parallel_group: 999999
     description: Add the same toggle accessible on mobile (in BottomNav or settings)
     indent_level: 0
     raw_marker: -
   - id: "line_155"
     line_number: 155
-    status: pending
+    status: completed
     parallel_group: 999999
     description: Smooth icon transition on toggle, no flash of wrong theme on page load
     indent_level: 0
     raw_marker: -
   - id: "line_156"
     line_number: 156
-    status: pending
+    status: completed
     parallel_group: 999999
     description: Prevent FOUC: add inline `<script>` in `index.html` that reads localStorage and applies `dark` class before React hydrates
     indent_level: 0
     raw_marker: -
   - id: "line_157"
     line_number: 157
-    status: pending
+    status: completed
     parallel_group: 999999
     description: Verify: light mode — entire app renders with light backgrounds, dark text, accent intact
     indent_level: 0
     raw_marker: -
   - id: "line_158"
     line_number: 158
-    status: pending
+    status: completed
     parallel_group: 999999
     description: Verify: dark mode — entire app renders with dark backgrounds, light text
     indent_level: 0
     raw_marker: -
   - id: "line_159"
     line_number: 159
-    status: pending
+    status: completed
     parallel_group: 999999
     description: Verify: system mode — follows OS preference
     indent_level: 0
     raw_marker: -
   - id: "line_160"
     line_number: 160
-    status: pending
+    status: completed
     parallel_group: 999999
     description: Run `npm run typecheck && npm run build && npm run lint` — all pass
     indent_level: 0
