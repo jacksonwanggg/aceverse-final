@@ -135,13 +135,13 @@ npm run dev          # starts backend (3001) + frontend (5173) concurrently
 
 ### Phase 6: Home & Explore Feeds
 
-- [ ] Home feed (`/`) shows posts from people the user follows + own posts, sorted by newest first, with cursor pagination and infinite scroll
-- [ ] Explore feed (`/explore`) shows all posts globally, sorted by newest
-- [ ] Feed uses skeleton loading cards while fetching
-- [ ] Empty state for home feed when following nobody: "Your feed is empty. Follow some gamers to see their posts!" with suggested accounts
-- [ ] Post composer at top of home feed: textarea (500 char limit), optional game tag selector, character counter, Post button disabled when empty, `#EF8C60` Post button
-- [ ] New posts appear instantly (optimistic update) at the top of the feed
-- [ ] Run `npm run typecheck && npm run build && npm run lint` — all pass
+- [x] Home feed (`/`) shows posts from people the user follows + own posts, sorted by newest first, with cursor pagination and infinite scroll
+- [x] Explore feed (`/explore`) shows all posts globally, sorted by newest
+- [x] Feed uses skeleton loading cards while fetching
+- [x] Empty state for home feed when following nobody: "Your feed is empty. Follow some gamers to see their posts!" with suggested accounts
+- [x] Post composer at top of home feed: textarea (500 char limit), optional game tag selector, character counter, Post button disabled when empty, `#EF8C60` Post button
+- [x] New posts appear instantly (optimistic update) at the top of the feed
+- [x] Run `npm run typecheck && npm run build && npm run lint` — all pass
 
 ### Phase 7: Posts — Full CRUD
 

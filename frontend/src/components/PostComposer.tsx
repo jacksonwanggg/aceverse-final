@@ -84,7 +84,7 @@ export default function PostComposer({ onSuccess, placeholder = "What's happenin
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault()
-    if (content.trim().length === 0 || content.length > 280) return
+    if (content.trim().length === 0 || content.length > 500) return
     
     setIsSubmitting(true)
     try {
@@ -100,8 +100,8 @@ export default function PostComposer({ onSuccess, placeholder = "What's happenin
     return null
   }
 
-  const remaining = 280 - content.length
-  const isOverLimit = content.length > 280
+  const remaining = 500 - content.length
+  const isOverLimit = content.length > 500
 
   return (
     <div className="border-b border-gray-200 dark:border-gray-700 p-4">
@@ -127,7 +127,7 @@ export default function PostComposer({ onSuccess, placeholder = "What's happenin
               </div>
               <button
                 type="submit"
-                disabled={content.trim().length === 0 || content.length > 280 || isSubmitting}
+                disabled={content.trim().length === 0 || content.length > 500 || isSubmitting}
                 className="px-4 py-2 bg-primary text-white rounded-full font-semibold hover:bg-primary/90 disabled:opacity-50 disabled:cursor-not-allowed transition-colors"
               >
                 {isSubmitting ? 'Posting...' : 'Post'}

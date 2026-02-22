@@ -8,7 +8,7 @@ import { requireAuth } from '../middleware/auth.js';
 import { paramStr } from '../helpers.js';
 
 const router = Router();
-const replySchema = z.object({ content: z.string().min(1).max(280) });
+const replySchema = z.object({ content: z.string().min(1).max(500) });
 
 router.post('/:replyId/replies', requireAuth, (req, res) => {
   const replyId = paramStr(req.params.replyId);

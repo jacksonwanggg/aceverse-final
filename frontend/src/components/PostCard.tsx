@@ -69,7 +69,7 @@ export default function PostCard({ post, onLike, onRepost, onReply, onEdit, onDe
 
   const handleSaveEdit = async () => {
     const trimmed = editContent.trim()
-    if (!trimmed || trimmed.length > 280 || !onEdit) return
+    if (!trimmed || trimmed.length > 500 || !onEdit) return
     setSaving(true)
     try {
       await onEdit(post.id, trimmed)
@@ -177,15 +177,15 @@ export default function PostCard({ post, onLike, onRepost, onReply, onEdit, onDe
                 ref={editTextareaRef}
                 value={editContent}
                 onChange={(e) => setEditContent(e.target.value)}
-                maxLength={280}
+                maxLength={500}
                 rows={3}
                 className="w-full px-3 py-2 border border-gray-300 dark:border-gray-600 rounded-lg bg-white dark:bg-gray-800 text-gray-900 dark:text-gray-100 resize-none focus:ring-2 focus:ring-primary focus:border-transparent"
               />
               <div className="flex items-center gap-2 mt-2">
-                <span className="text-sm text-gray-500 dark:text-gray-400">{editContent.length}/280</span>
+                <span className="text-sm text-gray-500 dark:text-gray-400">{editContent.length}/500</span>
                 <button
                   onClick={handleSaveEdit}
-                  disabled={saving || !editContent.trim() || editContent.length > 280}
+                  disabled={saving || !editContent.trim() || editContent.length > 500}
                   className="px-3 py-1.5 bg-primary text-white rounded-full text-sm font-medium hover:opacity-90 disabled:opacity-50"
                 >
                   {saving ? 'Saving...' : 'Save'}

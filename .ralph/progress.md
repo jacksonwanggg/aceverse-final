@@ -178,6 +178,21 @@ Completed:
 
 Next: Phase 6 — Home & Explore Feeds.
 
+### 2026-02-22 (Ralph Iteration 6 — Phase 6)
+**Phase 6: Home & Explore Feeds completed.**
+
+Completed:
+- Home feed: already showed following + own posts, newest first, cursor pagination, infinite scroll (backend getHome, Feed useInfiniteQuery + scroll handler).
+- Explore feed: already showed all posts globally, newest first (backend getExplore).
+- Feed: skeleton loading on initial load; added 2 PostCardSkeleton when fetching next page.
+- Home empty state: exact text "Your feed is empty. Follow some gamers to see their posts!" with suggested accounts from api.users.getSuggestions(6), avatar, display name, @username, Follow button.
+- Post composer: 500 char limit (was 280) in frontend PostComposer and backend posts/replies schemas; character counter and Post button disabled when empty; #EF8C60 via bg-primary.
+- PostCard edit mode: 500 char limit and maxLength/display for consistency.
+- New posts: optimistic update already in PostComposer (onMutate adds temp post, onSuccess replaces with real).
+- npm run typecheck && npm run build && npm run lint — all pass (warnings only).
+
+Next: Phase 7 — Posts Full CRUD.
+
 ### 2026-02-22 19:20:43
 **Session 5 ended** - Agent finished naturally (84 criteria remaining)
 

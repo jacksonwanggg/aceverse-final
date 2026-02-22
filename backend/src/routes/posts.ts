@@ -11,9 +11,9 @@ import { shapePost, paramStr } from '../helpers.js';
 
 const router = Router();
 
-const createPostSchema = z.object({ content: z.string().min(1).max(280), gameTag: z.string().optional().nullable() });
-const updatePostSchema = z.object({ content: z.string().min(1).max(280) });
-const replySchema = z.object({ content: z.string().min(1).max(280) });
+const createPostSchema = z.object({ content: z.string().min(1).max(500), gameTag: z.string().optional().nullable() });
+const updatePostSchema = z.object({ content: z.string().min(1).max(500) });
+const replySchema = z.object({ content: z.string().min(1).max(500) });
 
 router.post('/', requireAuth, (req, res) => {
   const parsed = createPostSchema.safeParse(req.body);
