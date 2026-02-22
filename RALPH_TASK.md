@@ -298,15 +298,15 @@ The core MVP is fully functional (auth, posts, feeds, likes, reposts, replies, f
 
 ### Phase 12: Mobile Polish
 
-- [ ] Bottom nav: clean icon-only bar with subtle top border (border-default), bg-primary background, active icon in accent color (filled variant), proper safe-area bottom padding
-- [ ] Floating compose FAB: rounded-full accent button with Feather/Plus icon, bottom-right above nav, subtle shadow
-- [ ] All pages responsive: single-column on mobile, sidebars hidden, proper padding (16px), no horizontal overflow
-- [ ] PostCard: full-width, action icons have min 44px tap targets
-- [ ] Profile: cover image scales, avatar scales, stats wrap properly
-- [ ] Top nav on mobile: minimal — just Aceverse logo left, bell + avatar right (or hidden, replaced by bottom nav)
-- [ ] Modals/dropdowns: bottom-sheet style or full-width on mobile
-- [ ] Search: full-width input, results stack
-- [ ] Run `npm run typecheck && npm run build && npm run lint` — all pass
+- [x] Bottom nav: clean icon-only bar with subtle top border (border-default), bg-primary background, active icon in accent color (filled variant), proper safe-area bottom padding
+- [x] Floating compose FAB: rounded-full accent button with Feather/Plus icon, bottom-right above nav, subtle shadow
+- [x] All pages responsive: single-column on mobile, sidebars hidden, proper padding (16px), no horizontal overflow
+- [x] PostCard: full-width, action icons have min 44px tap targets
+- [x] Profile: cover image scales, avatar scales, stats wrap properly
+- [x] Top nav on mobile: minimal — just Aceverse logo left, bell + avatar right (or hidden, replaced by bottom nav)
+- [x] Modals/dropdowns: bottom-sheet style or full-width on mobile
+- [x] Search: full-width input, results stack
+- [x] Run `npm run typecheck && npm run build && npm run lint` — all pass
 
 ### Phase 13: Micro-Animations & Interactions
 

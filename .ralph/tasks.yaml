@@ -3,8 +3,8 @@
 # DO NOT EDIT - regenerated on task file change
 
 source_file: RALPH_TASK.md
-source_mtime: 1771753489
-generated_at: 2026-02-22T09:44:51Z
+source_mtime: 1771753497
+generated_at: 2026-02-22T09:45:00Z
 
 tasks:
   - id: "line_129"
@@ -674,63 +674,63 @@ tasks:
     raw_marker: -
   - id: "line_301"
     line_number: 301
-    status: pending
+    status: completed
     parallel_group: 999999
     description: Bottom nav: clean icon-only bar with subtle top border (border-default), bg-primary background, active icon in accent color (filled variant), proper safe-area bottom padding
     indent_level: 0
     raw_marker: -
   - id: "line_302"
     line_number: 302
-    status: pending
+    status: completed
     parallel_group: 999999
     description: Floating compose FAB: rounded-full accent button with Feather/Plus icon, bottom-right above nav, subtle shadow
     indent_level: 0
     raw_marker: -
   - id: "line_303"
     line_number: 303
-    status: pending
+    status: completed
     parallel_group: 999999
     description: All pages responsive: single-column on mobile, sidebars hidden, proper padding (16px), no horizontal overflow
     indent_level: 0
     raw_marker: -
   - id: "line_304"
     line_number: 304
-    status: pending
+    status: completed
     parallel_group: 999999
     description: PostCard: full-width, action icons have min 44px tap targets
     indent_level: 0
     raw_marker: -
   - id: "line_305"
     line_number: 305
-    status: pending
+    status: completed
     parallel_group: 999999
     description: Profile: cover image scales, avatar scales, stats wrap properly
     indent_level: 0
     raw_marker: -
   - id: "line_306"
     line_number: 306
-    status: pending
+    status: completed
     parallel_group: 999999
     description: Top nav on mobile: minimal — just Aceverse logo left, bell + avatar right (or hidden, replaced by bottom nav)
     indent_level: 0
     raw_marker: -
   - id: "line_307"
     line_number: 307
-    status: pending
+    status: completed
     parallel_group: 999999
     description: Modals/dropdowns: bottom-sheet style or full-width on mobile
     indent_level: 0
     raw_marker: -
   - id: "line_308"
     line_number: 308
-    status: pending
+    status: completed
     parallel_group: 999999
     description: Search: full-width input, results stack
     indent_level: 0
     raw_marker: -
   - id: "line_309"
     line_number: 309
-    status: pending
+    status: completed
     parallel_group: 999999
     description: Run `npm run typecheck && npm run build && npm run lint` — all pass
     indent_level: 0

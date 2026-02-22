@@ -141,7 +141,7 @@ export default function RightSidebar() {
               Who to Follow
             </h3>
             <ul className="space-y-2">
-              {suggestions.map((u: { id: string; username: string; displayName: string; avatarUrl: string; isFollowing?: boolean }) => (
+              {suggestions.map((u: { id: string; username: string; displayName: string; avatarUrl: string; isFollowing?: boolean; followerCount?: number }) => (
                 <li
                   key={u.id}
                   className="flex items-center gap-2 p-2 rounded-lg hover:bg-hover transition-colors"
@@ -153,8 +153,8 @@ export default function RightSidebar() {
                       className="w-8 h-8 rounded-full object-cover shrink-0"
                     />
                     <div className="min-w-0">
-                      <p className="text-sm font-medium text-primary truncate">{u.displayName || u.username}</p>
-                      <p className="text-xs text-secondary truncate">@{u.username}</p>
+                      <p className="text-sm font-medium text-primary truncate">@{u.username}</p>
+                      <p className="text-xs text-secondary truncate">{u.followerCount?.toLocaleString() ?? 0} followers</p>
                     </div>
                   </Link>
                   {!u.isFollowing && (

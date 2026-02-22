@@ -275,7 +275,6 @@ export default function ProfilePage() {
 
   const joinDate = user.createdAt ? format(new Date(user.createdAt), 'MMMM yyyy') : ''
   const isMe = user.isMe === true
-  const [activeTab, setActiveTab] = useState<'posts' | 'clips' | 'likes'>('posts')
 
   return (
     <div className="min-h-screen">
