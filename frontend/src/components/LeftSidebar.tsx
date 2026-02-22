@@ -3,11 +3,37 @@ import { NavLink, Link, useNavigate } from 'react-router-dom'
 import { useAuth } from '../hooks/useAuth'
 import { useQuery } from '@tanstack/react-query'
 import { api } from '../lib/api'
+import { useTheme } from '../hooks/useTheme'
 import NotificationDropdown from './NotificationDropdown'
+
+function ThemeIcon({ theme }: { theme: 'light' | 'dark' | 'system' }) {
+  if (theme === 'light') {
+    return (
+      <svg className="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
+        <circle cx="12" cy="12" r="5" />
+        <path d="M12 1v2M12 21v2M4.22 4.22l1.42 1.42M18.36 18.36l1.42 1.42M1 12h2M21 12h2M4.22 19.78l1.42-1.42M18.36 5.64l1.42-1.42" />
+      </svg>
+    )
+  }
+  if (theme === 'dark') {
+    return (
+      <svg className="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
+        <path d="M21 12.79A9 9 0 1111.21 3 7 7 0 0021 12.79z" />
+      </svg>
+    )
+  }
+  return (
+    <svg className="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
+      <rect x="2" y="3" width="20" height="14" rx="2" ry="2" />
+      <path d="M8 21h8M12 17v4" />
+    </svg>
+  )
+}
 
 export default function LeftSidebar() {
   const navigate = useNavigate()
   const { user, logout } = useAuth()
+  const { theme, cycleTheme } = useTheme()
   const [dropdownOpen, setDropdownOpen] = useState(false)
   const [searchInput, setSearchInput] = useState('')
   const bellRef = useRef<HTMLButtonElement>(null)
@@ -44,6 +70,8 @@ export default function LeftSidebar() {
         ? 'text-accent bg-accent/10'
         : 'text-secondary hover:bg-hover hover:text-primary'
     }`
+
+  const themeLabel = theme === 'light' ? 'Light' : theme === 'dark' ? 'Dark' : 'System'
 
   return (
     <aside className="w-[260px] shrink-0 flex flex-col border-r border-border-default bg-primary min-h-screen md:flex hidden">
@@ -122,6 +150,19 @@ export default function LeftSidebar() {
           <NavLink to={user ? `/u/${user.username}` : '/login'} className={navLinkClass}>
             <span className="text-xl">👤</span> Profile
           </NavLink>
+          
+          <button
+            type="button"
+            onClick={cycleTheme}
+            className="flex items-center gap-3 px-3 py-2.5 rounded-lg text-left font-medium text-secondary hover:bg-hover hover:text-primary transition-colors"
+            title={`Theme: ${themeLabel}`}
+          >
+            <span className="text-xl flex items-center justify-center w-[1em]">
+              <ThemeIcon theme={theme} />
+            </span>
+            <span>{themeLabel}</span>
+          </button>
+          
           <button
             type="button"
             onClick={async () => {
@@ -160,6 +201,19 @@ export default function LeftSidebar() {
             </ul>
           </div>
         )}
+
+        <div className="mt-auto pt-4 border-t border-border-default">
+          <p className="text-xs text-tertiary px-3">
+            <Link to="#" className="hover:underline">About</Link>
+            {' · '}
+            <Link to="#" className="hover:underline">Help</Link>
+            {' · '}
+            <Link to="#" className="hover:underline">Terms</Link>
+            {' · '}
+            <Link to="#" className="hover:underline">Privacy</Link>
+          </p>
+          <p className="text-xs text-tertiary px-3 mt-1">© 2024 Aceverse</p>
+        </div>
       </div>
     </aside>
   )
