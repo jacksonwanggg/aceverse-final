@@ -206,10 +206,10 @@ npm run dev          # starts backend (3001) + frontend (5173) concurrently
 
 ### Phase 13: Share & Public Access
 
-- [ ] Share button on every PostCard copies the canonical link (`/p/:postId`) to clipboard with a toast confirmation
-- [ ] `/p/:postId` is accessible to logged-out users as read-only (shows post + replies, no action buttons)
-- [ ] Logged-out thread view shows a banner: "Log in to like, reply, and repost" with login link
-- [ ] Run `npm run typecheck && npm run build && npm run lint` — all pass
+- [x] Share button on every PostCard copies the canonical link (`/p/:postId`) to clipboard with a toast confirmation
+- [x] `/p/:postId` is accessible to logged-out users as read-only (shows post + replies, no action buttons)
+- [x] Logged-out thread view shows a banner: "Log in to like, reply, and repost" with login link
+- [x] Run `npm run typecheck && npm run build && npm run lint` — all pass
 
 ### Phase 14: Trending Page
 
