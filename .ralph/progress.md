@@ -262,3 +262,15 @@ Next: Phase 10 — Follows & Profile.
 
 ### 2026-02-22 19:32:44
 **Session 10 started** (model: auto)
+
+### 2026-02-22 (Ralph Iteration 10 — Phase 10)
+**Phase 10: Follows & Profile completed.**
+
+Completed:
+- Backend: Added PATCH /users/:username for profile update (displayName, bio, avatarUrl) with Zod validation and requireAuth; only profile owner can update.
+- Frontend api: Added users.updateProfile(username, { displayName?, bio?, avatarUrl? }).
+- Profile page: Full profile with cover, avatar, display name, @username, bio, join date, follower/following counts; Gaming Ranks section with game icons and badges; User's posts tab with useInfiniteQuery and paginated PostCards (like, repost, reply, edit, delete with cache updates); Follow/Unfollow button when viewing another user (optimistic toggle and follower count); Edit Profile button on own profile opening modal with display name, bio, avatar URL and Save/Cancel.
+- Follow already creates FOLLOW notification (backend users route). api.users had getProfile, getPosts, follow, unfollow, getGames, updateGames; added updateProfile.
+- npm run typecheck && npm run build && npm run lint — all pass. Phase 10 criteria marked [x] in RALPH_TASK.md.
+
+Next: Phase 11 — Notifications.

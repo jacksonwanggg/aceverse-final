@@ -98,6 +98,11 @@ export const api = {
         method: 'PUT',
         body: JSON.stringify({ userGames }),
       }),
+    updateProfile: (username: string, data: { displayName?: string; bio?: string; avatarUrl?: string }) =>
+      apiRequest<{ user: any }>(`/users/${encodeURIComponent(username)}`, {
+        method: 'PATCH',
+        body: JSON.stringify(data),
+      }),
     getSuggestions: (limit?: number) =>
       apiRequest<{ users: any[] }>(`/users/suggestions${limit != null ? `?limit=${limit}` : ''}`),
     getFollowing: () => apiRequest<{ users: any[] }>('/users/me/following'),

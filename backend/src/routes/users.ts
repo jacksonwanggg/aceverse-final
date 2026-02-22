@@ -7,6 +7,13 @@ import { userGamesRepo } from '../db/repos/userGames.js';
 import { gamesRepo } from '../db/repos/games.js';
 import { requireAuth } from '../middleware/auth.js';
 import { shapePost, shapeUser, paramStr } from '../helpers.js';
+import { z } from 'zod';
+
+const updateProfileSchema = z.object({
+  displayName: z.string().min(1).max(100).optional(),
+  bio: z.string().max(500).optional(),
+  avatarUrl: z.union([z.string().url(), z.literal('')]).optional(),
+});
 
 const router = Router();
 
@@ -37,6 +44,34 @@ router.get('/:username', (req, res) => {
     return;
   }
   res.json({ user: shapeUser(user, req.userId) });
+});
+
+router.patch('/:username', requireAuth, (req, res) => {
+  const username = paramStr(req.params.username);
+  const user = usersRepo.findByUsername(username);
+  if (!user) {
+    res.status(404).json({ error: 'User not found' });
+    return;
+  }
+  if (user.id !== req.userId) {
+    res.status(403).json({ error: 'Can only update your own profile' });
+    return;
+  }
+  const parsed = updateProfileSchema.safeParse(req.body);
+  if (!parsed.success) {
+    res.status(400).json({ error: parsed.error.flatten().fieldErrors });
+    return;
+  }
+  const updates: { displayName?: string; bio?: string; avatarUrl?: string } = {};
+  if (parsed.data.displayName !== undefined) updates.displayName = parsed.data.displayName;
+  if (parsed.data.bio !== undefined) updates.bio = parsed.data.bio;
+  if (parsed.data.avatarUrl !== undefined) updates.avatarUrl = parsed.data.avatarUrl;
+  const updated = usersRepo.update(user.id, updates);
+  if (!updated) {
+    res.status(500).json({ error: 'Update failed' });
+    return;
+  }
+  res.json({ user: shapeUser(updated, req.userId) });
 });
 
 router.get('/:username/posts', (req, res) => {

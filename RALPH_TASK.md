@@ -174,14 +174,14 @@ npm run dev          # starts backend (3001) + frontend (5173) concurrently
 
 ### Phase 10: Follows & Profile
 
-- [ ] Full profile page (`/u/:username`): cover image area, avatar, display name, @username, bio, join date, follower/following counts
-- [ ] "Gaming Ranks" section on profile showing all games + ranks with icons and badges
-- [ ] User's posts tab on profile — paginated feed of their posts
-- [ ] Follow/unfollow button (not shown on own profile): toggles instantly, updates follower count
-- [ ] "Edit Profile" button on own profile (at minimum: update display name, bio, avatar URL)
-- [ ] Follow creates a FOLLOW notification for the followed user
-- [ ] Add `api.users` to frontend API client: `getProfile`, `getPosts`, `follow`, `unfollow`, `updateProfile`, `getGames`, `updateGames`
-- [ ] Run `npm run typecheck && npm run build && npm run lint` — all pass
+- [x] Full profile page (`/u/:username`): cover image area, avatar, display name, @username, bio, join date, follower/following counts
+- [x] "Gaming Ranks" section on profile showing all games + ranks with icons and badges
+- [x] User's posts tab on profile — paginated feed of their posts
+- [x] Follow/unfollow button (not shown on own profile): toggles instantly, updates follower count
+- [x] "Edit Profile" button on own profile (at minimum: update display name, bio, avatar URL)
+- [x] Follow creates a FOLLOW notification for the followed user
+- [x] Add `api.users` to frontend API client: `getProfile`, `getPosts`, `follow`, `unfollow`, `updateProfile`, `getGames`, `updateGames`
+- [x] Run `npm run typecheck && npm run build && npm run lint` — all pass
 
 ### Phase 11: Notifications
 
