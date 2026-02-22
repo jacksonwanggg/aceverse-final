@@ -3,8 +3,8 @@
 # DO NOT EDIT - regenerated on task file change
 
 source_file: RALPH_TASK.md
-source_mtime: 1771749130
-generated_at: 2026-02-22T08:32:41Z
+source_mtime: 1771749411
+generated_at: 2026-02-22T08:37:29Z
 
 tasks:
   - id: "line_77"
@@ -499,56 +499,56 @@ tasks:
     raw_marker: -
   - id: "line_177"
     line_number: 177
-    status: pending
+    status: completed
     parallel_group: 999999
     description: Full profile page (`/u/:username`): cover image area, avatar, display name, @username, bio, join date, follower/following counts
     indent_level: 0
     raw_marker: -
   - id: "line_178"
     line_number: 178
-    status: pending
+    status: completed
     parallel_group: 999999
     description: \"Gaming Ranks\" section on profile showing all games + ranks with icons and badges
     indent_level: 0
     raw_marker: -
   - id: "line_179"
     line_number: 179
-    status: pending
+    status: completed
     parallel_group: 999999
     description: User's posts tab on profile — paginated feed of their posts
     indent_level: 0
     raw_marker: -
   - id: "line_180"
     line_number: 180
-    status: pending
+    status: completed
     parallel_group: 999999
     description: Follow/unfollow button (not shown on own profile): toggles instantly, updates follower count
     indent_level: 0
     raw_marker: -
   - id: "line_181"
     line_number: 181
-    status: pending
+    status: completed
     parallel_group: 999999
     description: \"Edit Profile\" button on own profile (at minimum: update display name, bio, avatar URL)
     indent_level: 0
     raw_marker: -
   - id: "line_182"
     line_number: 182
-    status: pending
+    status: completed
     parallel_group: 999999
     description: Follow creates a FOLLOW notification for the followed user
     indent_level: 0
     raw_marker: -
   - id: "line_183"
     line_number: 183
-    status: pending
+    status: completed
     parallel_group: 999999
     description: Add `api.users` to frontend API client: `getProfile`, `getPosts`, `follow`, `unfollow`, `updateProfile`, `getGames`, `updateGames`
     indent_level: 0
     raw_marker: -
   - id: "line_184"
     line_number: 184
-    status: pending
+    status: completed
     parallel_group: 999999
     description: Run `npm run typecheck && npm run build && npm run lint` — all pass
     indent_level: 0
