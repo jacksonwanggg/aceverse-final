@@ -1,13 +1,17 @@
+import { useState, useRef } from 'react'
 import { NavLink, Link, useNavigate } from 'react-router-dom'
 import { useAuth } from '../hooks/useAuth'
 import { useQuery } from '@tanstack/react-query'
 import { api } from '../lib/api'
+import NotificationDropdown from './NotificationDropdown'
 
 const accent = '#EF8C60'
 
 export default function LeftSidebar() {
   const navigate = useNavigate()
   const { user, logout } = useAuth()
+  const [dropdownOpen, setDropdownOpen] = useState(false)
+  const bellRef = useRef<HTMLButtonElement>(null)
   const { data: gamesData } = useQuery({
     queryKey: ['games'],
     queryFn: api.games.getAll,
@@ -22,6 +26,12 @@ export default function LeftSidebar() {
   const userGames = userGamesData?.userGames ?? []
   const myGameIds = new Set(userGames.map((ug: { gameId: string }) => ug.gameId))
   const myGames = games.filter((g: { id: string }) => myGameIds.has(g.id))
+  const { data: unreadData } = useQuery({
+    queryKey: ['notifications', 'unreadCount'],
+    queryFn: api.notifications.getUnreadCount,
+    enabled: !!user,
+  })
+  const unreadCount = unreadData?.count ?? 0
 
   const navLinkClass = ({ isActive }: { isActive: boolean }) =>
     `flex items-center gap-3 px-3 py-2.5 rounded-lg text-left font-medium transition-colors ${
@@ -61,6 +71,33 @@ export default function LeftSidebar() {
           <NavLink to="/trending" className={navLinkClass}>
             <span className="text-xl">🔥</span> Trending
           </NavLink>
+          <div className="relative flex items-center">
+            <NavLink to="/notifications" className={navLinkClass}>
+              <span className="text-xl">🔔</span> Notifications
+            </NavLink>
+            <button
+              ref={bellRef}
+              type="button"
+              onClick={(e) => { e.preventDefault(); setDropdownOpen((o) => !o); }}
+              className="absolute right-1 p-1 rounded-md hover:bg-gray-800 text-gray-400 hover:text-white"
+              aria-label="Toggle notifications"
+            >
+              <span className="text-lg">🔔</span>
+              {unreadCount > 0 && (
+                <span
+                  className="absolute -top-0.5 -right-0.5 min-w-[18px] h-[18px] rounded-full flex items-center justify-center text-[10px] font-bold text-[#0D0D0D]"
+                  style={{ backgroundColor: accent }}
+                >
+                  {unreadCount > 99 ? '99+' : unreadCount}
+                </span>
+              )}
+            </button>
+            <NotificationDropdown
+              isOpen={dropdownOpen}
+              onClose={() => setDropdownOpen(false)}
+              anchorRef={bellRef}
+            />
+          </div>
           <NavLink to={user ? `/u/${user.username}` : '/login'} className={navLinkClass}>
             <span className="text-xl">👤</span> Profile
           </NavLink>

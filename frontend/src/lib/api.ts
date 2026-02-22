@@ -119,4 +119,24 @@ export const api = {
     trendingTags: () =>
       apiRequest<{ tags: { slug: string; name: string; count: number }[] }>('/timeline/trending-tags'),
   },
+  notifications: {
+    getAll: (cursor?: string) =>
+      apiRequest<{
+        notifications: Array<{
+          id: string;
+          type: 'LIKE' | 'REPLY' | 'REPOST' | 'FOLLOW';
+          read: boolean;
+          createdAt: string;
+          postId: string | null;
+          replyId: string | null;
+          actor: { id: string; username: string; displayName: string; avatarUrl: string } | null;
+        }>;
+        nextCursor: string | null;
+        unreadCount: number;
+      }>(`/notifications${cursor ? `?cursor=${cursor}` : ''}`),
+    markAllRead: () =>
+      apiRequest<{ ok: boolean }>('/notifications/mark-all-read', { method: 'POST' }),
+    getUnreadCount: () =>
+      apiRequest<{ count: number }>('/notifications/unread-count'),
+  },
 };

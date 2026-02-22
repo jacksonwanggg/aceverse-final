@@ -280,3 +280,17 @@ Next: Phase 11 — Notifications.
 
 ### 2026-02-22 19:37:32
 **Session 11 started** (model: auto)
+
+### 2026-02-22 (Ralph Iteration 11 — Phase 11)
+**Phase 11: Notifications completed.**
+
+Completed:
+- Backend: Added GET /api/notifications/unread-count for badge polling.
+- Frontend api.notifications: getAll (cursor pagination), markAllRead, getUnreadCount.
+- NotificationsPage: Full list with actor avatar, action text (liked/replied/reposted/followed), relative time, link to post or profile; "Mark all as read" button; Load more for pagination; skeleton loading.
+- Unread badge: LeftSidebar (bell + count) and BottomNav (Alerts tab) with orange #EF8C60 badge.
+- NotificationDropdown: Bell icon in left nav toggles dropdown with latest 5 notifications and "View all notifications" link; click-outside to close.
+- Backend already skips self-notifications (like/repost/reply when actor is post author; follow when following self).
+- npm run typecheck && npm run build && npm run lint — all pass. Phase 11 criteria marked [x] in RALPH_TASK.md.
+
+Next: Phase 12 — Search.

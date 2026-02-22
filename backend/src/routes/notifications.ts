@@ -34,4 +34,9 @@ router.post('/mark-all-read', requireAuth, (req, res) => {
   res.json({ ok: true });
 });
 
+router.get('/unread-count', requireAuth, (req, res) => {
+  const count = notificationsRepo.countUnread(req.userId!);
+  res.json({ count });
+});
+
 export default router;

@@ -185,13 +185,13 @@ npm run dev          # starts backend (3001) + frontend (5173) concurrently
 
 ### Phase 11: Notifications
 
-- [ ] Notifications page (`/notifications`): lists all notifications (LIKE, REPLY, REPOST, FOLLOW) with actor avatar, action text, relative time, and link to relevant post/profile
-- [ ] Unread notification count badge in the nav bar (orange dot or number)
-- [ ] "Mark all as read" button clears unread state
-- [ ] Notification dropdown on bell icon click (in addition to full page) showing latest 5 notifications with "View all notifications" link
-- [ ] No notifications for your own actions on your own content
-- [ ] Add `api.notifications` to frontend API client: `getAll`, `markAllRead`, `getUnreadCount`
-- [ ] Run `npm run typecheck && npm run build && npm run lint` — all pass
+- [x] Notifications page (`/notifications`): lists all notifications (LIKE, REPLY, REPOST, FOLLOW) with actor avatar, action text, relative time, and link to relevant post/profile
+- [x] Unread notification count badge in the nav bar (orange dot or number)
+- [x] "Mark all as read" button clears unread state
+- [x] Notification dropdown on bell icon click (in addition to full page) showing latest 5 notifications with "View all notifications" link
+- [x] No notifications for your own actions on your own content
+- [x] Add `api.notifications` to frontend API client: `getAll`, `markAllRead`, `getUnreadCount`
+- [x] Run `npm run typecheck && npm run build && npm run lint` — all pass
 
 ### Phase 12: Search
 
