@@ -234,12 +234,12 @@ npm run dev          # starts backend (3001) + frontend (5173) concurrently
 
 ### Phase 16: Tests
 
-- [ ] Create `backend/src/__tests__/auth.test.ts` — test register, login, logout, me (at least 4 tests)
-- [ ] Create `backend/src/__tests__/posts.test.ts` — test create, get, update, delete, like, unlike (at least 6 tests)
-- [ ] Create `backend/src/__tests__/timeline.test.ts` — test home feed (following-based), explore feed (at least 3 tests)
-- [ ] Create `backend/src/__tests__/users.test.ts` — test get profile, follow, unfollow (at least 3 tests)
-- [ ] `npm test` passes all tests
-- [ ] Run `npm run typecheck && npm run build && npm run lint` — all still pass
+- [x] Create `backend/src/__tests__/auth.test.ts` — test register, login, logout, me (at least 4 tests)
+- [x] Create `backend/src/__tests__/posts.test.ts` — test create, get, update, delete, like, unlike (at least 6 tests)
+- [x] Create `backend/src/__tests__/timeline.test.ts` — test home feed (following-based), explore feed (at least 3 tests)
+- [x] Create `backend/src/__tests__/users.test.ts` — test get profile, follow, unfollow (at least 3 tests)
+- [x] `npm test` passes all tests
+- [x] Run `npm run typecheck && npm run build && npm run lint` — all still pass
 
 ### Phase 17: Final Verification
 

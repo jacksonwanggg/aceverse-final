@@ -382,8 +382,39 @@ Next: Phase 16 — Tests (auth, posts, timeline, users test files; npm test).
 ### 2026-02-22 19:56:26
 **Session 17 started** (model: auto)
 
+### 2026-02-22 (Ralph Iteration 17 — Phase 15)
+**Phase 15: Animations & Polish completed.**
+
+Completed:
+- Page transitions: AppLayout already had AnimatePresence + motion.div with fade/slide variants; set transition to 0.25s easeOut for smoother feel. ScrollToTop on pathname change already present.
+- Micro-interactions: PostCard like button uses spring scale bounce (1 → 1.35 → 1); repost button animates rotate 0→360 when reposted with spring. Follow buttons (Feed, ProfilePage, RightSidebar, SearchPage) have hover glow and loading spinners when pending.
+- Skeleton loading: Feed (home/explore), TrendingPage, ProfilePage, SearchPage, NotificationsPage already use PostCardSkeleton or custom pulse skeletons while loading.
+- Toast: Success toasts use #EF8C60 left border and subtle glow; error/info use border-l accent.
+- Hover effects: PostCard has lift + shadow; Load more and Follow buttons have hover:shadow glow; primary buttons use #EF8C60 glow.
+- Loading spinners: PostComposer shows spinner + "Posting..."; all Follow/Unfollow buttons show spinner when isPending. Like/repost use optimistic UI.
+- Fixed backend test type errors: normalized set-cookie header to string[] in posts.test.ts, timeline.test.ts, users.test.ts.
+- npm run typecheck && npm run build && npm run lint — all pass (warnings only).
+
+Next: Phase 16 — Tests (verify/create backend tests, npm test passes).
+
 ### 2026-02-22 19:58:45
 **Session 17 ended** - 🔄 Context rotation (token limit reached)
 
 ### 2026-02-22 19:58:47
 **Session 18 started** (model: auto)
+
+### 2026-02-22 (Ralph Iteration 18 — Phase 16)
+**Phase 16: Tests completed.**
+
+Completed:
+- Confirmed app exported from `backend/src/app.ts` for testing (index.ts already used it).
+- Added supertest to backend (already present).
+- Created `backend/src/__tests__/auth.test.ts`: register (201 + user + cookie), login (200 + cookie), GET /me (user when session / null when not), logout (ok + me null) — 4 tests.
+- Created `backend/src/__tests__/posts.test.ts`: create post, get post, PATCH update, DELETE soft-delete, like, unlike — 6 tests.
+- Created `backend/src/__tests__/timeline.test.ts`: home feed (authenticated), home empty when unauthenticated, explore feed — 3 tests.
+- Created `backend/src/__tests__/users.test.ts`: get profile, follow + unfollow, get user posts — 3 tests.
+- All tests use resetDb() in beforeAll for isolation; auth uses request.agent(app) or Set-Cookie for session.
+- `npm test` passes (16 tests, 4 files). `npm run typecheck && npm run build && npm run lint` pass (lint warnings only).
+- Marked all Phase 16 criteria [x] in RALPH_TASK.md.
+
+Next: Phase 17 — Final Verification (full install/seed/build/typecheck/lint/test and manual QA).
