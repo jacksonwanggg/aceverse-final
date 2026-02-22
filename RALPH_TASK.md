@@ -214,21 +214,21 @@ The core MVP is fully functional (auth, posts, feeds, likes, reposts, replies, f
 
 ### Phase 7: Left Sidebar — Match Mockup Exactly
 
-- [ ] **User card** at top: avatar (48px round) + @username (bold) + "XX followers" (text-secondary)
-- [ ] **Nav links** (vertical, icon + label each):
+- [x] **User card** at top: avatar (48px round) + @username (bold) + "XX followers" (text-secondary)
+- [x] **Nav links** (vertical, icon + label each):
   - Home (Home icon) — accent color text + filled icon when on home page
   - Trending (Flame icon) — accent when active
   - Profile (User icon) — accent when active
   - Each nav link: hover shows subtle bg-hover rounded pill background
-- [ ] **"Your Games" section**: Gamepad2 icon + "Your Games" header (text-secondary, semibold), divider above
+- [x] **"Your Games" section**: Gamepad2 icon + "Your Games" header (text-secondary, semibold), divider above
   - Each game: colored circle/square icon + game name text
   - Valorant (red icon), Counter-Strike 2 (green icon), Apex Legends (red icon)
   - Games are clickable (link to trending?game=slug or similar)
-- [ ] **Footer** at bottom: "About  Help  Terms  Privacy" text links (text-tertiary, small) + "© 2024 Aceverse"
-- [ ] Sidebar has subtle right border (border-default)
-- [ ] Sticky positioning, scrolls independently if content overflows viewport
-- [ ] Looks correct in both light and dark mode
-- [ ] Run `npm run typecheck && npm run build && npm run lint` — all pass
+- [x] **Footer** at bottom: "About  Help  Terms  Privacy" text links (text-tertiary, small) + "© 2024 Aceverse"
+- [x] Sidebar has subtle right border (border-default)
+- [x] Sticky positioning, scrolls independently if content overflows viewport
+- [x] Looks correct in both light and dark mode
+- [x] Run `npm run typecheck && npm run build && npm run lint` — all pass
 
 ### Phase 8: Right Sidebar — Match Mockup Exactly
 

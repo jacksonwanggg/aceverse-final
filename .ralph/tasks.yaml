@@ -3,8 +3,8 @@
 # DO NOT EDIT - regenerated on task file change
 
 source_file: RALPH_TASK.md
-source_mtime: 1771753127
-generated_at: 2026-02-22T09:39:15Z
+source_mtime: 1771753423
+generated_at: 2026-02-22T09:43:47Z
 
 tasks:
   - id: "line_129"
@@ -198,238 +198,238 @@ tasks:
     raw_marker: -
   - id: "line_178"
     line_number: 178
-    status: pending
+    status: completed
     parallel_group: 999999
     description: Create a persistent top nav bar visible on all authenticated pages (part of AppLayout):
     indent_level: 0
     raw_marker: -
   - id: "line_183"
     line_number: 183
-    status: pending
+    status: completed
     parallel_group: 999999
     description: Top nav is sticky, has subtle bottom border, backdrop blur on scroll
     indent_level: 0
     raw_marker: -
   - id: "line_184"
     line_number: 184
-    status: pending
+    status: completed
     parallel_group: 999999
     description: Notification bell shows orange dot when there are unread notifications (poll or check on page load)
     indent_level: 0
     raw_marker: -
   - id: "line_185"
     line_number: 185
-    status: pending
+    status: completed
     parallel_group: 999999
     description: Clicking the Post button in the top nav opens the existing PostComposer (either inline at top of feed or as a modal)
     indent_level: 0
     raw_marker: -
   - id: "line_186"
     line_number: 186
-    status: pending
+    status: completed
     parallel_group: 999999
     description: Search input in top nav works: submit navigates to `/search?q=...`
     indent_level: 0
     raw_marker: -
   - id: "line_187"
     line_number: 187
-    status: pending
+    status: completed
     parallel_group: 999999
     description: Top nav hides on mobile (replaced by bottom nav) or becomes a minimal bar with just logo + bell + avatar
     indent_level: 0
     raw_marker: -
   - id: "line_188"
     line_number: 188
-    status: pending
+    status: completed
     parallel_group: 999999
     description: Run `npm run typecheck && npm run build && npm run lint` — all pass
     indent_level: 0
     raw_marker: -
   - id: "line_192"
     line_number: 192
-    status: pending
+    status: completed
     parallel_group: 999999
     description: Avatar (40px rounded-full) on left, content area on right — no card border, just subtle bottom divider
     indent_level: 0
     raw_marker: -
   - id: "line_193"
     line_number: 193
-    status: pending
+    status: completed
     parallel_group: 999999
     description: Header: @username (font-semibold, text-primary) on left, relative time (text-secondary, concise: \"6h ago\", \"1d ago\", \"2w ago\") on right, three-dot menu far right
     indent_level: 0
     raw_marker: -
   - id: "line_194"
     line_number: 194
-    status: pending
+    status: completed
     parallel_group: 999999
     description: Content: text-primary, proper line-height (1.4-1.5), hashtags and @mentions highlighted in accent
     indent_level: 0
     raw_marker: -
   - id: "line_195"
     line_number: 195
-    status: pending
+    status: completed
     parallel_group: 999999
     description: Game tag pill: small rounded badge with colored square icon + game name text, subtle tinted background matching the game's color
     indent_level: 0
     raw_marker: -
   - id: "line_196"
     line_number: 196
-    status: pending
+    status: completed
     parallel_group: 999999
     description: YouTube embeds: rounded corners, proper 16:9 aspect ratio, \"Watch on YouTube\" link
     indent_level: 0
     raw_marker: -
   - id: "line_197"
     line_number: 197
-    status: pending
+    status: completed
     parallel_group: 999999
     description: Action row: four evenly-spaced groups — Heart + count, MessageCircle + count, Repeat2 + count, Share icon (no count). Each with hover color: like=pink, reply=blue, repost=green, share=accent. Active like=filled pink heart, active repost=green filled icon. Counts in text-secondary.
     indent_level: 0
     raw_marker: -
   - id: "line_198"
     line_number: 198
-    status: pending
+    status: completed
     parallel_group: 999999
     description: Hover state: entire card gets subtle bg-hover tint (not shadow)
     indent_level: 0
     raw_marker: -
   - id: "line_199"
     line_number: 199
-    status: pending
+    status: completed
     parallel_group: 999999
     description: Deleted post: subtle italic text-secondary \"This post has been deleted\", no action row
     indent_level: 0
     raw_marker: -
   - id: "line_200"
     line_number: 200
-    status: pending
+    status: completed
     parallel_group: 999999
     description: Edit mode: clean textarea with accent focus ring, Save/Cancel buttons
     indent_level: 0
     raw_marker: -
   - id: "line_201"
     line_number: 201
-    status: pending
+    status: completed
     parallel_group: 999999
     description: Three-dot menu dropdown: clean bg-secondary card with border-default, edit/delete options
     indent_level: 0
     raw_marker: -
   - id: "line_202"
     line_number: 202
-    status: pending
+    status: completed
     parallel_group: 999999
     description: Run `npm run typecheck && npm run build && npm run lint` — all pass
     indent_level: 0
     raw_marker: -
   - id: "line_206"
     line_number: 206
-    status: pending
+    status: completed
     parallel_group: 999999
     description: Layout: avatar (40px) on left, borderless textarea on right, grows with content
     indent_level: 0
     raw_marker: -
   - id: "line_207"
     line_number: 207
-    status: pending
+    status: completed
     parallel_group: 999999
     description: Placeholder: \"What's happening in your games?\"
     indent_level: 0
     raw_marker: -
   - id: "line_208"
     line_number: 208
-    status: pending
+    status: completed
     parallel_group: 999999
     description: Bottom toolbar (below textarea): icon buttons row (Image, LayoutGrid, Gamepad2, Smile icons — matching mockup), then character count \"0/500\", then orange \"Post\" button (rounded-full bg-accent text-white, disabled/opacity-50 when empty)
     indent_level: 0
     raw_marker: -
   - id: "line_209"
     line_number: 209
-    status: pending
+    status: completed
     parallel_group: 999999
     description: Game tag selector: clicking Gamepad2 icon shows game dropdown, selected game appears as pill below textarea
     indent_level: 0
     raw_marker: -
   - id: "line_210"
     line_number: 210
-    status: pending
+    status: completed
     parallel_group: 999999
     description: Character count turns orange at 400+, red at 480+
     indent_level: 0
     raw_marker: -
   - id: "line_211"
     line_number: 211
-    status: pending
+    status: completed
     parallel_group: 999999
     description: Composer has subtle top border separating it from the feed below
     indent_level: 0
     raw_marker: -
   - id: "line_212"
     line_number: 212
-    status: pending
+    status: completed
     parallel_group: 999999
     description: Works in both light and dark mode
     indent_level: 0
     raw_marker: -
   - id: "line_213"
     line_number: 213
-    status: pending
+    status: completed
     parallel_group: 999999
     description: Run `npm run typecheck && npm run build && npm run lint` — all pass
     indent_level: 0
     raw_marker: -
   - id: "line_217"
     line_number: 217
-    status: pending
+    status: completed
     parallel_group: 999999
     description: **User card** at top: avatar (48px round) + @username (bold) + \"XX followers\" (text-secondary)
     indent_level: 0
     raw_marker: -
   - id: "line_218"
     line_number: 218
-    status: pending
+    status: completed
     parallel_group: 999999
     description: **Nav links** (vertical, icon + label each):
     indent_level: 0
     raw_marker: -
   - id: "line_223"
     line_number: 223
-    status: pending
+    status: completed
     parallel_group: 999999
     description: **\"Your Games\" section**: Gamepad2 icon + \"Your Games\" header (text-secondary, semibold), divider above
     indent_level: 0
     raw_marker: -
   - id: "line_227"
     line_number: 227
-    status: pending
+    status: completed
     parallel_group: 999999
     description: **Footer** at bottom: \"About  Help  Terms  Privacy\" text links (text-tertiary, small) + \"© 2024 Aceverse\"
     indent_level: 0
     raw_marker: -
   - id: "line_228"
     line_number: 228
-    status: pending
+    status: completed
     parallel_group: 999999
     description: Sidebar has subtle right border (border-default)
     indent_level: 0
     raw_marker: -
   - id: "line_229"
     line_number: 229
-    status: pending
+    status: completed
     parallel_group: 999999
     description: Sticky positioning, scrolls independently if content overflows viewport
     indent_level: 0
     raw_marker: -
   - id: "line_230"
     line_number: 230
-    status: pending
+    status: completed
     parallel_group: 999999
     description: Looks correct in both light and dark mode
     indent_level: 0
     raw_marker: -
   - id: "line_231"
     line_number: 231
-    status: pending
+    status: completed
     parallel_group: 999999
     description: Run `npm run typecheck && npm run build && npm run lint` — all pass
     indent_level: 0
