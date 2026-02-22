@@ -3,8 +3,8 @@
 # DO NOT EDIT - regenerated on task file change
 
 source_file: RALPH_TASK.md
-source_mtime: 1771750407
-generated_at: 2026-02-22T08:54:08Z
+source_mtime: 1771750678
+generated_at: 2026-02-22T08:58:43Z
 
 tasks:
   - id: "line_77"
@@ -737,56 +737,56 @@ tasks:
     raw_marker: -
   - id: "line_226"
     line_number: 226
-    status: pending
+    status: completed
     parallel_group: 999999
     description: Page transitions: smooth fade/slide animations when navigating between pages (use Framer Motion — install with `npm install framer-motion -w frontend`)
     indent_level: 0
     raw_marker: -
   - id: "line_227"
     line_number: 227
-    status: pending
+    status: completed
     parallel_group: 999999
     description: Micro-interactions: like heart bounce, repost icon spin, follow button pulse
     indent_level: 0
     raw_marker: -
   - id: "line_228"
     line_number: 228
-    status: pending
+    status: completed
     parallel_group: 999999
     description: Skeleton loading cards on all feeds and profile while data loads
     indent_level: 0
     raw_marker: -
   - id: "line_229"
     line_number: 229
-    status: pending
+    status: completed
     parallel_group: 999999
     description: Toast notifications for: post created, post deleted, link copied, error messages — using `#EF8C60` accent
     indent_level: 0
     raw_marker: -
   - id: "line_230"
     line_number: 230
-    status: pending
+    status: completed
     parallel_group: 999999
     description: Hover effects on all interactive elements (buttons glow, cards lift slightly)
     indent_level: 0
     raw_marker: -
   - id: "line_231"
     line_number: 231
-    status: pending
+    status: completed
     parallel_group: 999999
     description: Smooth scroll-to-top when navigating to a new page
     indent_level: 0
     raw_marker: -
   - id: "line_232"
     line_number: 232
-    status: pending
+    status: completed
     parallel_group: 999999
     description: Loading spinners on all async actions (follow, like, post creation)
     indent_level: 0
     raw_marker: -
   - id: "line_233"
     line_number: 233
-    status: pending
+    status: completed
     parallel_group: 999999
     description: Run `npm run typecheck && npm run build && npm run lint` — all pass
     indent_level: 0

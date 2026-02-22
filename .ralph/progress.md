@@ -381,3 +381,9 @@ Next: Phase 16 — Tests (auth, posts, timeline, users test files; npm test).
 
 ### 2026-02-22 19:56:26
 **Session 17 started** (model: auto)
+
+### 2026-02-22 19:58:45
+**Session 17 ended** - 🔄 Context rotation (token limit reached)
+
+### 2026-02-22 19:58:47
+**Session 18 started** (model: auto)

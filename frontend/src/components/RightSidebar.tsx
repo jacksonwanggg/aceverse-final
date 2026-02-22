@@ -153,12 +153,15 @@ export default function RightSidebar() {
                       type="button"
                       onClick={() => followMutation.mutate(u.username)}
                       disabled={followMutation.isPending}
-                      className="shrink-0 px-3 py-1 text-xs font-medium rounded-full transition-colors"
+                      className="shrink-0 px-3 py-1 text-xs font-medium rounded-full transition-colors hover:opacity-90 focus:outline-none focus:ring-2 focus:ring-[#EF8C60] focus:ring-offset-1 focus:ring-offset-[#0D0D0D] disabled:opacity-50 inline-flex items-center gap-1.5"
                       style={{
                         backgroundColor: accent,
                         color: '#0D0D0D',
                       }}
                     >
+                      {followMutation.isPending && (
+                        <span className="w-3 h-3 border-2 border-current border-t-transparent rounded-full animate-spin" aria-hidden />
+                      )}
                       Follow
                     </button>
                   )}

@@ -50,7 +50,9 @@ function ToastList({
               ? 'bg-red-950/95 border-red-700 text-red-100'
               : t.type === 'success'
                 ? 'bg-[#0D0D0D] border-[#EF8C60] text-gray-100'
-                : 'bg-[#1A1A1A] border-gray-600 text-gray-100'
+                : t.type === 'info'
+                  ? 'bg-[#1A1A1A] border-[#EF8C60] text-gray-100'
+                  : 'bg-[#1A1A1A] border-[#EF8C60]/60 text-gray-100'
           }`}
         >
           <div className="flex items-start justify-between gap-2">
