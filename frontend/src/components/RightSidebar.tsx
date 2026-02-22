@@ -57,9 +57,12 @@ export default function RightSidebar() {
                   className="flex items-center gap-2 p-2 rounded-lg bg-gray-800/50"
                 >
                   <span
-                    className="w-3 h-3 rounded-full shrink-0"
-                    style={{ backgroundColor: ug.game?.color || accent }}
-                  />
+                    className="w-8 h-8 rounded-lg flex items-center justify-center shrink-0 text-sm"
+                    style={{ backgroundColor: `${ug.game?.color || accent}22`, color: ug.game?.color || accent }}
+                    title={ug.rank}
+                  >
+                    🏆
+                  </span>
                   <span className="text-sm text-white truncate flex-1">{ug.game?.name ?? 'Game'}</span>
                   <span className="text-xs font-medium truncate max-w-[100px]" style={{ color: accent }}>
                     {ug.rank}

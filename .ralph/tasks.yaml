@@ -3,8 +3,8 @@
 # DO NOT EDIT - regenerated on task file change
 
 source_file: RALPH_TASK.md
-source_mtime: 1771746937
-generated_at: 2026-02-22T08:01:26Z
+source_mtime: 1771747301
+generated_at: 2026-02-22T08:03:01Z
 
 tasks:
   - id: "line_77"
@@ -93,49 +93,49 @@ tasks:
     raw_marker: -
   - id: "line_95"
     line_number: 95
-    status: pending
+    status: completed
     parallel_group: 999999
     description: Create a shared `AppLayout` component used by all authenticated pages with 3-column desktop layout: left sidebar (nav + your games), center content, right sidebar (ranks, friends online, who to follow, trending)
     indent_level: 0
     raw_marker: -
   - id: "line_96"
     line_number: 96
-    status: pending
+    status: completed
     parallel_group: 999999
     description: Left sidebar shows: user avatar + @username + follower count, nav links (Home, Trending, Profile) with active state using `#EF8C60`, \"Your Games\" section with game icons/names
     indent_level: 0
     raw_marker: -
   - id: "line_97"
     line_number: 97
-    status: pending
+    status: completed
     parallel_group: 999999
     description: Right sidebar shows: \"Your Ranks\" with per-game rank + badge icon, \"Friends Online\" with green online dots, \"Who to Follow\" with Follow buttons, \"Trending\" hashtags with post counts
     indent_level: 0
     raw_marker: -
   - id: "line_98"
     line_number: 98
-    status: pending
+    status: completed
     parallel_group: 999999
     description: Mobile layout: bottom tab bar (Home, Trending, Search, Notifications, Profile), floating compose FAB button, collapsible sidebars
     indent_level: 0
     raw_marker: -
   - id: "line_99"
     line_number: 99
-    status: pending
+    status: completed
     parallel_group: 999999
     description: Navigation links work and highlight the active page with `#EF8C60` accent
     indent_level: 0
     raw_marker: -
   - id: "line_100"
     line_number: 100
-    status: pending
+    status: completed
     parallel_group: 999999
     description: Wrap all authenticated pages (Home, Explore, Trending, Search, Notifications, Profile, PostThread) in `AppLayout`
     indent_level: 0
     raw_marker: -
   - id: "line_101"
     line_number: 101
-    status: pending
+    status: completed
     parallel_group: 999999
     description: Run `npm run typecheck && npm run build && npm run lint` — all pass
     indent_level: 0
