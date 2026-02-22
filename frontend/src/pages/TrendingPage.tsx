@@ -217,7 +217,7 @@ export default function TrendingPage() {
       </div>
       {/* Game filter sidebar (desktop) */}
       <aside className="w-48 shrink-0 border-r border-border-default p-4 hidden md:block">
-        <h3 className="text-sm font-semibold text-secondary uppercase tracking-wider mb-2">Filter by game</h3>
+        <h3 className="text-section text-secondary uppercase tracking-wider mb-2">Filter by game</h3>
         <ul className="space-y-1">
           {games.map((g: { id: string; name: string; slug: string; color?: string }) => (
             <li key={g.id}>
@@ -250,7 +250,7 @@ export default function TrendingPage() {
         <div className="sticky top-0 bg-primary/95 backdrop-blur-sm border-b border-border-default px-4 py-4 z-10">
           <div className="flex items-center gap-2 mb-2">
             <Flame className="w-6 h-6 text-accent" />
-            <h1 className="text-xl font-bold text-primary">Trending Clips</h1>
+            <h1 className="text-page-title text-primary">Trending Clips</h1>
           </div>
           <p className="text-sm text-secondary mb-3">Top gaming clips from the community</p>
           {stats && (

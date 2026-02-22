@@ -270,7 +270,7 @@ export default function PostCard({ post, onLike, onRepost, onReply, onEdit, onDe
             </>
           )}
           {!editing && !readOnly && !isDeleted && (
-            <div className="flex items-center gap-6 mt-3 text-secondary">
+            <div className="flex items-center justify-between w-full mt-3 text-secondary">
               <button
                 onClick={onReply}
                 className="flex items-center gap-2 hover:text-reply transition-colors focus:outline-none focus:ring-2 focus:ring-accent focus:ring-offset-1 rounded"

@@ -51,7 +51,7 @@ export default function RightSidebar() {
 
   return (
     <aside className="w-[320px] shrink-0 flex flex-col border-l border-border-default bg-primary min-h-screen overflow-y-auto hidden lg:flex sticky top-0 max-h-screen">
-      <div className="p-4 space-y-4">
+      <div className="p-4 space-y-6">
         <form onSubmit={handleSearch}>
           <input
             type="search"
@@ -66,7 +66,7 @@ export default function RightSidebar() {
         {/* Your Ranks */}
         {userGames.length > 0 && (
           <section className="p-4 rounded-xl bg-secondary">
-            <h3 className="flex items-center gap-2 text-sm font-semibold text-secondary mb-3">
+            <h3 className="flex items-center gap-2 text-section text-secondary mb-3">
               <Gamepad2 className="w-4 h-4" />
               Your Ranks
             </h3>
@@ -99,7 +99,7 @@ export default function RightSidebar() {
         {/* Friends Online */}
         {following.length > 0 && (
           <section className="bg-secondary rounded-xl p-4">
-            <h3 className="flex items-center gap-2 text-sm font-semibold text-secondary mb-3">
+            <h3 className="flex items-center gap-2 text-section text-secondary mb-3">
               <Users className="w-4 h-4" />
               Friends Online
             </h3>
@@ -136,7 +136,7 @@ export default function RightSidebar() {
         {/* Who to Follow */}
         {suggestions.length > 0 && (
           <section className="bg-secondary rounded-xl p-4">
-            <h3 className="flex items-center gap-2 text-sm font-semibold text-secondary mb-3">
+            <h3 className="flex items-center gap-2 text-section text-secondary mb-3">
               <UserPlus className="w-4 h-4" />
               Who to Follow
             </h3>
@@ -179,7 +179,7 @@ export default function RightSidebar() {
         {/* Trending */}
         {tags.length > 0 && (
           <section className="bg-secondary rounded-xl p-4">
-            <h3 className="flex items-center gap-2 text-sm font-semibold text-secondary mb-3">
+            <h3 className="flex items-center gap-2 text-section text-secondary mb-3">
               <TrendingUp className="w-4 h-4" />
               Trending
             </h3>

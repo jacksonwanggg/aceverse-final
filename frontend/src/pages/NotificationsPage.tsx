@@ -109,7 +109,7 @@ export default function NotificationsPage() {
   return (
     <div className="p-4">
       <div className="flex items-center justify-between mb-4">
-        <h1 className="text-2xl font-bold text-primary">Notifications</h1>
+        <h1 className="text-page-title-lg text-primary">Notifications</h1>
         {unreadCount > 0 && (
           <button
             type="button"

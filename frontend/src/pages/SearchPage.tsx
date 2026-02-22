@@ -112,7 +112,7 @@ export default function SearchPage() {
 
   return (
     <div className="max-w-2xl mx-auto p-4 pb-20 md:pb-4">
-      <h1 className="text-2xl font-bold text-primary mb-4">Search</h1>
+      <h1 className="text-page-title-lg text-primary mb-4">Search</h1>
 
       <div className="relative mb-4">
         <Search className="absolute left-4 top-1/2 -translate-y-1/2 w-5 h-5 text-secondary pointer-events-none" />
@@ -186,7 +186,7 @@ export default function SearchPage() {
             <>
               {users.length > 0 && (
                 <section>
-                  <h2 className="text-sm font-semibold text-secondary uppercase tracking-wider mb-2">
+                  <h2 className="text-section text-secondary uppercase tracking-wider mb-2">
                     People
                   </h2>
                   <ul className="space-y-2">
@@ -258,7 +258,7 @@ export default function SearchPage() {
               )}
               {posts.length > 0 && (
                 <section>
-                  <h2 className="text-sm font-semibold text-secondary uppercase tracking-wider mb-2">
+                  <h2 className="text-section text-secondary uppercase tracking-wider mb-2">
                     Posts
                   </h2>
                   <div className="space-y-2">

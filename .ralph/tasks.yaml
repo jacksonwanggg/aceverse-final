@@ -3,8 +3,8 @@
 # DO NOT EDIT - regenerated on task file change
 
 source_file: RALPH_TASK.md
-source_mtime: 1771753512
-generated_at: 2026-02-22T09:45:17Z
+source_mtime: 1771753699
+generated_at: 2026-02-22T09:48:44Z
 
 tasks:
   - id: "line_129"
@@ -814,49 +814,49 @@ tasks:
     raw_marker: -
   - id: "line_327"
     line_number: 327
-    status: pending
+    status: completed
     parallel_group: 999999
     description: Type scale: page titles 20-24px bold, section headers 16-18px semibold, body 15px regular, secondary 13-14px, small labels 12px
     indent_level: 0
     raw_marker: -
   - id: "line_328"
     line_number: 328
-    status: pending
+    status: completed
     parallel_group: 999999
     description: Spacing: card padding 16px, zero gap between feed items (divider only — like Twitter), sidebar sections 16-24px gap, action row even distribution
     indent_level: 0
     raw_marker: -
   - id: "line_329"
     line_number: 329
-    status: pending
+    status: completed
     parallel_group: 999999
     description: Line-height: post content 1.4-1.5, UI text 1.25
     indent_level: 0
     raw_marker: -
   - id: "line_330"
     line_number: 330
-    status: pending
+    status: completed
     parallel_group: 999999
     description: Truncation: long display names ellipsis, long bios \"...more\"
     indent_level: 0
     raw_marker: -
   - id: "line_331"
     line_number: 331
-    status: pending
+    status: completed
     parallel_group: 999999
     description: Timestamps: concise format — \"2h\", \"6h\", \"1d\", \"2w\", \"Jan 15\" (not \"2 hours ago\")
     indent_level: 0
     raw_marker: -
   - id: "line_332"
     line_number: 332
-    status: pending
+    status: completed
     parallel_group: 999999
     description: Border-radius: rounded-full for avatars/buttons/pills/search, rounded-xl for sidebar cards/modals, rounded-lg for form inputs
     indent_level: 0
     raw_marker: -
   - id: "line_333"
     line_number: 333
-    status: pending
+    status: completed
     parallel_group: 999999
     description: Run `npm run typecheck && npm run build && npm run lint` — all pass
     indent_level: 0

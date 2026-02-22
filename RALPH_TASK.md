@@ -324,13 +324,13 @@ The core MVP is fully functional (auth, posts, feeds, likes, reposts, replies, f
 
 ### Phase 14: Typography & Spacing Consistency
 
-- [ ] Type scale: page titles 20-24px bold, section headers 16-18px semibold, body 15px regular, secondary 13-14px, small labels 12px
-- [ ] Spacing: card padding 16px, zero gap between feed items (divider only — like Twitter), sidebar sections 16-24px gap, action row even distribution
-- [ ] Line-height: post content 1.4-1.5, UI text 1.25
-- [ ] Truncation: long display names ellipsis, long bios "...more"
-- [ ] Timestamps: concise format — "2h", "6h", "1d", "2w", "Jan 15" (not "2 hours ago")
-- [ ] Border-radius: rounded-full for avatars/buttons/pills/search, rounded-xl for sidebar cards/modals, rounded-lg for form inputs
-- [ ] Run `npm run typecheck && npm run build && npm run lint` — all pass
+- [x] Type scale: page titles 20-24px bold, section headers 16-18px semibold, body 15px regular, secondary 13-14px, small labels 12px
+- [x] Spacing: card padding 16px, zero gap between feed items (divider only — like Twitter), sidebar sections 16-24px gap, action row even distribution
+- [x] Line-height: post content 1.4-1.5, UI text 1.25
+- [x] Truncation: long display names ellipsis, long bios "...more"
+- [x] Timestamps: concise format — "2h", "6h", "1d", "2w", "Jan 15" (not "2 hours ago")
+- [x] Border-radius: rounded-full for avatars/buttons/pills/search, rounded-xl for sidebar cards/modals, rounded-lg for form inputs
+- [x] Run `npm run typecheck && npm run build && npm run lint` — all pass
 
 ### Phase 15: Final Verification
 
@@ -339,11 +339,11 @@ The core MVP is fully functional (auth, posts, feeds, likes, reposts, replies, f
 - [ ] System mode: follows OS preference correctly
 - [ ] Mobile viewport: all pages usable, bottom nav works, no overflow, floating FAB visible
 - [ ] All features work: register, login, logout, post, edit, delete, like, unlike, repost, unrepost, reply, follow, unfollow, search, notifications, share link, trending, game tags, theme toggle
-- [ ] `npm install` — no errors
-- [ ] `npm run build` — succeeds
-- [ ] `npm run typecheck` — zero errors
-- [ ] `npm run lint` — passes
-- [ ] `npm test` — all existing tests pass
+- [x] `npm install` — no errors
+- [x] `npm run build` — succeeds
+- [x] `npm run typecheck` — zero errors
+- [x] `npm run lint` — passes
+- [x] `npm test` — all existing tests pass
 - [ ] Zero console errors in browser on any page
 
 ---

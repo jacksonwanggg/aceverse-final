@@ -275,7 +275,7 @@ export default function ProfilePage() {
     )
   }
 
-  const joinDate = user.createdAt ? format(new Date(user.createdAt), 'MMMM yyyy') : ''
+  const joinDate = user.createdAt ? format(new Date(user.createdAt), 'MMM d') : ''
   const isMe = user.isMe === true
 
   return (
@@ -290,7 +290,7 @@ export default function ProfilePage() {
             className="w-24 h-24 md:w-32 md:h-32 rounded-full border-4 border-primary object-cover shrink-0"
           />
           <div className="mt-3 md:mt-0 flex-1 min-w-0">
-            <h1 className="text-xl md:text-2xl font-bold text-primary truncate">
+            <h1 className="text-page-title md:text-page-title-lg text-primary truncate">
               {user.displayName || username}
             </h1>
             <p className="text-secondary">@{user.username}</p>
@@ -371,7 +371,7 @@ export default function ProfilePage() {
         {/* Gaming Ranks section */}
         {userGames.length > 0 && (
           <section className="mt-6">
-            <h2 className="text-sm font-semibold text-secondary uppercase tracking-wider mb-3">
+            <h2 className="text-section text-secondary uppercase tracking-wider mb-3">
               Gaming Ranks
             </h2>
             <ul className="space-y-3">
@@ -439,8 +439,6 @@ export default function ProfilePage() {
           </div>
           
           {activeTab === 'posts' && (
-            <>
-          {activeTab === 'posts' && (
             postsLoading ? (
               <>
                 <PostCardSkeleton />
@@ -484,7 +482,7 @@ export default function ProfilePage() {
               </div>
             )
           )}
-          
+
           {activeTab === 'clips' && (
             <div className="py-12 text-center">
               <p className="text-secondary">Clips coming soon</p>
@@ -511,13 +509,13 @@ export default function ProfilePage() {
           aria-label="Edit profile"
         >
           <div
-            className="bg-secondary rounded-2xl border border-border-default w-full max-w-md p-6 shadow-xl"
+            className="bg-secondary rounded-xl border border-border-default w-full max-w-md p-6 shadow-xl"
             onClick={(e) => e.stopPropagation()}
           >
-            <h3 className="text-lg font-semibold text-primary mb-4">Edit Profile</h3>
+            <h3 className="text-section-lg text-primary mb-4">Edit Profile</h3>
             <div className="space-y-4">
               <div>
-                <label className="block text-sm font-medium text-secondary mb-1">Display name</label>
+                <label className="block text-secondary-size font-medium text-secondary mb-1">Display name</label>
                 <input
                   type="text"
                   value={editDisplayName}
@@ -528,7 +526,7 @@ export default function ProfilePage() {
                 />
               </div>
               <div>
-                <label className="block text-sm font-medium text-secondary mb-1">Bio</label>
+                <label className="block text-secondary-size font-medium text-secondary mb-1">Bio</label>
                 <textarea
                   value={editBio}
                   onChange={(e) => setEditBio(e.target.value)}
@@ -539,7 +537,7 @@ export default function ProfilePage() {
                 />
               </div>
               <div>
-                <label className="block text-sm font-medium text-secondary mb-1">Avatar URL</label>
+                <label className="block text-secondary-size font-medium text-secondary mb-1">Avatar URL</label>
                 <input
                   type="url"
                   value={editAvatarUrl}

@@ -46,10 +46,12 @@
   --color-text-tertiary: #536471;
 }
 
-/* Base body styles using CSS variables directly */
+/* Base body styles: 15px body, 1.4-1.5 line-height for content */
 body {
   background-color: var(--color-bg-primary);
   color: var(--color-text-primary);
+  font-size: var(--font-size-body);
+  line-height: var(--leading-content);
 }
 
 /* Utility classes for theme tokens */

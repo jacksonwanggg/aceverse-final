@@ -157,7 +157,7 @@ export default function LeftSidebar() {
 
         {myGames.length > 0 && (
           <div className="pt-4 border-t border-border-default">
-            <h3 className="flex items-center gap-2 px-3 py-1 text-xs font-semibold text-secondary uppercase tracking-wider">
+            <h3 className="flex items-center gap-2 px-3 py-1 text-section text-secondary uppercase tracking-wider">
               <Gamepad2 className="w-4 h-4" />
               Your Games
             </h3>
