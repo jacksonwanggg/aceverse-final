@@ -274,11 +274,12 @@ export default function ProfilePage() {
 
   const joinDate = user.createdAt ? format(new Date(user.createdAt), 'MMMM yyyy') : ''
   const isMe = user.isMe === true
+  const [activeTab, setActiveTab] = useState<'posts' | 'clips' | 'likes'>('posts')
 
   return (
     <div className="min-h-screen">
       {/* Cover area */}
-      <div className="h-32 md:h-40 w-full bg-secondary" />
+      <div className="h-40 md:h-52 w-full bg-gradient-to-b from-secondary to-primary" />
       <div className="px-4 -mt-16 md:-mt-20 relative z-10 pb-4">
         <div className="flex flex-col md:flex-row md:items-end md:gap-6">
           <img
@@ -297,8 +298,9 @@ export default function ProfilePage() {
               </p>
             )}
             <div className="flex items-center gap-4 mt-2 text-sm text-secondary">
-              <span><strong className="text-primary">{user.followerCount ?? 0}</strong> followers</span>
-              <span><strong className="text-primary">{user.followingCount ?? 0}</strong> following</span>
+              <span><strong className="text-primary">{profilePosts.length}</strong> Posts</span>
+              <span><strong className="text-primary">{user.followerCount ?? 0}</strong> Followers</span>
+              <span><strong className="text-primary">{user.followingCount ?? 0}</strong> Following</span>
             </div>
             <div className="flex items-center gap-2 mt-3">
               {isMe ? (

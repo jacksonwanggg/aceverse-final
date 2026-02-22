@@ -71,10 +71,10 @@ export default function RightSidebar() {
               Your Ranks
             </h3>
             <ul className="space-y-2">
-              {userGames.slice(0, 5).map((ug: { id: string; rank: string; rankTier: string; game: { name: string; slug: string; color?: string } | null }) => (
+              {userGames.slice(0, 3).map((ug: { id: string; rank: string; rankTier: string; game: { name: string; slug: string; color?: string } | null }) => (
                 <li
                   key={ug.id}
-                  className="flex items-center gap-2 p-2 rounded-lg bg-secondary"
+                  className="flex items-center gap-2 p-2 rounded-lg hover:bg-hover transition-colors"
                 >
                   <span
                     className="w-8 h-8 rounded-lg flex items-center justify-center shrink-0"

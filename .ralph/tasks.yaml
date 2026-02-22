@@ -3,8 +3,8 @@
 # DO NOT EDIT - regenerated on task file change
 
 source_file: RALPH_TASK.md
-source_mtime: 1771753439
-generated_at: 2026-02-22T09:43:59Z
+source_mtime: 1771753469
+generated_at: 2026-02-22T09:44:32Z
 
 tasks:
   - id: "line_129"
@@ -499,70 +499,70 @@ tasks:
     raw_marker: -
   - id: "line_258"
     line_number: 258
-    status: pending
+    status: completed
     parallel_group: 999999
     description: **Cover image**: Full-width, ~200px tall, dark gradient if no custom image. Edge-to-edge within the center column.
     indent_level: 0
     raw_marker: -
   - id: "line_259"
     line_number: 259
-    status: pending
+    status: completed
     parallel_group: 999999
     description: **Avatar**: Large (128px) round, positioned to overlap the bottom of the cover image (negative margin or absolute positioning), white/dark border ring
     indent_level: 0
     raw_marker: -
   - id: "line_260"
     line_number: 260
-    status: pending
+    status: completed
     parallel_group: 999999
     description: **Name & actions**: @username (large, bold, text-primary) + display name below (text-secondary). \"Edit Profile\" button (outline, rounded-full, border-default) on own profile. \"Follow\"/\"Unfollow\" button (solid bg-accent, rounded-full) on other profiles.
     indent_level: 0
     raw_marker: -
   - id: "line_261"
     line_number: 261
-    status: pending
+    status: completed
     parallel_group: 999999
     description: **Bio**: Full bio text (text-primary), below name
     indent_level: 0
     raw_marker: -
   - id: "line_262"
     line_number: 262
-    status: pending
+    status: completed
     parallel_group: 999999
     description: **Stats line**: \"XXX Posts  X Followers  X Following  📅 Joined Jan 15\" — all inline, counts in bold, labels in text-secondary, calendar icon for join date
     indent_level: 0
     raw_marker: -
   - id: "line_263"
     line_number: 263
-    status: pending
+    status: completed
     parallel_group: 999999
     description: **Gaming Ranks section**: Section header \"Gaming Ranks\" + \"View all (X) ▼\" toggle on right
     indent_level: 0
     raw_marker: -
   - id: "line_266"
     line_number: 266
-    status: pending
+    status: completed
     parallel_group: 999999
     description: **Content tabs**: \"Posts\" | \"Clips\" | \"Likes\" horizontal tab bar — active tab has accent-colored underline, tabs are clickable
     indent_level: 0
     raw_marker: -
   - id: "line_270"
     line_number: 270
-    status: pending
+    status: completed
     parallel_group: 999999
     description: User's post feed below tabs, paginated
     indent_level: 0
     raw_marker: -
   - id: "line_271"
     line_number: 271
-    status: pending
+    status: completed
     parallel_group: 999999
     description: Entire profile looks correct in both light and dark mode
     indent_level: 0
     raw_marker: -
   - id: "line_272"
     line_number: 272
-    status: pending
+    status: completed
     parallel_group: 999999
     description: Run `npm run typecheck && npm run build && npm run lint` — all pass
     indent_level: 0

@@ -255,21 +255,21 @@ The core MVP is fully functional (auth, posts, feeds, likes, reposts, replies, f
 
 ### Phase 9: Profile Page — Match Mockup Exactly
 
-- [ ] **Cover image**: Full-width, ~200px tall, dark gradient if no custom image. Edge-to-edge within the center column.
-- [ ] **Avatar**: Large (128px) round, positioned to overlap the bottom of the cover image (negative margin or absolute positioning), white/dark border ring
-- [ ] **Name & actions**: @username (large, bold, text-primary) + display name below (text-secondary). "Edit Profile" button (outline, rounded-full, border-default) on own profile. "Follow"/"Unfollow" button (solid bg-accent, rounded-full) on other profiles.
-- [ ] **Bio**: Full bio text (text-primary), below name
-- [ ] **Stats line**: "XXX Posts  X Followers  X Following  📅 Joined Jan 15" — all inline, counts in bold, labels in text-secondary, calendar icon for join date
-- [ ] **Gaming Ranks section**: Section header "Gaming Ranks" + "View all (X) ▼" toggle on right
+- [x] **Cover image**: Full-width, ~200px tall, dark gradient if no custom image. Edge-to-edge within the center column.
+- [x] **Avatar**: Large (128px) round, positioned to overlap the bottom of the cover image (negative margin or absolute positioning), white/dark border ring
+- [x] **Name & actions**: @username (large, bold, text-primary) + display name below (text-secondary). "Edit Profile" button (outline, rounded-full, border-default) on own profile. "Follow"/"Unfollow" button (solid bg-accent, rounded-full) on other profiles.
+- [x] **Bio**: Full bio text (text-primary), below name
+- [x] **Stats line**: "XXX Posts  X Followers  X Following  📅 Joined Jan 15" — all inline, counts in bold, labels in text-secondary, calendar icon for join date
+- [x] **Gaming Ranks section**: Section header "Gaming Ranks" + "View all (X) ▼" toggle on right
   - Each rank: large game icon (48px colored), game name (text-primary), rank name in large accent text (e.g., "Immortal 3"), rank tier badge icon on right, "Updated Jan 15" date on far right (text-secondary)
   - Rows have subtle bg-secondary background with rounded corners
-- [ ] **Content tabs**: "Posts" | "Clips" | "Likes" horizontal tab bar — active tab has accent-colored underline, tabs are clickable
+- [x] **Content tabs**: "Posts" | "Clips" | "Likes" horizontal tab bar — active tab has accent-colored underline, tabs are clickable
   - "Posts" tab shows user's post feed (existing)
   - "Clips" tab can show posts with YouTube embeds, or "Coming soon" placeholder
   - "Likes" tab can show posts the user has liked, or "Coming soon" placeholder
-- [ ] User's post feed below tabs, paginated
-- [ ] Entire profile looks correct in both light and dark mode
-- [ ] Run `npm run typecheck && npm run build && npm run lint` — all pass
+- [x] User's post feed below tabs, paginated
+- [x] Entire profile looks correct in both light and dark mode
+- [x] Run `npm run typecheck && npm run build && npm run lint` — all pass
 
 ### Phase 10: Trending Page — Match Mockup Exactly
 
