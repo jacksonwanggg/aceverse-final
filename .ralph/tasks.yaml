@@ -3,8 +3,8 @@
 # DO NOT EDIT - regenerated on task file change
 
 source_file: RALPH_TASK.md
-source_mtime: 1771749732
-generated_at: 2026-02-22T08:42:58Z
+source_mtime: 1771750010
+generated_at: 2026-02-22T08:47:22Z
 
 tasks:
   - id: "line_77"
@@ -604,56 +604,56 @@ tasks:
     raw_marker: -
   - id: "line_198"
     line_number: 198
-    status: pending
+    status: completed
     parallel_group: 999999
     description: Search page (`/search`) with search input and debounced queries (300ms)
     indent_level: 0
     raw_marker: -
   - id: "line_199"
     line_number: 199
-    status: pending
+    status: completed
     parallel_group: 999999
     description: Search tabs: \"Top\" (mixed), \"People\" (users), \"Latest\" (posts by recency)
     indent_level: 0
     raw_marker: -
   - id: "line_200"
     line_number: 200
-    status: pending
+    status: completed
     parallel_group: 999999
     description: User results show avatar, display name, @username, bio snippet, Follow button
     indent_level: 0
     raw_marker: -
   - id: "line_201"
     line_number: 201
-    status: pending
+    status: completed
     parallel_group: 999999
     description: Post results show standard PostCard
     indent_level: 0
     raw_marker: -
   - id: "line_202"
     line_number: 202
-    status: pending
+    status: completed
     parallel_group: 999999
     description: Empty state: \"No results for 'query'\" with suggestions
     indent_level: 0
     raw_marker: -
   - id: "line_203"
     line_number: 203
-    status: pending
+    status: completed
     parallel_group: 999999
     description: Search also accessible via the search bar in the top nav / right sidebar
     indent_level: 0
     raw_marker: -
   - id: "line_204"
     line_number: 204
-    status: pending
+    status: completed
     parallel_group: 999999
     description: Add `api.search` to frontend API client
     indent_level: 0
     raw_marker: -
   - id: "line_205"
     line_number: 205
-    status: pending
+    status: completed
     parallel_group: 999999
     description: Run `npm run typecheck && npm run build && npm run lint` — all pass
     indent_level: 0
