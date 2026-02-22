@@ -3,8 +3,8 @@
 # DO NOT EDIT - regenerated on task file change
 
 source_file: RALPH_TASK.md
-source_mtime: 1771752823
-generated_at: 2026-02-22T09:35:26Z
+source_mtime: 1771753127
+generated_at: 2026-02-22T09:39:15Z
 
 tasks:
   - id: "line_129"
@@ -121,77 +121,77 @@ tasks:
     raw_marker: -
   - id: "line_164"
     line_number: 164
-    status: pending
+    status: completed
     parallel_group: 999999
     description: Install `lucide-react` (`npm install lucide-react -w frontend`)
     indent_level: 0
     raw_marker: -
   - id: "line_165"
     line_number: 165
-    status: pending
+    status: completed
     parallel_group: 999999
     description: Replace ALL emoji icons in `LeftSidebar`: Home (house), Flame (trending), User (profile), Gamepad2 (your games header) — outline default, filled/bold when active page
     indent_level: 0
     raw_marker: -
   - id: "line_166"
     line_number: 166
-    status: pending
+    status: completed
     parallel_group: 999999
     description: Replace ALL emoji icons in `BottomNav`: matching icons for Home, Flame, Search, Bell, User
     indent_level: 0
     raw_marker: -
   - id: "line_167"
     line_number: 167
-    status: pending
+    status: completed
     parallel_group: 999999
     description: Replace ALL emoji icons in `PostCard` action row: Heart (like, filled when liked), MessageCircle (reply), Repeat2 (repost), Share or Upload (share) — with proper hover color per action
     indent_level: 0
     raw_marker: -
   - id: "line_168"
     line_number: 168
-    status: pending
+    status: completed
     parallel_group: 999999
     description: Replace ALL emoji icons in `RightSidebar`: Search, Gamepad2 (ranks header), Users (friends header), UserPlus (who to follow header), TrendingUp (trending header), game-specific icons
     indent_level: 0
     raw_marker: -
   - id: "line_169"
     line_number: 169
-    status: pending
+    status: completed
     parallel_group: 999999
     description: Replace ALL emoji icons in `NotificationDropdown` and `NotificationsPage`: Heart (like), MessageCircle (reply), Repeat2 (repost), UserPlus (follow)
     indent_level: 0
     raw_marker: -
   - id: "line_170"
     line_number: 170
-    status: pending
+    status: completed
     parallel_group: 999999
     description: Replace ALL emoji icons in `PostComposer`: Image, LayoutGrid, Gamepad2, Smile — matching the toolbar from the mockup
     indent_level: 0
     raw_marker: -
   - id: "line_171"
     line_number: 171
-    status: pending
+    status: completed
     parallel_group: 999999
     description: Replace ALL remaining emojis in GameTagSelector, ProfilePage (Calendar, Edit, MapPin etc.), SearchPage, TrendingPage (Flame, TrendingUp, Clock)
     indent_level: 0
     raw_marker: -
   - id: "line_172"
     line_number: 172
-    status: pending
+    status: completed
     parallel_group: 999999
     description: Consistent sizing: 18-20px in action rows, 20-24px in navigation, 16px inline
     indent_level: 0
     raw_marker: -
   - id: "line_173"
     line_number: 173
-    status: pending
+    status: completed
     parallel_group: 999999
     description: Active nav: filled variant; inactive: outline variant. Colors use theme tokens.
     indent_level: 0
     raw_marker: -
   - id: "line_174"
     line_number: 174
-    status: pending
+    status: completed
     parallel_group: 999999
     description: Run `npm run typecheck && npm run build && npm run lint` — all pass
     indent_level: 0

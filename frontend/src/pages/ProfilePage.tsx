@@ -8,7 +8,7 @@ import { useToast } from '../hooks/useToast'
 import PostCard from '../components/PostCard'
 import PostCardSkeleton from '../components/PostCardSkeleton'
 import type { TimelinePost } from '../components/Feed'
-import { Trophy } from 'lucide-react'
+import { Trophy, Calendar } from 'lucide-react'
 
 export default function ProfilePage() {
   const { username } = useParams<{ username: string }>()
