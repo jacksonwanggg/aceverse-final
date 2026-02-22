@@ -350,7 +350,22 @@ export default function ProfilePage() {
           </div>
         </div>
         {user.bio && (
-          <p className="mt-4 text-primary whitespace-pre-wrap">{user.bio}</p>
+          <div className="mt-4">
+            <p className="text-primary whitespace-pre-wrap text-body leading-content">
+              {bioExpanded || user.bio.length <= BIO_TRUNCATE_LENGTH
+                ? user.bio
+                : user.bio.slice(0, BIO_TRUNCATE_LENGTH)}
+            </p>
+            {user.bio.length > BIO_TRUNCATE_LENGTH && (
+              <button
+                type="button"
+                onClick={() => setBioExpanded((e) => !e)}
+                className="mt-1 text-accent hover:underline text-sm"
+              >
+                {bioExpanded ? 'Show less' : '...more'}
+              </button>
+            )}
+          </div>
         )}
 
         {/* Gaming Ranks section */}

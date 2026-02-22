@@ -118,7 +118,7 @@ export default function PostComposer({ onSuccess, placeholder = "What's happenin
               placeholder={placeholder}
               rows={3}
               maxLength={500}
-              className="w-full resize-none bg-transparent text-primary placeholder-secondary focus:outline-none text-lg"
+              className="w-full resize-none bg-transparent text-body text-primary placeholder-secondary focus:outline-none leading-content"
             />
             {gameTag && (
               <div className="mt-2">

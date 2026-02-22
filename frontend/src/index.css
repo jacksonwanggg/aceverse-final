@@ -125,9 +125,14 @@ body {
   color: var(--color-reply);
 }
 
-/* Typography utilities */
+/* Typography utilities - Phase 14: 20-24px titles, 16-18px section, 15px body, 13-14px secondary, 12px small */
 @utility text-page-title {
   font-size: var(--font-size-page-title);
+  font-weight: 700;
+  line-height: var(--leading-ui);
+}
+@utility text-page-title-lg {
+  font-size: 1.5rem; /* 24px */
   font-weight: 700;
   line-height: var(--leading-ui);
 }
@@ -136,10 +141,21 @@ body {
   font-weight: 600;
   line-height: var(--leading-ui);
 }
+@utility text-section-lg {
+  font-size: 1.125rem; /* 18px */
+  font-weight: 600;
+  line-height: var(--leading-ui);
+}
 @utility text-body {
   font-size: var(--font-size-body);
   font-weight: 400;
   line-height: var(--leading-content);
+}
+@utility text-secondary-size {
+  font-size: var(--font-size-secondary);
+}
+@utility text-small {
+  font-size: var(--font-size-small);
 }
 @utility leading-content {
   line-height: var(--leading-content);

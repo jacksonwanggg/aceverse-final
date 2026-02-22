@@ -237,7 +237,7 @@ export default function PostCard({ post, onLike, onRepost, onReply, onEdit, onDe
           ) : (
             <>
               <Link to={`/p/${post.id}`} className="block">
-                <p className="text-primary whitespace-pre-wrap break-words leading-relaxed">
+                <p className="text-primary whitespace-pre-wrap break-words text-body leading-content">
                   {isDeleted ? (
                     <span className="italic text-secondary">This post has been deleted.</span>
                   ) : (
