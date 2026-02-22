@@ -50,8 +50,8 @@ export default function RightSidebar() {
   const tags = tagsData?.tags?.slice(0, 5) ?? []
 
   return (
-    <aside className="w-[320px] shrink-0 flex flex-col border-l border-border-default bg-primary min-h-screen overflow-y-auto hidden lg:flex">
-      <div className="p-4 space-y-6">
+    <aside className="w-[320px] shrink-0 flex flex-col border-l border-border-default bg-primary min-h-screen overflow-y-auto hidden lg:flex sticky top-0 max-h-screen">
+      <div className="p-4 space-y-4">
         <form onSubmit={handleSearch}>
           <input
             type="search"
