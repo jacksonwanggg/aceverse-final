@@ -175,17 +175,17 @@ The core MVP is fully functional (auth, posts, feeds, likes, reposts, replies, f
 
 ### Phase 4: Top Navigation Bar (Match Mockup Exactly)
 
-- [ ] Create a persistent top nav bar visible on all authenticated pages (part of AppLayout):
+- [x] Create a persistent top nav bar visible on all authenticated pages (part of AppLayout):
   - **Left**: Aceverse logo (flame icon in accent + "Aceverse" bold text) — links to home
   - **Center-left**: "Home" link (Home icon + text), "Trending" link (Flame icon + text) — active one highlighted in accent color
   - **Center**: Search input (rounded-full pill, bg-tertiary, Search icon inside, placeholder "Search users, posts, games...")— typing and pressing enter navigates to /search?q=...
   - **Right**: Orange "Post" button (Edit/Pen icon + "Post" text, bg-accent text-white rounded-full) — opens compose modal or navigates to composer, Bell icon (with orange unread dot badge overlaid when notifications exist), User avatar (32px round, links to profile)
-- [ ] Top nav is sticky, has subtle bottom border, backdrop blur on scroll
-- [ ] Notification bell shows orange dot when there are unread notifications (poll or check on page load)
-- [ ] Clicking the Post button in the top nav opens the existing PostComposer (either inline at top of feed or as a modal)
-- [ ] Search input in top nav works: submit navigates to `/search?q=...`
-- [ ] Top nav hides on mobile (replaced by bottom nav) or becomes a minimal bar with just logo + bell + avatar
-- [ ] Run `npm run typecheck && npm run build && npm run lint` — all pass
+- [x] Top nav is sticky, has subtle bottom border, backdrop blur on scroll
+- [x] Notification bell shows orange dot when there are unread notifications (poll or check on page load)
+- [x] Clicking the Post button in the top nav opens the existing PostComposer (either inline at top of feed or as a modal)
+- [x] Search input in top nav works: submit navigates to `/search?q=...`
+- [x] Top nav hides on mobile (replaced by bottom nav) or becomes a minimal bar with just logo + bell + avatar
+- [x] Run `npm run typecheck && npm run build && npm run lint` — all pass
 
 ### Phase 5: PostCard — Match Mockup Exactly
 
