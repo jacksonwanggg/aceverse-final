@@ -3,8 +3,8 @@
 # DO NOT EDIT - regenerated on task file change
 
 source_file: RALPH_TASK.md
-source_mtime: 1771748901
-generated_at: 2026-02-22T08:28:59Z
+source_mtime: 1771749130
+generated_at: 2026-02-22T08:32:41Z
 
 tasks:
   - id: "line_77"
@@ -450,49 +450,49 @@ tasks:
     raw_marker: -
   - id: "line_167"
     line_number: 167
-    status: pending
+    status: completed
     parallel_group: 999999
     description: Thread page (`/p/:postId`) shows: root post at top, reply composer below it, replies listed chronologically
     indent_level: 0
     raw_marker: -
   - id: "line_168"
     line_number: 168
-    status: pending
+    status: completed
     parallel_group: 999999
     description: Reply to a post — reply appears optimistically
     indent_level: 0
     raw_marker: -
   - id: "line_169"
     line_number: 169
-    status: pending
+    status: completed
     parallel_group: 999999
     description: Reply to a reply (nested) — indented in thread, max visible depth of 6
     indent_level: 0
     raw_marker: -
   - id: "line_170"
     line_number: 170
-    status: pending
+    status: completed
     parallel_group: 999999
     description: Edit/delete reply: author-only, soft delete shows placeholder
     indent_level: 0
     raw_marker: -
   - id: "line_171"
     line_number: 171
-    status: pending
+    status: completed
     parallel_group: 999999
     description: Reply creates a REPLY notification for the post author (and optionally parent reply author)
     indent_level: 0
     raw_marker: -
   - id: "line_172"
     line_number: 172
-    status: pending
+    status: completed
     parallel_group: 999999
     description: Add `api.posts.reply(postId, { content })` and `api.replies` (nested reply, edit, delete) to frontend API client
     indent_level: 0
     raw_marker: -
   - id: "line_173"
     line_number: 173
-    status: pending
+    status: completed
     parallel_group: 999999
     description: Run `npm run typecheck && npm run build && npm run lint` — all pass
     indent_level: 0
