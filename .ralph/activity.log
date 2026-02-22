@@ -97,3 +97,4 @@ Ralph Session Started: Sun Feb 22 18:29:01 AEDT 2026
 [18:29:21] 🟢 READ frontend/package.json (38 lines, ~3.7KB)
 [18:29:21] 🟢 READ frontend/src/App.tsx (28 lines, ~2.7KB)
 [18:29:21] 🟢 READ frontend/src/main.tsx (26 lines, ~2.5KB)
+[18:29:25] 🟢 READ frontend/src/hooks/useAuth.ts (42 lines, ~4.1KB)

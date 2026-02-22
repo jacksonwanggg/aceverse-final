@@ -425,7 +425,7 @@ Success Criteria Checklist (Ralph)
 
  [x] Register/login/logout works, passwords hashed, sessions via HttpOnly cookies
 
- Home and Explore feeds load with pagination and nice loading states
+ [x] Home and Explore feeds load with pagination and nice loading states
 
  Creating a post works, shows instantly, respects 280 char limit
 
