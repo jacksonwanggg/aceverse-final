@@ -69,3 +69,12 @@ Completed:
 - Confirmed: npm install, npm run dev, GET /api/health, npm run build, npm run typecheck, npm run lint all pass. Marked all Phase 0 criteria [x] in RALPH_TASK.md.
 
 Next: Phase 1 — Seed & Reset Scripts.
+
+### Phase 1 completed (same session)
+- Added Game, UserGame types and games/userGames to Database; added gameTag to Post; backward-compatible load in store.
+- Created gamesRepo and userGamesRepo; added gameTag to postsRepo.create and createPostSchema in routes.
+- Created backend/src/db/seed.ts: 5 games, 10 gamer users (bcrypt), userGames (ranks), 60+ posts (with game tags), 18 replies (nested 2–3 levels), likes/reposts/follows and matching notifications; seed only runs when executed as entry (not when imported by reset).
+- Created backend/src/db/reset.ts: calls runSeed (which resetDb() then populates).
+- npm run seed and npm run reset verified; frontend TimelinePost includes gameTag.
+
+Next: Phase 2 — Shared Layout & Navigation.

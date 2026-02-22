@@ -60,11 +60,11 @@ Phase 0: Fix Foundation — Build & Run
 [x] npm run typecheck passes with zero errors
 [x] npm run lint passes (fix or suppress non-critical warnings)
 Phase 1: Seed & Reset Scripts
-[ ] Create backend/src/db/seed.ts — generates at least: 10 users (with gamer-themed usernames/display names), 60+ posts (gaming content with game tags), threaded replies (nested 2-3 levels), likes/reposts/follows distributed realistically, notifications matching the actions, at least 3 games in the games table, gaming ranks for users
-[ ] Create backend/src/db/reset.ts — wipes DB file then runs seed
-[ ] npm run seed works and creates db/data/aceverse.db.json automatically if missing
-[ ] npm run reset works (deletes DB, re-seeds)
-[ ] Seeded data displays correctly in the frontend feeds after running npm run seed && npm run dev
+[x] Create backend/src/db/seed.ts — generates at least: 10 users (with gamer-themed usernames/display names), 60+ posts (gaming content with game tags), threaded replies (nested 2-3 levels), likes/reposts/follows distributed realistically, notifications matching the actions, at least 3 games in the games table, gaming ranks for users
+[x] Create backend/src/db/reset.ts — wipes DB file then runs seed
+[x] npm run seed works and creates db/data/aceverse.db.json automatically if missing
+[x] npm run reset works (deletes DB, re-seeds)
+[x] Seeded data displays correctly in the frontend feeds after running npm run seed && npm run dev
 Phase 2: Shared Layout & Navigation
 [ ] Create a shared AppLayout component used by all authenticated pages with 3-column desktop layout: left sidebar (nav + your games), center content, right sidebar (ranks, friends online, who to follow, trending)
 [ ] Left sidebar shows: user avatar + @username + follower count, nav links (Home, Trending, Profile) with active state using #EF8C60, "Your Games" section with game icons/names

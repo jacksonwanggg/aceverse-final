@@ -25,6 +25,7 @@ export function shapePost(post: Post, viewerId?: string) {
   return {
     id: post.id,
     content: post.deletedAt ? null : post.content,
+    gameTag: post.gameTag ?? null,
     deleted: !!post.deletedAt,
     createdAt: post.createdAt,
     updatedAt: post.updatedAt,

@@ -8,6 +8,7 @@ import { useAuth } from '../hooks/useAuth'
 export interface TimelinePost {
   id: string
   content: string | null
+  gameTag?: string | null
   deleted?: boolean
   createdAt: string
   author: { id: string; username: string; displayName: string; avatarUrl: string }

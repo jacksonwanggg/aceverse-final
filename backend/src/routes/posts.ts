@@ -11,7 +11,7 @@ import { shapePost, paramStr } from '../helpers.js';
 
 const router = Router();
 
-const createPostSchema = z.object({ content: z.string().min(1).max(280) });
+const createPostSchema = z.object({ content: z.string().min(1).max(280), gameTag: z.string().optional().nullable() });
 const updatePostSchema = z.object({ content: z.string().min(1).max(280) });
 const replySchema = z.object({ content: z.string().min(1).max(280) });
 
@@ -21,7 +21,11 @@ router.post('/', requireAuth, (req, res) => {
     res.status(400).json({ error: parsed.error.flatten().fieldErrors });
     return;
   }
-  const post = postsRepo.create({ authorId: req.userId!, content: parsed.data.content });
+  const post = postsRepo.create({
+    authorId: req.userId!,
+    content: parsed.data.content,
+    gameTag: parsed.data.gameTag ?? null,
+  });
   res.status(201).json({ post: shapePost(post, req.userId) });
 });
 

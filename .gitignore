@@ -2,5 +2,7 @@ node_modules/
 dist/
 .env
 db/data/*.json
+backend/db/data/*.json
 *.log
 .DS_Store
+backend/db/data/aceverse.db.json

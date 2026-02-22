@@ -1,6 +1,6 @@
 import fs from 'fs';
 import path from 'path';
-import { Database } from './types.js';
+import { Database, Post } from './types.js';
 
 const DATA_DIR = process.env.DATA_DIR || path.join(process.cwd(), 'db', 'data');
 const DB_PATH = path.join(DATA_DIR, 'aceverse.db.json');
@@ -14,6 +14,8 @@ const emptyDb: Database = {
   follows: [],
   notifications: [],
   sessions: [],
+  games: [],
+  userGames: [],
 };
 
 let db: Database;
@@ -22,7 +24,17 @@ function loadFromDisk(): Database {
   try {
     if (fs.existsSync(DB_PATH)) {
       const raw = fs.readFileSync(DB_PATH, 'utf-8');
-      return JSON.parse(raw) as Database;
+      const parsed = JSON.parse(raw) as Record<string, unknown>;
+      const posts = Array.isArray(parsed.posts)
+        ? (parsed.posts as Partial<Post>[]).map((p) => ({ ...p, gameTag: p.gameTag ?? null } as Post))
+        : [];
+      return {
+        ...structuredClone(emptyDb),
+        ...parsed,
+        posts,
+        games: Array.isArray(parsed.games) ? parsed.games : [],
+        userGames: Array.isArray(parsed.userGames) ? parsed.userGames : [],
+      } as Database;
     }
   } catch {
     console.warn('Failed to load DB from disk, starting fresh');

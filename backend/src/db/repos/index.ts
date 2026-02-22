@@ -6,3 +6,5 @@ export { repostsRepo } from './reposts.js';
 export { followsRepo } from './follows.js';
 export { notificationsRepo } from './notifications.js';
 export { sessionsRepo } from './sessions.js';
+export { gamesRepo } from './games.js';
+export { userGamesRepo } from './userGames.js';

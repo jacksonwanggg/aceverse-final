@@ -48,11 +48,12 @@ export const postsRepo = {
       .sort((a, b) => b.createdAt.localeCompare(a.createdAt));
   },
 
-  create(data: { authorId: string; content: string }): Post {
+  create(data: { authorId: string; content: string; gameTag?: string | null }): Post {
     const post: Post = {
       id: uuid(),
       authorId: data.authorId,
       content: data.content,
+      gameTag: data.gameTag ?? null,
       createdAt: new Date().toISOString(),
       updatedAt: null,
       deletedAt: null,

@@ -13,9 +13,27 @@ export interface Post {
   id: string;
   authorId: string;
   content: string;
+  gameTag: string | null;
   createdAt: string;
   updatedAt: string | null;
   deletedAt: string | null;
+}
+
+export interface Game {
+  id: string;
+  name: string;
+  slug: string;
+  iconUrl: string;
+  color: string;
+}
+
+export interface UserGame {
+  id: string;
+  userId: string;
+  gameId: string;
+  rank: string;
+  rankTier: string;
+  updatedAt: string;
 }
 
 export interface Reply {
@@ -77,4 +95,6 @@ export interface Database {
   follows: Follow[];
   notifications: Notification[];
   sessions: Session[];
+  games: Game[];
+  userGames: UserGame[];
 }
