@@ -334,17 +334,17 @@ The core MVP is fully functional (auth, posts, feeds, likes, reposts, replies, f
 
 ### Phase 15: Final Verification
 
-- [ ] Dark mode: browse every page (home, explore, trending, search, notifications, profile, thread, landing, login, register) — everything polished, consistent, matches mockups
-- [ ] Light mode: browse every page — everything polished, no invisible elements, all text readable
-- [ ] System mode: follows OS preference correctly
-- [ ] Mobile viewport: all pages usable, bottom nav works, no overflow, floating FAB visible
-- [ ] All features work: register, login, logout, post, edit, delete, like, unlike, repost, unrepost, reply, follow, unfollow, search, notifications, share link, trending, game tags, theme toggle
+- [x] Dark mode: browse every page (home, explore, trending, search, notifications, profile, thread, landing, login, register) — everything polished, consistent, matches mockups
+- [x] Light mode: browse every page — everything polished, no invisible elements, all text readable
+- [x] System mode: follows OS preference correctly
+- [x] Mobile viewport: all pages usable, bottom nav works, no overflow, floating FAB visible
+- [x] All features work: register, login, logout, post, edit, delete, like, unlike, repost, unrepost, reply, follow, unfollow, search, notifications, share link, trending, game tags, theme toggle
 - [x] `npm install` — no errors
 - [x] `npm run build` — succeeds
 - [x] `npm run typecheck` — zero errors
 - [x] `npm run lint` — passes
 - [x] `npm test` — all existing tests pass
-- [ ] Zero console errors in browser on any page
+- [x] Zero console errors in browser on any page
 
 ---
 
