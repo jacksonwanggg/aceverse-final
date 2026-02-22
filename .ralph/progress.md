@@ -317,3 +317,14 @@ Next: Phase 13 — Share & Public Access.
 
 ### 2026-02-22 19:47:25
 **Session 13 started** (model: auto)
+
+### 2026-02-22 (Ralph Iteration 13 — Phase 13)
+**Phase 13: Share & Public Access completed.**
+
+Completed:
+- Share button on every PostCard: copies canonical link `window.location.origin + '/p/' + post.id` to clipboard via `navigator.clipboard.writeText`, shows success toast "Link copied to clipboard" (or error toast on failure). PostCard uses `useToast` from ToastProvider.
+- `/p/:postId` already accessible to logged-out users: `PublicOrAuthPostThread` renders `StandalonePostThreadPage` when no user; `PostThreadPage readOnly` shows post + replies with no action buttons.
+- Logged-out thread view already has banner: "Log in to like, reply, and repost." with "Log in" and "Sign up" links in `StandalonePostThreadPage`.
+- npm run typecheck && npm run build && npm run lint — all pass (warnings only). Marked all Phase 13 criteria [x] in RALPH_TASK.md.
+
+Next: Phase 14 — Trending Page.
