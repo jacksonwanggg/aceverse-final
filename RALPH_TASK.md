@@ -164,13 +164,13 @@ npm run dev          # starts backend (3001) + frontend (5173) concurrently
 
 ### Phase 9: Replies & Threads
 
-- [ ] Thread page (`/p/:postId`) shows: root post at top, reply composer below it, replies listed chronologically
-- [ ] Reply to a post — reply appears optimistically
-- [ ] Reply to a reply (nested) — indented in thread, max visible depth of 6
-- [ ] Edit/delete reply: author-only, soft delete shows placeholder
-- [ ] Reply creates a REPLY notification for the post author (and optionally parent reply author)
-- [ ] Add `api.posts.reply(postId, { content })` and `api.replies` (nested reply, edit, delete) to frontend API client
-- [ ] Run `npm run typecheck && npm run build && npm run lint` — all pass
+- [x] Thread page (`/p/:postId`) shows: root post at top, reply composer below it, replies listed chronologically
+- [x] Reply to a post — reply appears optimistically
+- [x] Reply to a reply (nested) — indented in thread, max visible depth of 6
+- [x] Edit/delete reply: author-only, soft delete shows placeholder
+- [x] Reply creates a REPLY notification for the post author (and optionally parent reply author)
+- [x] Add `api.posts.reply(postId, { content })` and `api.replies` (nested reply, edit, delete) to frontend API client
+- [x] Run `npm run typecheck && npm run build && npm run lint` — all pass
 
 ### Phase 10: Follows & Profile
 

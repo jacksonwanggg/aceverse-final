@@ -70,6 +70,16 @@ export const api = {
       apiRequest(`/posts/${postId}/repost`, { method: 'POST' }),
     unrepost: (postId: string) =>
       apiRequest(`/posts/${postId}/repost`, { method: 'DELETE' }),
+    reply: (postId: string, data: { content: string }) =>
+      apiRequest<{ reply: any }>(`/posts/${postId}/replies`, { method: 'POST', body: JSON.stringify(data) }),
+  },
+  replies: {
+    create: (replyId: string, data: { content: string }) =>
+      apiRequest<{ reply: any }>(`/replies/${replyId}/replies`, { method: 'POST', body: JSON.stringify(data) }),
+    update: (replyId: string, data: { content: string }) =>
+      apiRequest<{ reply: any }>(`/replies/${replyId}`, { method: 'PATCH', body: JSON.stringify(data) }),
+    delete: (replyId: string) =>
+      apiRequest<{ ok: boolean }>(`/replies/${replyId}`, { method: 'DELETE' }),
   },
   games: {
     getAll: () => apiRequest<{ games: any[] }>('/games'),

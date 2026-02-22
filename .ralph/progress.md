@@ -242,3 +242,17 @@ Next: Phase 9 — Replies & Threads.
 
 ### 2026-02-22 19:29:02
 **Session 9 started** (model: auto)
+
+### 2026-02-22 (Ralph Iteration 9 — Phase 9)
+**Phase 9: Replies & Threads completed.**
+
+Completed:
+- Thread page: root post at top, reply composer below it (when authenticated), replies listed chronologically with depth-based indent (max depth 6).
+- Reply to post: api.posts.reply(postId, { content }), optimistic add to cache, replace with server reply on success.
+- Reply to reply: api.replies.create(replyId, { content }), inline "Reply" opens ReplyComposer, nested replies indented (max 6).
+- Edit/delete reply: author-only Edit/Delete on ReplyRow, inline edit with Save/Cancel, soft delete shows "This reply has been deleted."; api.replies.update and api.replies.delete in frontend.
+- Backend already creates REPLY notification for post author and parent reply author (replies routes).
+- Added api.posts.reply and api.replies (create, update, delete) to frontend lib/api.ts.
+- npm run typecheck && npm run build && npm run lint — all pass (warnings only).
+
+Next: Phase 10 — Follows & Profile.
