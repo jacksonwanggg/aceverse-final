@@ -36,6 +36,37 @@ interface PostCardProps {
   readOnly?: boolean
 }
 
+function renderHighlightedContent(content: string): React.ReactNode {
+  const parts = content.split(/(#\w+|@\w+)/g)
+  return parts.map((part, i) => {
+    if (part.startsWith('#')) {
+      return (
+        <Link
+          key={i}
+          to={`/search?q=${encodeURIComponent(part)}`}
+          className="text-accent hover:underline"
+          onClick={(e) => e.stopPropagation()}
+        >
+          {part}
+        </Link>
+      )
+    }
+    if (part.startsWith('@')) {
+      return (
+        <Link
+          key={i}
+          to={`/u/${part.slice(1)}`}
+          className="text-accent hover:underline"
+          onClick={(e) => e.stopPropagation()}
+        >
+          {part}
+        </Link>
+      )
+    }
+    return part
+  })
+}
+
 export default function PostCard({ post, onLike, onRepost, onReply, onEdit, onDelete, readOnly }: PostCardProps) {
   const { showToast } = useToast()
   const [menuOpen, setMenuOpen] = useState(false)
@@ -126,38 +157,6 @@ export default function PostCard({ post, onLike, onRepost, onReply, onEdit, onDe
     }
   }
 
-  const renderContent = (text: string) => {
-    const parts = text.split(/(@\w+|#\w+)/g)
-    return parts.map((part, i) => {
-      if (part.startsWith('@')) {
-        const username = part.slice(1)
-        return (
-          <Link
-            key={i}
-            to={`/u/${username}`}
-            className="text-accent hover:underline"
-            onClick={(e) => e.stopPropagation()}
-          >
-            {part}
-          </Link>
-        )
-      }
-      if (part.startsWith('#')) {
-        return (
-          <Link
-            key={i}
-            to={`/search?q=${encodeURIComponent(part)}`}
-            className="text-accent hover:underline"
-            onClick={(e) => e.stopPropagation()}
-          >
-            {part}
-          </Link>
-        )
-      }
-      return part
-    })
-  }
-
   return (
     <article className="border-b border-border-default p-4 hover:bg-hover transition-colors duration-200">
       <div className="flex gap-3">
@@ -172,20 +171,20 @@ export default function PostCard({ post, onLike, onRepost, onReply, onEdit, onDe
           <div className="flex items-center gap-2 mb-1">
             <Link
               to={`/u/${post.author.username}`}
-              className="font-semibold text-primary hover:underline"
+              className="font-semibold text-primary hover:underline truncate"
             >
               {post.author.displayName}
             </Link>
             <Link
               to={`/u/${post.author.username}`}
-              className="text-secondary hover:underline"
+              className="text-secondary hover:underline truncate"
             >
               @{post.author.username}
             </Link>
-            <span className="text-secondary">·</span>
+            <span className="text-secondary shrink-0">·</span>
             <Link
               to={`/p/${post.id}`}
-              className="text-secondary hover:underline"
+              className="text-secondary hover:underline shrink-0"
             >
               {timeAgo}
             </Link>
@@ -203,7 +202,7 @@ export default function PostCard({ post, onLike, onRepost, onReply, onEdit, onDe
                     {post.canEdit && (
                       <button
                         onClick={handleStartEdit}
-                        className="w-full px-3 py-2 text-left text-sm text-primary hover:bg-hover rounded"
+                        className="w-full px-3 py-2 text-left text-sm text-primary hover:bg-hover"
                       >
                         Edit
                       </button>
@@ -212,7 +211,7 @@ export default function PostCard({ post, onLike, onRepost, onReply, onEdit, onDe
                       <button
                         onClick={handleDelete}
                         disabled={deleting}
-                        className="w-full px-3 py-2 text-left text-sm text-red-500 hover:bg-hover rounded disabled:opacity-50"
+                        className="w-full px-3 py-2 text-left text-sm text-red-500 hover:bg-hover disabled:opacity-50"
                       >
                         {deleting ? 'Deleting...' : 'Delete'}
                       </button>
@@ -257,18 +256,19 @@ export default function PostCard({ post, onLike, onRepost, onReply, onEdit, onDe
                   {isDeleted ? (
                     <span className="italic text-secondary">This post has been deleted.</span>
                   ) : (
-                    renderHighlightedContent(post.content ?? '')
+                    renderHighlightedContent(post.content!)
                   )}
                 </p>
               </Link>
               {(post.gameTag || post.game) && !isDeleted && (
                 <Link
-                  to={`/trending?game=${encodeURIComponent(post.game?.slug ?? post.gameTag ?? '')}`}
-                  className="inline-flex items-center gap-1.5 px-2 py-1 rounded text-xs font-medium mt-2 transition-colors hover:opacity-80"
-                  style={{
-                    backgroundColor: (post.game?.color || 'var(--color-accent)') + '20',
-                    color: post.game?.color || 'var(--color-accent)',
+                  to={`/trending?game=${post.game?.slug || post.gameTag}`}
+                  className="inline-flex items-center gap-1.5 px-2 py-1 rounded text-xs font-medium mt-2 transition-colors"
+                  style={{ 
+                    backgroundColor: (post.game?.color || 'var(--color-accent)') + '20', 
+                    color: post.game?.color || 'var(--color-accent)' 
                   }}
+                  onClick={(e) => e.stopPropagation()}
                 >
                   <span
                     className="w-3 h-3 rounded-sm"
@@ -284,7 +284,7 @@ export default function PostCard({ post, onLike, onRepost, onReply, onEdit, onDe
               )}
             </>
           )}
-          {!editing && !readOnly && (
+          {!editing && !readOnly && !isDeleted && (
             <div className="flex items-center gap-6 mt-3 text-secondary">
               <button
                 onClick={onReply}
@@ -329,6 +329,6 @@ export default function PostCard({ post, onLike, onRepost, onReply, onEdit, onDe
           )}
         </div>
       </div>
-    </motion.article>
+    </article>
   )
 }

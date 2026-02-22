@@ -203,14 +203,14 @@ The core MVP is fully functional (auth, posts, feeds, likes, reposts, replies, f
 
 ### Phase 6: PostComposer — Match Mockup Exactly
 
-- [ ] Layout: avatar (40px) on left, borderless textarea on right, grows with content
-- [ ] Placeholder: "What's happening in your games?"
-- [ ] Bottom toolbar (below textarea): icon buttons row (Image, LayoutGrid, Gamepad2, Smile icons — matching mockup), then character count "0/500", then orange "Post" button (rounded-full bg-accent text-white, disabled/opacity-50 when empty)
-- [ ] Game tag selector: clicking Gamepad2 icon shows game dropdown, selected game appears as pill below textarea
-- [ ] Character count turns orange at 400+, red at 480+
-- [ ] Composer has subtle top border separating it from the feed below
-- [ ] Works in both light and dark mode
-- [ ] Run `npm run typecheck && npm run build && npm run lint` — all pass
+- [x] Layout: avatar (40px) on left, borderless textarea on right, grows with content
+- [x] Placeholder: "What's happening in your games?"
+- [x] Bottom toolbar (below textarea): icon buttons row (Image, LayoutGrid, Gamepad2, Smile icons — matching mockup), then character count "0/500", then orange "Post" button (rounded-full bg-accent text-white, disabled/opacity-50 when empty)
+- [x] Game tag selector: clicking Gamepad2 icon shows game dropdown, selected game appears as pill below textarea
+- [x] Character count turns orange at 400+, red at 480+
+- [x] Composer has subtle top border separating it from the feed below
+- [x] Works in both light and dark mode
+- [x] Run `npm run typecheck && npm run build && npm run lint` — all pass
 
 ### Phase 7: Left Sidebar — Match Mockup Exactly
 

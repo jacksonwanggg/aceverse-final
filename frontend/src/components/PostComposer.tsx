@@ -11,7 +11,7 @@ interface PostComposerProps {
   placeholder?: string
 }
 
-export default function PostComposer({ onSuccess, placeholder = "What's happening?" }: PostComposerProps) {
+export default function PostComposer({ onSuccess, placeholder = "What's happening in your games?" }: PostComposerProps) {
   const { user } = useAuth()
   const queryClient = useQueryClient()
   const { showToast } = useToast()
@@ -102,9 +102,6 @@ export default function PostComposer({ onSuccess, placeholder = "What's happenin
     return null
   }
 
-  const remaining = 500 - content.length
-  const isOverLimit = content.length > 500
-
   return (
     <div className="border-b border-border-default p-4">
       <form onSubmit={handleSubmit}>
@@ -112,7 +109,7 @@ export default function PostComposer({ onSuccess, placeholder = "What's happenin
           <img
             src={user.avatarUrl}
             alt={user.displayName}
-            className="w-12 h-12 rounded-full flex-shrink-0"
+            className="w-10 h-10 rounded-full flex-shrink-0 object-cover"
           />
           <div className="flex-1">
             <textarea
@@ -161,7 +158,7 @@ export default function PostComposer({ onSuccess, placeholder = "What's happenin
                 </button>
               </div>
               <div className="flex items-center gap-3">
-                <span className={`text-sm ${isOverLimit ? 'text-red-500' : remaining < 100 ? 'text-accent' : 'text-secondary'}`}>
+                <span className={`text-sm ${content.length > 480 ? 'text-red-500' : content.length > 400 ? 'text-accent' : 'text-secondary'}`}>
                   {content.length}/500
                 </span>
                 <button
