@@ -3,8 +3,8 @@
 # DO NOT EDIT - regenerated on task file change
 
 source_file: RALPH_TASK.md
-source_mtime: 1771747911
-generated_at: 2026-02-22T08:12:23Z
+source_mtime: 1771748374
+generated_at: 2026-02-22T08:20:42Z
 
 tasks:
   - id: "line_77"
@@ -254,56 +254,56 @@ tasks:
     raw_marker: -
   - id: "line_127"
     line_number: 127
-    status: pending
+    status: completed
     parallel_group: 999999
     description: Create a stunning landing page at `/` for logged-out users with: hero section with animated gradient/glow using `#EF8C60`, tagline like \"Your gaming universe. One feed.\", prominent Sign Up and Login CTAs
     indent_level: 0
     raw_marker: -
   - id: "line_128"
     line_number: 128
-    status: pending
+    status: completed
     parallel_group: 999999
     description: Landing page has smooth scroll animations (fade-in, slide-up on scroll) using CSS animations or Framer Motion
     indent_level: 0
     raw_marker: -
   - id: "line_129"
     line_number: 129
-    status: pending
+    status: completed
     parallel_group: 999999
     description: Feature showcase sections: \"Track Your Ranks\", \"Share Your Clips\", \"Find Your Squad\", \"Stay in the Loop\" — each with icon/illustration and description
     indent_level: 0
     raw_marker: -
   - id: "line_130"
     line_number: 130
-    status: pending
+    status: completed
     parallel_group: 999999
     description: Social proof / stats section (e.g., \"Join 50K+ gamers\", \"1M+ clips shared\" — fake numbers, looks good)
     indent_level: 0
     raw_marker: -
   - id: "line_131"
     line_number: 131
-    status: pending
+    status: completed
     parallel_group: 999999
     description: Footer with links: About, Help, Terms, Privacy
     indent_level: 0
     raw_marker: -
   - id: "line_132"
     line_number: 132
-    status: pending
+    status: completed
     parallel_group: 999999
     description: Visiting `/p/:postId` while logged out shows the post thread read-only (no interaction buttons), with a banner prompting login
     indent_level: 0
     raw_marker: -
   - id: "line_133"
     line_number: 133
-    status: pending
+    status: completed
     parallel_group: 999999
     description: Landing page is fully responsive and looks great on mobile
     indent_level: 0
     raw_marker: -
   - id: "line_134"
     line_number: 134
-    status: pending
+    status: completed
     parallel_group: 999999
     description: Run `npm run typecheck && npm run build && npm run lint` — all pass
     indent_level: 0
