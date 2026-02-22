@@ -21,8 +21,8 @@ export default function GameTagSelector({ value, onChange, className = '' }: Gam
         onClick={() => onChange(null)}
         className={`px-2 py-1 rounded text-xs font-medium transition-colors ${
           value === null
-            ? 'bg-[#EF8C60] text-[#0D0D0D]'
-            : 'bg-gray-700 text-gray-400 hover:bg-gray-600 hover:text-white'
+            ? 'bg-accent text-white'
+            : 'bg-tertiary text-secondary hover:bg-hover hover:text-primary'
         }`}
       >
         No game
@@ -33,7 +33,7 @@ export default function GameTagSelector({ value, onChange, className = '' }: Gam
           type="button"
           onClick={() => onChange(value === g.slug ? null : g.slug)}
           className={`px-2 py-1 rounded text-xs font-medium transition-colors ${
-            value === g.slug ? 'text-[#0D0D0D]' : 'text-gray-300 hover:bg-gray-700 hover:text-white'
+            value === g.slug ? 'text-white' : 'text-secondary hover:bg-tertiary hover:text-primary'
           }`}
           style={value === g.slug ? { backgroundColor: g.color || '#EF8C60' } : undefined}
         >

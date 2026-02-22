@@ -192,16 +192,15 @@ export default function TrendingPage() {
   return (
     <div className="min-h-screen flex flex-col md:flex-row">
       {/* Mobile game filter */}
-      <div className="md:hidden overflow-x-auto border-b border-gray-800 px-4 py-2 flex gap-2 shrink-0">
+      <div className="md:hidden overflow-x-auto border-b border-border-default px-4 py-2 flex gap-2 shrink-0">
         {games.map((g: { id: string; name: string; slug: string }) => (
           <button
             key={g.id}
             type="button"
             onClick={() => setSearchParams(g.slug === game ? {} : { game: g.slug })}
             className={`shrink-0 px-3 py-1.5 rounded-full text-sm font-medium transition-colors ${
-              game === g.slug ? 'text-[#0D0D0D]' : 'text-gray-400 hover:text-white bg-gray-800/50'
+              game === g.slug ? 'bg-accent text-white' : 'text-secondary hover:text-primary bg-secondary'
             }`}
-            style={game === g.slug ? { backgroundColor: '#EF8C60' } : undefined}
           >
             {g.name}
           </button>
@@ -210,15 +209,15 @@ export default function TrendingPage() {
           <button
             type="button"
             onClick={() => setSearchParams({})}
-            className="shrink-0 px-3 py-1.5 rounded-full text-sm text-gray-400 hover:text-white bg-gray-800/50 border border-gray-700"
+            className="shrink-0 px-3 py-1.5 rounded-full text-sm text-secondary hover:text-primary bg-secondary border border-border-default"
           >
             Clear
           </button>
         )}
       </div>
       {/* Game filter sidebar (desktop) */}
-      <aside className="w-48 shrink-0 border-r border-gray-800 p-4 hidden md:block">
-        <h3 className="text-sm font-semibold text-gray-400 uppercase tracking-wider mb-2">Filter by game</h3>
+      <aside className="w-48 shrink-0 border-r border-border-default p-4 hidden md:block">
+        <h3 className="text-sm font-semibold text-secondary uppercase tracking-wider mb-2">Filter by game</h3>
         <ul className="space-y-1">
           {games.map((g: { id: string; name: string; slug: string; color?: string }) => (
             <li key={g.id}>
@@ -227,14 +226,9 @@ export default function TrendingPage() {
                 onClick={() => setSearchParams(g.slug === game ? {} : { game: g.slug })}
                 className={`w-full text-left px-3 py-2 rounded-lg text-sm transition-colors ${
                   game === g.slug
-                    ? 'text-[#0D0D0D] font-medium'
-                    : 'text-gray-400 hover:text-white hover:bg-gray-800/50'
+                    ? 'bg-accent text-white font-medium'
+                    : 'text-secondary hover:text-primary hover:bg-hover'
                 }`}
-                style={
-                  game === g.slug
-                    ? { backgroundColor: '#EF8C60' }
-                    : undefined
-                }
               >
                 {g.name}
               </button>
@@ -245,7 +239,7 @@ export default function TrendingPage() {
           <button
             type="button"
             onClick={() => setSearchParams({})}
-            className="mt-3 w-full px-3 py-2 rounded-lg text-sm text-gray-400 hover:text-white hover:bg-gray-800/50 border border-gray-700"
+            className="mt-3 w-full px-3 py-2 rounded-lg text-sm text-secondary hover:text-primary hover:bg-hover border border-border-default"
           >
             Clear
           </button>
@@ -253,17 +247,17 @@ export default function TrendingPage() {
       </aside>
 
       <div className="flex-1 min-w-0">
-        <div className="sticky top-0 bg-[#0D0D0D]/95 backdrop-blur-sm border-b border-gray-800 px-4 py-3 z-10">
-          <h1 className="text-xl font-bold text-white">Trending Clips</h1>
+        <div className="sticky top-0 bg-primary/95 backdrop-blur-sm border-b border-border-default px-4 py-3 z-10">
+          <h1 className="text-xl font-bold text-primary">Trending Clips</h1>
           {stats && (
-            <p className="text-sm text-gray-400 mt-0.5">
+            <p className="text-sm text-secondary mt-0.5">
               {stats.hotClipsCount} hot clips · {stats.totalLikes} total likes · updated{' '}
               {formatDistanceToNow(new Date(stats.lastUpdated), { addSuffix: true })}
             </p>
           )}
         </div>
 
-        <div className="divide-y divide-gray-800">
+        <div className="divide-y divide-border-default">
           {isLoading && (
             <>
               {[...Array(5)].map((_, i) => (
@@ -277,7 +271,7 @@ export default function TrendingPage() {
             </div>
           )}
           {!isLoading && !isError && posts.length === 0 && (
-            <div className="p-8 text-center text-gray-500">
+            <div className="p-8 text-center text-tertiary">
               No trending clips yet. Post with a game tag to appear here.
             </div>
           )}
@@ -286,7 +280,7 @@ export default function TrendingPage() {
             posts.map((post, index) => (
               <div key={post.id} className="relative">
                 <span
-                  className="absolute left-4 top-4 z-10 w-8 h-8 rounded-full flex items-center justify-center text-sm font-bold bg-[#EF8C60] text-[#0D0D0D]"
+                  className="absolute left-4 top-4 z-10 w-8 h-8 rounded-full flex items-center justify-center text-sm font-bold bg-accent text-white"
                   aria-hidden
                 >
                   #{index + 1}

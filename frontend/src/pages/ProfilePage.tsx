@@ -9,8 +9,6 @@ import PostCard from '../components/PostCard'
 import PostCardSkeleton from '../components/PostCardSkeleton'
 import type { TimelinePost } from '../components/Feed'
 
-const accent = '#EF8C60'
-
 export default function ProfilePage() {
   const { username } = useParams<{ username: string }>()
   const queryClient = useQueryClient()
@@ -247,20 +245,20 @@ export default function ProfilePage() {
 
   if (!username) {
     return (
-      <div className="p-4 text-gray-400">Invalid profile.</div>
+      <div className="p-4 text-secondary">Invalid profile.</div>
     )
   }
   if (!user) {
     return (
       <div className="min-h-screen">
-        <div className="h-32 md:h-40 w-full bg-gray-800/50 animate-pulse" />
+        <div className="h-32 md:h-40 w-full bg-secondary animate-pulse" />
         <div className="px-4 -mt-16 md:-mt-20 relative z-10 pb-4">
           <div className="flex gap-4">
-            <div className="w-24 h-24 md:w-32 md:h-32 rounded-full bg-gray-700 animate-pulse shrink-0" />
+            <div className="w-24 h-24 md:w-32 md:h-32 rounded-full bg-tertiary animate-pulse shrink-0" />
             <div className="flex-1 space-y-2 mt-2">
-              <div className="h-6 w-48 bg-gray-700 rounded animate-pulse" />
-              <div className="h-4 w-32 bg-gray-700 rounded animate-pulse" />
-              <div className="h-4 w-24 bg-gray-700 rounded animate-pulse" />
+              <div className="h-6 w-48 bg-tertiary rounded animate-pulse" />
+              <div className="h-4 w-32 bg-tertiary rounded animate-pulse" />
+              <div className="h-4 w-24 bg-tertiary rounded animate-pulse" />
             </div>
           </div>
           <div className="mt-6 space-y-3">
@@ -279,37 +277,32 @@ export default function ProfilePage() {
   return (
     <div className="min-h-screen">
       {/* Cover area */}
-      <div
-        className="h-32 md:h-40 w-full"
-        style={{ backgroundColor: '#1A1A1A' }}
-      />
+      <div className="h-32 md:h-40 w-full bg-secondary" />
       <div className="px-4 -mt-16 md:-mt-20 relative z-10 pb-4">
         <div className="flex flex-col md:flex-row md:items-end md:gap-6">
           <img
             src={user.avatarUrl || 'https://api.dicebear.com/7.x/initials/svg?seed=' + username}
             alt=""
-            className="w-24 h-24 md:w-32 md:h-32 rounded-full border-4 border-[#0D0D0D] object-cover shrink-0"
-            style={{ borderColor: '#0D0D0D' }}
+            className="w-24 h-24 md:w-32 md:h-32 rounded-full border-4 border-primary object-cover shrink-0"
           />
           <div className="mt-3 md:mt-0 flex-1 min-w-0">
-            <h1 className="text-xl md:text-2xl font-bold text-white truncate">
+            <h1 className="text-xl md:text-2xl font-bold text-primary truncate">
               {user.displayName || username}
             </h1>
-            <p className="text-gray-400">@{user.username}</p>
+            <p className="text-secondary">@{user.username}</p>
             {joinDate && (
-              <p className="text-sm text-gray-500 mt-1">Joined {joinDate}</p>
+              <p className="text-sm text-tertiary mt-1">Joined {joinDate}</p>
             )}
-            <div className="flex items-center gap-4 mt-2 text-sm text-gray-400">
-              <span><strong className="text-white">{user.followerCount ?? 0}</strong> followers</span>
-              <span><strong className="text-white">{user.followingCount ?? 0}</strong> following</span>
+            <div className="flex items-center gap-4 mt-2 text-sm text-secondary">
+              <span><strong className="text-primary">{user.followerCount ?? 0}</strong> followers</span>
+              <span><strong className="text-primary">{user.followingCount ?? 0}</strong> following</span>
             </div>
             <div className="flex items-center gap-2 mt-3">
               {isMe ? (
                 <button
                   type="button"
                   onClick={openEdit}
-                  className="px-4 py-2 rounded-full text-sm font-medium transition-colors"
-                  style={{ backgroundColor: accent, color: '#0D0D0D' }}
+                  className="px-4 py-2 rounded-full text-sm font-medium transition-colors bg-accent text-white"
                 >
                   Edit Profile
                 </button>
@@ -320,12 +313,12 @@ export default function ProfilePage() {
                       type="button"
                       onClick={() => unfollowMutation.mutate(username)}
                       disabled={unfollowMutation.isPending}
-                      className="px-4 py-2 rounded-full text-sm font-medium border border-gray-600 text-gray-300 hover:bg-gray-800 hover:shadow-[0_0_10px_rgba(239,140,96,0.2)] transition-all disabled:opacity-50 inline-flex items-center justify-center gap-2 min-w-[100px]"
+                      className="px-4 py-2 rounded-full text-sm font-medium border border-border-default text-secondary hover:bg-hover transition-all disabled:opacity-50 inline-flex items-center justify-center gap-2 min-w-[100px]"
                       whileTap={{ scale: 0.97 }}
                       whileHover={{ scale: 1.02 }}
                     >
                       {unfollowMutation.isPending ? (
-                        <span className="w-4 h-4 border-2 border-gray-400 border-t-transparent rounded-full animate-spin" />
+                        <span className="w-4 h-4 border-2 border-secondary border-t-transparent rounded-full animate-spin" />
                       ) : null}
                       {unfollowMutation.isPending ? '' : 'Unfollow'}
                     </motion.button>
@@ -334,13 +327,12 @@ export default function ProfilePage() {
                       type="button"
                       onClick={() => followMutation.mutate(username)}
                       disabled={followMutation.isPending}
-                      className="px-4 py-2 rounded-full text-sm font-medium transition-all disabled:opacity-50 inline-flex items-center justify-center gap-2 min-w-[100px] hover:shadow-[0_0_12px_rgba(239,140,96,0.5)]"
-                      style={{ backgroundColor: accent, color: '#0D0D0D' }}
+                      className="px-4 py-2 rounded-full text-sm font-medium transition-all disabled:opacity-50 inline-flex items-center justify-center gap-2 min-w-[100px] bg-accent text-white hover:bg-accent-hover"
                       whileTap={{ scale: 0.97 }}
                       whileHover={{ scale: 1.02 }}
                     >
                       {followMutation.isPending ? (
-                        <span className="w-4 h-4 border-2 border-[#0D0D0D] border-t-transparent rounded-full animate-spin" />
+                        <span className="w-4 h-4 border-2 border-white border-t-transparent rounded-full animate-spin" />
                       ) : null}
                       {followMutation.isPending ? '' : 'Follow'}
                     </motion.button>
@@ -351,13 +343,13 @@ export default function ProfilePage() {
           </div>
         </div>
         {user.bio && (
-          <p className="mt-4 text-gray-300 whitespace-pre-wrap">{user.bio}</p>
+          <p className="mt-4 text-primary whitespace-pre-wrap">{user.bio}</p>
         )}
 
         {/* Gaming Ranks section */}
         {userGames.length > 0 && (
           <section className="mt-6">
-            <h2 className="text-sm font-semibold text-gray-400 uppercase tracking-wider mb-3">
+            <h2 className="text-sm font-semibold text-secondary uppercase tracking-wider mb-3">
               Gaming Ranks
             </h2>
             <ul className="space-y-3">
@@ -370,11 +362,11 @@ export default function ProfilePage() {
               }) => (
                 <li
                   key={ug.id}
-                  className="flex items-center gap-3 p-3 rounded-xl bg-gray-800/60 border border-gray-700/50"
+                  className="flex items-center gap-3 p-3 rounded-xl bg-secondary border border-border-default"
                 >
                   <span
                     className="w-10 h-10 rounded-lg flex items-center justify-center shrink-0 text-lg"
-                    style={{ backgroundColor: `${ug.game?.color || accent}30`, color: ug.game?.color || accent }}
+                    style={{ backgroundColor: `${ug.game?.color || 'var(--color-accent)'}30`, color: ug.game?.color || 'var(--color-accent)' }}
                     title={ug.rank}
                   >
                     {ug.game?.iconUrl ? (
@@ -384,15 +376,15 @@ export default function ProfilePage() {
                     )}
                   </span>
                   <div className="flex-1 min-w-0">
-                    <p className="font-medium text-white">{ug.game?.name ?? 'Game'}</p>
-                    <p className="text-sm" style={{ color: accent }}>{ug.rank}</p>
-                    <p className="text-xs text-gray-500 mt-0.5">
+                    <p className="font-medium text-primary">{ug.game?.name ?? 'Game'}</p>
+                    <p className="text-sm text-accent">{ug.rank}</p>
+                    <p className="text-xs text-tertiary mt-0.5">
                       Updated {format(new Date(ug.updatedAt), 'MMM d, yyyy')}
                     </p>
                   </div>
                   <span
                     className="px-2 py-1 rounded text-xs font-semibold shrink-0"
-                    style={{ backgroundColor: `${ug.game?.color || accent}40`, color: ug.game?.color || accent }}
+                    style={{ backgroundColor: `${ug.game?.color || 'var(--color-accent)'}40`, color: ug.game?.color || 'var(--color-accent)' }}
                   >
                     {ug.rankTier}
                   </span>
@@ -403,8 +395,8 @@ export default function ProfilePage() {
         )}
 
         {/* User's posts tab */}
-        <section className="mt-6 pt-4 border-t border-gray-800">
-          <h2 className="text-sm font-semibold text-gray-400 uppercase tracking-wider mb-3">
+        <section className="mt-6 pt-4 border-t border-border-default">
+          <h2 className="text-sm font-semibold text-secondary uppercase tracking-wider mb-3">
             Posts
           </h2>
           {postsLoading ? (
@@ -413,7 +405,7 @@ export default function ProfilePage() {
               <PostCardSkeleton />
             </>
           ) : profilePosts.length === 0 ? (
-            <p className="text-gray-500 py-6 text-center">No posts yet.</p>
+            <p className="text-tertiary py-6 text-center">No posts yet.</p>
           ) : (
             <div className="space-y-0">
               {profilePosts.map((post) => (
@@ -441,7 +433,7 @@ export default function ProfilePage() {
                     type="button"
                     onClick={() => fetchNextPage()}
                     disabled={isFetchingNextPage}
-                    className="px-4 py-2 rounded-full text-sm border border-gray-600 text-gray-300 hover:bg-gray-800 disabled:opacity-50"
+                    className="px-4 py-2 rounded-full text-sm border border-border-default text-secondary hover:bg-hover disabled:opacity-50"
                   >
                     {isFetchingNextPage ? 'Loading...' : 'Load more'}
                   </button>
@@ -462,43 +454,40 @@ export default function ProfilePage() {
           aria-label="Edit profile"
         >
           <div
-            className="bg-[#1A1A1A] rounded-2xl border border-gray-700 w-full max-w-md p-6 shadow-xl"
+            className="bg-secondary rounded-2xl border border-border-default w-full max-w-md p-6 shadow-xl"
             onClick={(e) => e.stopPropagation()}
           >
-            <h3 className="text-lg font-semibold text-white mb-4">Edit Profile</h3>
+            <h3 className="text-lg font-semibold text-primary mb-4">Edit Profile</h3>
             <div className="space-y-4">
               <div>
-                <label className="block text-sm font-medium text-gray-400 mb-1">Display name</label>
+                <label className="block text-sm font-medium text-secondary mb-1">Display name</label>
                 <input
                   type="text"
                   value={editDisplayName}
                   onChange={(e) => setEditDisplayName(e.target.value)}
                   maxLength={100}
-                  className="w-full px-3 py-2 rounded-lg bg-gray-800 border border-gray-700 text-white placeholder-gray-500 focus:outline-none focus:ring-2"
-                  style={{ ['--tw-ring-color' as string]: accent }}
+                  className="w-full px-3 py-2 rounded-lg bg-tertiary border border-border-default text-primary placeholder-tertiary focus:outline-none focus:ring-2 focus:ring-accent"
                   placeholder="Display name"
                 />
               </div>
               <div>
-                <label className="block text-sm font-medium text-gray-400 mb-1">Bio</label>
+                <label className="block text-sm font-medium text-secondary mb-1">Bio</label>
                 <textarea
                   value={editBio}
                   onChange={(e) => setEditBio(e.target.value)}
                   maxLength={500}
                   rows={3}
-                  className="w-full px-3 py-2 rounded-lg bg-gray-800 border border-gray-700 text-white placeholder-gray-500 focus:outline-none focus:ring-2 resize-none"
-                  style={{ ['--tw-ring-color' as string]: accent }}
+                  className="w-full px-3 py-2 rounded-lg bg-tertiary border border-border-default text-primary placeholder-tertiary focus:outline-none focus:ring-2 focus:ring-accent resize-none"
                   placeholder="Bio"
                 />
               </div>
               <div>
-                <label className="block text-sm font-medium text-gray-400 mb-1">Avatar URL</label>
+                <label className="block text-sm font-medium text-secondary mb-1">Avatar URL</label>
                 <input
                   type="url"
                   value={editAvatarUrl}
                   onChange={(e) => setEditAvatarUrl(e.target.value)}
-                  className="w-full px-3 py-2 rounded-lg bg-gray-800 border border-gray-700 text-white placeholder-gray-500 focus:outline-none focus:ring-2"
-                  style={{ ['--tw-ring-color' as string]: accent }}
+                  className="w-full px-3 py-2 rounded-lg bg-tertiary border border-border-default text-primary placeholder-tertiary focus:outline-none focus:ring-2 focus:ring-accent"
                   placeholder="https://..."
                 />
               </div>
@@ -507,7 +496,7 @@ export default function ProfilePage() {
               <button
                 type="button"
                 onClick={() => setEditOpen(false)}
-                className="px-4 py-2 rounded-full text-sm font-medium text-gray-400 hover:text-white transition-colors"
+                className="px-4 py-2 rounded-full text-sm font-medium text-secondary hover:text-primary transition-colors"
               >
                 Cancel
               </button>
@@ -515,8 +504,7 @@ export default function ProfilePage() {
                 type="button"
                 onClick={submitEdit}
                 disabled={updateProfileMutation.isPending}
-                className="px-4 py-2 rounded-full text-sm font-medium disabled:opacity-50 transition-colors"
-                style={{ backgroundColor: accent, color: '#0D0D0D' }}
+                className="px-4 py-2 rounded-full text-sm font-medium disabled:opacity-50 transition-colors bg-accent text-white"
               >
                 {updateProfileMutation.isPending ? 'Saving...' : 'Save'}
               </button>

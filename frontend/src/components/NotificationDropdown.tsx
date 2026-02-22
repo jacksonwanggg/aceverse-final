@@ -65,7 +65,7 @@ export default function NotificationDropdown({ isOpen, onClose, anchorRef }: Not
   return (
     <div
       ref={panelRef}
-      className="absolute right-0 top-full mt-1 z-50 w-[320px] rounded-xl border border-gray-700 bg-[#1A1A1A] shadow-xl overflow-hidden"
+      className="absolute right-0 top-full mt-1 z-50 w-[320px] rounded-xl border border-border-default bg-secondary shadow-xl overflow-hidden"
     >
       <div className="p-2 border-b border-gray-700 flex items-center justify-between">
         <span className="text-sm font-semibold text-white">Notifications</span>

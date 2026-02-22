@@ -3,22 +3,21 @@ import PostThreadPage from './PostThreadPage'
 
 export default function StandalonePostThreadPage() {
   return (
-    <div className="min-h-screen bg-[#0D0D0D] text-gray-100">
-      <nav className="sticky top-0 z-10 flex items-center justify-between px-4 py-3 bg-[#0D0D0D]/95 backdrop-blur-md border-b border-gray-800">
-        <Link to="/" className="text-xl font-bold text-white tracking-tight">
+    <div className="min-h-screen bg-primary text-primary">
+      <nav className="sticky top-0 z-10 flex items-center justify-between px-4 py-3 bg-primary/95 backdrop-blur-md border-b border-border-default">
+        <Link to="/" className="text-xl font-bold text-primary tracking-tight">
           AceVerse
         </Link>
         <div className="flex items-center gap-3">
           <Link
             to="/login"
-            className="px-4 py-2 text-gray-300 hover:text-white transition-colors rounded-full"
+            className="px-4 py-2 text-secondary hover:text-primary transition-colors rounded-full"
           >
             Log in
           </Link>
           <Link
             to="/register"
-            className="px-4 py-2 rounded-full font-medium text-[#0D0D0D] transition-all hover:opacity-90"
-            style={{ backgroundColor: '#EF8C60' }}
+            className="px-4 py-2 rounded-full font-medium bg-accent text-white transition-all hover:opacity-90"
           >
             Sign up
           </Link>
@@ -26,15 +25,14 @@ export default function StandalonePostThreadPage() {
       </nav>
 
       <div
-        className="mx-auto max-w-2xl border-x border-gray-800 min-h-[60px] flex items-center justify-center gap-2 px-4 py-3 text-gray-300 text-sm"
-        style={{ backgroundColor: 'rgba(239, 140, 96, 0.08)', borderBottom: '1px solid rgba(239, 140, 96, 0.2)' }}
+        className="mx-auto max-w-2xl border-x border-border-default min-h-[60px] flex items-center justify-center gap-2 px-4 py-3 text-secondary text-sm bg-accent/10 border-b border-accent/20"
       >
         <span>Log in to like, reply, and repost.</span>
-        <Link to="/login" className="font-medium text-[#EF8C60] hover:underline">
+        <Link to="/login" className="font-medium text-accent hover:underline">
           Log in
         </Link>
         <span>or</span>
-        <Link to="/register" className="font-medium text-[#EF8C60] hover:underline">
+        <Link to="/register" className="font-medium text-accent hover:underline">
           Sign up
         </Link>
       </div>

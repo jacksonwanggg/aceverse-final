@@ -130,21 +130,21 @@ export default function PostThreadPage({ readOnly }: PostThreadPageProps) {
 
   if (!postId) {
     return (
-      <div className="p-4 text-gray-400">Missing post ID.</div>
+      <div className="p-4 text-secondary">Missing post ID.</div>
     )
   }
 
   if (isLoading) {
     return (
       <div className="p-4 flex justify-center">
-        <div className="w-8 h-8 border-2 border-[#EF8C60] border-t-transparent rounded-full animate-spin" />
+        <div className="w-8 h-8 border-2 border-accent border-t-transparent rounded-full animate-spin" />
       </div>
     )
   }
 
   if (error || !data) {
     return (
-      <div className="p-4 text-gray-400">
+      <div className="p-4 text-secondary">
         {error instanceof Error ? error.message : 'Post not found.'}
       </div>
     )
@@ -185,17 +185,17 @@ export default function PostThreadPage({ readOnly }: PostThreadPageProps) {
       }
 
   return (
-    <div className="border-b border-gray-800">
+    <div className="border-b border-border-default">
       <PostCard post={postForCard} readOnly={readOnly} {...likeHandlers} />
       {!readOnly && user && (
         <ReplyComposer
           placeholder="Post your reply..."
           onSubmit={(content) => replyToPostMutation.mutate(content)}
           isSubmitting={replyToPostMutation.isPending}
-          className="border-t border-gray-800 p-4 pl-4 md:pl-16"
+          className="border-t border-border-default p-4 pl-4 md:pl-16"
         />
       )}
-      <div className="border-t border-gray-800">
+      <div className="border-t border-border-default">
         {sortedReplies.map((reply) => (
           <ReplyRow
             key={reply.id}
@@ -263,13 +263,13 @@ function ReplyComposer({
             placeholder={placeholder}
             rows={2}
             maxLength={500}
-            className="w-full resize-none bg-gray-800/50 text-gray-100 placeholder-gray-500 rounded-lg p-3 focus:outline-none focus:ring-2 focus:ring-[#EF8C60] border border-gray-700"
+            className="w-full resize-none bg-secondary text-primary placeholder-tertiary rounded-lg p-3 focus:outline-none focus:ring-2 focus:ring-accent border border-border-default"
           />
           <div className="flex justify-end mt-2">
             <button
               type="submit"
               disabled={content.trim().length === 0 || content.length > 500 || isSubmitting}
-              className="px-4 py-2 bg-[#EF8C60] text-white rounded-full font-semibold hover:opacity-90 disabled:opacity-50 disabled:cursor-not-allowed"
+              className="px-4 py-2 bg-accent text-white rounded-full font-semibold hover:opacity-90 disabled:opacity-50 disabled:cursor-not-allowed"
             >
               {isSubmitting ? 'Posting...' : 'Reply'}
             </button>
@@ -364,7 +364,7 @@ function ReplyRow({ reply, depth, maxDepth, readOnly, postId, onReplyCreated, on
 
   return (
     <article
-      className="border-b border-gray-800/50 p-4 hover:bg-gray-800/30 transition-colors"
+      className="border-b border-border-default/50 p-4 hover:bg-hover transition-colors"
       style={{ marginLeft: indent }}
     >
       <div className="flex gap-3">
@@ -377,7 +377,7 @@ function ReplyRow({ reply, depth, maxDepth, readOnly, postId, onReplyCreated, on
             />
           </Link>
         ) : (
-          <div className="w-10 h-10 rounded-full bg-gray-700 flex-shrink-0" />
+          <div className="w-10 h-10 rounded-full bg-tertiary flex-shrink-0" />
         )}
         <div className="flex-1 min-w-0">
           <div className="flex items-center gap-2 mb-1 flex-wrap">
@@ -385,27 +385,27 @@ function ReplyRow({ reply, depth, maxDepth, readOnly, postId, onReplyCreated, on
               <>
                 <Link
                   to={`/u/${reply.author.username}`}
-                  className="font-semibold text-gray-100 hover:underline"
+                  className="font-semibold text-primary hover:underline"
                 >
                   {reply.author.displayName}
                 </Link>
                 <Link
                   to={`/u/${reply.author.username}`}
-                  className="text-gray-500 hover:underline"
+                  className="text-tertiary hover:underline"
                 >
                   @{reply.author.username}
                 </Link>
               </>
             )}
-            <span className="text-gray-500">·</span>
-            <span className="text-gray-500">{timeAgo}</span>
+            <span className="text-tertiary">·</span>
+            <span className="text-tertiary">{timeAgo}</span>
             {!readOnly && (reply.canEdit || reply.canDelete) && !editing && !isDeleted && (
               <span className="ml-auto flex items-center gap-1">
                 {reply.canEdit && (
                   <button
                     type="button"
                     onClick={() => { setEditing(true); setEditContent(reply.content ?? ''); }}
-                    className="text-sm text-gray-400 hover:text-[#EF8C60]"
+                    className="text-sm text-secondary hover:text-accent"
                   >
                     Edit
                   </button>
@@ -414,7 +414,7 @@ function ReplyRow({ reply, depth, maxDepth, readOnly, postId, onReplyCreated, on
                   <button
                     type="button"
                     onClick={() => deleteReplyMutation.mutate()}
-                    className="text-sm text-gray-400 hover:text-red-400"
+                    className="text-sm text-secondary hover:text-red-400"
                   >
                     Delete
                   </button>
@@ -429,30 +429,30 @@ function ReplyRow({ reply, depth, maxDepth, readOnly, postId, onReplyCreated, on
                 onChange={(e) => setEditContent(e.target.value)}
                 rows={3}
                 maxLength={500}
-                className="w-full resize-none bg-gray-800 text-gray-100 rounded-lg p-2 border border-gray-700 focus:outline-none focus:ring-2 focus:ring-[#EF8C60]"
+                className="w-full resize-none bg-tertiary text-primary rounded-lg p-2 border border-border-default focus:outline-none focus:ring-2 focus:ring-accent"
               />
               <div className="flex gap-2">
                 <button
                   type="button"
                   onClick={handleSaveEdit}
                   disabled={editContent.trim().length === 0 || editContent.length > 500 || saving}
-                  className="px-3 py-1.5 bg-[#EF8C60] text-white rounded-full text-sm font-medium disabled:opacity-50"
+                  className="px-3 py-1.5 bg-accent text-white rounded-full text-sm font-medium disabled:opacity-50"
                 >
                   {saving ? 'Saving...' : 'Save'}
                 </button>
                 <button
                   type="button"
                   onClick={() => { setEditing(false); setEditContent(reply.content ?? ''); }}
-                  className="px-3 py-1.5 text-gray-400 hover:text-gray-200"
+                  className="px-3 py-1.5 text-secondary hover:text-primary"
                 >
                   Cancel
                 </button>
               </div>
             </div>
           ) : (
-            <p className="text-gray-100 whitespace-pre-wrap break-words">
+            <p className="text-primary whitespace-pre-wrap break-words">
               {isDeleted ? (
-                <span className="italic text-gray-500">This reply has been deleted.</span>
+                <span className="italic text-tertiary">This reply has been deleted.</span>
               ) : (
                 reply.content
               )}
@@ -464,7 +464,7 @@ function ReplyRow({ reply, depth, maxDepth, readOnly, postId, onReplyCreated, on
                 <button
                   type="button"
                   onClick={() => setShowReplyComposer(true)}
-                  className="text-sm text-[#EF8C60] hover:underline"
+                  className="text-sm text-accent hover:underline"
                 >
                   Reply
                 </button>
