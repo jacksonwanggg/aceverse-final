@@ -3,8 +3,8 @@
 # DO NOT EDIT - regenerated on task file change
 
 source_file: RALPH_TASK.md
-source_mtime: 1771747558
-generated_at: 2026-02-22T08:06:34Z
+source_mtime: 1771747911
+generated_at: 2026-02-22T08:12:23Z
 
 tasks:
   - id: "line_77"
@@ -205,49 +205,49 @@ tasks:
     raw_marker: -
   - id: "line_117"
     line_number: 117
-    status: pending
+    status: completed
     parallel_group: 999999
     description: Register page: username, email, password, display name — validates, shows inline errors, redirects to home on success
     indent_level: 0
     raw_marker: -
   - id: "line_118"
     line_number: 118
-    status: pending
+    status: completed
     parallel_group: 999999
     description: Login page: email + password — validates, shows inline errors, redirects to home on success
     indent_level: 0
     raw_marker: -
   - id: "line_119"
     line_number: 119
-    status: pending
+    status: completed
     parallel_group: 999999
     description: Logout works and redirects to landing page
     indent_level: 0
     raw_marker: -
   - id: "line_120"
     line_number: 120
-    status: pending
+    status: completed
     parallel_group: 999999
     description: Session cookie is HttpOnly, authenticated state persists on page refresh (`GET /api/auth/me`)
     indent_level: 0
     raw_marker: -
   - id: "line_121"
     line_number: 121
-    status: pending
+    status: completed
     parallel_group: 999999
     description: Protected pages redirect to `/login` if not authenticated
     indent_level: 0
     raw_marker: -
   - id: "line_122"
     line_number: 122
-    status: pending
+    status: completed
     parallel_group: 999999
     description: Auth forms have clean UI with `#EF8C60` accent buttons, loading states, and error toasts
     indent_level: 0
     raw_marker: -
   - id: "line_123"
     line_number: 123
-    status: pending
+    status: completed
     parallel_group: 999999
     description: Run `npm run typecheck && npm run build && npm run lint` — all pass
     indent_level: 0
